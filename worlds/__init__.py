@@ -1,129 +1,132 @@
-import importlib
-import importlib.util
-import logging
-import os
-import sys
-import warnings
-import zipimport
-import time
-import dataclasses
-from typing import Dict, List, TypedDict
-
-from Utils import local_path, user_path
-
-local_folder = os.path.dirname(__file__)
-user_folder = user_path("worlds") if user_path() != local_path() else user_path("custom_worlds")
-try:
-    os.makedirs(user_folder, exist_ok=True)
-except OSError:  # can't access/write?
-    user_folder = None
-
-__all__ = {
-    "network_data_package",
-    "AutoWorldRegister",
-    "world_sources",
-    "local_folder",
-    "user_folder",
-    "GamesPackage",
-    "DataPackage",
-    "failed_world_loads",
-}
+from .Items import IslesOfSeaAndSkyItem, item_table, non_key_items, key_items, \
+    junk_weights
+from .Locations import IslesOfSeaAndSkyAdvancement, advancement_table, exclusion_table
+from .Regions import isles_of_sea_and_sky_regions, link_isles_of_sea_and_sky_areas
+from .Rules import set_rules, set_completion_rules
+from worlds.generic.Rules import exclusion_rules
+from BaseClasses import Region, Entrance, Tutorial, Item
+from .Options import IslesOfSeaAndSkyOptions
+from worlds.AutoWorld import World, WebWorld
+from worlds.LauncherComponents import Component, components
+from multiprocessing import Process
 
 
-failed_world_loads: List[str] = []
+def run_client():
+    print('running isles_of_sea_and_sky client')
+    from IslesOfSeaAndSkyClient import main  # lazy import
+    p = Process(target=main)
+    p.start()
 
 
-class GamesPackage(TypedDict, total=False):
-    item_name_groups: Dict[str, List[str]]
-    item_name_to_id: Dict[str, int]
-    location_name_groups: Dict[str, List[str]]
-    location_name_to_id: Dict[str, int]
-    checksum: str
+components.append(Component("IslesOfSeaAndSky Client", "IslesOfSeaAndSkyClient"))
+# components.append(Component("IslesOfSeaAndSky Client", func=run_client))
 
 
-class DataPackage(TypedDict):
-    games: Dict[str, GamesPackage]
+def data_path(file_name: str):
+    import pkgutil
+    return pkgutil.get_data(__name__, "data/" + file_name)
 
 
-@dataclasses.dataclass(order=True)
-class WorldSource:
-    path: str  # typically relative path from this module
-    is_zip: bool = False
-    relative: bool = True  # relative to regular world import folder
-    time_taken: float = -1.0
-
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.path}, is_zip={self.is_zip}, relative={self.relative})"
-
-    @property
-    def resolved_path(self) -> str:
-        if self.relative:
-            return os.path.join(local_folder, self.path)
-        return self.path
-
-    def load(self) -> bool:
-        try:
-            start = time.perf_counter()
-            if self.is_zip:
-                importer = zipimport.zipimporter(self.resolved_path)
-                spec = importer.find_spec(os.path.basename(self.path).rsplit(".", 1)[0])
-                assert spec, f"{self.path} is not a loadable module"
-                mod = importlib.util.module_from_spec(spec)
-
-                mod.__package__ = f"worlds.{mod.__package__}"
-
-                mod.__name__ = f"worlds.{mod.__name__}"
-                sys.modules[mod.__name__] = mod
-                with warnings.catch_warnings():
-                    warnings.filterwarnings("ignore", message="__package__ != __spec__.parent")
-                    # Found no equivalent for < 3.10
-                    if hasattr(importer, "exec_module"):
-                        importer.exec_module(mod)
-            else:
-                importlib.import_module(f".{self.path}", "worlds")
-            self.time_taken = time.perf_counter()-start
-            return True
-
-        except Exception:
-            # A single world failing can still mean enough is working for the user, log and carry on
-            import traceback
-            import io
-            file_like = io.StringIO()
-            print(f"Could not load world {self}:", file=file_like)
-            traceback.print_exc(file=file_like)
-            file_like.seek(0)
-            logging.exception(file_like.read())
-            failed_world_loads.append(os.path.basename(self.path).rsplit(".", 1)[0])
-            return False
+class IslesOfSeaAndSkyWeb(WebWorld):
+    tutorials = [Tutorial(
+        "Multiworld Setup Guide",
+        "A guide to setting up the Archipelago IslesOfSeaAndSky software on your computer. This guide covers "
+        "single-player, multiworld, and related software.",
+        "English",
+        "setup_en.md",
+        "setup/en",
+        ["Mewlif"]
+    )]
 
 
-# find potential world containers, currently folders and zip-importable .apworld's
-world_sources: List[WorldSource] = []
-for folder in (folder for folder in (user_folder, local_folder) if folder):
-    relative = folder == local_folder
-    for entry in os.scandir(folder):
-        # prevent loading of __pycache__ and allow _* for non-world folders, disable files/folders starting with "."
-        if not entry.name.startswith(("_", ".")):
-            file_name = entry.name if relative else os.path.join(folder, entry.name)
-            if entry.is_dir():
-                if os.path.isfile(os.path.join(entry.path, '__init__.py')):
-                    world_sources.append(WorldSource(file_name, relative=relative))
-                elif os.path.isfile(os.path.join(entry.path, '__init__.pyc')):
-                    world_sources.append(WorldSource(file_name, relative=relative))
-                else:
-                    logging.warning(f"excluding {entry.name} from world sources because it has no __init__.py")
-            elif entry.is_file() and entry.name.endswith(".apworld"):
-                world_sources.append(WorldSource(file_name, is_zip=True, relative=relative))
+class IslesOfSeaAndSkyWorld(World):
+    """
+    Isles Of Sea And Sky needs a full description
+    """
+    game = "IslesOfSeaAndSky"
+    options_dataclass = IslesOfSeaAndSkyOptions
+    options: IslesOfSeaAndSkyOptions
+    web = IslesOfSeaAndSkyWeb()
 
-# import all submodules to trigger AutoWorldRegister
-world_sources.sort()
-for world_source in world_sources:
-    world_source.load()
+    item_name_to_id = {name: data.code for name, data in item_table.items()}
+    location_name_to_id = {name: data.id for name, data in advancement_table.items()}
 
-# Build the data package for each game.
-from .AutoWorld import AutoWorldRegister
+    def _get_isles_of_sea_and_sky_data(self):
+        return {
+            "world_seed": self.random.getrandbits(32),
+            "seed_name": self.multiworld.seed_name,
+            "player_name": self.multiworld.get_player_name(self.player),
+            "player_id": self.player,
+            "client_version": self.required_client_version,
+            "race": self.multiworld.is_race,
+            #"route": self.options.route_required.current_key,
+            "starting_area": self.options.starting_area.current_key,
 
-network_data_package: DataPackage = {
-    "games": {world_name: world.get_data_package_data() for world_name, world in AutoWorldRegister.world_types.items()},
-}
+        }
 
+    def get_filler_item_name(self):
+
+        junk_pool = junk_weights
+
+
+    def create_items(self):
+        #self.multiworld.get_location("Undyne Date", self.player).place_locked_item(self.create_item("Undyne Date"))
+
+        # Generate item pool
+        itempool = []
+        junk_pool = junk_weights.copy()
+        # Add all required progression items
+        for name, num in key_items.items():
+            itempool += [name] * num
+        for name, num in non_key_items.items():
+            itempool += [name] * num
+
+
+        #starting_key = self.options.starting_area.current_key.title() + " Key"
+        #itempool.remove(starting_key)
+        #self.multiworld.push_precollected(self.create_item(starting_key))
+
+        # Choose locations to automatically exclude based on settings
+        exclusion_pool = set()
+        #exclusion_pool.update(exclusion_table[self.options.route_required.current_key])
+
+
+        # Choose locations to automatically exclude based on settings
+        exclusion_checks = set()
+        #exclusion_checks.update(["Nicecream Punch Card", "Hush Trade"])
+        #exclusion_rules(self.multiworld, self.player, exclusion_checks)
+
+        # Convert itempool into real items
+        itempool = [item for item in map(lambda name: self.create_item(name), itempool)]
+        # Fill remaining items with randomly generated junk or Temmie Flakes
+        while len(itempool) < len(self.multiworld.get_unfilled_locations(self.player)):
+            itempool.append(self.create_filler())
+
+        self.multiworld.itempool += itempool
+
+    def set_rules(self):
+        set_rules(self)
+        set_completion_rules(self)
+
+    def create_regions(self):
+        def IslesOfSeaAndSkyRegion(region_name: str, exits=[]):
+            ret = Region(region_name, self.player, self.multiworld)
+            ret.locations += [IslesOfSeaAndSkyAdvancement(self.player, loc_name, loc_data.id, ret)
+                              for loc_name, loc_data in advancement_table.items()
+                              if loc_data.region == region_name and
+                              loc_name not in exclusion_table[self.options.route_required.current_key]]
+
+            for exit in exits:
+                ret.exits.append(Entrance(self.player, exit, ret))
+            return ret
+
+        self.multiworld.regions += [IslesOfSeaAndSkyRegion(*r) for r in isles_of_sea_and_sky_regions]
+        link_isles_of_sea_and_sky_areas(self.multiworld, self.player)
+
+    def fill_slot_data(self):
+        return self._get_isles_of_sea_and_sky_data()
+
+    def create_item(self, name: str) -> Item:
+        item_data = item_table[name]
+        item = IslesOfSeaAndSkyItem(name, item_data.classification, item_data.code, self.player)
+        return item
