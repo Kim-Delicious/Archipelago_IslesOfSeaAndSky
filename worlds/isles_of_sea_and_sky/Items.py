@@ -66,20 +66,9 @@ non_key_items = {
     "Rolling Bell Rung":        1,
     "Sunken Bell Rung":         1,
     "Aggro Bell Rung":          1,
-    "Nunatak Bell Rung":        1,
+    "Nanatak Bell Rung":        1,
 }
 
-'''plot_items = {
-    "Earth Quest Complete": 1,
-    "Water Quest Complete": 1,
-    "Fire Quest Complete": 1,
-    "Air Quest Complete": 1,
-    "Earth Shard Hit": 1,
-    "Water Shard Hit": 1,
-    "Fire Shard Hit": 1,
-    "Air Shard Hit": 1,
-
-}'''
 
 key_items = {
     "Ancient Key":              73,

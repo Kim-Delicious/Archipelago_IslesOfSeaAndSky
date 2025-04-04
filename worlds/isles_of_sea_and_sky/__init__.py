@@ -58,9 +58,9 @@ class IslesOfSeaAndSkyWorld(World):
             "player_name": self.multiworld.get_player_name(self.player),
             "player_id": self.player,
             "client_version": self.required_client_version,
-            "race": self.multiworld.is_race,
+            #"race": self.multiworld.is_race,
             #"route": self.options.route_required.current_key,
-            "starting_area": self.options.starting_area.current_key,
+            #"starting_area": self.options.starting_area.current_key,
 
         }
 
@@ -113,8 +113,7 @@ class IslesOfSeaAndSkyWorld(World):
             ret = Region(region_name, self.player, self.multiworld)
             ret.locations += [IslesOfSeaAndSkyAdvancement(self.player, loc_name, loc_data.id, ret)
                               for loc_name, loc_data in advancement_table.items()
-                              if loc_data.region == region_name and
-                              loc_name not in exclusion_table[self.options.route_required.current_key]]
+                              if loc_data.region == region_name]
 
             for exit in exits:
                 ret.exits.append(Entrance(self.player, exit, ret))

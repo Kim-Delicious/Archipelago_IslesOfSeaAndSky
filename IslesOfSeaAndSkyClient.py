@@ -104,15 +104,11 @@ class IslesOfSeaAndSkyContext(CommonContext):
 
     def __init__(self, server_address, password):
         super().__init__(server_address, password)
-        self.pieces_needed = 0
         self.finished_game = False
         self.game = "IslesOfSeaAndSky"
         self.got_deathlink = False
         self.syncing = False
         self.deathlink_status = False
-        self.tem_armor = False
-        self.completed_count = 0
-        self.completed_routes = {"pacifist": 0, "genocide": 0, "neutral": 0}
         # self.save_game_folder: files go in this path to pass data between us and the actual game
         self.save_game_folder = os.path.expandvars(r"%localappdata%/IslesOfSeaAndSky")
 
@@ -215,41 +211,26 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
     if cmd == "Connected":
         if not os.path.exists(ctx.save_game_folder):
             os.mkdir(ctx.save_game_folder)
-        ctx.route = args["slot_data"]["route"]
-        ctx.pieces_needed = args["slot_data"]["key_pieces"]
-        ctx.tem_armor = args["slot_data"]["temy_armor_include"]
+        #ctx.route = args["slot_data"]["route"]
 
-        await ctx.send_msgs([{"cmd": "Get", "keys": [str(ctx.slot)+" RoutesDone neutral",
-                                                     str(ctx.slot)+" RoutesDone pacifist",
-                                                     str(ctx.slot)+" RoutesDone genocide"]}])
-        await ctx.send_msgs([{"cmd": "SetNotify", "keys": [str(ctx.slot)+" RoutesDone neutral",
-                                                           str(ctx.slot)+" RoutesDone pacifist",
-                                                           str(ctx.slot)+" RoutesDone genocide"]}])
-        if args["slot_data"]["only_flakes"]:
-            with open(os.path.join(ctx.save_game_folder, "GenoNoChest.flag"), "w") as f:
-                f.close()
-        if not args["slot_data"]["key_hunt"]:
-            ctx.pieces_needed = 0
-        if args["slot_data"]["rando_love"]:
-            filename = f"LOVErando.LV"
-            with open(os.path.join(ctx.save_game_folder, filename), "w") as f:
-                f.close()
-        if args["slot_data"]["rando_stats"]:
-            filename = f"STATrando.LV"
-            with open(os.path.join(ctx.save_game_folder, filename), "w") as f:
-                f.close()
-        filename = f"{ctx.route}.route"
+
+
+
+        '''filename = f"{ctx.route}.route"
         with open(os.path.join(ctx.save_game_folder, filename), "w") as f:
             f.close()
-        filename = f"check.spot"
-        with open(os.path.join(ctx.save_game_folder, filename), "a") as f:
-            for ss in set(args["checked_locations"]):
-                f.write(str(ss-12000)+"\n")
+            '''
+        print(args["checked_locations"])
+        for ss in set(args["checked_locations"]):
+            filename = str(ss) + ".ini"
+            with open(os.path.join(ctx.save_game_folder + "/AP/IN", filename), "a") as f:
+
+                f.write(str(ss))
             f.close()
     elif cmd == "LocationInfo":
         for l in args["locations"]:
             locationid = l.location
-            filename = f"{str(locationid-12000)}.hint"
+            filename = f"{str(locationid)}.hint"
             with open(os.path.join(ctx.save_game_folder, filename), "w") as f:
                 toDraw = ""
                 for i in range(20):
@@ -259,24 +240,7 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
                         break
                 f.write(toDraw)
                 f.close()
-    elif cmd == "Retrieved":
-        if str(ctx.slot)+" RoutesDone neutral" in args["keys"]:
-            if args["keys"][str(ctx.slot)+" RoutesDone neutral"] is not None:
-                ctx.completed_routes["neutral"] = args["keys"][str(ctx.slot)+" RoutesDone neutral"]
-        if str(ctx.slot)+" RoutesDone genocide" in args["keys"]:
-            if args["keys"][str(ctx.slot)+" RoutesDone genocide"] is not None:
-                ctx.completed_routes["genocide"] = args["keys"][str(ctx.slot)+" RoutesDone genocide"]
-        if str(ctx.slot)+" RoutesDone pacifist" in args["keys"]:
-            if args["keys"][str(ctx.slot) + " RoutesDone pacifist"] is not None:
-                ctx.completed_routes["pacifist"] = args["keys"][str(ctx.slot)+" RoutesDone pacifist"]
-    elif cmd == "SetReply":
-        if args["value"] is not None:
-            if str(ctx.slot)+" RoutesDone pacifist" == args["key"]:
-                ctx.completed_routes["pacifist"] = args["value"]
-            elif str(ctx.slot)+" RoutesDone genocide" == args["key"]:
-                ctx.completed_routes["genocide"] = args["value"]
-            elif str(ctx.slot)+" RoutesDone neutral" == args["key"]:
-                ctx.completed_routes["neutral"] = args["value"]
+
     elif cmd == "ReceivedItems":
         start_index = args["index"]
 
@@ -290,8 +254,6 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
             await ctx.send_msgs(sync_msg)
         if start_index == len(ctx.items_received):
             counter = -1
-            placedWeapon = 0
-            placedArmor = 0
             for item in args["items"]:
                 id = NetworkItem(*item).location
                 while NetworkItem(*item).location < 0 and \
@@ -299,70 +261,9 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
                     id -= 1
                 if NetworkItem(*item).location < 0:
                     counter -= 1
-                filename = f"{str(id)}PLR{str(NetworkItem(*item).player)}.item"
-                with open(os.path.join(ctx.save_game_folder, filename), "w") as f:
-                    if NetworkItem(*item).item == 77701:
-                        if placedWeapon == 0:
-                            f.write(str(77013-11000))
-                        elif placedWeapon == 1:
-                            f.write(str(77014-11000))
-                        elif placedWeapon == 2:
-                            f.write(str(77025-11000))
-                        elif placedWeapon == 3:
-                            f.write(str(77045-11000))
-                        elif placedWeapon == 4:
-                            f.write(str(77049-11000))
-                        elif placedWeapon == 5:
-                            f.write(str(77047-11000))
-                        elif placedWeapon == 6:
-                            if str(ctx.route) == "genocide" or str(ctx.route) == "all_routes":
-                                f.write(str(77052-11000))
-                            else:
-                                f.write(str(77051-11000))
-                        else:
-                            f.write(str(77003-11000))
-                        placedWeapon += 1
-                    elif NetworkItem(*item).item == 77702:
-                        if placedArmor == 0:
-                            f.write(str(77012-11000))
-                        elif placedArmor == 1:
-                            f.write(str(77015-11000))
-                        elif placedArmor == 2:
-                            f.write(str(77024-11000))
-                        elif placedArmor == 3:
-                            f.write(str(77044-11000))
-                        elif placedArmor == 4:
-                            f.write(str(77048-11000))
-                        elif placedArmor == 5:
-                            if str(ctx.route) == "genocide":
-                                f.write(str(77053-11000))
-                            else:
-                                f.write(str(77046-11000))
-                        elif placedArmor == 6 and ((not str(ctx.route) == "genocide") or ctx.tem_armor):
-                            if str(ctx.route) == "all_routes":
-                                f.write(str(77053-11000))
-                            elif str(ctx.route) == "genocide":
-                                f.write(str(77064-11000))
-                            else:
-                                f.write(str(77050-11000))
-                        elif placedArmor == 7 and ctx.tem_armor and not str(ctx.route) == "genocide":
-                            f.write(str(77064-11000))
-                        else:
-                            f.write(str(77004-11000))
-                        placedArmor += 1
-                    else:
-                        f.write(str(NetworkItem(*item).item-11000))
-                    f.close()
+                #print(NetworkItem(*item))
                 ctx.items_received.append(NetworkItem(*item))
-                if [item.item for item in ctx.items_received].count(77000) >= ctx.pieces_needed > 0:
-                    filename = f"{str(-99999)}PLR{str(0)}.item"
-                    with open(os.path.join(ctx.save_game_folder, filename), "w") as f:
-                        f.write(str(77787 - 11000))
-                        f.close()
-                    filename = f"{str(-99998)}PLR{str(0)}.item"
-                    with open(os.path.join(ctx.save_game_folder, filename), "w") as f:
-                        f.write(str(77789 - 11000))
-                        f.close()
+
         ctx.watcher_event.set()
 
     elif cmd == "RoomUpdate":
@@ -373,48 +274,62 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
                     f.write(str(ss-12000)+"\n")
                 f.close()
 
+    ### This is for checking other player's position in-game.
     elif cmd == "Bounced":
         tags = args.get("tags", [])
         if "Online" in tags:
-            data = args.get("worlds/isles_of_sea_and_sky/data", {})
+            data = args.get("data", {})
+
+
             if data["player"] != ctx.slot and data["player"] is not None:
-                filename = f"FRISK" + str(data["player"]) + ".playerspot"
-                with open(os.path.join(ctx.save_game_folder, filename), "w") as f:
-                    f.write(str(data["x"]) + str(data["y"]) + str(data["room"]) + str(
-                        data["spr"]) + str(data["frm"]))
+                filename = str(data["room"]) + "_" + str(data["name"]) + "_" + str(data["total"]) + ".ini"
+                path_to_file = os.path.join(ctx.save_game_folder + "\AP\IN", filename)
+                if os.path.exists(path_to_file):
+                    return
+
+                with open(path_to_file, "w") as f:
+                    f.write(str(data["room"]) + "\n" +
+                            str(data["name"]) + "\n" +
+                            str(data["type"]) + "\n" +
+                            str(data["obj_index"]) + "\n" +
+                            str(data["total"]) )
+
                     f.close()
 
 
+
 async def multi_watcher(ctx: IslesOfSeaAndSkyContext):
+    ### Send a server packet that no one else receives except the original player.
     while not ctx.exit_event.is_set():
-        path = ctx.save_game_folder
+        path = ctx.save_game_folder + "/AP/OUT"
         for root, dirs, files in os.walk(path):
             for file in files:
-                if "spots.mine" in file and "Online" in ctx.tags:
+                if "Online" in ctx.tags:
                     with open(os.path.join(root, file), "r") as mine:
-                        this_x = mine.readline()
-                        this_y = mine.readline()
-                        this_room = mine.readline()
-                        this_sprite = mine.readline()
-                        this_frame = mine.readline()
+                        this_room = mine.readline().replace("\n", "")
+                        this_name = mine.readline().replace("\n", "")
+                        this_type = mine.readline().replace("\n", "")
+                        this_obj_index = mine.readline().replace("\n", "")
+                        this_room_total = mine.readline().replace("\n", "")
                         mine.close()
+
                     message = [{"cmd": "Bounce", "tags": ["Online"],
-                                "data": {"player": ctx.slot, "x": this_x, "y": this_y, "room": this_room,
-                                         "spr": this_sprite, "frm": this_frame}}]
-                    await ctx.send_msgs(message)
+                                "data": {"player": ctx.slot, "room": this_room, "name": this_name, "type": this_type,
+                                         "obj_index": this_obj_index, "total": this_room_total}}]
+                    #await ctx.send_msgs(message)
 
         await asyncio.sleep(0.1)
 
-
+# Look in the AP/OUT folder for files, and send checks.
 async def game_watcher(ctx: IslesOfSeaAndSkyContext):
     while not ctx.exit_event.is_set():
-        await ctx.update_death_link(ctx.deathlink_status)
-        path = ctx.save_game_folder
+        #await ctx.update_death_link(ctx.deathlink_status)
+        path = ctx.save_game_folder + "/AP/OUT"
         if ctx.syncing:
             for root, dirs, files in os.walk(path):
                 for file in files:
-                    if ".item" in file:
-                        os.remove(os.path.join(root, file))
+                    #if ".item" in file:
+                    os.remove(os.path.join(root, file))
             sync_msg = [{"cmd": "Sync"}]
             if ctx.locations_checked:
                 sync_msg.append({"cmd": "LocationChecks", "locations": list(ctx.locations_checked)})
@@ -426,13 +341,14 @@ async def game_watcher(ctx: IslesOfSeaAndSkyContext):
                 f.close()
         sending = []
         victory = False
-        found_routes = 0
+        #found_routes = 0
         for root, dirs, files in os.walk(path):
             for file in files:
                 if "DontBeMad.mad" in file:
                     os.remove(os.path.join(root, file))
                     if "DeathLink" in ctx.tags:
                         await ctx.send_death()
+
                 if "scout" == file:
                     sending = []
                     try:
@@ -445,43 +361,31 @@ async def game_watcher(ctx: IslesOfSeaAndSkyContext):
                         await ctx.send_msgs([{"cmd": "LocationScouts", "locations": sending,
                                                           "create_as_hint": int(2)}])
                         os.remove(os.path.join(root, file))
-                if "check.spot" in file:
-                    sending = []
-                    try:
-                        with open(os.path.join(root, file), "r") as f:
-                            lines = f.readlines()
-                        for l in lines:
-                            sending = sending+[(int(l.rstrip('\n')))+12000]
-                    finally:
-                        await ctx.send_msgs([{"cmd": "LocationChecks", "locations": sending}])
+
                 if "victory" in file and str(ctx.route) in file:
                     victory = True
                 if ".playerspot" in file and "Online" not in ctx.tags:
                     os.remove(os.path.join(root, file))
-                if "victory" in file:
-                    if str(ctx.route) == "all_routes":
-                        if "neutral" in file and ctx.completed_routes["neutral"] != 1:
-                            await ctx.send_msgs([{"cmd": "Set", "key": str(ctx.slot)+" RoutesDone neutral",
-                                                  "default": 0, "want_reply": True, "operations": [{"operation": "max",
-                                                                                                    "value": 1}]}])
-                        elif "pacifist" in file and ctx.completed_routes["pacifist"] != 1:
-                            await ctx.send_msgs([{"cmd": "Set", "key": str(ctx.slot)+" RoutesDone pacifist",
-                                                  "default": 0, "want_reply": True, "operations": [{"operation": "max",
-                                                                                                    "value": 1}]}])
-                        elif "genocide" in file and ctx.completed_routes["genocide"] != 1:
-                            await ctx.send_msgs([{"cmd": "Set", "key": str(ctx.slot)+" RoutesDone genocide",
-                                                  "default": 0, "want_reply": True, "operations": [{"operation": "max",
-                                                                                                    "value": 1}]}])
-        if str(ctx.route) == "all_routes":
-            found_routes += ctx.completed_routes["neutral"]
-            found_routes += ctx.completed_routes["pacifist"]
-            found_routes += ctx.completed_routes["genocide"]
-        if str(ctx.route) == "all_routes" and found_routes >= 3:
-            victory = True
+                ''''&&"check.spot" in file'''
+                if True:
+                    sending = []
+                    try:
+                        with open(os.path.join(root, file), "r") as f:
+                            item_id = f.readline()
+
+                        sending = sending + [int(item_id)]
+
+                    finally:
+                        await ctx.send_msgs([{"cmd": "LocationChecks", "locations": sending}])
+                        os.remove(os.path.join(root, file))
+                #if "victory" in file:
+
+        #victory = True
         ctx.locations_checked = sending
         if (not ctx.finished_game) and victory:
             await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
             ctx.finished_game = True
+
         await asyncio.sleep(0.1)
 
 
