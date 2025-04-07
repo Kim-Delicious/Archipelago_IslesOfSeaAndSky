@@ -208,93 +208,92 @@ def to_room_name(place_name: str):
 
 
 async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: str, args: dict):
-    if cmd == "Connected":
-        if not os.path.exists(ctx.save_game_folder):
-            os.mkdir(ctx.save_game_folder)
-        #ctx.route = args["slot_data"]["route"]
+    ### When the client first connects to the multiworld
+
+    if cmd == 'Connected':
+        msgs = []
+        if ctx.locations_checked:
+            msgs.append({"cmd": "LocationChecks",
+                         "locations": list(ctx.locations_checked)})
+        if ctx.locations_scouted:
+            msgs.append({"cmd": "LocationScouts",
+                         "locations": list(ctx.locations_scouted)})
+        if ctx.stored_data_notification_keys:
+            msgs.append({"cmd": "Get",
+                         "keys": list(ctx.stored_data_notification_keys)})
+            msgs.append({"cmd": "SetNotify",
+                         "keys": list(ctx.stored_data_notification_keys)})
+        if msgs:
+            await ctx.send_msgs(msgs)
+        if ctx.finished_game:
+            await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
+
+        # Get the server side view of missing as of time of connecting.
+        # This list is used to only send to the server what is reported as ACTUALLY Missing.
+        # This also serves to allow an easy visual of what locations were already checked previously
+        # when /missing is used for the client side view of what is missing.
+        ctx.missing_locations = set(args["missing_locations"])
+        ctx.checked_locations = set(args["checked_locations"])
+        ctx.server_locations = ctx.missing_locations | ctx.checked_locations
+
+        #server_url = urllib.parse.urlparse(ctx.server_address)
+        #Utils.persistent_store("client", "last_server_address", server_url.netloc)
 
 
-
-
-        '''filename = f"{ctx.route}.route"
-        with open(os.path.join(ctx.save_game_folder, filename), "w") as f:
-            f.close()
-            '''
-        print(args["checked_locations"])
-        for ss in set(args["checked_locations"]):
-            filename = str(ss) + ".ini"
-            with open(os.path.join(ctx.save_game_folder + "/AP/IN", filename), "a") as f:
-
-                f.write(str(ss))
-            f.close()
-    elif cmd == "LocationInfo":
-        for l in args["locations"]:
-            locationid = l.location
-            filename = f"{str(locationid)}.hint"
-            with open(os.path.join(ctx.save_game_folder, filename), "w") as f:
-                toDraw = ""
-                for i in range(20):
-                    if i < len(str(ctx.item_names.lookup_in_game(l.item))):
-                        toDraw += str(ctx.item_names.lookup_in_game(l.item))[i]
-                    else:
-                        break
-                f.write(toDraw)
-                f.close()
-
-    elif cmd == "ReceivedItems":
+    elif cmd == 'ReceivedItems':
         start_index = args["index"]
 
         if start_index == 0:
             ctx.items_received = []
         elif start_index != len(ctx.items_received):
-            sync_msg = [{"cmd": "Sync"}]
+            sync_msg = [{'cmd': 'Sync'}]
             if ctx.locations_checked:
                 sync_msg.append({"cmd": "LocationChecks",
                                  "locations": list(ctx.locations_checked)})
             await ctx.send_msgs(sync_msg)
+
+            for i in range(len(args['items'])):
+                item = args['items'][i]
+                filename = f"{str(NetworkItem(*item).location)}.ini"
+                with open(os.path.join(ctx.save_game_folder + "/AP/IN", filename), "w") as f:
+                    f.write(str(NetworkItem(*item).item))
+                    f.close()
+
         if start_index == len(ctx.items_received):
-            counter = -1
-            for item in args["items"]:
-                id = NetworkItem(*item).location
-                while NetworkItem(*item).location < 0 and \
-                        counter <= id:
-                    id -= 1
-                if NetworkItem(*item).location < 0:
-                    counter -= 1
-                #print(NetworkItem(*item))
+            for item in args['items']:
                 ctx.items_received.append(NetworkItem(*item))
+
+            # Handle very firt item acquisition
+            if len(args['items']) == 1:
+                item = args['items'][0]
+                filename = f"{str(NetworkItem(*item).location)}.ini"
+                with open(os.path.join(ctx.save_game_folder + "/AP/IN", filename), "w") as f:
+                    f.write(str(NetworkItem(*item).item))
+                    f.close()
+
 
         ctx.watcher_event.set()
 
+    elif cmd == 'LocationInfo':
+        for item in [NetworkItem(*item) for item in args['locations']]:
+            ctx.locations_info[item.location] = item
+        ctx.watcher_event.set()
+
+    ### ? Keeps a log of checked locations.
     elif cmd == "RoomUpdate":
+        if "players" in args:
+            ctx.consume_players_package(args["players"])
+        if "hint_points" in args:
+            ctx.hint_points = args['hint_points']
         if "checked_locations" in args:
-            filename = f"check.spot"
-            with open(os.path.join(ctx.save_game_folder, filename), "a") as f:
-                for ss in set(args["checked_locations"]):
-                    f.write(str(ss-12000)+"\n")
-                f.close()
-
-    ### This is for checking other player's position in-game.
-    elif cmd == "Bounced":
-        tags = args.get("tags", [])
-        if "Online" in tags:
-            data = args.get("data", {})
+            checked = set(args["checked_locations"])
+            ctx.checked_locations |= checked
+            ctx.missing_locations -= checked
+        if "permissions" in args:
+            ctx.update_permissions(args["permissions"])
 
 
-            if data["player"] != ctx.slot and data["player"] is not None:
-                filename = str(data["room"]) + "_" + str(data["name"]) + "_" + str(data["total"]) + ".ini"
-                path_to_file = os.path.join(ctx.save_game_folder + "\AP\IN", filename)
-                if os.path.exists(path_to_file):
-                    return
 
-                with open(path_to_file, "w") as f:
-                    f.write(str(data["room"]) + "\n" +
-                            str(data["name"]) + "\n" +
-                            str(data["type"]) + "\n" +
-                            str(data["obj_index"]) + "\n" +
-                            str(data["total"]) )
-
-                    f.close()
 
 
 
