@@ -28,9 +28,12 @@ isles_of_sea_and_sky_regions = [
     ("Sunken Island", ["Sunken Exit"]),
     ("Sea Nunatak", ["Nunatak Exit"]),
     ("Shoal", ["Shoal Exit"]),
-    ("Beast Bridge", ["Beast Exit"]),
+    ("Beast Bridge", ["Beast Exit", "Beast Bridge Phoenix"]),
+    ("Phoenix Hub", ["Lost Phoenix Entrance"]),
 
-    ("Topaz Sea", ["Ancient East Entrance", "Stony East Entrance", "Diamond Sea West Entrance", "Ruby Sea West Entrance", "Rolling West Entrance", "Rolling East Entrance"]),
+    ("Topaz Sea",
+     ["Ancient East Entrance", "Stony East Entrance", "Diamond Sea West Entrance", "Ruby Sea West Entrance",
+      "Rolling West Entrance", "Rolling East Entrance"]),
     ("Sapphire Sea", ["Stony West Entrance", "Tidal Entrance", "Sapphire Sea Exit", "Aggro Entrance"]),
     ("Obsidian Sea", ["Ancient West Entrance", "Serpent Entrance", "Locked Entrance", "Serpent Whirlpool"]),
     ("Ruby Sea", ["Ruby Whirlpool", "Star East Entrance", "Sunken Entrance", "Raging Entrance"]),
@@ -71,12 +74,14 @@ mandatory_connections = [
     ("Aggro Entrance", "Aggro Crag"),
     ("Locked Entrance", "Locked"),
     ("Lost Entrance", "Lost Landing"),
+    ("Lost Phoenix Entrance", "Lost Landing"),
     ("Star East Entrance", "Star Tropic"),
     ("Star West Entrance", "Star Tropic"),
     ("Sunken Entrance", "Sunken Island"),
     ("Nunatak Entrance", "Sea Nunatak"),
     ("Shoal Entrance", "Shoal"),
     ("Beast Entrance", "Beast Bridge"),
+    ("Beast Bridge Phoenix", "Phoenix Hub"),
 
     ("Diamond Sea West Entrance", "Diamond Sea"),
     ("Ruby Sea West Entrance", "Ruby Sea"),
@@ -100,5 +105,7 @@ mandatory_connections = [
     ("Sunken Exit", "Ruby Sea"),
     ("Beast Exit", "Beast Sea"),
     ("Lost Exit", "Lost Sea"),
+
+
 
 ]

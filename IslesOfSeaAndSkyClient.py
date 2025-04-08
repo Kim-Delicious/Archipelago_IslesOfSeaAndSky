@@ -375,6 +375,7 @@ async def game_watcher(ctx: IslesOfSeaAndSkyContext):
                         sending = sending + [int(item_id)]
 
                     finally:
+                        #print(sending)
                         await ctx.send_msgs([{"cmd": "LocationChecks", "locations": sending}])
                         os.remove(os.path.join(root, file))
                 #if "victory" in file:

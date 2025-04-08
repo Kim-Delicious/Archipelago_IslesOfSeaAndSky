@@ -87,13 +87,13 @@ class IslesOfSeaAndSkyWorld(World):
         #self.multiworld.push_precollected(self.create_item(starting_key))
 
         # Choose locations to automatically exclude based on settings
-        exclusion_pool = set()
-        #exclusion_pool.update(exclusion_table[self.options.route_required.current_key])
+        #exclusion_pool = set()
+        #exclusion_pool.update(exclusion_table)
 
 
         # Choose locations to automatically exclude based on settings
-        exclusion_checks = set()
-        #exclusion_checks.update(["Nicecream Punch Card", "Hush Trade"])
+        #exclusion_checks = set()
+        #exclusion_checks.update(["Normal Ending Reached"])
         #exclusion_rules(self.multiworld, self.player, exclusion_checks)
 
         # Convert itempool into real items
