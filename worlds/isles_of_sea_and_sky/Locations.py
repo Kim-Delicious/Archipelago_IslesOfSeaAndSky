@@ -14,12 +14,12 @@ class IslesOfSeaAndSkyAdvancement(Location):
     game: str = "IslesOfSeaAndSky"
 
 advancement_table = {
-    "Ancient Rune Tablet":                          AdvData(61612010,     "Locked"),
-    "Topaz Rune Tablet":                            AdvData(62201201,     "Stony Cliffs"),
-    "Sapphire Rune Tablet":                         AdvData(62103200,     "Tidal Reef"),
-    "Ruby Rune Tablet":                             AdvData(62004201,     "Raging Volcano"),
-    "Diamond Rune Tablet":                          AdvData(61705221,     "Frozen Spire"),
-    "Obsidian Rune Tablet":                         AdvData(61806011,     "Serpent Stacks"),
+    "Ancient Rune Stone":                          AdvData(61612010,     "Locked"),
+    "Topaz Rune Stone":                            AdvData(62201201,     "Stony Cliffs"),
+    "Sapphire Rune Stone":                         AdvData(62103200,     "Tidal Reef"),
+    "Ruby Rune Stone":                             AdvData(62004201,     "Raging Volcano"),
+    "Diamond Rune Stone":                          AdvData(61705221,     "Frozen Spire"),
+    "Obsidian Rune Stone":                         AdvData(61806011,     "Serpent Stacks"),
 
     "Topaz Quest Complete":                         AdvData(99901201,     "Stony Cliffs"),
     "Sapphire Quest Complete":                      AdvData(99903201,     "Tidal Reef"),
@@ -29,7 +29,7 @@ advancement_table = {
     "Gopher Gloves":                                AdvData(35802211,     "Stony Cliffs"),
     "Frog Flippers":                                AdvData(34603040,     "Tidal Reef"),
     "Salamander Shirt":                             AdvData(62304401,     "Raging Volcano"),
-    "Kite Cape":                                    AdvData(39905001,     "Frozen Spire"),
+    "Kite Cloak":                                   AdvData(39905001,     "Frozen Spire"),
     "Serpent Circlet":                              AdvData(65406011,     "Serpent Stacks"),
 
     "Topaz Shard Hit":                              AdvData(99907021,     "Sanctum"),
@@ -295,7 +295,7 @@ advancement_table = {
     "Star Piece - Serpent A7 - W" :                 AdvData(72806072,     "Serpent Stacks"), # s circlet, r quest
     "Star Piece - Serpent A7 - E" :                 AdvData(72806071,     "Serpent Stacks"), # s circlet, r quest
     "Star Piece - Serpent A8 - N" :                 AdvData(72806082,     "Serpent Stacks"), # s circlet, d quest
-    "Star Piece - Seprent A8 - S" :                 AdvData(72806081,       "Serpent Stacks"), # s circlet, d quest
+    "Star Piece - Serpent A8 - S" :                 AdvData(72806081,      "Serpent Stacks"), # s circlet, d quest
 
     "Star Piece - Locked A1":                       AdvData(72812011,     "Locked"),
 
@@ -351,11 +351,13 @@ advancement_table = {
     "Obsidian - Lost A1" :                          AdvData(46715011,    "Lost Landing"), # phoenix flute (or secret find?)
 
 
+
     # In the future, could include milestones as locations. e.g. each of the steam achievments, plus extras.
 }
 
 exclusion_table = {
-# Exclude the very first items of the game, such as the starting key.
+
+
 
 }
 

@@ -252,12 +252,12 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
                                  "locations": list(ctx.locations_checked)})
             await ctx.send_msgs(sync_msg)
 
-            for i in range(len(args['items'])):
-                item = args['items'][i]
-                filename = f"{str(NetworkItem(*item).location)}.ini"
-                with open(os.path.join(ctx.save_game_folder + "/AP/IN", filename), "w") as f:
-                    f.write(str(NetworkItem(*item).item))
-                    f.close()
+            filename = f"received.items"
+            with open(os.path.join(ctx.save_game_folder + "/AP/IN", filename), "w") as f:
+                for i in range(len(args['items'])):
+                    item = args['items'][i]
+                    f.write(str(NetworkItem(*item).item) + "\n")
+                f.close()
 
         if start_index == len(ctx.items_received):
             for item in args['items']:
@@ -266,9 +266,9 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
             # Handle very firt item acquisition
             if len(args['items']) == 1:
                 item = args['items'][0]
-                filename = f"{str(NetworkItem(*item).location)}.ini"
+                filename = f"received.items"
                 with open(os.path.join(ctx.save_game_folder + "/AP/IN", filename), "w") as f:
-                    f.write(str(NetworkItem(*item).item))
+                    f.write(str(NetworkItem(*item).item) + "\n")
                     f.close()
 
 
@@ -361,26 +361,33 @@ async def game_watcher(ctx: IslesOfSeaAndSkyContext):
                                                           "create_as_hint": int(2)}])
                         os.remove(os.path.join(root, file))
 
-                if "victory" in file and str(ctx.route) in file:
+                ### WIN GAME
+                if "victory" in file:
+                    print("Victory!")
                     victory = True
+                    os.remove(os.path.join(root, file))
+
                 if ".playerspot" in file and "Online" not in ctx.tags:
                     os.remove(os.path.join(root, file))
                 ''''&&"check.spot" in file'''
-                if True:
+                if ".items" in file:
                     sending = []
                     try:
                         with open(os.path.join(root, file), "r") as f:
-                            item_id = f.readline()
+                            #item_id = f.readline()
+                            lines = f.readlines()
+                        for l in lines:
+                            sending = sending + [(int(l.rstrip('\n')))]
 
-                        sending = sending + [int(item_id)]
+                        #sending = sending + [int(item_id)]
 
                     finally:
                         #print(sending)
                         await ctx.send_msgs([{"cmd": "LocationChecks", "locations": sending}])
                         os.remove(os.path.join(root, file))
-                #if "victory" in file:
 
-        #victory = True
+
+
         ctx.locations_checked = sending
         if (not ctx.finished_game) and victory:
             await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])

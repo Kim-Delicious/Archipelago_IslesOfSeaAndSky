@@ -12,23 +12,23 @@ class IslesOfSeaAndSkyItem(Item):
 
 # Item Id is set to in-game Object Index
 item_table = {
-    "Ancient Key":              ItemData(109,     ItemClassification.useful),
-    "Topaz":                    ItemData(784,     ItemClassification.useful),
-    "Sapphire":                 ItemData(635,     ItemClassification.useful),
-    "Ruby":                     ItemData(606,     ItemClassification.useful),
-    "Diamond":                  ItemData(282,     ItemClassification.useful),
-    "Obsidian":                 ItemData(467,     ItemClassification.useful),
-    "Star Piece":               ItemData(728,     ItemClassification.useful),
+    "Ancient Key":              ItemData(109,     ItemClassification.progression_skip_balancing),
+    "Topaz":                    ItemData(784,     ItemClassification.progression_skip_balancing),
+    "Sapphire":                 ItemData(635,     ItemClassification.progression_skip_balancing),
+    "Ruby":                     ItemData(606,     ItemClassification.progression_skip_balancing),
+    "Diamond":                  ItemData(282,     ItemClassification.progression_skip_balancing),
+    "Obsidian":                 ItemData(467,     ItemClassification.progression_skip_balancing),
+    "Star Piece":               ItemData(728,     ItemClassification.progression_skip_balancing),
     "Ancient Rune Stone":       ItemData(616,     ItemClassification.progression),
     "Topaz Rune Stone":         ItemData(622,     ItemClassification.progression),
     "Sapphire Rune Stone":      ItemData(621,     ItemClassification.progression),
     "Ruby Rune Stone":          ItemData(620,     ItemClassification.progression),
     "Diamond Rune Stone":       ItemData(617,     ItemClassification.progression),
-    "Obsidian Rune Stone":      ItemData(618,     ItemClassification.useful),
+    "Obsidian Rune Stone":      ItemData(618,     ItemClassification.progression),
     "Gopher Gloves":            ItemData(358,     ItemClassification.progression),
     "Frog Flippers":            ItemData(346,     ItemClassification.progression),
     "Salamander Shirt":         ItemData(623,     ItemClassification.progression),
-    "Kite Cape":                ItemData(399,     ItemClassification.progression),
+    "Kite Cloak":               ItemData(399,     ItemClassification.progression),
     "Serpent Circlet":          ItemData(654,     ItemClassification.useful),
     "Blue Stone Tablet":        ItemData(596,     ItemClassification.useful),
     "Gold Stone Tablet":        ItemData(597,     ItemClassification.useful),
@@ -56,30 +56,10 @@ item_table = {
 
 }
 
-non_key_items = {
-    "Obsidian":                 12,
-    "Obsidian Rune Stone":      1,
-    "Serpent Circlet":          1,
-    "Blue Stone Tablet":        1,
-    "Gold Stone Tablet":        1,
-    "Music Note":               24,
-    "Phoenix Flute":            1,
-    "Star Viewing Orb":         1,
-    "Rolling Bell Rung":        1,
-    "Sunken Bell Rung":         1,
-    "Aggro Bell Rung":          1,
-    "Nunatak Bell Rung":        1,
-
-}
 
 
-key_items = {
-    "Ancient Key":              70, # Should be 73?
-    "Topaz":                    12,
-    "Sapphire":                 12,
-    "Ruby":                     12,
-    "Diamond":                  12,
-    "Star Piece":               91,
+progression_items = {
+
     "Ancient Rune Stone":       1,
     "Topaz Rune Stone":         1,
     "Sapphire Rune Stone":      1,
@@ -88,7 +68,7 @@ key_items = {
     "Gopher Gloves":            1,
     "Frog Flippers":            1,
     "Salamander Shirt":         1,
-    "Kite Cape":                1,
+    "Kite Cloak":               1,
     "Fire Key":                 3,
     #"Egg":                      0, # broken
     #"Wind Key":                 0, # broken
@@ -100,6 +80,32 @@ key_items = {
     "Sapphire Shard Hit":       1,
     "Ruby Shard Hit":           1,
     "Diamond Shard Hit":        1,
+    "Phoenix Flute":            1,
+}
+
+key_items = {
+    "Ancient Key":              70, # Should be 73?
+    "Topaz":                    12,
+    "Sapphire":                 12,
+    "Ruby":                     12,
+    "Diamond":                  12,
+    "Star Piece":               91,
+
+
+}
+
+non_key_items = {
+    "Obsidian":                 12,
+    "Obsidian Rune Stone":      1,
+    "Serpent Circlet":          1,
+    "Blue Stone Tablet":        1,
+    "Gold Stone Tablet":        1,
+    "Music Note":               24,
+    "Star Viewing Orb":         1,
+    "Rolling Bell Rung":        1,
+    "Sunken Bell Rung":         1,
+    "Aggro Bell Rung":          1,
+    "Nunatak Bell Rung":        1,
 
 }
 

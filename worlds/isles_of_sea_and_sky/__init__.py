@@ -1,5 +1,5 @@
 from .Items import IslesOfSeaAndSkyItem, item_table, non_key_items, key_items, \
-    junk_weights
+    junk_weights, progression_items
 from .Locations import IslesOfSeaAndSkyAdvancement, advancement_table, exclusion_table
 from .Regions import isles_of_sea_and_sky_regions, link_isles_of_sea_and_sky_areas
 from .Rules import set_rules, set_completion_rules
@@ -70,12 +70,30 @@ class IslesOfSeaAndSkyWorld(World):
 
 
     def create_items(self):
-        #self.multiworld.get_location("Undyne Date", self.player).place_locked_item(self.create_item("Undyne Date"))
+        # Plando Most of Ancient Isle to prevent soft lock
+        self.multiworld.get_location("Ancient Key - Ancient B3", self.player).place_locked_item(
+            self.create_item("Ancient Key"))
+        self.multiworld.get_location("Ancient Key - Ancient A1", self.player).place_locked_item(
+            self.create_item("Ancient Key"))
+        self.multiworld.get_location("Ancient Key - Ancient A2 - SE", self.player).place_locked_item(
+            self.create_item("Ancient Key"))
+        self.multiworld.get_location("Ancient Key - Ancient A3 - N", self.player).place_locked_item(
+            self.create_item("Ancient Key"))
+        self.multiworld.get_location("Ancient Key - Ancient A3 - S", self.player).place_locked_item(
+            self.create_item("Ancient Key"))
+        self.multiworld.get_location("Ancient Key - Ancient C2", self.player).place_locked_item(
+            self.create_item("Ancient Key"))
+
+
+        self.multiworld.get_location("Star Piece - Ancient C0", self.player).place_locked_item(
+            self.create_item("Star Piece"))
 
         # Generate item pool
         itempool = []
         junk_pool = junk_weights.copy()
         # Add all required progression items
+        for name, num in progression_items.items():
+            itempool += [name] * num
         for name, num in key_items.items():
             itempool += [name] * num
         for name, num in non_key_items.items():
@@ -100,7 +118,9 @@ class IslesOfSeaAndSkyWorld(World):
         itempool = [item for item in map(lambda name: self.create_item(name), itempool)]
         # Fill remaining items with randomly generated junk or Temmie Flakes
         while len(itempool) < len(self.multiworld.get_unfilled_locations(self.player)):
-            itempool.append(self.create_filler())
+            #itempool.append(self.create_filler())
+            for name, num in junk_weights.items():
+                itempool += [name] * num
 
         self.multiworld.itempool += itempool
 
