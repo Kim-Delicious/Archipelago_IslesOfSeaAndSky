@@ -1,33 +1,27 @@
-# IslesOfSeaAndSky Randomizer Setup Guide
+# Isles Of Sea And Sky Randomizer Setup Guide
 
 ### Required Software
 
-- IslesOfSeaAndSky from the [Steam page](https://store.steampowered.com/app/391540) // Needs real link
+- Isles Of Sea And Sky from the [Steam page](https://store.steampowered.com/app/1233070/Isles_of_Sea_and_Sky/)
 - Archipelago from the [Archipelago Releases Page](https://github.com/ArchipelagoMW/Archipelago/releases)
+- Delta Patcher from the [Delta Patcher Page](https://www.romhacking.net/utilities/704/)
 
 ### First time setup
 
-Start the IslesOfSeaAndSky client from your Archipelago folder and input `/auto_patch <Your IslesOfSeaAndSky Install Directory>` at the bottom. 
+First, the game needs to be patched in order to be compatibale with Archipelago.
 
-This directory is usually located at `C:\Program Files\Steam\steamapps\IslesOfSeaAndSky`, but it can be different depending on 
-your installation. You can easily find the directory by opening the IslesOfSeaAndSky directory through Steam by right-clicking 
-IslesOfSeaAndSky in your library and selecting `Manage -> Browse local files`. Then, on Windows you can see the directory that 
-you need at the top of the window that opens.
+Open up Delta Patcher, and there will be two folder icons. One with 'Original File', and the other with 'XDelta Patch'. Click on 'Original File' Icon, and use the prompt window to find the game directory. This is usually located `C:\Program Files\Steam\steamapps\IslesOfSeaAndSky`
+Inside the game directory select the **data.win** file.
 
-After using the `/auto_patch` command, **Archipelago will make an IslesOfSeaAndSky folder within the Archipelago install 
-location.** That folder contains the version of IslesOfSeaAndSky you will use for Archipelago. (If you update Archipelago, 
-you will need to redo this set-up.)
+Now, click on the second icon, 'XDelta Patch', and navigate to your download of the Isles Of Sea And Sky APWorld, and find the data folder.
+It will likely be here: `C:\..\Archipelago\worlds\isles_of_sea_and_sky\data` Inside you will find the **patch.xDelta** file. 
+Select it, then click **Apply Patch**
 
-**Linux Users**: The Linux installation is mostly similar, however, IslesOfSeaAndSky will be installed on Steam as the Linux 
-variant. Since this randomizer only supports the Windows version, we must fix this, by right-click the game in Steam, 
-going to `Properties -> Compatibility`, and checking `Force the use of a specific Steam Play compatibility tool`. This
-downloads the Windows version of IslesOfSeaAndSky to use instead of the Linux version. If the play button is greyed out in 
-Steam, be sure to go to `Settings -> Compatibility` and toggle `Enable Steam Play for all other titles`.
+
 
 ### Connect to the MultiServer
 
-Make sure both IslesOfSeaAndSky **from the Archipelago folder** and its client are running. (IslesOfSeaAndSky will ask for a save slot
-to play on. Archipelago IslesOfSeaAndSky does not overwrite vanilla saves, but you may want to back up your save as a precaution.)
+Make sure both Isles Of Sea And Sky and its Client are running. 
 
 In the top text box of the client, type the `IP Address` (or `Hostname`) and `Port` separated with a `:` symbol. 
 (Ex. `archipelago.gg:38281`)
@@ -35,30 +29,14 @@ In the top text box of the client, type the `IP Address` (or `Hostname`) and `Po
 The client will then ask for the slot name, input your slot name chosen during YAML creation in the text box at the 
 bottom of the client.
 
-**Linux Users**: When you start the client, it is likely that the save data path is incorrect, and how the game
-is played depends on where the save data folder is located.
 
-**On Steam (via Proton)**: This assumes the game is in a Steam Library folder.  Right-click IslesOfSeaAndSky, go to `Manage -> 
-Browse Local Files`. Go up the directories to the `steamapps` folder, open `compatdata/391540` (391540 is the "magic number" for
-IslesOfSeaAndSky in Steam).  Save data from here is at `/pfx/drive_c/users/steamuser/AppData/Local/UNDERTALE`.
-
-**Through WINE directly**: This depends on the prefix used.  If it is default, then the save data is located at
-`/home/USERNAME/.wine/drive_c/users/USERNAME/AppData/Local/UNDERTALE`.
-
-Once the save data folder is located, run the `/savepath` command to redirect the client to the correct save data folder
-before connecting.
 
 ### Play the game
 
 When the console tells you that you have joined the room, you're all set. Congratulations on successfully joining a
 multi-world game!
 
-### PLEASE READ!
-
-Please read this page in its entirety before asking questions! Most importantly, there is a list of 
-gameplay differences at the bottom.
-[IslesOfSeaAndSky Game Info Page](/games/IslesOfSeaAndSky/info/en)
 
 ### Where do I get a YAML file?
 
-You can customize your options by visiting the [IslesOfSeaAndSky Player Options Page](/games/IslesOfSeaAndSky/player-options)
+A Template file can be found in `..\Archipelago\worlds\isles_of_sea_and_sky\data`
