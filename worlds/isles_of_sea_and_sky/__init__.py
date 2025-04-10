@@ -108,7 +108,6 @@ class IslesOfSeaAndSkyWorld(World):
         #exclusion_pool = set()
         #exclusion_pool.update(exclusion_table)
 
-
         # Choose locations to automatically exclude based on settings
         #exclusion_checks = set()
         #exclusion_checks.update(["Normal Ending Reached"])

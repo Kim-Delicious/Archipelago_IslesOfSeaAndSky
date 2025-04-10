@@ -69,17 +69,15 @@ advancement_table = {
     "Ancient Key - Ancient C1" :                    AdvData(10900211,     "Ancient Isle"),
     "Ancient Key - Ancient A2 - NW" :               AdvData(10900021,     "Ancient Isle"), # Topaz quest
 
-    "Ancient Key - Stone B2 " :                     AdvData(10901121,     "Stony Cliffs"),
+    "Ancient Key - Rolling A1" :                    AdvData(10908011,     "Rolling Rocks"),
+    "Ancient Key - Rolling A0":                     AdvData(10908001,     "Rolling Rocks"),  # 7 stars
+
+    "Ancient Key - Tropic A1" :                     AdvData(10913011,     "Star Tropic"), # ancient rune
+
     "Ancient Key - Stone B1" :                      AdvData(10901111,     "Stony Cliffs"), #
     "Ancient Key - Stone C0" :                      AdvData(10901201,     "Stony Cliffs"), #topaz quest
-
-    "Ancient Key - Rolling A1" :                    AdvData(10908011,     "Rolling Rocks"),
-
-    "Ancient Key - Tropic A1" :                     AdvData(10913011,     "Tropic Star"), # ancient rune
-
-    "Ancient Key - Rolling A0" :                    AdvData(10908001,     "Rolling Rocks"), # 7 stars
-
-    "Ancient Key - Stone E2" :                      AdvData(10901421,     "Stony Cliffs"), # topaz rune
+    "Ancient Key - Stone B2 ":                      AdvData(10901121,     "Stony Cliffs"),
+    "Ancient Key - Stone E2":                       AdvData(10901421,     "Stony Cliffs"),  # topaz rune
     "Ancient Key - Stone B4" :                      AdvData(10901141,     "Stony Cliffs"), #topaz quest, topaz rune
     "Ancient Key - StoneDungeon C1" :               AdvData(10902211,     "Stony Cliffs"), #topaz rune, gopher gloves
     "Ancient Key - StoneDungeon D0" :               AdvData(10902300,     "Stony Cliffs"), #gopher gloves
@@ -139,8 +137,8 @@ advancement_table = {
     "Ancient Key - Sunken B0" :                     AdvData(10909101,     "Sunken Island"),
     "Ancient Key - Sunken A0" :                     AdvData(10909001,     "Sunken Island"),
 
-    "Ancient Key - Nunatuk B1" :                    AdvData(10911111,     "Sea Nunatuk"),
-    "Ancient Key - Nunatuk A1" :                    AdvData(10911011,     "Sea Nunatuk"), # ancient rune
+    "Ancient Key - Nunatak B1" :                    AdvData(10911111,     "Sea Nunatak"),
+    "Ancient Key - Nunatak A1" :                    AdvData(10911011,     "Sea Nunatak"), # ancient rune
 
     "Ancient Key - Stone D2" :                      AdvData(10902321,     "Stony Cliffs"), #
     "Ancient Key - Stone A2" :                      AdvData(10901021,     "Stony Cliffs"), # blue & gold tablet
@@ -347,9 +345,9 @@ advancement_table = {
     "Fire Music Note - D3" :                        AdvData(45704330,     "Raging Volcano"), # salamander shirt
 
     "Wind Music Note - B1" :                        AdvData(45705110,     "Frozen Spire"),
-    "Wind Music Note - A0":                         AdvData(45705000,     "Frozen Spire"),
-    "Wind Music Note - E3":                         AdvData(45705430,     "Frozen Spire"),  # d rune
-    "Wind Music Note - C3":                         AdvData(45705230,     "Frozen Spire"),  # d rune,
+    "Wind Music Note - A0" :                         AdvData(45705000,     "Frozen Spire"),
+    "Wind Music Note - E3" :                         AdvData(45705430,     "Frozen Spire"),  # d rune
+    "Wind Music Note - C3" :                         AdvData(45705230,     "Frozen Spire"),  # d rune,
     "Wind Music Note - A2" :                        AdvData(45705020,     "Frozen Spire"), # d quest,
     "Wind Music Note - D3" :                        AdvData(45705330,     "Frozen Spire"), # d quest
 

@@ -84,12 +84,12 @@ progression_items = {
 }
 
 key_items = {
-    "Ancient Key":              63, # Should be 73?
+    "Ancient Key":              67, # 73 is normal number, reduce to match Plando made in __init__
     "Topaz":                    12,
     "Sapphire":                 12,
     "Ruby":                     12,
     "Diamond":                  12,
-    "Star Piece":               91,
+    "Star Piece":               90, # 91 is normal number, reduce to match Plando made in __init__
 
 
 }
