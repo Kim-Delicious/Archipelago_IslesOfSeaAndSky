@@ -115,6 +115,13 @@ def set_rules(world: "IslesOfSeaAndSkyWorld"):
                            and state.has("Diamond Rune Stone", player)
                            and state.has("Obsidian", player, 10))
 
+    set_rule(multiworld.get_location("Phoenix Flute", player),
+             lambda state: state.can_reach("Beast Bridge", "Region", player)
+                           and state.has("Rolling Bell Rung", player)
+                           and state.has("Sunken Bell Rung", player)
+                           and state.has("Aggro Bell Rung", player)
+                           and state.has("Nunatak Bell Rung", player))
+
     # Quests
     set_rule(multiworld.get_location("Topaz Quest Complete", player),
              lambda state: state.has("Topaz", player, 6))

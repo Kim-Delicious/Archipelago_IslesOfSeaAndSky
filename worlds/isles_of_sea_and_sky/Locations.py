@@ -49,6 +49,14 @@ advancement_table = {
     #"Egg 3":         AdvData(991026,     "Frozen Spire"), #Broken due to in-game randomness
    # "Wind Key":      AdvData(83505440 || 83505040 || 83505400,     "Frozen Spire"), #Broken due to in-game randomness
 
+    "Rolling Bell Rung": AdvData(99908101, "Rolling Rocks"),
+    "Sunken Bell Rung": AdvData(99909111, "Sunken Island"),
+    "Aggro Bell Rung": AdvData(99910011, "Aggro Crag"),
+    "Nunatak Bell Rung": AdvData(99911011, "Sea Nunatak"),
+
+    "Phoenix Flute": AdvData(51116111, "Beast Bridge"),
+    "Star Viewing Orb": AdvData(73314001, "Shoal"),
+
     # Order is based on object reference search in UndertaleModTools
     "Ancient Key - Ancient B3" :                    AdvData(10900131,     "Ancient Isle"),
     "Ancient Key - Ancient A1" :                    AdvData(10900011,     "Ancient Isle"),
@@ -136,6 +144,7 @@ advancement_table = {
 
     "Ancient Key - Stone D2" :                      AdvData(10902321,     "Stony Cliffs"), #
     "Ancient Key - Stone A2" :                      AdvData(10901021,     "Stony Cliffs"), # blue & gold tablet
+    #73 keys
 
     "Topaz - Stone D2" :                            AdvData(78401321,     "Stony Cliffs"),
     "Topaz - Stone C2 - E" :                        AdvData(78401222,     "Stony Cliffs"),
@@ -188,6 +197,19 @@ advancement_table = {
     "Diamond - Wind C3" :                           AdvData(28205231,     "Frozen Spire"), # diamond quest complete
     "Diamond - Nunatak B0" :                        AdvData(28211101,     "Sea Nunatak"), # diamond quest complete
     "Diamond - Tropic A1" :                         AdvData(28213011,     "Star Tropic"), # ancient rune stone, all legendaries - serpent circlet
+
+    "Obsidian - Rolling A1": AdvData(46708011, "Rolling Rocks"),  # gopher gloves, 7 stars
+    "Obsidian - Stone D1": AdvData(46701311, "Stony Cliffs"),
+    "Obsidian - Stone A2": AdvData(46701021, "Stony Cliffs"),  # DOUBLE CHECK ID # stone tablet blue, tablet golda
+    "Obsidian - Water D0": AdvData(46703301, "Tidal Reef"),  # frog flippers
+    "Obsidian - Fire E0": AdvData(46704401, "Raging Volcano"),  # salamander shirt
+    "Obsidian - Fire D4": AdvData(46704341, "Raging Volcano"),  # DOUBLE CHECK ID #
+    "Obsidian - Wind B0": AdvData(46705101, "Frozen Spire"),
+    "Obsidian - Aggro B0": AdvData(46710101, "Aggro Crag"),  # salamander shirt
+    "Obsidian - Sunken A0": AdvData(46709001, "Sunken Island"),  # frog flippers
+    "Obsidian - Nunatak B1": AdvData(46711111, "Sea Nunatak"),  # diamond quest
+    "Obsidian - Serpent A1": AdvData(46706011, "Serpent Stacks"),  # rune stones: t,s,r,d,o, serpent circlet(?)
+    "Obsidian - Lost A1": AdvData(46715011, "Lost Landing"),  # phoenix flute (or secret find?)
 
     # 4 of these are trapped in bells, and should be removed.
     # 3x4=12 trapped in music puzzle
@@ -295,17 +317,11 @@ advancement_table = {
     "Star Piece - Serpent A7 - W" :                 AdvData(72806072,     "Serpent Stacks"), # s circlet, r quest
     "Star Piece - Serpent A7 - E" :                 AdvData(72806071,     "Serpent Stacks"), # s circlet, r quest
     "Star Piece - Serpent A8 - N" :                 AdvData(72806082,     "Serpent Stacks"), # s circlet, d quest
-    "Star Piece - Serpent A8 - S" :                 AdvData(72806081,      "Serpent Stacks"), # s circlet, d quest
+    "Star Piece - Serpent A8 - S" :                 AdvData(72806081,     "Serpent Stacks"), # s circlet, d quest
 
     "Star Piece - Locked A1":                       AdvData(72812011,     "Locked"),
+    #91 stars
 
-    "Rolling Bell Rung" :                           AdvData(99908101,     "Rolling Rocks"),
-    "Sunken Bell Rung":                             AdvData(99909111,     "Sunken Island"),
-    "Aggro Bell Rung" :                             AdvData(99910011,     "Aggro Crag"),
-    "Nunatak Bell Rung" :                           AdvData(99911011,     "Sea Nunatak"),
-
-    "Phoenix Flute" :                               AdvData(51116111,     "Beast Bridge"),
-    "Star Viewing Orb" :                            AdvData(73314001,     "Shoal"),
     #"Shell 1" : AdvData(991027, "Tidal Reef"),
     #"Jellyfish 1" : AdvData(991027, "Topaz Sea"),
 
@@ -337,18 +353,7 @@ advancement_table = {
     "Wind Music Note - A2" :                        AdvData(45705020,     "Frozen Spire"), # d quest,
     "Wind Music Note - D3" :                        AdvData(45705330,     "Frozen Spire"), # d quest
 
-    "Obsidian - Rolling A1" :                       AdvData(46708011,    "Rolling Rocks"), # gopher gloves, 7 stars
-    "Obsidian - Stone D1" :                         AdvData(46701311,    "Stony Cliffs"),
-    "Obsidian - Stone A2" :                         AdvData(46701021,    "Stony Cliffs"), # DOUBLE CHECK ID # stone tablet blue, tablet golda
-    "Obsidian - Water D0" :                         AdvData(46703301,    "Tidal Reef"), # frog flippers
-    "Obsidian - Fire E0" :                          AdvData(46704401,    "Raging Volcano"), # salamander shirt
-    "Obsidian - Fire D4" :                          AdvData(46704341,    "Raging Volcano"), # DOUBLE CHECK ID #
-    "Obsidian - Wind B0" :                          AdvData(46705101,    "Frozen Spire"),
-    "Obsidian - Aggro B0" :                         AdvData(46710101,    "Aggro Crag"), # salamander shirt
-    "Obsidian - Sunken A0" :                        AdvData(46709001,    "Sunken Island"), # frog flippers
-    "Obsidian - Nunatak B1" :                       AdvData(46711111,    "Sea Nunatak"), # diamond quest
-    "Obsidian - Serpent A1" :                       AdvData(46706011,    "Serpent Stacks"), # rune stones: t,s,r,d,o, serpent circlet(?)
-    "Obsidian - Lost A1" :                          AdvData(46715011,    "Lost Landing"), # phoenix flute (or secret find?)
+
 
 
 

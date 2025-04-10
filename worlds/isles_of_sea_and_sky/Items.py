@@ -38,16 +38,16 @@ item_table = {
     "Egg":                      ItemData(294,     ItemClassification.progression),
     "Wind Key":                 ItemData(835,     ItemClassification.progression),
     "Music Note":               ItemData(457,     ItemClassification.useful),
-    "Phoenix Flute":            ItemData(511,     ItemClassification.useful),
+    "Phoenix Flute":            ItemData(511,     ItemClassification.progression_skip_balancing),
     "Star Viewing Orb":         ItemData(733,     ItemClassification.useful),
     "Topaz Quest Complete":     ItemData(905,     ItemClassification.progression),
     "Sapphire Quest Complete":  ItemData(906,     ItemClassification.progression),
     "Ruby Quest Complete":      ItemData(907,     ItemClassification.progression),
     "Diamond Quest Complete":   ItemData(908,     ItemClassification.progression),
-    "Rolling Bell Rung":        ItemData(901,     ItemClassification.useful),
-    "Sunken Bell Rung":         ItemData(902,     ItemClassification.useful),
-    "Aggro Bell Rung":          ItemData(903,     ItemClassification.useful),
-    "Nunatak Bell Rung":        ItemData(904,     ItemClassification.useful),
+    "Rolling Bell Rung":        ItemData(901,     ItemClassification.progression_skip_balancing),
+    "Sunken Bell Rung":         ItemData(902,     ItemClassification.progression_skip_balancing),
+    "Aggro Bell Rung":          ItemData(903,     ItemClassification.progression_skip_balancing),
+    "Nunatak Bell Rung":        ItemData(904,     ItemClassification.progression_skip_balancing),
     "Topaz Shard Hit":          ItemData(909,     ItemClassification.progression),
     "Sapphire Shard Hit":       ItemData(910,     ItemClassification.progression),
     "Ruby Shard Hit":           ItemData(911,     ItemClassification.progression),
@@ -84,7 +84,7 @@ progression_items = {
 }
 
 key_items = {
-    "Ancient Key":              70, # Should be 73?
+    "Ancient Key":              63, # Should be 73?
     "Topaz":                    12,
     "Sapphire":                 12,
     "Ruby":                     12,
