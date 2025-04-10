@@ -26,9 +26,6 @@ def set_rules(world: "IslesOfSeaAndSkyWorld"):
     player = world.player
     multiworld = world.multiworld
 
-    #from Utils import visualize_regions
-    #visualize_regions(multiworld.get_region("Menu", player), "C:/Users\clift\Documents\Modding/" + "my_world.puml")
-
     ### Entrances
     set_rule(multiworld.get_entrance("Ancient West Exit", player),
              lambda state: state.can_reach("Stony West Exit", "Entrance", player))  # Obsidian Sea
