@@ -25,11 +25,11 @@ LauncherComponents.components.append(
         "Isles Of Sea And Sky Client",
         func=launch_client,
         component_type=LauncherComponents.Type.CLIENT,
-        #icon="isles_of_sea_and_sky"
+        icon="isles_of_sea_and_sky"
     )
 )
 
-#LauncherComponents.icon_paths["isles_of_sea_and_sky"] = f"ap:{__name__}/isles_of_sea_and_sky.png"
+LauncherComponents.icon_paths["isles_of_sea_and_sky"] = f"ap:{__name__}/data/isles_of_sea_and_sky.png"
 
 def data_path(file_name: str):
     import pkgutil
