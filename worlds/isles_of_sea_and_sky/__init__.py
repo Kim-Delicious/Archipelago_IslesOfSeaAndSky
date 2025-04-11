@@ -1,26 +1,35 @@
-from .Items import IslesOfSeaAndSkyItem, item_table, non_key_items, key_items, \
+from .items import IslesOfSeaAndSkyItem, item_table, non_key_items, key_items, \
     junk_weights, progression_items
-from .Locations import IslesOfSeaAndSkyAdvancement, advancement_table, exclusion_table
-from .Regions import isles_of_sea_and_sky_regions, link_isles_of_sea_and_sky_areas
-from .Rules import set_rules, set_completion_rules
+from .locations import IslesOfSeaAndSkyAdvancement, advancement_table, exclusion_table
+from .regions import isles_of_sea_and_sky_regions, link_isles_of_sea_and_sky_areas
+from .rules import set_rules, set_completion_rules
 from worlds.generic.Rules import exclusion_rules
 from BaseClasses import Region, Entrance, Tutorial, Item
-from .Options import IslesOfSeaAndSkyOptions
+#from .Options import IslesOfSeaAndSkyOptions
 from worlds.AutoWorld import World, WebWorld
 from worlds.LauncherComponents import Component, components
 from multiprocessing import Process
+import worlds.LauncherComponents as LauncherComponents
 
 
-def run_client():
-    print('running isles_of_sea_and_sky client')
-    from IslesOfSeaAndSkyClient import main  # lazy import
-    p = Process(target=main)
-    p.start()
 
 
-components.append(Component("IslesOfSeaAndSky Client", "IslesOfSeaAndSkyClient"))
-# components.append(Component("IslesOfSeaAndSky Client", func=run_client))
 
+def launch_client() -> None:
+    from .client import main
+    LauncherComponents.launch_subprocess(main, name="IslesOfSeaAndSkyClient")
+
+
+LauncherComponents.components.append(
+    LauncherComponents.Component(
+        "Isles Of Sea And Sky Client",
+        func=launch_client,
+        component_type=LauncherComponents.Type.CLIENT,
+        #icon="isles_of_sea_and_sky"
+    )
+)
+
+#LauncherComponents.icon_paths["isles_of_sea_and_sky"] = f"ap:{__name__}/isles_of_sea_and_sky.png"
 
 def data_path(file_name: str):
     import pkgutil
@@ -30,7 +39,7 @@ def data_path(file_name: str):
 class IslesOfSeaAndSkyWeb(WebWorld):
     tutorials = [Tutorial(
         "Multiworld Setup Guide",
-        "A guide to setting up the Archipelago IslesOfSeaAndSky software on your computer. This guide covers "
+        "A guide to setting up the Archipelago Isles Of Sea And Sky software on your computer. This guide covers "
         "single-player, multiworld, and related software.",
         "English",
         "setup_en.md",
@@ -43,9 +52,9 @@ class IslesOfSeaAndSkyWorld(World):
     """
     Isles Of Sea And Sky needs a full description
     """
-    game = "IslesOfSeaAndSky"
-    options_dataclass = IslesOfSeaAndSkyOptions
-    options: IslesOfSeaAndSkyOptions
+    game = "Isles Of Sea And Sky"
+    #options_dataclass = IslesOfSeaAndSkyOptions
+    #options: IslesOfSeaAndSkyOptions
     web = IslesOfSeaAndSkyWeb()
 
     item_name_to_id = {name: data.code for name, data in item_table.items()}

@@ -2,14 +2,14 @@ from Options import Choice, Toggle, Range, PerGameCommonOptions
 from dataclasses import dataclass
 
 
-'''class RouteRequired(Choice):
+class RouteRequired(Choice):
     """Main route of the game required to win."""
     display_name = "Required Route"
     option_neutral = 0
     option_pacifist = 1
     option_genocide = 2
     option_all_routes = 3
-    default = 0'''
+    default = 0
 
 
 class StartingArea(Choice):
@@ -24,7 +24,7 @@ class StartingArea(Choice):
 
 
 
-@dataclass
+#@dataclass
 class IslesOfSeaAndSkyOptions(PerGameCommonOptions):
     #route_required:                           RouteRequired
     starting_area:                            StartingArea

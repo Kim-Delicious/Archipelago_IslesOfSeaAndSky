@@ -93,7 +93,7 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
 
 class IslesOfSeaAndSkyContext(CommonContext):
     tags = {"AP", "Online"}
-    game = "IslesOfSeaAndSky"
+    game = "Isles Of Sea And Sky"
     command_processor = IslesOfSeaAndSkyCommandProcessor
     items_handling = 0b111
     route = None
@@ -105,7 +105,7 @@ class IslesOfSeaAndSkyContext(CommonContext):
     def __init__(self, server_address, password):
         super().__init__(server_address, password)
         self.finished_game = False
-        self.game = "IslesOfSeaAndSky"
+        self.game = "Isles Of Sea And Sky"
         self.got_deathlink = False
         self.syncing = False
         self.deathlink_status = False
@@ -178,7 +178,7 @@ class IslesOfSeaAndSkyContext(CommonContext):
             logging_pairs = [
                 ("Client", "Archipelago")
             ]
-            base_title = "Archipelago IslesOfSeaAndSky Client"
+            base_title = "Archipelago IslesOfSeaAndSkyClient"
 
         self.ui = IOSASManager(self)
         self.ui_task = asyncio.create_task(self.ui.async_run(), name="UI")
@@ -424,6 +424,6 @@ def main():
 
 
 if __name__ == "__main__":
-    parser = get_base_parser(description="IslesOfSeaAndSky Client, for text interfacing.")
+    parser = get_base_parser(description="IslesOfSeaAndSkyClient, for text interfacing.")
     args = parser.parse_args()
     main()
