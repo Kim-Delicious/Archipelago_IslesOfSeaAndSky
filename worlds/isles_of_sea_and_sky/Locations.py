@@ -14,9 +14,9 @@ class IslesOfSeaAndSkyAdvancement(Location):
     game: str = "IslesOfSeaAndSky"
 
 advancement_table = {
-    "Ancient Rune Stone":                           AdvData(61612010,        "Locked"),
+    "Ancient Rune Stone":                           AdvData(61612011,        "Locked"),
     "Topaz Rune Stone":                             AdvData(62201201,        "Stony Cliffs"),
-    "Sapphire Rune Stone":                          AdvData(62103200,        "Tidal Reef"),
+    "Sapphire Rune Stone":                          AdvData(62103201,        "Tidal Reef"),
     "Ruby Rune Stone":                              AdvData(62004201,        "Raging Volcano"),
     "Diamond Rune Stone":                           AdvData(61705221,        "Frozen Spire"),
     "Obsidian Rune Stone":                          AdvData(61806011,        "Serpent Stacks"),
@@ -27,7 +27,7 @@ advancement_table = {
     "Diamond Quest Complete":                       AdvData(99905221,       "Frozen Spire"),
 
     "Gopher Gloves":                                AdvData(35802211,       "Stony Cliffs"),
-    "Frog Flippers":                                AdvData(34603040,       "Tidal Reef"),
+    "Frog Flippers":                                AdvData(34603041,       "Tidal Reef"),
     "Salamander Shirt":                             AdvData(62304401,       "Raging Volcano"),
     "Kite Cloak":                                   AdvData(39905001,       "Frozen Spire"),
     "Serpent Circlet":                              AdvData(65406011,       "Serpent Stacks"),
@@ -37,8 +37,8 @@ advancement_table = {
     "Ruby Shard Hit":                               AdvData(99907201,       "Sanctum"),
     "Diamond Shard Hit":                            AdvData(99907001,       "Sanctum"),
 
-    "Blue Stone Tablet":                            AdvData(59602010,       "Stony Cliffs"),
-    "Gold Stone Tablet":                            AdvData(59701430,       "Stony Cliffs"),
+    "Blue Stone Tablet":                            AdvData(59602011,       "Stony Cliffs"),
+    "Gold Stone Tablet":                            AdvData(59701431,       "Stony Cliffs"),
 
     "Fire Key [A4]":                                AdvData(33204041,       "Raging Volcano"),
     "Fire Key [A0]":                                AdvData(33204001,       "Raging Volcano"),
@@ -320,40 +320,72 @@ advancement_table = {
     "Star Piece [Locked A1]":                      AdvData(72812011,       "Locked"),
     #91 stars
 
-    #"Shell 1]": AdvData(991027, "Tidal Reef"),
+
     #"Jellyfish 1]": AdvData(991027, "Topaz Sea"),
 
-    "Stone Music Note [C1]":                       AdvData(45701210,       "Stony Cliffs"),
-    "Stone Music Note [D4]":                       AdvData(45701340,       "Stony Cliffs"), # topaz rune
-    "Stone Music Note [B3]":                       AdvData(45701130,       "Stony Cliffs"), # topaz rune
-    "Stone Music Note [B0]":                       AdvData(45701100,       "Stony Cliffs"), # topaz rune
-    "Stone Music Note [B2]":                       AdvData(45701120,       "Stony Cliffs"), # topaz quest
-    "Stone Music Note [D1]":                       AdvData(45701310,       "Stony Cliffs"), # topaz quest
+    "Stone Music Note [C1]":                       AdvData(45701211,       "Stony Cliffs"), # failed?
+    "Stone Music Note [D4]":                       AdvData(45701341,       "Stony Cliffs"), # topaz rune
+    "Stone Music Note [B3]":                       AdvData(45701131,       "Stony Cliffs"), # topaz rune
+    "Stone Music Note [B0]":                       AdvData(45701101,       "Stony Cliffs"), # topaz rune
+    "Stone Music Note [B2]":                       AdvData(45701121,       "Stony Cliffs"), # topaz quest
+    "Stone Music Note [D1]":                       AdvData(45701311,       "Stony Cliffs"), # topaz quest
 
-    "Water Music Note [C1]":                       AdvData(45703210,       "Tidal Reef"),
-    "Water Music Note [E0]":                       AdvData(45703400,       "Tidal Reef"), # s rune
-    "Water Music Note [D1]":                       AdvData(45703310,       "Tidal Reef"), # s rune
-    "Water Music Note [E2]":                       AdvData(45703420,       "Tidal Reef"), # s rune
-    "Water Music Note [B0]":                       AdvData(45703100,       "Tidal Reef"), # s rune
-    "Water Music Note [A2]":                       AdvData(45703020,       "Tidal Reef"), # s rune
+    "Water Music Note [C1]":                       AdvData(45703211,       "Tidal Reef"),
+    "Water Music Note [E0]":                       AdvData(45703401,       "Tidal Reef"), # s rune
+    "Water Music Note [D1]":                       AdvData(45703311,       "Tidal Reef"), # s rune
+    "Water Music Note [E2]":                       AdvData(45703421,       "Tidal Reef"), # s rune
+    "Water Music Note [B0]":                       AdvData(45703101,       "Tidal Reef"), # s rune
+    "Water Music Note [A2]":                       AdvData(45703021,       "Tidal Reef"), # s rune
 
-    "Fire Music Note [A2]":                        AdvData(45704020,       "Raging Volcano"),
-    "Fire Music Note [C3]":                        AdvData(45704230,       "Raging Volcano"), # r rune
-    "Fire Music Note [B0]":                        AdvData(45704100,       "Raging Volcano"), # r rune
-    "Fire Music Note [B2]":                        AdvData(45704120,       "Raging Volcano"), # r rune
-    "Fire Music Note [E1]":                        AdvData(45704410,       "Raging Volcano"), # r rune
-    "Fire Music Note [D3]":                        AdvData(45704330,       "Raging Volcano"), # salamander shirt
+    "Fire Music Note [A2]":                        AdvData(45704021,       "Raging Volcano"),
+    "Fire Music Note [C3]":                        AdvData(45704231,       "Raging Volcano"), # r rune
+    "Fire Music Note [B0]":                        AdvData(45704101,       "Raging Volcano"), # r rune
+    "Fire Music Note [B2]":                        AdvData(45704121,       "Raging Volcano"), # r rune
+    "Fire Music Note [E1]":                        AdvData(45704411,       "Raging Volcano"), # r rune
+    "Fire Music Note [D3]":                        AdvData(45704331,       "Raging Volcano"), # salamander shirt
 
-    "Wind Music Note [B1]":                        AdvData(45705110,       "Frozen Spire"),
-    "Wind Music Note [A0]":                        AdvData(45705000,       "Frozen Spire"),
-    "Wind Music Note [E3]":                        AdvData(45705430,       "Frozen Spire"),  # d rune
-    "Wind Music Note [C3]":                        AdvData(45705230,       "Frozen Spire"),  # d rune,
-    "Wind Music Note [A2]":                        AdvData(45705020,       "Frozen Spire"), # d quest,
-    "Wind Music Note [D3]":                        AdvData(45705330,       "Frozen Spire"), # d quest
+    "Wind Music Note [B1]":                        AdvData(45705111,       "Frozen Spire"),
+    "Wind Music Note [A0]":                        AdvData(45705001,       "Frozen Spire"),
+    "Wind Music Note [E3]":                        AdvData(45705431,       "Frozen Spire"),  # d rune
+    "Wind Music Note [C3]":                        AdvData(45705231,       "Frozen Spire"),  # d rune,
+    "Wind Music Note [A2]":                        AdvData(45705021,       "Frozen Spire"), # d quest,
+    "Wind Music Note [D3]":                        AdvData(45705331,       "Frozen Spire"), # d quest
 
+    #"Shell [Water B2]":                            AdvData(63603121,      "Tidal Reef"),
+    #"Shell [Water C0]":                            AdvData(63603201,      "Tidal Reef"),
+    #"Shell [Water B0]":                            AdvData(63603101,      "Tidal Reef"),
+    #"Shell [Water B1]":                            AdvData(63603111,      "Tidal Reef"),
+    #"Shell [Water C1]":                            AdvData(63603211,      "Tidal Reef"),
+    #"Shell [Water C2]":                            AdvData(63603221,      "Tidal Reef"),
+    #"Shell [Water D2]":                            AdvData(63603321,      "Tidal Reef"), # s rune
+    #"Shell [Water A1]":                            AdvData(63603011,      "Tidal Reef"), # s rune
+    #"Shell [Water A0]":                            AdvData(63603001,      "Tidal Reef"), # s rune
+    #"Shell [Water A3]":                            AdvData(63603031,      "Tidal Reef"), # s rune
+    #"Shell [Water B3]":                            AdvData(63603131,      "Tidal Reef"), # s rune
+    #"Shell [Water B4]":                            AdvData(63603141,      "Tidal Reef"), # s rune
+    #"Shell [Water C4]":                            AdvData(63603241,      "Tidal Reef"), # s rune
+    #"Shell [Water C3]":                            AdvData(63603231,      "Tidal Reef"), # s rune
+    #"Shell [Water D4]":                            AdvData(63603341,      "Tidal Reef"), # s rune
+    #"Shell [Water E4]":                            AdvData(63603441,      "Tidal Reef"), # s rune
+    #"Shell [Water E2]":                            AdvData(63603421,      "Tidal Reef"), # s rune
+    #"Shell [Water E1]":                            AdvData(63603411,      "Tidal Reef"), # s rune
+    #"Shell [Water E0]":                            AdvData(63603401,      "Tidal Reef"), # s rune
+    #"Shell [Water D3]":                            AdvData(63603331,      "Tidal Reef"), # s rune
+    #"Shell [Water A4]":                            AdvData(63603041,      "Tidal Reef"),  # f flippers
+    #"Shell [Water D1]":                            AdvData(63603311,      "Tidal Reef"),  # f flippers
+    #"Shell [Water D0]":                            AdvData(63603301,      "Tidal Reef"),  # f flippers
+    #"Shell [Water A2]":                            AdvData(63603021,      "Tidal Reef"),  # f flippers
 
-
-
+    #"Jellyfish 1":                            AdvData(39520119,      "Topaz Sea"),
+    #"Jellyfish 2":                            AdvData(39520118,      "Sapphire Sea"),
+    #"Jellyfish 3":                            AdvData(39520117,      "Obsidian Sea"),
+    #"Jellyfish 4":                            AdvData(39520116,      "Diamond Sea"),
+    #"Jellyfish 5":                            AdvData(39520115,      "Ruby Sea"),
+    #"Jellyfish 6":                            AdvData(39520114,      "Ruby Sea"),
+    #"Jellyfish 7":                            AdvData(39520113,      "Beast Sea"),
+    #"Jellyfish 8":                            AdvData(39520112,      "Beast Sea"),
+    #"Jellyfish 9":                            AdvData(39520111,      "Lost Sea"),
+    #"Jellyfish 10":                           AdvData(39520110,      "Northwest Sea"),
 
     # In the future, could include milestones as locations. e.g. each of the steam achievments, plus extras.
 }
