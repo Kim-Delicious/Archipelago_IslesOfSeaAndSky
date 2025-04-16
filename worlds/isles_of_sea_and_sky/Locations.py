@@ -79,7 +79,7 @@ advancement_table = {
     "Ancient Key [Stone E2]":                       AdvData(10901421,       "Stony Cliffs"),  # topaz rune
     "Ancient Key [Stone B4]":                       AdvData(10901141,       "Stony Cliffs"), #topaz quest, topaz rune
     "Ancient Key [StoneDungeon C1]":                AdvData(10902211,       "Stony Cliffs"), #topaz rune, gopher gloves
-    "Ancient Key [StoneDungeon D0]":                AdvData(10902300,       "Stony Cliffs"), #gopher gloves
+    "Ancient Key [StoneDungeon D0]":                AdvData(10902301,       "Stony Cliffs"), #gopher gloves
     "Ancient Key [StoneDungeon B1]":                AdvData(10902111,       "Stony Cliffs"), #gopher gloves
     "Ancient Key [Stone B0 - NW1]":                 AdvData(10901103,       "Stony Cliffs"), # topaz quest
     "Ancient Key [Stone B0 - NW2]":                 AdvData(10901102,       "Stony Cliffs"), # topaz quest
@@ -145,7 +145,7 @@ advancement_table = {
 
     "Topaz [Stone D2]":                             AdvData(78401321,       "Stony Cliffs"),
     "Topaz [Stone C2 - E]":                         AdvData(78401222,       "Stony Cliffs"),
-    "Topaz [Stone C0]":                             AdvData(78401200,       "Stony Cliffs"),
+    "Topaz [Stone C0]":                             AdvData(78401201,       "Stony Cliffs"),
     "Topaz [Stone C3 - N ]":                        AdvData(78401232,       "Stony Cliffs"),
     "Topaz [Stone C3 - S]":                         AdvData(78401231,       "Stony Cliffs"),
     "Topaz [Stone C2 - W]":                         AdvData(78401221,       "Stony Cliffs"),
@@ -226,7 +226,7 @@ advancement_table = {
     "Star Piece [Stone E4]":                       AdvData(72801441,       "Stony Cliffs"), # g gloves
     "Star Piece [Stone C0]":                       AdvData(72801201,       "Stony Cliffs"), # t quest
     "Star Piece [StoneDungeon E1]":                AdvData(72802411,       "Stony Cliffs"), # t quest
-    "Star Piece [StoneDungeon E2]":                AdvData(72802420,       "Stony Cliffs"), # g gloves, f flippers
+    "Star Piece [StoneDungeon E2]":                AdvData(72802421,       "Stony Cliffs"), # g gloves, f flippers
     "Star Piece [StoneDungeon C3]":                AdvData(72802231,       "Stony Cliffs"), # t quest
     "Star Piece [StoneDungeon C1]":                AdvData(72802211,       "Stony Cliffs"), # g gloves
     "Star Piece [StoneDungeon B1]":                AdvData(72802111,       "Stony Cliffs"), # g gloves
@@ -242,7 +242,7 @@ advancement_table = {
     "Star Piece [Water E0 - W]":                   AdvData(72803402,       "Tidal Reef"), # f flippers
     "Star Piece [Water E0 - E]":                   AdvData(72803401,       "Tidal Reef"), # s quest | double check
     "Star Piece [Water B1]":                       AdvData(72803111,       "Tidal Reef"), # f flippers
-    "Star Piece [Water A0]":                       AdvData(72803000,       "Tidal Reef"), # s rune
+    "Star Piece [Water A0]":                       AdvData(72803001,       "Tidal Reef"), # s rune
     "Star Piece [Water A2 - N]":                   AdvData(72803022,       "Tidal Reef"), # f flippers, k cloak
     "Star Piece [Water A2 - S]":                   AdvData(72803021,       "Tidal Reef"), # f flippers
     "Star Piece [Water A4]":                       AdvData(72803041,       "Tidal Reef"), # f flippers
@@ -295,7 +295,7 @@ advancement_table = {
 
     "Star Piece [Lost B1]":                        AdvData(72815111,       "Lost Landing"),
 
-    "Star Piece [Shoal A0]":                       AdvData(72814000,       "Shoal"), # f flippers
+    "Star Piece [Shoal A0]":                       AdvData(72814001,       "Shoal"), # f flippers
 
     "Star Piece [Tropic A0]":                      AdvData(72813001,       "Star Tropic"), #
     "Star Piece [Tropic B0 - E]":                  AdvData(72813102,       "Star Tropic"), # a rune
