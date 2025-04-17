@@ -1,11 +1,12 @@
 from .items import IslesOfSeaAndSkyItem, item_table, non_key_items, key_items, \
     junk_weights, progression_items
-from .locations import IslesOfSeaAndSkyAdvancement, advancement_table, exclusion_table
+from .locations import IslesOfSeaAndSkyAdvancement, advancement_table, exclusion_table, \
+    jellyfish_table, seashell_table, locksanity_table, snakesanity_table
 from .regions import isles_of_sea_and_sky_regions, link_isles_of_sea_and_sky_areas
 from .rules import set_rules, set_completion_rules
 from worlds.generic.Rules import exclusion_rules
 from BaseClasses import Region, Entrance, Tutorial, Item
-#from .Options import IslesOfSeaAndSkyOptions
+from .options import IslesOfSeaAndSkyOptions
 from worlds.AutoWorld import World, WebWorld
 from worlds.LauncherComponents import Component, components
 from multiprocessing import Process
@@ -44,21 +45,28 @@ class IslesOfSeaAndSkyWeb(WebWorld):
         "English",
         "setup_en.md",
         "setup/en",
-        ["Mewlif"]
+        ["Kim-Delicious"]
     )]
 
 
 class IslesOfSeaAndSkyWorld(World):
     """
-    Isles Of Sea And Sky needs a full description
+    Isles Of Sea And Sky is a sokobon-style puzzle game with metroidvania elements.
+    As the player collects items, and equipment they can explore islands to collect as many goodies as they can,
+    until they reach the Sanctum, and learn just what all these Stars are for.
     """
     game = "Isles Of Sea And Sky"
-    #options_dataclass = IslesOfSeaAndSkyOptions
-    #options: IslesOfSeaAndSkyOptions
+    options_dataclass = IslesOfSeaAndSkyOptions
+    options: IslesOfSeaAndSkyOptions
     web = IslesOfSeaAndSkyWeb()
 
     item_name_to_id = {name: data.code for name, data in item_table.items()}
-    location_name_to_id = {name: data.id for name, data in advancement_table.items()}
+
+    location_name_to_id = ({name: data.id for name, data in advancement_table.items()} |
+                           {name: data.id for name, data in jellyfish_table.items()} |
+                           {name: data.id for name, data in locksanity_table.items()} |
+                           {name: data.id for name, data in snakesanity_table.items()})
+
 
     def _get_isles_of_sea_and_sky_data(self):
         return {
@@ -70,6 +78,11 @@ class IslesOfSeaAndSkyWorld(World):
             #"race": self.multiworld.is_race,
             #"route": self.options.route_required.current_key,
             #"starting_area": self.options.starting_area.current_key,
+            "local_ancient_isle": bool(self.options.local_ancient_isle.value),
+            "enable_locksanity": bool(self.options.enable_locksanity.value),
+            "enable_snakesanity": bool(self.options.enable_snakesanity.value), # unimplemented
+            "include_seashells": bool(self.options.include_seashells.value),
+            "include_jellyfish": bool(self.options.include_jellyfish.value),
 
         }
 
@@ -79,23 +92,30 @@ class IslesOfSeaAndSkyWorld(World):
 
 
     def create_items(self):
+
         # Plando Most of Ancient Isle to prevent soft lock
-        self.multiworld.get_location("Ancient Key [Ancient B3]", self.player).place_locked_item(
-            self.create_item("Ancient Key"))
-        self.multiworld.get_location("Ancient Key [Ancient A1]", self.player).place_locked_item(
-            self.create_item("Ancient Key"))
-        self.multiworld.get_location("Ancient Key [Ancient A2 - SE]", self.player).place_locked_item(
-            self.create_item("Ancient Key"))
-        self.multiworld.get_location("Ancient Key [Ancient A3 - N]", self.player).place_locked_item(
-            self.create_item("Ancient Key"))
-        self.multiworld.get_location("Ancient Key [Ancient A3 - S]", self.player).place_locked_item(
-            self.create_item("Ancient Key"))
-        self.multiworld.get_location("Ancient Key [Ancient C2]", self.player).place_locked_item(
-            self.create_item("Ancient Key"))
+        if self.options.local_ancient_isle:
+            self.multiworld.get_location("Ancient Key [Ancient B3]", self.player).place_locked_item(
+                self.create_item("Ancient Key"))
+            self.multiworld.get_location("Ancient Key [Ancient A1]", self.player).place_locked_item(
+                self.create_item("Ancient Key"))
+            self.multiworld.get_location("Ancient Key [Ancient A2 - SE]", self.player).place_locked_item(
+                self.create_item("Ancient Key"))
+            self.multiworld.get_location("Ancient Key [Ancient A3 - N]", self.player).place_locked_item(
+                self.create_item("Ancient Key"))
+            self.multiworld.get_location("Ancient Key [Ancient A3 - S]", self.player).place_locked_item(
+                self.create_item("Ancient Key"))
+            self.multiworld.get_location("Ancient Key [Ancient C2]", self.player).place_locked_item(
+                self.create_item("Ancient Key"))
 
 
-        self.multiworld.get_location("Star Piece [Ancient C0]", self.player).place_locked_item(
-            self.create_item("Star Piece"))
+            self.multiworld.get_location("Star Piece [Ancient C0]", self.player).place_locked_item(
+                self.create_item("Star Piece"))
+
+            # remove plando number from item pool
+            key_items['Ancient Key'] -= 6
+            key_items['Star Piece'] -= 1
+
 
         # Generate item pool
         itempool = []
@@ -107,6 +127,13 @@ class IslesOfSeaAndSkyWorld(World):
             itempool += [name] * num
         for name, num in non_key_items.items():
             itempool += [name] * num
+
+        missing_items = len(self.multiworld.get_unfilled_locations(self.player)) - len(itempool)
+        print("Creating " + str(missing_items) + " Filler Items")
+        # Hacky way to add in filler
+        for name, num in junk_weights.items():
+            itempool += [name] * missing_items
+
 
 
         #starting_key = self.options.starting_area.current_key.title() + " Key"
@@ -124,11 +151,14 @@ class IslesOfSeaAndSkyWorld(World):
 
         # Convert itempool into real items
         itempool = [item for item in map(lambda name: self.create_item(name), itempool)]
-        # Fill remaining items with randomly generated junk or Temmie Flakes
-        while len(itempool) < len(self.multiworld.get_unfilled_locations(self.player)):
+
+
+        # Fill remaining items with randomly generated junk
+        #while len(itempool) < len(self.multiworld.get_unfilled_locations(self.player)):
             #itempool.append(self.create_filler())
-            for name, num in junk_weights.items():
-                itempool += [name] * num
+
+        #self.local_itempool.extend(
+         #   self.create_item(self.get_filler_item_name()) for _ in range(num_required_extra_items))
 
         self.multiworld.itempool += itempool
 
@@ -139,9 +169,36 @@ class IslesOfSeaAndSkyWorld(World):
     def create_regions(self):
         def IslesOfSeaAndSkyRegion(region_name: str, exits=[]):
             ret = Region(region_name, self.player, self.multiworld)
+
+            # Normal locations
             ret.locations += [IslesOfSeaAndSkyAdvancement(self.player, loc_name, loc_data.id, ret)
                               for loc_name, loc_data in advancement_table.items()
                               if loc_data.region == region_name]
+
+            # Locksanity Locations
+            if self.options.enable_locksanity:
+                ret.locations += [IslesOfSeaAndSkyAdvancement(self.player, loc_name, loc_data.id, ret)
+                                  for loc_name, loc_data in locksanity_table.items()
+                                  if loc_data.region == region_name]
+            # Snakesanity Locations
+            if self.options.enable_snakesanity:
+                ret.locations += [IslesOfSeaAndSkyAdvancement(self.player, loc_name, loc_data.id, ret)
+                                  for loc_name, loc_data in snakesanity_table.items()
+                                  if loc_data.region == region_name]
+            # Seashell Locations
+            if self.options.include_seashells:
+                ret.locations += [IslesOfSeaAndSkyAdvancement(self.player, loc_name, loc_data.id, ret)
+                                  for loc_name, loc_data in seashell_table.items()
+                                  if loc_data.region == region_name]
+
+            # Jellyfish Locations
+            if self.options.include_jellyfish:
+                ret.locations += [IslesOfSeaAndSkyAdvancement(self.player, loc_name, loc_data.id, ret)
+                                  for loc_name, loc_data in jellyfish_table.items()
+                                  if loc_data.region == region_name]
+
+
+
 
             for exit in exits:
                 ret.exits.append(Entrance(self.player, exit, ret))

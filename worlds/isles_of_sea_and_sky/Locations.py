@@ -356,7 +356,7 @@ advancement_table = {
     # In the future, could include milestones as locations. e.g. each of the steam achievments, plus extras.
 }
 
-extras = {
+seashell_table = {
 
     # 24 checks
     "Shell [Water B2]":                            AdvData(63603121, "Tidal Reef"),
@@ -384,7 +384,15 @@ extras = {
     "Shell [Water D0]":                            AdvData(63603301, "Tidal Reef"),  # f flippers
     "Shell [Water A2]":                            AdvData(63603021, "Tidal Reef"),  # f flippers
 
-    # 10 checks
+
+
+
+
+}
+
+jellyfish_table = {
+
+# 10 checks
     "Jellyfish 1":                                 AdvData(39520119, "Topaz Sea"),
     "Jellyfish 2":                                 AdvData(39520118, "Sapphire Sea"),
     "Jellyfish 3":                                 AdvData(39520117, "Obsidian Sea"),
@@ -396,12 +404,10 @@ extras = {
     "Jellyfish 9":                                 AdvData(39520111, "Lost Sea"),
     "Jellyfish 10":                                AdvData(39520110, "Northwest Sea"),
 
-
-
 }
 
 # Est. 99 extra checks here.
-locksanity = {
+locksanity_table = {
     "Lock [Ancient B3]":                            AdvData(11100131, "Ancient Isle"),
     "Lock [Ancient B2]":                            AdvData(11100121, "Ancient Isle"),
     "Lock [Ancient A3]":                            AdvData(11100033, "Ancient Isle"),
@@ -460,7 +466,7 @@ locksanity = {
     "Star Lock 35 [Aggro B0]":                      AdvData(73010102, "Aggro Crag"),
     "Star Lock 49 [Nunatak B0]":                    AdvData(73011101, "Sea Nunatak"),
 
-    "Ancient Rune Lock [Ancient B1]":               AdvData(61204401, "Ancient Isle"),
+    "Ancient Rune Lock [Ancient B1]":               AdvData(60700111, "Ancient Isle"),
 
     "Topaz Rune Lock [Stone C0]":                   AdvData(61401201, "Stony Cliffs"),
     "Topaz Rune Lock [Stone C1]":                   AdvData(61401211, "Stony Cliffs"),
@@ -532,7 +538,7 @@ locksanity = {
 
 }
 
-snakeblocksanity = {}
+snakesanity_table = {}
 
 exclusion_table = {
 

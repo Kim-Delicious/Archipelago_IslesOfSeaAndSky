@@ -32,13 +32,13 @@ description: Default Isles Of Sea And Sky Template
 
 game: Isles Of Sea And Sky
 requires:
-  version: 0.5.1 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.5.2 # Version of Archipelago required for this yaml to work as expected.
 
 Isles Of Sea And Sky:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    # 
+    #
     # A lower setting means more getting stuck. A higher setting means less getting stuck.
     #
     # You can define additional values between the minimum and maximum values.
@@ -53,21 +53,61 @@ Isles Of Sea And Sky:
 
   accessibility:
     # Set rules for reachability of your items/locations.
-    # 
+    #
     # **Full:** ensure everything can be reached and acquired.
-    # 
+    #
     # **Minimal:** ensure what is needed to reach your goal can be acquired.
     full: 50
     minimal: 0
 
+  route_required:
+    # Main route of the game required to win.
+    normal_ending: 50
+    secret_ending: 0
+    all_gems: 0
+
   starting_area:
     # Which area to start with access to.
+    # not implimented yet
     ruins: 50
     snowdin: 0
     waterfall: 0
     hotland: 0
     core: 0
- 
+
+  local_ancient_isle:
+    # Make most of the Ancient Isle act as normal as to prevent the player
+    # from getting stuck early.
+    'true': 50
+    'false': 0
+
+
+  enable_locksanity:
+    # Turn all locks in the game into game checks.
+    # This includes big 3x locks, all Rune Stone locks, and other specialty locks
+
+    'true': 0
+    'false': 50
+
+  enable_snakesanity:
+    # NOT CURRENTLY IMPLEMENTED!
+    # Turn all snake blocks  in the game into game checks.
+    # (Snake block = Green directional block with an arrowhead on top)
+
+    'true': 0
+    'false': 50
+
+  include_seashells:
+    # Enable seashells on the Tidal Reef island for extra checks
+    'true': 0
+    'false': 50
+
+  include_jellyfish:
+    # Enable jellyfish in the Overworld for extra checks
+    'true': 0
+    'false': 50
+
+
 
   # Item & Location Options
   local_items:

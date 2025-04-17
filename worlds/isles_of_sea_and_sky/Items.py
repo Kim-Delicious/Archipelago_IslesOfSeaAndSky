@@ -32,11 +32,11 @@ item_table = {
     "Serpent Circlet":          ItemData(654,     ItemClassification.useful),
     "Blue Stone Tablet":        ItemData(596,     ItemClassification.useful),
     "Gold Stone Tablet":        ItemData(597,     ItemClassification.useful),
-    "Shell":                    ItemData(636,     ItemClassification.filler),
-    "Jellyfish":                ItemData(395,     ItemClassification.filler),
+    "Seashell":                 ItemData(636,     ItemClassification.filler),
+    #"Jellyfish":                ItemData(395,     ItemClassification.filler),
     "Fire Key":                 ItemData(332,     ItemClassification.progression),
-    "Egg":                      ItemData(294,     ItemClassification.progression),
-    "Wind Key":                 ItemData(835,     ItemClassification.progression),
+    #"Egg":                      ItemData(294,     ItemClassification.progression),
+    #"Wind Key":                 ItemData(835,     ItemClassification.progression),
     "Music Note":               ItemData(457,     ItemClassification.useful),
     "Phoenix Flute":            ItemData(511,     ItemClassification.progression_skip_balancing),
     "Star Viewing Orb":         ItemData(733,     ItemClassification.useful),
@@ -52,7 +52,6 @@ item_table = {
     "Sapphire Shard Hit":       ItemData(910,     ItemClassification.progression),
     "Ruby Shard Hit":           ItemData(911,     ItemClassification.progression),
     "Diamond Shard Hit":        ItemData(912,     ItemClassification.progression),
-    #"GOAL":                     ItemData(999,     ItemClassification.progression),
 
 }
 
@@ -84,12 +83,12 @@ progression_items = {
 }
 
 key_items = {
-    "Ancient Key":              67, # 73 is normal number, reduce to match Plando made in __init__
+    "Ancient Key":              73,
     "Topaz":                    12,
     "Sapphire":                 12,
     "Ruby":                     12,
     "Diamond":                  12,
-    "Star Piece":               90, # 91 is normal number, reduce to match Plando made in __init__
+    "Star Piece":               91,
 
 
 }
@@ -110,7 +109,6 @@ non_key_items = {
 }
 
 junk_weights = {
-    "Shell":                    0, #Currently no in-game checks
-    "Jellyfish":                0, #Currently no in-game checks
+    "Seashell":                    1, #Currently no in-game checks
 }
 
