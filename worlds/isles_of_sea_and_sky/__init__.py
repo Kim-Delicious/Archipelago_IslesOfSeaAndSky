@@ -83,6 +83,7 @@ class IslesOfSeaAndSkyWorld(World):
             "enable_snakesanity": bool(self.options.enable_snakesanity.value), # unimplemented
             "include_seashells": bool(self.options.include_seashells.value),
             "include_jellyfish": bool(self.options.include_jellyfish.value),
+            "phoenix_anywhere": bool(self.options.phoenix_anywhere.value),
 
         }
 

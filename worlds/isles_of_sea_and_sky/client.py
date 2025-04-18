@@ -45,6 +45,17 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
             self.ctx.save_game_folder = directory
             self.output("Changed to the following directory: " + self.ctx.save_game_folder)
 
+    def _cmd_set_options(self, directory: str):
+        """Creates the option file that the game will use."""
+        with open(Utils.user_path(self.ctx.save_game_folder, "apOptions.options"), "w") as f:
+            f.write("includeSeashells: 0" + "\n")
+            f.write("includeJellyfish: 0" + "\n")
+            f.write("enableLocksanity: 0" + "\n")
+            f.write("enableSnakesanity: 0" + "\n")
+            f.write("reqRoute: Normal Ending" + "\n")
+            f.write("phoenixAnywhwere: 0" + "\n")
+
+
     @mark_raw
     def _cmd_auto_patch(self, steaminstall: typing.Optional[str] = None):
         """Patch the game automatically."""
@@ -91,15 +102,14 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
                 self.output(f"Deathlink disabled.")
 
 
+
+
 class IslesOfSeaAndSkyContext(CommonContext):
     tags = {"AP", "Online"}
     game = "Isles Of Sea And Sky"
     command_processor = IslesOfSeaAndSkyCommandProcessor
     items_handling = 0b111
     route = None
-    pieces_needed = None
-    completed_routes = None
-    completed_count = 0
     save_game_folder = os.path.expandvars(r"%localappdata%/IslesOfSeaAndSky")
 
     def __init__(self, server_address, password):
@@ -111,6 +121,7 @@ class IslesOfSeaAndSkyContext(CommonContext):
         self.deathlink_status = False
         # self.save_game_folder: files go in this path to pass data between us and the actual game
         self.save_game_folder = os.path.expandvars(r"%localappdata%/IslesOfSeaAndSky")
+
 
     def patch_game(self):
         with open(Utils.user_path("IslesOfSeaAndSky", "data.win"), "rb") as f:
@@ -169,6 +180,7 @@ class IslesOfSeaAndSkyContext(CommonContext):
     def on_package(self, cmd: str, args: dict):
         if cmd == "Connected":
             self.game = self.slot_info[self.slot].game
+
         async_start(process_isles_of_sea_and_sky_cmd(self, cmd, args))
 
     def run_gui(self):

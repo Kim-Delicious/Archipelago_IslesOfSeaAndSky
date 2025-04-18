@@ -32,7 +32,7 @@ description: Default Isles Of Sea And Sky Template
 
 game: Isles Of Sea And Sky
 requires:
-  version: 0.5.2 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.1 # Version of Archipelago required for this yaml to work as expected.
 
 Isles Of Sea And Sky:
   # Game Options
@@ -104,6 +104,12 @@ Isles Of Sea And Sky:
 
   include_jellyfish:
     # Enable jellyfish in the Overworld for extra checks
+    'true': 0
+    'false': 50
+
+  phoenix_anywhere:
+    # The player can summon the Phoenix in any non-Overworld location by pressing: 'E',
+    # as long as they have picked the Phoenix Flute up.
     'true': 0
     'false': 50
 

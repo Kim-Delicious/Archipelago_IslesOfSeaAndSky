@@ -54,6 +54,12 @@ class IncludeJellyfish(Toggle):
     display_name = "Include Jellyfish"
     default = 0
 
+class PhoenixAnywhere(Toggle):
+    """The player can summon the Phoenix in any non-overworld location by pressing: 'E',
+    as long as they have picked the Phoenix Flute up."""
+    display_name = "Summon Phoenix Anywhere"
+    default = 0
+
 
 @dataclass
 class IslesOfSeaAndSkyOptions(PerGameCommonOptions):
@@ -64,4 +70,5 @@ class IslesOfSeaAndSkyOptions(PerGameCommonOptions):
     enable_snakesanity:                         EnableSnakesanity # not implemented
     include_seashells:                          IncludeSeashells
     include_jellyfish:                          IncludeJellyfish
+    phoenix_anywhere:                           PhoenixAnywhere
 

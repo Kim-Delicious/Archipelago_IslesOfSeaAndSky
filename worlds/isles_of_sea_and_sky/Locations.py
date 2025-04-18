@@ -410,7 +410,7 @@ jellyfish_table = {
 locksanity_table = {
     "Lock [Ancient B3]":                            AdvData(11100131, "Ancient Isle"),
     "Lock [Ancient B2]":                            AdvData(11100121, "Ancient Isle"),
-    "Lock [Ancient A3]":                            AdvData(11100033, "Ancient Isle"),
+    "Lock [Ancient A3]":                            AdvData(11100031, "Ancient Isle"),
     "3x Lock [Ancient C2]":                         AdvData(43500221, "Ancient Isle"),
     "3x Lock [Ancient A1]":                         AdvData(43500011, "Ancient Isle"), # access o sea
 
