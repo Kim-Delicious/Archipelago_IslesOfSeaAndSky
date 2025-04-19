@@ -29,7 +29,7 @@ At this location you should find an 'apOptions.options' file. If you don't, star
 
 Once you're inside 'apOptions.options' input your desired settings. NOTE: instead of true/false, these require digits (0 for false, or 1 for true). The reqRoute option can be a simple string, but should reflect the choices you made in the YAML.
 
-Here's an example with most of the options turned on.
+Here's an example with most of the options turned on. **(EACH OPTION SHOULD BE ON A NEW LINE)**
 
 `includeSeashells: 1
 includeJellyfish: 1
