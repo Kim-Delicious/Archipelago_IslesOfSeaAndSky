@@ -64,6 +64,7 @@ class IslesOfSeaAndSkyWorld(World):
 
     location_name_to_id = ({name: data.id for name, data in advancement_table.items()} |
                            {name: data.id for name, data in jellyfish_table.items()} |
+                           {name: data.id for name, data in seashell_table.items()} |
                            {name: data.id for name, data in locksanity_table.items()} |
                            {name: data.id for name, data in snakesanity_table.items()})
 

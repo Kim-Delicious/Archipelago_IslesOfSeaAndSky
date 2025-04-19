@@ -406,7 +406,7 @@ jellyfish_table = {
 
 }
 
-# Est. 99 extra checks here.
+# Est. 101 extra checks here.
 locksanity_table = {
     "Lock [Ancient B3]":                            AdvData(11100131, "Ancient Isle"),
     "Lock [Ancient B2]":                            AdvData(11100121, "Ancient Isle"),
@@ -451,19 +451,22 @@ locksanity_table = {
 
     "Star Lock 1 [Ancient C1]":                     AdvData(73000211, "Ancient Isle"),
 
-    "Star Lock 3 [Overworld]":                      AdvData(73020114, "Topaz Sea"),
-    "Star Lock 15 [Overworld]":                     AdvData(73020113, "Topaz Sea"),
-    "Star Lock 30 [Overworld]":                     AdvData(73020112, "Diamond Sea"),
-    "Star Lock 45 [Overworld]":                     AdvData(73020111, "Obsidian Sea"),
+    "Star Lock 3 [Overworld]":                      AdvData(73020111, "Topaz Sea"),
+    "Star Lock 15 [Overworld]":                     AdvData(73020112, "Topaz Sea"),
+    "Star Lock 30 [Overworld]":                     AdvData(73020113, "Diamond Sea"),
+    "Star Lock 45 [Overworld]":                     AdvData(73020114, "Obsidian Sea"),
 
     "Star Lock 5 [Stone A1]":                       AdvData(73001011, "Stony Cliffs"),
+    "Star Lock 15 [Stone C4]":                      AdvData(73001241, "Stony Cliffs"),
     "Star Lock 20 [Stone E3]":                      AdvData(73001431, "Stony Cliffs"),
     "Star Lock 20 [Stone Dungeon A2]":              AdvData(73002011, "Stony Cliffs"),
+
+    "Star Lock 30 [Water A2]":                      AdvData(73003021, "Tidal Reef"),
 
     "Star Lock 7 [Rolling A0]":                     AdvData(73008001, "Rolling Rocks"),
     "Star Lock 21 [Sunken B0]":                     AdvData(73009101, "Sunken Island"),
     "Star Lock 30 [Lost A0]":                       AdvData(73015101, "Lost Landing"),
-    "Star Lock 35 [Aggro B0]":                      AdvData(73010102, "Aggro Crag"),
+    "Star Lock 35 [Aggro B0]":                      AdvData(73010101, "Aggro Crag"),
     "Star Lock 49 [Nunatak B0]":                    AdvData(73011101, "Sea Nunatak"),
 
     "Ancient Rune Lock [Ancient B1]":               AdvData(60700111, "Ancient Isle"),
@@ -477,7 +480,7 @@ locksanity_table = {
 
     "Sapphire Rune Lock [Water C0]":                AdvData(61303201, "Tidal Reef"),
     "Sapphire Rune Lock [Water B2]":                AdvData(61303121, "Tidal Reef"),
-    "Sapphire Rune Lock [Water A0]":                AdvData(61303002, "Tidal Reef"),
+    "Sapphire Rune Lock [Water A0]":                AdvData(61303001, "Tidal Reef"),
     "Sapphire Rune Lock [Water A3]":                AdvData(61303031, "Tidal Reef"),
     "Sapphire Rune Lock [Water D2 - N]":            AdvData(61303322, "Tidal Reef"),
     "Sapphire Rune Lock [Water D2 - S]":            AdvData(61303321, "Tidal Reef"),
@@ -493,13 +496,14 @@ locksanity_table = {
     "Ruby Rune Lock [Fire B2 - N]":                 AdvData(61204122, "Raging Volcano"),
     "Ruby Rune Lock [Fire B2 - S]":                 AdvData(61204121, "Raging Volcano"),
     "Ruby Rune Lock [Fire C0]":                     AdvData(61204201, "Raging Volcano"),
-    "Ruby Rune Lock [Fire C1]":                     AdvData(61204212, "Raging Volcano"),
-    "Ruby Rune Lock [Fire C2 - N]":                 AdvData(61204232, "Raging Volcano"),
-    "Ruby Rune Lock [Fire C2 - S]":                 AdvData(61204231, "Raging Volcano"),
+    "Ruby Rune Lock [Fire C1]":                     AdvData(61204211, "Raging Volcano"),
+    "Ruby Rune Lock [Fire C2 - S]":                 AdvData(61204232, "Raging Volcano"),
+    "Ruby Rune Lock [Fire C2 - W]":                 AdvData(61204231, "Raging Volcano"),
     "Ruby Rune Lock [Fire D1]":                     AdvData(61204311, "Raging Volcano"),
     "Ruby Rune Lock [Fire E0]":                     AdvData(61204401, "Raging Volcano"),
 
     "Diamond Rune Lock [Wind C3]":                  AdvData(60805231, "Frozen Spire"),
+    "Diamond Rune Lock [Wind D4]":                  AdvData(60805341, "Frozen Spire"),
     "Diamond Rune Lock [Wind E3]":                  AdvData(60805431, "Frozen Spire"),
     "Diamond Rune Lock [Wind E2 - W]":              AdvData(60805422, "Frozen Spire"),
     "Diamond Rune Lock [Wind E2 - E]":              AdvData(60805421, "Frozen Spire"),
