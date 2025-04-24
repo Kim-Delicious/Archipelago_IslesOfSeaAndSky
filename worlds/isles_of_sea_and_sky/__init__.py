@@ -167,6 +167,11 @@ class IslesOfSeaAndSkyWorld(World):
     def set_rules(self):
         set_rules(self)
         set_completion_rules(self)
+        from Utils import visualize_regions
+        state = self.multiworld.get_all_state(False)
+        state.update_reachable_regions(self.player)
+        visualize_regions(self.get_region("Menu"), "my_world.puml", show_entrance_names=True,
+                          regions_to_highlight=state.reachable_regions[self.player])
 
     def create_regions(self):
         def IslesOfSeaAndSkyRegion(region_name: str, exits=[]):
