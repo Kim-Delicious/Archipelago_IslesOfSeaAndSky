@@ -91,11 +91,11 @@ advancement_table = {
     "Ancient Key [Water A0 - E]":                   AdvData(10903002, "Tidal Reef Post-Rune"), # s rune
     "Ancient Key [Water A0 - S]":                   AdvData(10903001, "Tidal Reef Post-Rune"), # frog flippers
     "Ancient Key [Water A2]":                       AdvData(10903021, "Tidal Reef Post-Rune"), # frog flippers, s quest
-    "Ancient Key [Water B3]":                       AdvData(10903131, "Tidal Reef Post-Rune"), # frog flippers
+    "Ancient Key [Water B3]":                       AdvData(10903131, "Tidal Reef"), # frog flippers
     "Ancient Key [Water C3 - NE1]":                 AdvData(10903233, "Tidal Reef Post-Rune"), # frog flippers
     "Ancient Key [Water C3 - NE2]":                 AdvData(10903232, "Tidal Reef Post-Rune"), # frog flippers
     "Ancient Key [Water C3 - NE3]":                 AdvData(10903231, "Tidal Reef Post-Rune"), # frog flippers
-    "Ancient Key [Water D1]":                       AdvData(10903311, "Tidal Reef Post-Rune"), # frog flippers
+    "Ancient Key [Water D1]":                       AdvData(10903311, "Tidal Reef"), # frog flippers
     "Ancient Key [Water D0]":                       AdvData(10903301, "Tidal Reef Post-Rune"), # frog flippers
     "Ancient Key [Water C0]":                       AdvData(10903201, "Tidal Reef"), # s quest
     "Ancient Key [Water D2]":                       AdvData(10903321, "Tidal Reef Post-Rune"), # frog flippers
@@ -122,7 +122,7 @@ advancement_table = {
     "Ancient Key [Wind D4 - NW2]":                  AdvData(10905342, "Frozen Spire"), # d quest
     "Ancient Key [Wind D4 - NW3]":                  AdvData(10905341, "Frozen Spire"), # d quest
     "Ancient Key [Wind D3]":                        AdvData(10905331, "Frozen Spire Post-Rune"), # k cloak
-    "Ancient Key [Wind A3 ]":                       AdvData(10905031, "Frozen Spire Post-Rune"), # k cloak
+    "Ancient Key [Wind A3]":                       AdvData(10905031, "Frozen Spire Post-Rune"), # k cloak
     "Ancient Key [Wind C2]":                        AdvData(10905221, "Frozen Spire"), # d quest
     "Ancient Key [Wind B1]":                        AdvData(10905111, "Frozen Spire Post-Rune"), # double check req
     "Ancient Key [Wind E2 - NE]":                   AdvData(10905422, "Frozen Spire Post-Rune"), # d quest
@@ -139,7 +139,7 @@ advancement_table = {
     "Ancient Key [Nunatak B1]":                     AdvData(10911111, "Sea Nunatak"),
     "Ancient Key [Nunatak A1]":                     AdvData(10911011, "Sea Nunatak"), # ancient rune
 
-    "Ancient Key [Stonedungeon D2]":                AdvData(10902321, "Stony Cliffs Post-Rune"), #
+    "Ancient Key [StoneDungeon D2]":                AdvData(10902321, "Stony Cliffs Post-Rune"), # t quest
     "Ancient Key [Stone A2]":                       AdvData(10901021, "Stony Cliffs Post-Rune"), # blue & gold tablet
     #73 keys
 
@@ -163,7 +163,7 @@ advancement_table = {
     "Sapphire [Water C0]":                          AdvData(63503201, "Tidal Reef Post-Rune"), #sapphire rune stone #
     "Sapphire [Water D2 - N]":                      AdvData(63503321, "Tidal Reef Post-Rune"), #s rune stone
     "Sapphire [Water D1]":                          AdvData(63503311, "Tidal Reef Post-Rune"), #s rune stone
-    "Sapphire [Water D3]":                          AdvData(63503332, "Tidal Reef Post-Rune"), #s rune stone
+    "Sapphire [Water D3]":                          AdvData(63503331, "Tidal Reef Post-Rune"), #s rune stone
     "Sapphire [Water C2 - N]":                      AdvData(63503221, "Tidal Reef"),  # sapphire quest
     "Sapphire [Water A1]":                          AdvData(63503011, "Tidal Reef Post-Rune"), #frog flippers
     "Sapphire [Sunken B0]":                         AdvData(63509101, "Sunken Island"), #sapphire quest, 21 stars
@@ -220,10 +220,10 @@ advancement_table = {
     "Star Piece [Stone C1]":                       AdvData(72801211, "Stony Cliffs"), # t quest
     "Star Piece [Stone E1]":                       AdvData(72801411, "Stony Cliffs"),
     "Star Piece [Stone B2]":                       AdvData(72801121, "Stony Cliffs Post-Rune"), # t quest
-    "Star Piece [Stone B3]":                       AdvData(72801131, "Stony Cliffs Post-Rune"), # g gloves
-    "Star Piece [Stone B4]":                       AdvData(72801141, "Stony Cliffs Post-Rune"), # g globes
-    "Star Piece [Stone C4]":                       AdvData(72801241, "Stony Cliffs Post-Rune"), # g gloves
-    "Star Piece [Stone E4]":                       AdvData(72801441, "Stony Cliffs Post-Rune"), # g gloves
+    "Star Piece [Stone B3]":                       AdvData(72801131, "Stony Cliffs Post-Rune"), #
+    "Star Piece [Stone B4]":                       AdvData(72801141, "Stony Cliffs Post-Rune"), # g globes t quest
+    "Star Piece [Stone C4]":                       AdvData(72801241, "Stony Cliffs Post-Rune"), # g gloves t quest
+    "Star Piece [Stone E4]":                       AdvData(72801441, "Stony Cliffs Post-Rune"),
     "Star Piece [Stone C0]":                       AdvData(72801201, "Stony Cliffs"), # t quest
     "Star Piece [StoneDungeon E1]":                AdvData(72802411, "Stony Cliffs Post-Rune"), # t quest
     "Star Piece [StoneDungeon E2]":                AdvData(72802421, "Stony Cliffs Post-Rune"), # g gloves, f flippers
@@ -237,16 +237,16 @@ advancement_table = {
     "Star Piece [Water C1 - W]":                   AdvData(72803211, "Tidal Reef"),
     "Star Piece [Water C2]":                       AdvData(72803221, "Tidal Reef"), # s quest
     "Star Piece [Water D2]":                       AdvData(72803321, "Tidal Reef Post-Rune"), # f flippers, k cloak
-    "Star Piece [Water D3]":                       AdvData(72803331, "Tidal Reef Post-Rune"),
+    "Star Piece [Water D3]":                       AdvData(72803331, "Tidal Reef Post-Rune"), # f flippers | Double check
     "Star Piece [Water E2]":                       AdvData(72803421, "Tidal Reef Post-Rune"), # f flippers
     "Star Piece [Water E0 - W]":                   AdvData(72803402, "Tidal Reef Post-Rune"), # f flippers
     "Star Piece [Water E0 - E]":                   AdvData(72803401, "Tidal Reef Post-Rune"), # s quest | double check
-    "Star Piece [Water B1]":                       AdvData(72803111, "Tidal Reef Post-Rune"), # f flippers
+    "Star Piece [Water B1]":                       AdvData(72803111, "Tidal Reef"), # f flippers
     "Star Piece [Water A0]":                       AdvData(72803001, "Tidal Reef Post-Rune"), # s rune
-    "Star Piece [Water A2 - N]":                   AdvData(72803022, "Tidal Reef Post-Rune"), # f flippers, k cloak
+    "Star Piece [Water A2 - N]":                   AdvData(72803022, "Tidal Reef Post-Rune"), # f flippers s quest || k cloak
     "Star Piece [Water A2 - S]":                   AdvData(72803021, "Tidal Reef Post-Rune"), # f flippers
     "Star Piece [Water A4]":                       AdvData(72803041, "Tidal Reef Post-Rune"), # f flippers
-    "Star Piece [Water B4]":                       AdvData(72803141, "Tidal Reef Post-Rune"), # f flippers
+    "Star Piece [Water B4]":                       AdvData(72803141, "Tidal Reef Post-Rune"),
 
     "Star Piece [Fire B4]":                        AdvData(72804141, "Raging Volcano"), # r quest
     "Star Piece [Fire B3]":                        AdvData(72804131, "Raging Volcano Post-Rune"),
@@ -267,7 +267,7 @@ advancement_table = {
     "Star Piece [Wind D4]":                        AdvData(72805341, "Frozen Spire"),
     "Star Piece [Wind C3 - W]":                    AdvData(72805232, "Frozen Spire Post-Rune"), # d rune
     "Star Piece [Wind C3 - NE]":                   AdvData(72805231, "Frozen Spire Post-Rune"), # d rune
-    "Star Piece [Wind B3]":                        AdvData(72805131, "Frozen Spire Post-Rune"), # k cloak
+    "Star Piece [Wind B3]":                        AdvData(72805132, "Frozen Spire Post-Rune"), # k cloak
     "Star Piece [Wind A3]":                        AdvData(72805031, "Frozen Spire Post-Rune"), # k cloak
     "Star Piece [Wind B2 - N]":                    AdvData(72805122, "Frozen Spire Post-Rune"), # k cloak?
     "Star Piece [Wind C2]":                        AdvData(72805221, "Frozen Spire"), # d quest
@@ -359,7 +359,7 @@ advancement_table = {
 seashell_table = {
 
     # 24 checks
-    "Shell [Water B2]":                            AdvData(63603121, "Tidal Reef Post-Rune"),
+    "Shell [Water B2]":                            AdvData(63603121, "Tidal Reef"),
     "Shell [Water C0]":                            AdvData(63603201, "Tidal Reef"),
     "Shell [Water B0]":                            AdvData(63603101, "Tidal Reef"),
     "Shell [Water B1]":                            AdvData(63603111, "Tidal Reef"),
@@ -459,7 +459,7 @@ locksanity_table = {
     "Star Lock 5 [Stone A1]":                       AdvData(73001011, "Stony Cliffs Post-Rune"),
     "Star Lock 15 [Stone C4]":                      AdvData(73001241, "Stony Cliffs Post-Rune"),
     "Star Lock 20 [Stone E3]":                      AdvData(73001431, "Stony Cliffs Post-Rune"),
-    "Star Lock 20 [Stone Dungeon A2]":              AdvData(73002011, "Stony Cliffs Post-Rune"),
+    "Star Lock 20 [StoneDungeon A2]":              AdvData(73002011, "Stony Cliffs Post-Rune"),
 
     "Star Lock 30 [Water A2]":                      AdvData(73003021, "Tidal Reef Post-Rune"),
 

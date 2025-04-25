@@ -105,10 +105,10 @@ mandatory_connections = [
     ("Beast Bridge Phoenix", "Phoenix Hub"),
 
     ("Lost Phoenix Entrance", "Lost Landing"),
-    ("Stony Phoenix Entrance", "Stony Cliffs Post-Rune"),
-    ("Tidal Phoenix Entrance", "Tidal Reef Post-Rune"),
+    ("Stony Phoenix Entrance", "Stony Cliffs"),
+    ("Tidal Phoenix Entrance", "Tidal Reef"),
     ("Raging Phoenix Entrance", "Raging Volcano"),
-    ("Frozen Phoenix Entrance", "Frozen Spire Post-Rune"),
+    ("Frozen Phoenix Entrance", "Frozen Spire"),
     ("Beast Bridge Phoenix Entrance", "Beast Bridge"),
 
     ("Diamond Sea West Entrance", "Diamond Sea"),
