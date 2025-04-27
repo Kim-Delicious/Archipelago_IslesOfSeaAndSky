@@ -68,7 +68,7 @@ Isles Of Sea And Sky:
 
   starting_area:
     # Which area to start with access to.
-    # not implimented yet
+    # NOT IMPLEMENTED YET
     ruins: 50
     snowdin: 0
     waterfall: 0
@@ -98,12 +98,12 @@ Isles Of Sea And Sky:
     'false': 50
 
   include_seashells:
-    # Enable seashells on the Tidal Reef island for extra checks
+    # Enable secret seashells on the Tidal Reef island for extra checks
     'true': 0
     'false': 50
 
   include_jellyfish:
-    # Enable jellyfish in the Overworld for extra checks
+    # Enable secret jellyfish in the Overworld for extra checks
     'true': 0
     'false': 50
 
