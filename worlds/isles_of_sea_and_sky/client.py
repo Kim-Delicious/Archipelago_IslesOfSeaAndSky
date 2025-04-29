@@ -59,10 +59,11 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
     @mark_raw
     def _cmd_auto_patch(self, steaminstall: typing.Optional[str] = None):
         """Patch the game automatically."""
+
         if isinstance(self.ctx, IslesOfSeaAndSkyContext):
             os.makedirs(name=Utils.user_path("IslesOfSeaAndSky"), exist_ok=True)
             tempInstall = steaminstall
-            if not os.path.isfile(os.path.join(tempInstall, "data.win")):
+            if tempInstall is not None and not os.path.isfile(os.path.join(tempInstall, "data.win")):
                 tempInstall = None
             if tempInstall is None:
                 tempInstall = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\IslesOfSeaAndSky"
@@ -80,8 +81,15 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
                     if file_name != "steam_api.dll":
                         shutil.copy(os.path.join(tempInstall, file_name),
                                Utils.user_path("IslesOfSeaAndSky", file_name))
-                self.ctx.patch_game()
-                self.output("Patching successful!")
+                #self.ctx.patch_game()
+                #self.output("Patching successful!")
+                self.output("New IslesOfSeaAndSky install is now located in Archipelago Directory.")
+                self.output("NOTE: Patching must be done manually with DelaPatcher.")
+                self.output("NOTE: Options must be saved manually in %LocalAppData%/IslesOfSeaAndSky, in apoptions.apoptions.")
+
+
+
+
 
     def _cmd_online(self):
         """Toggles seeing other IslesOfSeaAndSky players."""
@@ -132,7 +140,7 @@ class IslesOfSeaAndSkyContext(CommonContext):
         with open(os.path.expandvars(Utils.user_path("IslesOfSeaAndSky", "Custom Sprites",
                                      "Which Character.txt")), "w") as f:
             f.writelines(["// Put the folder name of the sprites you want to play as, make sure it is the only "
-                          "line other than this one.\n", "frisk"])
+                          "line other than this one.\n", "original"])
             f.close()
 
     async def server_auth(self, password_requested: bool = False):
