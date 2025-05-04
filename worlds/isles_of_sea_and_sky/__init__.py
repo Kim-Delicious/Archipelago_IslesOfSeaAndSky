@@ -1,12 +1,12 @@
-from .items import IslesOfSeaAndSkyItem, item_table, non_key_items, key_items, \
+from .Items import IslesOfSeaAndSkyItem, item_table, non_key_items, key_items, \
     junk_weights, progression_items
-from .locations import IslesOfSeaAndSkyAdvancement, advancement_table, exclusion_table, \
+from .Locations import IslesOfSeaAndSkyAdvancement, advancement_table, exclusion_table, \
     jellyfish_table, seashell_table, locksanity_table, snakesanity_table
-from .regions import isles_of_sea_and_sky_regions, link_isles_of_sea_and_sky_areas
-from .rules import set_rules, set_completion_rules
+from .Regions import isles_of_sea_and_sky_regions, link_isles_of_sea_and_sky_areas
+from .Rules import set_rules, set_completion_rules
 from worlds.generic.Rules import exclusion_rules
 from BaseClasses import Region, Entrance, Tutorial, Item
-from .options import IslesOfSeaAndSkyOptions
+from .Options import IslesOfSeaAndSkyOptions
 from worlds.AutoWorld import World, WebWorld
 from worlds.LauncherComponents import Component, components
 from multiprocessing import Process
@@ -17,7 +17,7 @@ import worlds.LauncherComponents as LauncherComponents
 
 
 def launch_client() -> None:
-    from .client import main
+    from .Client import main
     LauncherComponents.launch_subprocess(main, name="IslesOfSeaAndSkyClient")
 
 
