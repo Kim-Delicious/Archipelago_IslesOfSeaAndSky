@@ -442,7 +442,6 @@ def set_sea_nunatak(world):
 def set_locked(world):
     player = world.player
     multiworld = world.multiworld
-
     #set_rule(multiworld.get_location("Ancient Rune Stone", player),
     #         lambda state: state.has("Ancient Key", player, 23))  # double check key amount
 
