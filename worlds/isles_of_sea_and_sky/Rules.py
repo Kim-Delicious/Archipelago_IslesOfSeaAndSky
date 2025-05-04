@@ -232,12 +232,12 @@ def set_ancient_isle(world):
     # Collectables
     set_rule(multiworld.get_location("Star Piece [Ancient A1]", player),
              lambda state: state.can_reach("Obsidian Sea", "Region", player))
-                           #and state.has("Ancient Key", player, 17))
+                           # and state.has("Ancient Key", player, 17))
 
     set_rule(multiworld.get_location("Star Piece [Ancient B1]", player),
              lambda state: state.can_reach("Obsidian Sea", "Region", player)
                            and state.has("Ancient Rune Stone", player))
-                           #and state.has("Ancient Key", player, 17) )
+                           # and state.has("Ancient Key", player, 17) )
 
     set_rule(multiworld.get_location("Ancient Key [Ancient A2 - NW]", player),
              lambda state: state.has("Topaz Quest Complete", player))
@@ -442,8 +442,8 @@ def set_sea_nunatak(world):
 def set_locked(world):
     player = world.player
     multiworld = world.multiworld
-    #set_rule(multiworld.get_location("Ancient Rune Stone", player),
-    #         lambda state: state.has("Ancient Key", player, 23))  # double check key amount
+    # set_rule(multiworld.get_location("Ancient Rune Stone", player),
+    #          lambda state: state.has("Ancient Key", player, 23))  # double check key amount
 
     set_rule(multiworld.get_location("Star Piece [Locked A1]", player),
              lambda state: state.has("Ancient Rune Stone", player) )
