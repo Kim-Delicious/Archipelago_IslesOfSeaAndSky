@@ -141,6 +141,7 @@ def set_rules(world: "IslesOfSeaAndSkyWorld"):
              lambda state: state.has("Phoenix Flute", player)
                            and state.has("Star Piece", player, 30) )  # Lost Landing
 
+
     if world.options.enable_locksanity.value:
         set_rule(multiworld.get_location("Star Lock 3 [Overworld]", player),
                  lambda state: state.has("Star Piece", player, 3))
@@ -223,6 +224,9 @@ def set_rules(world: "IslesOfSeaAndSkyWorld"):
     set_serpent_stacks(world)
     set_sanctum(world)
 
+    set_rechecks(world)
+
+
 
 def set_ancient_isle(world):
 
@@ -231,13 +235,13 @@ def set_ancient_isle(world):
 
     # Collectables
     set_rule(multiworld.get_location("Star Piece [Ancient A1]", player),
-             lambda state: state.can_reach("Obsidian Sea", "Region", player))
-                           # and state.has("Ancient Key", player, 17))
+             lambda state: state.can_reach("Obsidian Sea", "Region", player)
+                           and state.has("Ancient Key", player, 17) )
 
     set_rule(multiworld.get_location("Star Piece [Ancient B1]", player),
              lambda state: state.can_reach("Obsidian Sea", "Region", player)
-                           and state.has("Ancient Rune Stone", player))
-                           # and state.has("Ancient Key", player, 17) )
+                           and state.has("Ancient Rune Stone", player)
+                           and state.has("Ancient Key", player, 17) )
 
     set_rule(multiworld.get_location("Ancient Key [Ancient A2 - NW]", player),
              lambda state: state.has("Topaz Quest Complete", player))
@@ -442,8 +446,8 @@ def set_sea_nunatak(world):
 def set_locked(world):
     player = world.player
     multiworld = world.multiworld
-    # set_rule(multiworld.get_location("Ancient Rune Stone", player),
-    #          lambda state: state.has("Ancient Key", player, 23))  # double check key amount
+    set_rule(multiworld.get_location("Ancient Rune Stone", player),
+             lambda state: state.has("Ancient Key", player, 23))  # double check key amount
 
     set_rule(multiworld.get_location("Star Piece [Locked A1]", player),
              lambda state: state.has("Ancient Rune Stone", player) )
@@ -1116,7 +1120,17 @@ def set_sanctum(world):
         set_rule(multiworld.get_location("3x Lock [Sanctum C1]", player),
                  lambda state: state.has("Ancient Key", player, 60))
 
+def set_rechecks(world):
+    # Rechecks reachability later in the fill sweep, so that some unreachable locations can
+    # be registered correctly.
 
+    player = world.player
+    multiworld = world.multiworld
+    # Later ancient isle checks, and the Locked region
+    multiworld.register_indirect_condition(multiworld.get_region("Frozen Spire", player),
+                                           multiworld.get_entrance("Locked Entrance", player))
+    multiworld.register_indirect_condition(multiworld.get_region("Frozen Spire", player),
+                                           multiworld.get_entrance("Ancient West Entrance", player))
 
 def set_completion_rules(world: "IslesOfSeaAndSkyWorld"):
     player = world.player

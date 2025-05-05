@@ -77,8 +77,8 @@ class IslesOfSeaAndSkyWorld(World):
             "player_id": self.player,
             "client_version": self.required_client_version,
             #"race": self.multiworld.is_race,
-            #"route": self.options.route_required.current_key,
-            #"starting_area": self.options.starting_area.current_key,
+            "route_required": self.options.route_required.current_key,
+            "starting_area": self.options.starting_area.current_key,
             "local_ancient_isle": bool(self.options.local_ancient_isle.value),
             "enable_locksanity": bool(self.options.enable_locksanity.value),
             "enable_snakesanity": bool(self.options.enable_snakesanity.value), # unimplemented

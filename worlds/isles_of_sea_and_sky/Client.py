@@ -118,6 +118,14 @@ class IslesOfSeaAndSkyContext(CommonContext):
     command_processor = IslesOfSeaAndSkyCommandProcessor
     items_handling = 0b111
     route = None
+    includeSeashells = None
+    includeJellyfish = None
+    enableLocksanity = None
+    enableSnakesanity = None
+    reqRoute = None
+    phoenixAnywhere = None
+    startingArea = None
+
     save_game_folder = os.path.expandvars(r"%localappdata%/IslesOfSeaAndSky")
 
     def __init__(self, server_address, password):
@@ -188,7 +196,6 @@ class IslesOfSeaAndSkyContext(CommonContext):
     def on_package(self, cmd: str, args: dict):
         if cmd == "Connected":
             self.game = self.slot_info[self.slot].game
-
         async_start(process_isles_of_sea_and_sky_cmd(self, cmd, args))
 
     def run_gui(self):
@@ -207,30 +214,28 @@ class IslesOfSeaAndSkyContext(CommonContext):
         self.got_deathlink = True
         super().on_deathlink(data)
 
-
-def to_room_name(place_name: str):
-    if place_name == "Old Home Exit":
-        return "room_ruinsexit"
-    elif place_name == "Snowdin Forest":
-        return "room_tundra1"
-    elif place_name == "Snowdin Town Exit":
-        return "room_fogroom"
-    elif place_name == "Waterfall":
-        return "room_water1"
-    elif place_name == "Waterfall Exit":
-        return "room_fire2"
-    elif place_name == "Hotland":
-        return "room_fire_prelab"
-    elif place_name == "Hotland Exit":
-        return "room_fire_precore"
-    elif place_name == "Core":
-        return "room_fire_core1"
-
-
 async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: str, args: dict):
-    ### When the client first connects to the multiworld
 
+    ### When the client first connects to the multiworld
     if cmd == 'Connected':
+        ctx.includeSeashells =  args["slot_data"]["include_seashells"]
+        ctx.includeJellyfish =  args["slot_data"]["include_jellyfish"]
+        ctx.enableLocksanity =  args["slot_data"]["enable_locksanity"]
+        ctx.enableSnakesanity = args["slot_data"]["enable_snakesanity"]
+        ctx.reqRoute =          args["slot_data"]["route_required"]
+        ctx.phoenixAnywhere=    args["slot_data"]["phoenix_anywhere"]
+        ctx.startingArea =      args["slot_data"]["starting_area"]
+
+        with open(os.path.join(ctx.save_game_folder, "apOptions.options"), "w") as f:
+            f.write("includeSeashells: " + str(ctx.includeSeashells)    + '\n')
+            f.write("includeJellyfish: " + str(ctx.includeJellyfish)    + '\n')
+            f.write("enableLocksanity: " + str(ctx.enableLocksanity)    + '\n')
+            f.write("enableSnakesanity: "+ str(ctx.enableSnakesanity)   + '\n')
+            f.write("reqRoute: "         + str(ctx.reqRoute)            + '\n')
+            f.write("phoenixAnywhere: "  + str(ctx.phoenixAnywhere)     + '\n')
+            f.write("startingArea: "     + str(ctx.startingArea)        + '\n')
+            f.close()
+
         msgs = []
         if ctx.locations_checked:
             msgs.append({"cmd": "LocationChecks",
@@ -396,11 +401,12 @@ async def game_watcher(ctx: IslesOfSeaAndSkyContext):
                         with open(os.path.join(root, file), "r") as f:
                             #item_id = f.readline()
                             lines = f.readlines()
+                            f.close()
                         for l in lines:
                             sending = sending + [(int(l.rstrip('\n')))]
 
                     finally:
-                        print(sending)
+                        #print(sending)
                         await ctx.send_msgs([{"cmd": "LocationChecks", "locations": sending}])
                         os.remove(os.path.join(root, file))
 
