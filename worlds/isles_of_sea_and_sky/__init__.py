@@ -78,8 +78,6 @@ class IslesOfSeaAndSkyWorld(World):
             "client_version": self.required_client_version,
             #"race": self.multiworld.is_race,
             "route_required": self.options.route_required.current_key,
-            "starting_area": self.options.starting_area.current_key,
-            "local_ancient_isle": bool(self.options.local_ancient_isle.value),
             "enable_locksanity": bool(self.options.enable_locksanity.value),
             "enable_snakesanity": bool(self.options.enable_snakesanity.value), # unimplemented
             "include_seashells": bool(self.options.include_seashells.value),
@@ -96,7 +94,7 @@ class IslesOfSeaAndSkyWorld(World):
     def create_items(self):
 
         # Plando Most of Ancient Isle to prevent soft lock
-        if self.options.local_ancient_isle:
+        if True:
             self.multiworld.get_location("Ancient Key [Ancient B3]", self.player).place_locked_item(
                 self.create_item("Ancient Key"))
             self.multiworld.get_location("Ancient Key [Ancient A1]", self.player).place_locked_item(
@@ -169,11 +167,11 @@ class IslesOfSeaAndSkyWorld(World):
         set_completion_rules(self)
 
         # for creating visuals, should be disabled for unittests
-        '''from Utils import visualize_regions
+        from Utils import visualize_regions
         state = self.multiworld.get_all_state(False)
         state.update_reachable_regions(self.player)
         visualize_regions(self.get_region("Menu"), "my_world.puml", show_entrance_names=True,
-                          regions_to_highlight=state.reachable_regions[self.player])'''
+                          regions_to_highlight=state.reachable_regions[self.player])
 
     def create_regions(self):
         def IslesOfSeaAndSkyRegion(region_name: str, exits=[]):

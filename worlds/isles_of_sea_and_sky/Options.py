@@ -10,24 +10,6 @@ class RouteRequired(Choice):
     option_all_gems = 2
     default = 0
 
-# Possibility for the future???
-class StartingArea(Choice):
-    """Which area to start with access to."""
-    display_name = "Starting Area"
-    option_ruins = 0
-    option_snowdin = 1
-    option_waterfall = 2
-    option_hotland = 3
-    option_core = 4
-    default = 0
-
-class LocalAncientIsle(Toggle):
-    """Make most of the Ancient Isle items to be typical as to prevent the player
-    from getting stuck early."""
-    display_name = "Local Starting Isle"
-    default = 1
-
-
 class EnableLocksanity(Toggle):
     """Turn all locks in the game into game checks.
     This includes big 3x locks, all Rune Stone locks, and other specialty locks"""
@@ -64,8 +46,6 @@ class PhoenixAnywhere(Toggle):
 @dataclass
 class IslesOfSeaAndSkyOptions(PerGameCommonOptions):
     route_required:                             RouteRequired # not implemented
-    starting_area:                              StartingArea # not implemented
-    local_ancient_isle:                         LocalAncientIsle
     enable_locksanity:                          EnableLocksanity
     enable_snakesanity:                         EnableSnakesanity # not implemented
     include_seashells:                          IncludeSeashells

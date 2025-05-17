@@ -62,32 +62,17 @@ Isles Of Sea And Sky:
 
   route_required:
     # Main route of the game required to win.
+    # SECRET ENDING AND ALL GEMS ARE MORE LIKELY TO FAIL GEN
     normal_ending: 50
     secret_ending: 0
     all_gems: 0
-
-  starting_area:
-    # Which area to start with access to.
-    # NOT IMPLEMENTED YET
-    ruins: 50
-    snowdin: 0
-    waterfall: 0
-    hotland: 0
-    core: 0
-
-  local_ancient_isle:
-    # Make most of the Ancient Isle act as normal as to prevent the player
-    # from getting stuck early.
-    'true': 50
-    'false': 0
-
 
   enable_locksanity:
     # Turn all locks in the game into game checks.
     # This includes big 3x locks, all Rune Stone locks, and other specialty locks
 
-    'true': 0
-    'false': 50
+    'true': 50
+    'false': 0
 
   enable_snakesanity:
     # NOT CURRENTLY IMPLEMENTED!
@@ -110,10 +95,8 @@ Isles Of Sea And Sky:
   phoenix_anywhere:
     # The player can summon the Phoenix in any non-Overworld location by pressing: 'E',
     # as long as they have picked the Phoenix Flute up.
-    'true': 0
-    'false': 50
-
-
+    'true': 50
+    'false': 0
 
   # Item & Location Options
   local_items:

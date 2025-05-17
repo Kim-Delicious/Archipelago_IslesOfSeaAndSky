@@ -65,7 +65,9 @@ Output Logs/
 /data/user.kv
 /datapackage
 /custom_worlds
-
+classifiers
+fuzz_output
+fuzz.py
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -224,7 +224,6 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
         ctx.enableSnakesanity = args["slot_data"]["enable_snakesanity"]
         ctx.reqRoute =          args["slot_data"]["route_required"]
         ctx.phoenixAnywhere=    args["slot_data"]["phoenix_anywhere"]
-        ctx.startingArea =      args["slot_data"]["starting_area"]
 
         with open(os.path.join(ctx.save_game_folder, "apOptions.options"), "w") as f:
             f.write("includeSeashells: " + str(ctx.includeSeashells)    + '\n')
@@ -233,7 +232,6 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
             f.write("enableSnakesanity: "+ str(ctx.enableSnakesanity)   + '\n')
             f.write("reqRoute: "         + str(ctx.reqRoute)            + '\n')
             f.write("phoenixAnywhere: "  + str(ctx.phoenixAnywhere)     + '\n')
-            f.write("startingArea: "     + str(ctx.startingArea)        + '\n')
             f.close()
 
         msgs = []
