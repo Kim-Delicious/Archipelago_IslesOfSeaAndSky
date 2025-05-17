@@ -542,7 +542,222 @@ locksanity_table = {
 
 }
 
-snakesanity_table = {}
+# 196 checks
+snakesanity_table = {
+"Snakeblock [Ancient B3]": AdvData(681001319280, "Ancient Isle"),
+"Snakeblock [Ancient B2 - W]": AdvData(683001232128, "Ancient Isle"),
+"Snakeblock [Ancient B2 - E]": AdvData(6860012336144, "Ancient Isle"),
+"Snakeblock [Ancient A3]": AdvData(681000316064, "Ancient Isle"),
+"Snakeblock [Ancient A1]": AdvData(6800001192160, "Ancient Isle"),
+"Snakeblock [Ancient C2 - E]": AdvData(6810022288128, "Ancient Isle"),
+"Snakeblock [Ancient C2 - S]": AdvData(6800022224176, "Ancient Isle"),
+"Snakeblock [Ancient C2 - W]": AdvData(6810022160176, "Ancient Isle"),
+"Snakeblock [Ancient C3]": AdvData(68100238064, "Ancient Isle"),
+
+"Snakeblock [Stone D2]": AdvData(680013264144, "Stony Cliffs"),
+"Snakeblock [Stone E1 - W]": AdvData(6800141144144, "Stony Cliffs"),
+"Snakeblock [Stone E1 - E]": AdvData(6830141176112, "Stony Cliffs Post-Rune"), # t quest, t rune
+"Snakeblock [Stone E0]": AdvData(681014064112, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone B1 - W]": AdvData(681011124064, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone B0]": AdvData(6860110256112, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone A2 - N]": AdvData(683010235248, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone A2 - S]": AdvData(686010235264, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone A3]": AdvData(6830103320192, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone B3 - S]": AdvData(680011348192, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone A4 - W]": AdvData(68001048048, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone A0]": AdvData(6810100256192, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone B1 - E]": AdvData(683011135296, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone B4]": AdvData(6830114176160, "Stony Cliffs Post-Rune"), #g gloves, 15 stars
+"Snakeblock [Stone A4 - E]": AdvData(6810104352144, "Stony Cliffs Post-Rune"), #g gloves, 15 stars
+"Snakeblock [Stone C4]": AdvData(68601248064, "Stony Cliffs Post-Rune"), # t quest
+"Snakeblock [Stone B3 - N]": AdvData(68101136448, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone B2 - W]": AdvData(6810112160192, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone B2 - E]": AdvData(6800112224192, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone C2]": AdvData(6800122128176, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone E4]": AdvData(680014432160, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone Dungeon C4]": AdvData(681022420896, "Stony Cliffs Post-Rune"), # t quest
+"Snakeblock [Stone Dungeon C3]": AdvData(683022319296, "Stony Cliffs Post-Rune"), # t quest
+"Snakeblock [Stone Dungeon B2 - E]": AdvData(6860212240144, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone Dungeon B2 - W]": AdvData(680021248128, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone Dungeon B2 - N]": AdvData(6830212176112, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone Dungeon B1]": AdvData(6860211176176, "Stony Cliffs Post-Rune"),
+"Snakeblock [Stone Dungeon D2 - E]": AdvData(6830232320112, "Stony Cliffs Post-Rune"), # t quest
+"Snakeblock [Stone Dungeon D2 - CE]": AdvData(6810232240128, "Stony Cliffs Post-Rune"), # t quest
+"Snakeblock [Stone Dungeon D2 - W]": AdvData(6800232112160, "Stony Cliffs Post-Rune"), # t quest
+"Snakeblock [Stone Dungeon D2 - CW]": AdvData(6810232192128, "Stony Cliffs Post-Rune"), # t quest
+"Snakeblock [Stone Dungeon D1 - W]": AdvData(6830231160176, "Stony Cliffs Post-Rune"), # t quest
+"Snakeblock [Stone Dungeon D1 - CS]": AdvData(6860231256112, "Stony Cliffs Post-Rune"), # t quest
+"Snakeblock [Stone Dungeon D1 - CN]": AdvData(683023125696, "Stony Cliffs"),
+"Snakeblock [Stone Dungeon D1 - E]": AdvData(6860231336128, "Stony Cliffs Post-Rune"), # t quest
+"Snakeblock [Stone Dungeon E1]": AdvData(683024117696, "Stony Cliffs Post-Rune"), # t quest
+"Snakeblock [Stone Dungeon E2]": AdvData(683024296112, "Stony Cliffs Post-Rune"), # t quest
+"Snakeblock [Stone Dungeon C1]": AdvData(6830221208112, "Stony Cliffs Post-Rune"), # t quest, #g gloves
+
+"Snakeblock [Rolling B0]": AdvData(6830810256176, "Rolling Rocks"),
+"Snakeblock [Stone C1]": AdvData(6810121176128, "Rolling Rocks"), # topaz Quest
+"Snakeblock [Stone D1]": AdvData(6800131144144, "Rolling Rocks"), # topaz Quest
+
+"Snakeblock [Aggro B1 - E]": AdvData(681101130496, "Aggro Crag"), # 35 stars
+"Snakeblock [Aggro B1 - W]": AdvData(686101116160, "Aggro Crag"), # 35 stars, R quest, A rune
+"Snakeblock [Aggro B0 - E]": AdvData(6861010112160, "Aggro Crag"),
+"Snakeblock [Aggro B0 - W]": AdvData(680101096144, "Aggro Crag"), # 35 stars, R quest, A rune, s shirt
+
+"Snakeblock [Locked A1 - E]": AdvData(6861201112160, "Locked"),
+"Snakeblock [Locked A1 - C]": AdvData(6861201160160, "Locked"),
+"Snakeblock [Locked A1 - W]": AdvData(6831201208144, "Locked"),
+
+"Snakeblock [Nunatak A1]": AdvData(6811101288112, "Sea Nunatak"), # a rune, d quest?
+
+"Snakeblock [Shoal A0]": AdvData(681140020896, "Shoal"), # a rune, k cloak
+
+"Snakeblock [Lost B1]": AdvData(680151120896, "Lost Landing"), # 30 Stars, p flute
+
+"Snakeblock [Tropic A0 - W]": AdvData(6811300224160, "Star Tropic"), # k cloak
+"Snakeblock [Tropic A0 - C]": AdvData(6811300272160, "Star Tropic"), # k cloak
+"Snakeblock [Tropic A0 - E]": AdvData(6811300320176, "Star Tropic"), # k cloak
+"Snakeblock [Tropic B0 - N]": AdvData(68313104896, "Star Tropic"), # k cloak
+"Snakeblock [Tropic B0 - S]": AdvData(680131064160, "Star Tropic"), # k cloak
+
+
+"Damsnake [Overworld - Sapphire Sea]": AdvData(4782011320256, "Sapphire Sea"),
+"Damsnake [Overworld - Beast Sea]": AdvData(4792011784224, "Beast Sea"),
+"Damsnake [Overworld - Lost Sea]": AdvData(4782011352432, "Lost Sea"),
+"Damsnake [Overworld - Northeast Sea]": AdvData(4792011800112, "Northeast Sea"),
+
+"Snakeblock [Water C2 - W]": AdvData(683032216128, "Tidal Reef"),
+"Snakeblock [Water C2 - SE]": AdvData(6810322272176, "Tidal Reef"),
+"Snakeblock [Water D2 - W]": AdvData(683033216112, "Tidal Reef"),
+"Snakeblock [Water C1 - E]": AdvData(6860321304144, "Tidal Reef"),
+"Snakeblock [Water C1 - CE]": AdvData(6810321240128, "Tidal Reef"),
+"Snakeblock [Water C2 - NE]": AdvData(6810322224112, "Tidal Reef"),
+"Snakeblock [Water C2 - CE]": AdvData(6830322256128, "Tidal Reef"),
+"Snakeblock [Water B2 - SE]": AdvData(6800312256128, "Tidal Reef"),
+"Snakeblock [Water B2 - NE]": AdvData(683031230480, "Tidal Reef"),
+"Snakeblock [Water C1 - W]": AdvData(683032132160, "Tidal Reef"),
+"Snakeblock [Water C1 - CW]": AdvData(6800321128128, "Tidal Reef"),
+"Snakeblock [Water B0 - E]": AdvData(6800310240128, "Tidal Reef"), # s quest
+"Snakeblock [Water B0 - C]": AdvData(6800310128144, "Tidal Reef"), # s quest, f flippers
+"Snakeblock [Water B1 - E]": AdvData(6800311272192, "Tidal Reef"), # s quest,
+"Snakeblock [Water B1 - C]": AdvData(6830311208144, "Tidal Reef"), # s quest,
+"Snakeblock [Water B3]": AdvData(680031316048, "Tidal Reef"),
+"Snakeblock [Water D0 - W]": AdvData(686033011280, "Tidal Reef"),
+"Snakeblock [Water D0 - E]": AdvData(6830330240112, "Tidal Reef Post-Rune"),
+"Snakeblock [Water D1]": AdvData(681033196192, "Tidal Reef Post-Rune"),
+"Snakeblock [Water D2 - C]": AdvData(6810332208160, "Tidal Reef Post-Rune"), # f flippers
+"Snakeblock [Water D2 - E]": AdvData(680033233664, "Tidal Reef Post-Rune"), # f flippers
+"Snakeblock [Water E1 - W]": AdvData(681034114480, "Tidal Reef Post-Rune"), # f flippers
+"Snakeblock [Water E1 - E]": AdvData(683034132096, "Tidal Reef Post-Rune"), # f flippers
+"Snakeblock [Water E2 - E]": AdvData(6810342304128, "Tidal Reef Post-Rune"), # f flippers
+"Snakeblock [Water E2 - W]": AdvData(686034264144, "Tidal Reef Post-Rune"),
+"Snakeblock [Water E3]": AdvData(683034332160, "Tidal Reef Post-Rune"),
+"Snakeblock [Water D3]": AdvData(6810333224144, "Tidal Reef Post-Rune"),
+"Snakeblock [Water A0 - W]": AdvData(6810300224128, "Tidal Reef Post-Rune"),
+"Snakeblock [Water A0 - S]": AdvData(6860300256144, "Tidal Reef Post-Rune"), # f flippers
+"Snakeblock [Water A2]": AdvData(686030222496, "Tidal Reef Post-Rune"), # f flippers, s quest, 30 stars
+"Snakeblock [Water A3]": AdvData(683030316064, "Tidal Reef Post-Rune"), # f flippers, s quest, 30 stars
+"Snakeblock [Water B4]": AdvData(681031430496, "Tidal Reef Post-Rune"),
+"Snakeblock [Water B0]": AdvData(683031016112, "Tidal Reef Post-Rune"),
+
+"Snakeblock [Fire B2 - W]": AdvData(681041296128, "Raging Volcano"),
+"Snakeblock [Fire B2 - CW]": AdvData(6860412128144, "Raging Volcano"),
+"Snakeblock [Fire B2 - CE]": AdvData(6830412192128, "Raging Volcano"),
+"Snakeblock [Fire B2 - E]": AdvData(6810412304128, "Raging Volcano"),
+"Snakeblock [Fire B2 - SW]": AdvData(6860412112176, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire C2 - W]": AdvData(686042217680, "Raging Volcano"),
+"Snakeblock [Fire C2 - NE]": AdvData(683042228880, "Raging Volcano"),
+"Snakeblock [Fire C2 - E]": AdvData(6860422336160, "Raging Volcano"),
+"Snakeblock [Fire D2 - W]": AdvData(6830432112112, "Raging Volcano"),
+"Snakeblock [Fire D2 - C]": AdvData(6860432240176, "Raging Volcano"),
+"Snakeblock [Fire D2 - NE]": AdvData(683043232096, "Raging Volcano"),
+"Snakeblock [Fire D2 - SE]": AdvData(6810432320192, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire D1 - SW]": AdvData(6860431112176, "Raging Volcano"),
+"Snakeblock [Fire D1 - W]": AdvData(6810431112128, "Raging Volcano"),
+"Snakeblock [Fire D1 - C]": AdvData(6800431240176, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire D1 - NE]": AdvData(686043130496, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire D1 - SE]": AdvData(6810431336192, "Raging Volcano Post-Rune"), # S shirt
+"Snakeblock [Fire C1]": AdvData(6810421320112, "Raging Volcano"),
+"Snakeblock [Fire B1]": AdvData(6860411304160, "Raging Volcano"), # s shirt
+"Snakeblock [Fire B0]": AdvData(681041032128, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire A1 - E]": AdvData(6810401320112, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire A1 - NE]": AdvData(683040128880, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire A0 - E]": AdvData(6800400272112, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire A0 - W]": AdvData(6810400176144, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire A3 - E]": AdvData(686040335296, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire A3 - SE]": AdvData(6810403336176, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire A3 - S]": AdvData(6860403256176, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire A3 - W]": AdvData(6830403160112, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire A4]": AdvData(686040430464, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire B4 - W]": AdvData(6830414112128, "Raging Volcano Post-Rune"), # r quest
+"Snakeblock [Fire B4 - E]": AdvData(6800414304128, "Raging Volcano Post-Rune"), # r quest
+"Snakeblock [Fire B3 - CW]": AdvData(68304136480, "Raging Volcano Post-Rune"), # r quest
+"Snakeblock [Fire B3 - W]": AdvData(683041316144, "Raging Volcano Post-Rune"), # r quest
+"Snakeblock [Fire B3 - CE]": AdvData(6830413240128, "Raging Volcano Post-Rune"), # r quest
+"Snakeblock [Fire B3 - E]": AdvData(6860413352144, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire C3 - E]": AdvData(681042312848, "Raging Volcano Post-Rune"), # r quest
+"Snakeblock [Fire C3 - W]": AdvData(68004233296, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire C4 - NE]": AdvData(681042427248, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire C4 - SE]": AdvData(6810424224128, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire D4 - W]": AdvData(683043480128, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire D4 - E]": AdvData(6830434320128, "Raging Volcano Post-Rune"),# s shirt
+"Snakeblock [Fire E4 - E]": AdvData(681044419248, "Raging Volcano Post-Rune"),
+"Snakeblock [Fire E4 - CE]": AdvData(680044417648, "Raging Volcano Post-Rune"), # s shirt
+"Snakeblock [Fire E4 - W]": AdvData(683044432128, "Raging Volcano Post-Rune"), # s shirt
+
+"Snakeblock [Fire D3 - W]": AdvData(680043316112, "Raging Volcano Post-Rune"), # s shirt
+"Snakeblock [Fire D3 - E]": AdvData(686043330464, "Raging Volcano Post-Rune"), # s shirt, r quest
+"Snakeblock [Fire D3 - SW]": AdvData(681043348160, "Raging Volcano Post-Rune"), # s shirt, r quest
+
+"Snakeblock [Wind C4 - E]": AdvData(6810524304128, "Frozen Spire"),
+"Snakeblock [Wind C4 - C]": AdvData(6830524176128, "Frozen Spire"),
+"Snakeblock [Wind C4 - N]": AdvData(683052412864, "Frozen Spire"),
+"Snakeblock [Wind D4]": AdvData(6830534304144, "Frozen Spire"),
+"Snakeblock [Wind B3 - SW]": AdvData(680051396176, "Frozen Spire"),
+"Snakeblock [Wind B3 - CE]": AdvData(681051325696, "Frozen Spire"), # k cloak
+"Snakeblock [Wind B3 - NE]": AdvData(686051325680, "Frozen Spire"), # k cloak
+"Snakeblock [Wind A3]": AdvData(6810503112176, "Frozen Spire Post-Rune"), # D quest
+"Snakeblock [Wind A2 - SW]": AdvData(6810502208192, "Frozen Spire"),
+"Snakeblock [Wind A2 - SE]": AdvData(6810502256192, "Frozen Spire"), # D quest
+"Snakeblock [Wind B2 - E]": AdvData(6800512256128, "Frozen Spire"),
+"Snakeblock [Wind B2 - SW]": AdvData(680051264192, "Frozen Spire"), # k cloak
+"Snakeblock [Wind B4]": AdvData(680051414480, "Frozen Spire"), # k cloak
+"Snakeblock [Wind B1]": AdvData(6800511304176, "Frozen Spire"),
+"Snakeblock [Wind D2 - SE]": AdvData(6800532320192, "Frozen Spire"),
+"Snakeblock [Wind D2 - SW]": AdvData(686053280144, "Frozen Spire"),
+"Snakeblock [Wind B0 - W]": AdvData(6860510176176, "Frozen Spire"),
+"Snakeblock [Wind B0 - E]": AdvData(6830510256160, "Frozen Spire"),
+"Snakeblock [Wind C0]": AdvData(68005203296, "Frozen Spire"),
+"Snakeblock [Wind E4]": AdvData(680054414464, "Frozen Spire Post-Rune"), # d quest
+"Snakeblock [Wind E3]": AdvData(68105436496, "Frozen Spire Post-Rune"), # d quest
+"Snakeblock [Wind E1]": AdvData(686054132128, "Frozen Spire Post-Rune"), # g gloves
+"Snakeblock [Wind C1]": AdvData(68605219664, "Frozen Spire"),
+"Snakeblock [Wind C2]": AdvData(683052211296, "Frozen Spire"), # d quest
+
+"Snakeblock [Serpent A1 - W]": AdvData(683060196192, "Serpent Stacks Post-Rune"),
+"Snakeblock [Serpent A1 - C]": AdvData(6800601176128, "Serpent Stacks Post-Rune"), #s circlet
+"Snakeblock [Serpent A1 - CE]": AdvData(6810601224160, "Serpent Stacks Post-Rune"), #s circlet
+"Snakeblock [Serpent A1 - E]": AdvData(6860601304176, "Serpent Stacks Post-Rune"), #s circlet
+"Snakeblock [Serpent A6 - SW]": AdvData(6800606144112, "Serpent Stacks Post-Rune"), #s circlet, S quest, T quest
+"Snakeblock [Serpent A6 - NW]": AdvData(686060614496, "Serpent Stacks Post-Rune"), #s circlet, S quest, T quest
+"Snakeblock [Serpent A6 - C]": AdvData(6860606176128, "Serpent Stacks Post-Rune"), #s circlet, S quest, T quest
+"Snakeblock [Serpent A6 - E]": AdvData(6860606256144, "Serpent Stacks Post-Rune"), #s circlet, S quest, T quest
+"Snakeblock [Serpent A8]": AdvData(6860608336128, "Serpent Stacks Post-Rune"), #s circlet, all quests
+
+"Snakeblock [Sanctum A2 - S]": AdvData(6810702176192, "Sanctum"), #all quests
+"Snakeblock [Sanctum A2 - C]": AdvData(6810702128128, "Sanctum"), #all quests
+"Snakeblock [Sanctum A2 - W]": AdvData(681070280112, "Sanctum"), #all quests
+"Snakeblock [Sanctum A0 - E]": AdvData(6810700320192, "Sanctum"), #all quests
+"Snakeblock [Sanctum A0 - CE]": AdvData(6800700176160, "Sanctum"), #all quests
+"Snakeblock [Sanctum A0 - CW]": AdvData(6860700144144, "Sanctum"), #all quests
+"Snakeblock [Sanctum A0 - W]": AdvData(686070016144, "Sanctum"), #all quests
+"Snakeblock [Sanctum C2 - E]": AdvData(6810722256128, "Sanctum"), #all quests
+"Snakeblock [Sanctum C2 - W]": AdvData(683072214496, "Sanctum"), #all quests
+"Snakeblock [Sanctum C0 - W]": AdvData(681072096192, "Sanctum"), #all quests
+"Snakeblock [Sanctum C0 - CSW]": AdvData(6810720144144, "Sanctum"), #all quests
+"Snakeblock [Sanctum C0 - CNW]": AdvData(6800720160112, "Sanctum"), #all quests
+"Snakeblock [Sanctum C0 - CN]": AdvData(681072022496, "Sanctum"), #all quests
+"Snakeblock [Sanctum C0 - E]": AdvData(6860720272176, "Sanctum"), #all quests
+
+}
 
 exclusion_table = {
 
