@@ -116,6 +116,7 @@ class IslesOfSeaAndSkyWorld(World):
             key_items['Ancient Key'] -= 6
             key_items['Star Piece'] -= 1
 
+        self.multiworld.local_early_items[self.player]["Topaz Rune Stone"] = 1
 
         # Generate item pool
         itempool = []
@@ -166,12 +167,12 @@ class IslesOfSeaAndSkyWorld(World):
         set_rules(self)
         set_completion_rules(self)
 
-        # for creating visuals, should be disabled for unittests
+        '''# for creating visuals, should be disabled for unittests
         from Utils import visualize_regions
         state = self.multiworld.get_all_state(False)
         state.update_reachable_regions(self.player)
         visualize_regions(self.get_region("Menu"), "my_world.puml", show_entrance_names=True,
-                          regions_to_highlight=state.reachable_regions[self.player])
+                          regions_to_highlight=state.reachable_regions[self.player])'''
 
     def create_regions(self):
         def IslesOfSeaAndSkyRegion(region_name: str, exits=[]):
