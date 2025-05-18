@@ -458,7 +458,7 @@ def set_aggro_crag(world):
                                and state.has("Salamander Shirt", player))
 
     # Snakesanity
-    if world.options.enable_locksanity.value:
+    if world.options.enable_snakesanity.value:
         set_rule(multiworld.get_location("Snakeblock [Aggro B1 - E]", player),
                  lambda state: state.has("Star Piece", player, 35))
 
@@ -692,7 +692,7 @@ def set_lost_landing(world):
                  lambda state: state.has("Star Piece", player, 30))
 
     # Snakesanity
-    if world.options.enable_locksanity.value:
+    if world.options.enable_snakesanity.value:
         set_rule(multiworld.get_location("Snakeblock [Lost B1]", player),
                  lambda state: state.has("Star Piece", player, 30))
 
