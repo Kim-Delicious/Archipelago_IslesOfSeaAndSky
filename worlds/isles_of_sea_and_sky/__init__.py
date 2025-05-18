@@ -1,3 +1,5 @@
+import warnings
+
 from .Items import IslesOfSeaAndSkyItem, item_table, non_key_items, key_items, \
     junk_weights, progression_items
 from .Locations import IslesOfSeaAndSkyAdvancement, advancement_table, exclusion_table, \
@@ -219,6 +221,10 @@ class IslesOfSeaAndSkyWorld(World):
         return self._get_isles_of_sea_and_sky_data()
 
     def create_item(self, name: str) -> Item:
+        if name is None:
+            warnings.warn("Attempted to create an item with a None name")
+            name = "Seashell"
+
         item_data = item_table[name]
         item = IslesOfSeaAndSkyItem(name, item_data.classification, item_data.code, self.player)
         return item

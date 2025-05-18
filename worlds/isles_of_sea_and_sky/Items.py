@@ -33,10 +33,7 @@ item_table = {
     "Blue Stone Tablet":        ItemData(596,     IC.progression_skip_balancing),
     "Gold Stone Tablet":        ItemData(597,     IC.progression_skip_balancing),
     "Seashell":                 ItemData(636,     IC.filler),
-    #"Jellyfish":                ItemData(395,     IC.filler),
     "Fire Key":                 ItemData(332,     IC.progression),
-    #"Egg":                      ItemData(294,     IC.progression),
-    #"Wind Key":                 ItemData(835,     IC.progression),
     "Music Note":               ItemData(457,     IC.useful),
     "Phoenix Flute":            ItemData(511,     IC.progression | IC.useful),
     "Star Viewing Orb":         ItemData(733,     IC.useful),
@@ -51,7 +48,7 @@ item_table = {
     "Topaz Shard Hit":          ItemData(909,     IC.progression),
     "Sapphire Shard Hit":       ItemData(910,     IC.progression),
     "Ruby Shard Hit":           ItemData(911,     IC.progression),
-    "Diamond Shard Hit":        ItemData(912,     IC.progression),
+    "Diamond Shard Hit":        ItemData(912,     IC.progression)
 
 }
 
@@ -69,8 +66,6 @@ progression_items = {
     "Salamander Shirt":         1,
     "Kite Cloak":               1,
     "Fire Key":                 3,
-    #"Egg":                      0, # broken
-    #"Wind Key":                 0, # broken
     "Topaz Quest Complete":     1,
     "Sapphire Quest Complete":  1,
     "Ruby Quest Complete":      1,
@@ -79,7 +74,7 @@ progression_items = {
     "Sapphire Shard Hit":       1,
     "Ruby Shard Hit":           1,
     "Diamond Shard Hit":        1,
-    "Phoenix Flute":            1,
+    "Phoenix Flute":            1
 }
 
 key_items = {
@@ -88,9 +83,7 @@ key_items = {
     "Sapphire":                 12,
     "Ruby":                     12,
     "Diamond":                  12,
-    "Star Piece":               91,
-
-
+    "Star Piece":               91
 }
 
 non_key_items = {
@@ -104,11 +97,11 @@ non_key_items = {
     "Rolling Bell Rung":        1,
     "Sunken Bell Rung":         1,
     "Aggro Bell Rung":          1,
-    "Nunatak Bell Rung":        1,
+    "Nunatak Bell Rung":        1
 
 }
 
 junk_weights = {
-    "Seashell":                    1, #Currently no in-game checks
+    "Seashell":                    1
 }
 

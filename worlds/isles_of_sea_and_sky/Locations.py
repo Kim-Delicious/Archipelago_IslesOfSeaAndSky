@@ -556,7 +556,9 @@ snakesanity_table = {
 
 "Snakeblock [Stone D2]": AdvData(680013264144, "Stony Cliffs"),
 "Snakeblock [Stone E1 - W]": AdvData(6800141144144, "Stony Cliffs"),
-"Snakeblock [Stone E1 - E]": AdvData(6830141176112, "Stony Cliffs Post-Rune"), # t quest, t rune
+"Snakeblock [Stone C1]": AdvData(6810121176128, "Stony Cliffs"), # topaz Quest
+"Snakeblock [Stone D1]": AdvData(6800131144144, "Stony Cliffs"), # topaz Quest
+"Snakeblock [Stone E1 - E]": AdvData(6830141176112, "Stony Cliffs Post-Rune"), # t quest
 "Snakeblock [Stone E0]": AdvData(681014064112, "Stony Cliffs Post-Rune"),
 "Snakeblock [Stone B1 - W]": AdvData(681011124064, "Stony Cliffs Post-Rune"),
 "Snakeblock [Stone B0]": AdvData(6860110256112, "Stony Cliffs Post-Rune"),
@@ -594,8 +596,6 @@ snakesanity_table = {
 "Snakeblock [Stone Dungeon C1]": AdvData(6830221208112, "Stony Cliffs Post-Rune"), # t quest, #g gloves
 
 "Snakeblock [Rolling B0]": AdvData(6830810256176, "Rolling Rocks"),
-"Snakeblock [Stone C1]": AdvData(6810121176128, "Rolling Rocks"), # topaz Quest
-"Snakeblock [Stone D1]": AdvData(6800131144144, "Rolling Rocks"), # topaz Quest
 
 "Snakeblock [Aggro B1 - E]": AdvData(681101130496, "Aggro Crag"), # 35 stars
 "Snakeblock [Aggro B1 - W]": AdvData(686101116160, "Aggro Crag"), # 35 stars, R quest, A rune
