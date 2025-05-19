@@ -102,6 +102,13 @@ non_key_items = {
 }
 
 junk_weights = {
-    "Seashell":                    1
+    "Seashell":                     10,
+    "Ancient Key":                  5,
+    "Star Piece":                   3,
+    "Obsidian":                     1,
+    "Topaz":                        2,
+    "Sapphire":                     2,
+    "Ruby":                         2,
+    "Diamond":                      2,
 }
 

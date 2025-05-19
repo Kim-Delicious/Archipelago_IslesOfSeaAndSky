@@ -75,7 +75,6 @@ Isles Of Sea And Sky:
     'false': 0
 
   enable_snakesanity:
-    # NOT CURRENTLY IMPLEMENTED!
     # Turn all snake blocks  in the game into game checks.
     # (Snake block = Green directional block with an arrowhead on top)
 
@@ -97,6 +96,15 @@ Isles Of Sea And Sky:
     # as long as they have picked the Phoenix Flute up.
     'true': 50
     'false': 0
+
+  mercy_filler:
+    # Allows Ancient Keys, and Star Pieces to be added in place of some filler items.
+    # The higher this number is, the larger the ration of Ancient keys and Star Pieces: to Seashells.
+    # If 0 is selected, then only Seashells will be filler.
+    1: 50
+    random: 0
+    random-low: 0
+    random-high: 0
 
   # Item & Location Options
   local_items:

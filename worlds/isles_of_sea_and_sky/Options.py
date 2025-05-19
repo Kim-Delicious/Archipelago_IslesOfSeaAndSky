@@ -42,13 +42,23 @@ class PhoenixAnywhere(Toggle):
     display_name = "Summon Phoenix Anywhere"
     default = 0
 
+class MercyFiller(Range):
+    """Allows Ancient Keys, and Star Pieces to be added in place of some filler items.
+    The higher this number is, the larger the ration of Ancient keys and Star Pieces: to Seashells.
+    If 0 is selected, then only Seashells will be filler."""
+    display_name = "Mercy Filler"
+    default = 1
+    range_start = 0
+    range_end = 5
+
 
 @dataclass
 class IslesOfSeaAndSkyOptions(PerGameCommonOptions):
-    route_required:                             RouteRequired # not implemented
+    route_required:                             RouteRequired
     enable_locksanity:                          EnableLocksanity
-    enable_snakesanity:                         EnableSnakesanity # not implemented
+    enable_snakesanity:                         EnableSnakesanity
     include_seashells:                          IncludeSeashells
     include_jellyfish:                          IncludeJellyfish
     phoenix_anywhere:                           PhoenixAnywhere
+    mercy_filler:                               MercyFiller
 

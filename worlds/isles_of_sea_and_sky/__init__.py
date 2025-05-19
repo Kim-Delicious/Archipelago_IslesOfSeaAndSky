@@ -1,4 +1,5 @@
 import warnings
+from random import choice
 
 from .Items import IslesOfSeaAndSkyItem, item_table, non_key_items, key_items, \
     junk_weights, progression_items
@@ -85,6 +86,7 @@ class IslesOfSeaAndSkyWorld(World):
             "include_seashells": bool(self.options.include_seashells.value),
             "include_jellyfish": bool(self.options.include_jellyfish.value),
             "phoenix_anywhere": bool(self.options.phoenix_anywhere.value),
+            "mercy_filler": bool(self.options.mercy_filler.value),
 
         }
 
@@ -133,24 +135,17 @@ class IslesOfSeaAndSkyWorld(World):
 
         missing_items = len(self.multiworld.get_unfilled_locations(self.player)) - len(itempool)
         print("Creating " + str(missing_items) + " Filler Items")
-        # Hacky way to add in filler
+
+        weight_list = []
         for name, num in junk_weights.items():
-            itempool += [name] * missing_items
+            if name != "Seashell":
+                num *= self.options.mercy_filler.value
+            weight_list += [name] * num
 
-
-
-        #starting_key = self.options.starting_area.current_key.title() + " Key"
-        #itempool.remove(starting_key)
-        #self.multiworld.push_precollected(self.create_item(starting_key))
-
-        # Choose locations to automatically exclude based on settings
-        #exclusion_pool = set()
-        #exclusion_pool.update(exclusion_table)
-
-        # Choose locations to automatically exclude based on settings
-        #exclusion_checks = set()
-        #exclusion_checks.update(["Normal Ending Reached"])
-        #exclusion_rules(self.multiworld, self.player, exclusion_checks)
+        while missing_items > 0:
+            rand_item = choice(weight_list)
+            itempool += [rand_item]
+            missing_items = len(self.multiworld.get_unfilled_locations(self.player)) - len(itempool)
 
         # Convert itempool into real items
         itempool = [item for item in map(lambda name: self.create_item(name), itempool)]
