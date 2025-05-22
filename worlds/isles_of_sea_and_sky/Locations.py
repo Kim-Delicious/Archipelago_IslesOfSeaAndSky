@@ -75,7 +75,7 @@ advancement_table = {
 
     "Ancient Key [Stone B1]":                       AdvData(10901111, "Stony Cliffs Post-Rune"), #
     "Ancient Key [Stone C0]":                       AdvData(10901201, "Stony Cliffs"), #topaz quest
-    "Ancient Key [Stone B2 ]":                      AdvData(10901121, "Stony Cliffs"),
+    "Ancient Key [Stone B2]":                      AdvData(10901121, "Stony Cliffs"),
     "Ancient Key [Stone E2]":                       AdvData(10901421, "Stony Cliffs Post-Rune"),  # topaz rune
     "Ancient Key [Stone B4]":                       AdvData(10901141, "Stony Cliffs Post-Rune"), #topaz quest, topaz rune
     "Ancient Key [StoneDungeon C1]":                AdvData(10902211, "Stony Cliffs Post-Rune"), #topaz rune, gopher gloves
@@ -146,7 +146,7 @@ advancement_table = {
     "Topaz [Stone D2]":                             AdvData(78401321, "Stony Cliffs"),
     "Topaz [Stone C2 - E]":                         AdvData(78401222, "Stony Cliffs"),
     "Topaz [Stone C0]":                             AdvData(78401201, "Stony Cliffs Post-Rune"),
-    "Topaz [Stone C3 - N ]":                        AdvData(78401232, "Stony Cliffs"),
+    "Topaz [Stone C3 - N]":                         AdvData(78401232, "Stony Cliffs"),
     "Topaz [Stone C3 - S]":                         AdvData(78401231, "Stony Cliffs"),
     "Topaz [Stone C2 - W]":                         AdvData(78401221, "Stony Cliffs Post-Rune"),
     "Topaz [Stone B0]":                             AdvData(78401101, "Stony Cliffs Post-Rune"),
