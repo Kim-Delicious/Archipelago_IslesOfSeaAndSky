@@ -12,8 +12,11 @@ isles_of_sea_and_sky_regions = [
     ("Menu",                        ["New Game"]),
 
     ("Ancient Isle",                ["Ancient East Exit", "Ancient West Exit", "Ancient North Exit"]),
-    ("Stony Cliffs",                ["Stony East Exit", "Stony West Exit"]),
-    ("Stony Cliffs Post-Rune",      ["Stony Post-Rune East Exit", "Stony Post-Rune West Exit", "Stony Phoenix"]),
+
+    ("Stony Cliffs",                ["Stony Exit To Post-Rune", "Stony West Exit", "Stony East Exit"]),
+    ("Stony Cliffs Post-Rune",      ["Stony Post-Rune Exit"]),
+    ("Stony Cliffs NW",             ["Stony NW East Exit", "Stony NW West Exit", "Stony Phoenix"]),
+
     ("Tidal Reef",                  ["Tidal Exit", "Tidal Exit To Post-Rune"]),
     ("Tidal Reef Post-Rune",        ["Tidal Exit From Post-Rune", "Tidal Phoenix"]),
     ("Raging Volcano",              ["Raging Exit", "Raging Exit To Post-Rune","Raging Phoenix"]),
@@ -57,11 +60,15 @@ mandatory_connections = [
     ("Ancient East Exit",               "Topaz Sea"),
     ("Ancient West Exit",               "Obsidian Sea"),
     ("Ancient North Exit",              "Sanctum"),
+
     ("Stony East Exit",                 "Topaz Sea"),
-    ("Stony West Exit",                 "Stony Cliffs Post-Rune"),
-    ("Stony Post-Rune East Exit",       "Stony Cliffs"),
-    ("Stony Post-Rune West Exit",       "Sapphire Sea"),
+    ("Stony West Exit",                 "Stony Cliffs NW"),
+    ("Stony Exit To Post-Rune",         "Stony Cliffs Post-Rune"),
+    ("Stony Post-Rune Exit",            "Stony Cliffs"),
+    ("Stony NW West Exit",              "Sapphire Sea"),
+    ("Stony NW East Exit",              "Stony Cliffs"),
     ("Stony Phoenix",                   "Phoenix Hub"),
+
     ("Tidal Exit",                      "Sapphire Sea"),
     ("Tidal Exit To Post-Rune",         "Tidal Reef Post-Rune"),
     ("Tidal Exit From Post-Rune",       "Tidal Reef"),
@@ -82,7 +89,7 @@ mandatory_connections = [
     ("Ancient East Entrance",           "Ancient Isle"),
     ("Ancient West Entrance",           "Ancient Isle"),
     ("Stony East Entrance",             "Stony Cliffs"),
-    ("Stony West Entrance",             "Stony Cliffs Post-Rune"),
+    ("Stony West Entrance",             "Stony Cliffs NW"),
     ("Tidal Entrance",                  "Tidal Reef"),
     ("Raging Entrance",                 "Raging Volcano"),
     ("Frozen Entrance",                 "Frozen Spire"),
@@ -104,7 +111,7 @@ mandatory_connections = [
     ("Beast Bridge Phoenix",            "Phoenix Hub"),
 
     ("Lost Phoenix Entrance",           "Lost Landing"),
-    ("Stony Phoenix Entrance",          "Stony Cliffs"),
+    ("Stony Phoenix Entrance",          "Stony Cliffs NW"),
     ("Tidal Phoenix Entrance",          "Tidal Reef"),
     ("Raging Phoenix Entrance",         "Raging Volcano"),
     ("Frozen Phoenix Entrance",         "Frozen Spire Post-Rune"),

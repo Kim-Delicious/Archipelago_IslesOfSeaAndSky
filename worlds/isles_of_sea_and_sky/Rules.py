@@ -55,13 +55,17 @@ def set_rules(world: "IslesOfSeaAndSkyWorld"):
     set_rule(multiworld.get_entrance("Diamond Sea West Entrance", player),
                  lambda state: state.has("Star Piece", player, 3))  # Diamond Sea
 
+    set_rule(multiworld.get_entrance("Stony Exit To Post-Rune", player),
+             lambda state: state.has("Topaz Rune Stone", player))  # Stony Cliffs Post-Rune
     set_rule(multiworld.get_entrance("Stony West Exit", player),
-             lambda state: state.has("Topaz Rune Stone", player ) )  # Stony Cliffs Post-Rune
-    set_rule(multiworld.get_entrance("Stony Post-Rune East Exit", player),
+             lambda state: state.has("Topaz Rune Stone", player ) )  # Stony Cliffs NW
+    set_rule(multiworld.get_entrance("Stony NW East Exit", player),
              lambda state: state.has("Topaz Rune Stone", player) )  # Stony Cliffs
-    set_rule(multiworld.get_entrance("Stony Post-Rune West Exit", player),
-             lambda state: (state.has("Topaz Rune Stone", player) or state.has("Phoenix Flute", player))
-                           and state.has("Star Piece", player, 5) ) # Sapphire Sea
+    set_rule(multiworld.get_entrance("Stony NW West Exit", player),
+             lambda state: state.has("Star Piece", player, 5) ) # Sapphire Sea
+
+    set_rule(multiworld.get_entrance("Stony West Entrance", player),
+             lambda state: state.has("Star Piece", player, 5))  # Stony NW
 
 
 
@@ -116,7 +120,7 @@ def set_rules(world: "IslesOfSeaAndSkyWorld"):
     set_rule(multiworld.get_entrance("Beast Bridge Phoenix", player),
              lambda state: state.has("Phoenix Flute", player) )  # Phoenix Hub
     set_rule(multiworld.get_entrance("Stony Phoenix", player),
-             lambda state: state.has("Phoenix Flute", player) and state.has("Topaz Rune Stone", player))  # Phoenix Hub
+             lambda state: state.has("Phoenix Flute", player))  # Phoenix Hub
     set_rule(multiworld.get_entrance("Tidal Phoenix", player),
              lambda state: state.has("Phoenix Flute", player) and state.has("Sapphire Rune Stone", player))  # Phoenix Hub
     set_rule(multiworld.get_entrance("Raging Phoenix", player),
@@ -161,9 +165,11 @@ def set_rules(world: "IslesOfSeaAndSkyWorld"):
 
     # Legendary Item Locations
     set_rule(multiworld.get_location("Gopher Gloves", player),
-             lambda state: state.can_reach("Stony Cliffs Post-Rune", "Region", player)
+             lambda state: (state.can_reach("Stony Cliffs Post-Rune", "Region", player)
                            and state.has("Topaz Rune Stone", player)
                            and state.has("Topaz Quest Complete", player))
+                           or (state.can_reach("Stony Cliffs NW", "Region", player)
+                           and state.has("Gopher Gloves", player) ) )
 
     set_rule(multiworld.get_location("Frog Flippers", player),
              lambda state: state.can_reach("Tidal Reef", "Region", player)
@@ -331,7 +337,8 @@ def set_rolling_rocks(world):
 
     set_rule(multiworld.get_location("Topaz [Rolling A0]", player),
              lambda state: state.has("Star Piece", player, 7)
-             and state.has("Topaz Quest Complete", player))
+             and (state.has("Topaz Quest Complete", player)
+            or state.has("Frog Flippers", player)) )
 
     set_rule(multiworld.get_location("Obsidian [Rolling A1]", player),
              lambda state: state.has("Star Piece", player, 7)
@@ -373,7 +380,6 @@ def set_rolling_rocks(world):
         set_rule(multiworld.get_location("Snakeblock [Rolling B0]", player),
                  lambda state: state.has("Ancient Rune Stone", player))
 
-
 def set_sunken_island(world):
     player = world.player
     multiworld = world.multiworld
@@ -390,16 +396,17 @@ def set_sunken_island(world):
                            and state.has("Sapphire Quest Complete", player))
 
     set_rule(multiworld.get_location("Star Piece [Sunken A1]", player),
-             lambda state: state.has("Ancient Rune Stone", player) )
+             lambda state: state.has("Ancient Key", player, 34)
+                               and state.has("Ancient Rune Stone", player) )
 
     set_rule(multiworld.get_location("Obsidian [Sunken A0]", player),
-             lambda state: state.has("Ancient Rune Stone", player)
-                           and state.has("Frog Flippers", player))
+             lambda state: state.has("Frog Flippers", player))
 
     # Locksanity
     if world.options.enable_locksanity.value:
         set_rule(multiworld.get_location("3x Lock [Sunken A1]", player),
-                 lambda state: state.has("Ancient Key", player, 34))
+                 lambda state: state.has("Ancient Key", player, 34)
+                               and state.has("Ancient Rune Stone", player))
 
         set_rule(multiworld.get_location("Star Lock 21 [Sunken B0]", player),
                  lambda state: state.has("Star Piece", player, 21))
@@ -453,6 +460,9 @@ def set_aggro_crag(world):
                                and state.has("Ruby Quest Complete", player)
                                and state.has("Ancient Rune Stone", player))
 
+        set_rule(multiworld.get_location("Ancient Rune Lock [Aggro A1]", player),
+                 lambda state: state.has("Ancient Rune Stone", player))
+
         set_rule(multiworld.get_location("Obsidian [Aggro B0]", player),
                  lambda state: state.has("Ancient Rune Stone", player)
                                and state.has("Star Piece", player, 35)
@@ -472,7 +482,8 @@ def set_aggro_crag(world):
         set_rule(multiworld.get_location("Snakeblock [Aggro B0 - W]", player),
                  lambda state: state.has("Star Piece", player, 35)
                                and state.has("Ruby Quest Complete", player)
-                               and state.has("Ancient Rune Stone", player))
+                               and state.has("Ancient Rune Stone", player)
+                               and state.has("Salamander Shirt", player))
 
 def set_sea_nunatak(world):
     player = world.player
@@ -589,31 +600,32 @@ def set_star_tropic(world):
                            and state.has("Salamander Shirt", player)
                            and state.has("Kite Cloak", player))
 
-    set_rule(multiworld.get_location("Star Piece [Topic A1 - 1]", player),
+    set_rule(multiworld.get_location("Star Piece [Tropic A1 - 1]", player),
              lambda state: state.has("Ancient Rune Stone", player)
                            and state.has("Gopher Gloves", player))
 
-    set_rule(multiworld.get_location("Star Piece [Topic A1 - 2]", player),
+    set_rule(multiworld.get_location("Star Piece [Tropic A1 - 2]", player),
              lambda state: state.has("Ancient Rune Stone", player)
                            and state.has("Gopher Gloves", player)
                            and state.has("Salamander Shirt", player))
 
-    set_rule(multiworld.get_location("Star Piece [Topic A1 - 3]", player),
+    set_rule(multiworld.get_location("Star Piece [Tropic A1 - 3]", player),
              lambda state: state.has("Ancient Rune Stone", player)
                            and state.has("Gopher Gloves", player)
                            and state.has("Frog Flippers", player)
                            and state.has("Salamander Shirt", player))
 
-    set_rule(multiworld.get_location("Star Piece [Topic A1 - 4]", player),
+    set_rule(multiworld.get_location("Star Piece [Tropic A1 - 4]", player),
              lambda state: state.has("Ancient Rune Stone", player)
                            and state.has("Gopher Gloves", player)
                            and state.has("Frog Flippers", player)
                            and state.has("Salamander Shirt", player)
                            and state.has("Kite Cloak", player))
 
-    set_rule(multiworld.get_location("Star Piece [Tropic B0 - E]", player),
+    set_rule(multiworld.get_location("Star Piece [Tropic B0 - S]", player),
                  lambda state: state.has("Ancient Rune Stone", player)
-                               or state.can_reach("Lost Sea", "Region", player) )
+                               or (state.can_reach("Lost Sea", "Region", player)
+                                   and state.has("Kite Cloak") ))
 
     set_rule(multiworld.get_location("Star Piece [Tropic B0 - N]", player),
              lambda state: state.has("Obsidian Rune Stone", player)
@@ -805,11 +817,22 @@ def set_serpent_stacks(world):
     # Snakesanity
     if world.options.enable_snakesanity.value:
         set_rule(multiworld.get_location("Snakeblock [Serpent A1 - C]", player),
-                 lambda state: state.has("Serpent Circlet", player))
+                 lambda state: state.has("Serpent Circlet", player) and state.has("Topaz Rune Stone", player)
+                           and state.has("Sapphire Rune Stone", player)
+                           and state.has("Ruby Rune Stone", player)
+                           and state.has("Diamond Rune Stone", player))
         set_rule(multiworld.get_location("Snakeblock [Serpent A1 - CE]", player),
-                 lambda state: state.has("Serpent Circlet", player))
+                 lambda state: state.has("Serpent Circlet", player)
+                               and state.has("Topaz Rune Stone", player)
+                           and state.has("Sapphire Rune Stone", player)
+                           and state.has("Ruby Rune Stone", player)
+                           and state.has("Diamond Rune Stone", player))
         set_rule(multiworld.get_location("Snakeblock [Serpent A1 - E]", player),
-                 lambda state: state.has("Serpent Circlet", player))
+                 lambda state: state.has("Serpent Circlet", player)
+                               and state.has("Topaz Rune Stone", player)
+                           and state.has("Sapphire Rune Stone", player)
+                           and state.has("Ruby Rune Stone", player)
+                           and state.has("Diamond Rune Stone", player))
         set_rule(multiworld.get_location("Snakeblock [Serpent A6 - SW]", player),
                  lambda state: state.has("Serpent Circlet", player)
                                and state.has("Topaz Quest Complete", player)
@@ -854,7 +877,10 @@ def set_stony_cliffs(world):
                            and state.has("Star Piece", player, 15))
 
     set_rule(multiworld.get_location("Ancient Key [StoneDungeon C1]", player),
-             lambda state: state.has("Gopher Gloves", player))
+             lambda state: state.has("Gopher Gloves", player)
+                           and (state.can_reach("Stony Cliffs NW", "Region", player)
+                           or (state.can_reach("Stony Cliffs Post-Rune", "Region", player)
+                           and state.has("Topaz Rune Stone", player) ) ) )
 
     set_rule(multiworld.get_location("Ancient Key [StoneDungeon D0]", player),
              lambda state: state.has("Gopher Gloves", player))
@@ -870,22 +896,22 @@ def set_stony_cliffs(world):
              lambda state: state.has("Topaz Quest Complete", player))
 
     set_rule(multiworld.get_location("Ancient Key [Stone A2]", player),
-             lambda state: state.has("Blue Stone Tablet", player) and state.has("Gold Stone Tablet", player))
+             lambda state: state.has("Blue Stone Tablet", player)
+                           and state.has("Gold Stone Tablet", player))
 
     set_rule(multiworld.get_location("Ancient Key [StoneDungeon D2]", player),
              lambda state: state.has("Topaz Quest Complete", player))
 
-    set_rule(multiworld.get_location("Topaz [Stone B2]", player),
-             lambda state: state.has("Topaz Quest Complete", player))
-
-    set_rule(multiworld.get_location("Topaz [Stone B2]", player),
-             lambda state: state.has("Topaz Quest Complete", player))
 
     set_rule(multiworld.get_location("Topaz [StoneDungeon C1]", player),
-             lambda state: state.has("Gopher Gloves", player))
+             lambda state: state.has("Gopher Gloves", player)
+                           and (state.can_reach("Stony Cliffs NW", "Region", player)
+                           or (state.can_reach("Stony Cliffs Post-Rune", "Region", player)
+                           and state.has("Topaz Rune Stone", player) ) ) )
 
     set_rule(multiworld.get_location("Obsidian [Stone A2]", player),
-             lambda state: state.has("Blue Stone Tablet", player) and state.has("Gold Stone Tablet", player))
+             lambda state: state.has("Blue Stone Tablet", player)
+                           and state.has("Gold Stone Tablet", player))
 
     set_rule(multiworld.get_location("Star Piece [Stone C1]", player),
              lambda state: state.has("Topaz Quest Complete", player))
@@ -922,7 +948,9 @@ def set_stony_cliffs(world):
 
     set_rule(multiworld.get_location("Star Piece [StoneDungeon C1]", player),
              lambda state: state.has("Gopher Gloves", player)
-                           and (state.has("Topaz Quest Complete", player) or state.has("Phoenix Flute", player) ) )
+                           and (state.can_reach("Stony Cliffs NW", "Region", player)
+                           or (state.can_reach("Stony Cliffs Post-Rune", "Region", player)
+                           and state.has("Topaz Rune Stone", player) ) ) )
 
     set_rule(multiworld.get_location("Star Piece [StoneDungeon B1]", player),
              lambda state: state.has("Gopher Gloves", player))
@@ -976,6 +1004,8 @@ def set_stony_cliffs(world):
                  lambda state: state.has("Topaz Quest Complete", player))
         set_rule(multiworld.get_location("Snakeblock [Stone Dungeon C3]", player),
                  lambda state: state.has("Topaz Quest Complete", player))
+        set_rule(multiworld.get_location("Snakeblock [Stone Dungeon B2 - E]", player),
+                 lambda state: state.has("Topaz Quest Complete", player))
         set_rule(multiworld.get_location("Snakeblock [Stone Dungeon D2 - E]", player),
                  lambda state: state.has("Topaz Quest Complete", player))
         set_rule(multiworld.get_location("Snakeblock [Stone Dungeon D2 - CE]", player),
@@ -993,9 +1023,12 @@ def set_stony_cliffs(world):
         set_rule(multiworld.get_location("Snakeblock [Stone Dungeon E2]", player),
                  lambda state: state.has("Topaz Quest Complete", player))
 
+
         set_rule(multiworld.get_location("Snakeblock [Stone Dungeon C1]", player),
-                 lambda state: state.has("Topaz Quest Complete", player)
-                               and state.has("Gopher Gloves", player) )
+                 lambda state: state.has("Gopher Gloves", player)
+                           and (state.can_reach("Stony Cliffs NW", "Region", player)
+                           or (state.can_reach("Stony Cliffs Post-Rune", "Region", player)
+                           and state.has("Topaz Rune Stone", player) ) ) )
 
         set_rule(multiworld.get_location("Snakeblock [Stone B4]", player),
                  lambda state: state.has("Star Piece", player, 15)
@@ -1169,6 +1202,10 @@ def set_raging_volcano(world):
 
     set_rule(multiworld.get_location("Ancient Key [Fire A1 - NE]", player),
              lambda state: state.has("Salamander Shirt", player))
+    set_rule(multiworld.get_location("Ancient Key [Fire A1 - E]", player),
+             lambda state: state.has("Salamander Shirt", player))
+    set_rule(multiworld.get_location("Ancient Key [Fire A1 - S]", player),
+             lambda state: state.has("Salamander Shirt", player))
 
     set_rule(multiworld.get_location("Ancient Key [Fire B1 - N1]", player),
              lambda state: state.has("Ruby Quest Complete", player) and state.has("Salamander Shirt", player))
@@ -1208,13 +1245,16 @@ def set_raging_volcano(world):
              lambda state: state.has("Ruby Quest Complete", player))
 
     set_rule(multiworld.get_location("Star Piece [Fire D3 - S]", player),
-             lambda state: state.has("Ruby Quest Complete", player))
+             lambda state: state.has("Ruby Quest Complete", player) and state.has("Salamander Shirt", player))
 
     set_rule(multiworld.get_location("Star Piece [Fire D3 - W]", player),
-             lambda state: state.has("Ruby Quest Complete", player))
+             lambda state: state.has("Ruby Quest Complete", player) and state.has("Salamander Shirt", player))
+
+    set_rule(multiworld.get_location("Star Piece [Fire E3]", player),
+             lambda state: state.has("Salamander Shirt", player))
 
     set_rule(multiworld.get_location("Star Piece [Fire D4]", player),
-             lambda state: state.has("Frog Flippers", player))
+             lambda state: state.has("Frog Flippers", player) and state.has("Salamander Shirt", player))
 
     set_rule(multiworld.get_location("Star Piece [Fire E1 - E]", player),
              lambda state: state.has("Ruby Quest Complete", player) and state.has("Salamander Shirt", player) )
@@ -1224,6 +1264,9 @@ def set_raging_volcano(world):
 
     set_rule(multiworld.get_location("Star Piece [Fire E0]", player),
              lambda state: state.has("Salamander Shirt", player) )
+
+    set_rule(multiworld.get_location("Star Piece [Fire B0]", player),
+             lambda state: state.has("Salamander Shirt", player))
 
     set_rule(multiworld.get_location("Fire Music Note [D3]", player),
              lambda state: state.has("Salamander Shirt", player))
@@ -1242,9 +1285,6 @@ def set_raging_volcano(world):
 
         set_rule(multiworld.get_location("3x Lock (Fire) [Fire E0]", player),
                  lambda state: state.has("Fire Key", player, 3))
-
-        set_rule(multiworld.get_location("Ruby Rune Lock [Fire A1 - E]", player),
-                 lambda state: state.has("Salamander Shirt", player))
 
         set_rule(multiworld.get_location("Ruby Rune Lock [Fire A1 - E]", player),
                  lambda state: state.has("Salamander Shirt", player))
@@ -1279,6 +1319,10 @@ def set_raging_volcano(world):
         set_rule(multiworld.get_location("Snakeblock [Fire E4 - W]", player),
                  lambda state: state.has("Salamander Shirt", player))
         set_rule(multiworld.get_location("Snakeblock [Fire D3 - W]", player),
+                 lambda state: state.has("Salamander Shirt", player))
+        set_rule(multiworld.get_location("Snakeblock [Fire D2 - SE]", player),
+                 lambda state: state.has("Salamander Shirt", player))
+        set_rule(multiworld.get_location("Snakeblock [Fire A1 - E]", player),
                  lambda state: state.has("Salamander Shirt", player))
 
         set_rule(multiworld.get_location("Snakeblock [Fire D3 - E]", player),
@@ -1345,7 +1389,8 @@ def set_frozen_spire(world):
              lambda state: state.has("Kite Cloak", player))
 
     set_rule(multiworld.get_location("Star Piece [Wind E1]", player),
-             lambda state: state.has("Kite Cloak", player) and state.has("Gopher Gloves", player))
+             lambda state: state.has("Kite Cloak", player)
+                           and state.has("Gopher Gloves", player))
 
     set_rule(multiworld.get_location("Star Piece [Wind A0]", player),
              lambda state: state.has("Kite Cloak", player))
@@ -1394,7 +1439,8 @@ def set_frozen_spire(world):
                  lambda state: state.has("Kite Cloak", player))
 
         set_rule(multiworld.get_location("Snakeblock [Wind E1]", player),
-                 lambda state: state.has("Gopher Gloves", player))
+                 lambda state: state.has("Gopher Gloves", player)
+                               and state.has("Kite Cloak", player))
 
 def set_sanctum(world):
     player = world.player
@@ -1512,7 +1558,18 @@ def set_completion_rules(world: "IslesOfSeaAndSkyWorld"):
     # Secret Ending
     elif _isles_of_sea_and_sky_is_route(world, 1):
         multiworld.completion_condition[player] = lambda state: (state.can_reach("Sanctum Peak", "Region", player)
-                                                                 and state.has("Star Piece", player, 91))
+                                                                 and state.has("Ancient Rune Stone", player)
+                                                                 and state.has("Topaz Rune Stone", player)
+                                                                 and state.has("Sapphire Rune Stone", player)
+                                                                 and state.has("Ruby Rune Stone", player)
+                                                                 and state.has("Diamond Rune Stone", player)
+                                                                 and state.has("Obsidian Rune Stone", player)
+                                                                 and state.has("Gopher Gloves", player)
+                                                                 and state.has("Frog Flippers", player)
+                                                                 and state.has("Salamander Shirt", player)
+                                                                 and state.has("Kite Cloak", player)
+                                                                 and state.has("Serpent Circlet", player)
+                                                                 and state.has("Phoenix Flute", player))
     # All Gems
     elif _isles_of_sea_and_sky_is_route(world, 2):
         multiworld.completion_condition[player] = lambda state: (state.has("Topaz", player, 12)
