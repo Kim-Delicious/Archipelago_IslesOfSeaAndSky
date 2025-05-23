@@ -625,7 +625,7 @@ def set_star_tropic(world):
     set_rule(multiworld.get_location("Star Piece [Tropic B0 - S]", player),
                  lambda state: state.has("Ancient Rune Stone", player)
                                or (state.can_reach("Lost Sea", "Region", player)
-                                   and state.has("Kite Cloak") ))
+                                   and state.has("Kite Cloak", player) ))
 
     set_rule(multiworld.get_location("Star Piece [Tropic B0 - N]", player),
              lambda state: state.has("Obsidian Rune Stone", player)
@@ -1265,7 +1265,7 @@ def set_raging_volcano(world):
     set_rule(multiworld.get_location("Star Piece [Fire E0]", player),
              lambda state: state.has("Salamander Shirt", player) )
 
-    set_rule(multiworld.get_location("Star Piece [Fire B0]", player),
+    set_rule(multiworld.get_location("Fire Music Note [B0]", player),
              lambda state: state.has("Salamander Shirt", player))
 
     set_rule(multiworld.get_location("Fire Music Note [D3]", player),
