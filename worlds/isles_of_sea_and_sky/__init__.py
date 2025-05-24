@@ -168,6 +168,7 @@ class IslesOfSeaAndSkyWorld(World):
         from Utils import visualize_regions
         state = self.multiworld.get_all_state(False)
         state.update_reachable_regions(self.player)
+        state.allow_partial_entrances = True
         visualize_regions(self.get_region("Menu"), "my_world.puml", show_entrance_names=True,
                           regions_to_highlight=state.reachable_regions[self.player])'''
 

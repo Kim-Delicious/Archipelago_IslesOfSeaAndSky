@@ -19,8 +19,11 @@ isles_of_sea_and_sky_regions = [
 
     ("Tidal Reef",                  ["Tidal Exit", "Tidal Exit To Post-Rune"]),
     ("Tidal Reef Post-Rune",        ["Tidal Exit From Post-Rune", "Tidal Phoenix"]),
-    ("Raging Volcano",              ["Raging Exit", "Raging Exit To Post-Rune","Raging Phoenix"]),
+
+    ("Raging Volcano",              ["Raging Exit", "Raging Exit To Post-Rune", "Raging Exit To NE"]),
+    ("Raging Volcano NE",           ["Raging NE Exit", "Raging Phoenix"]),
     ("Raging Volcano Post-Rune",    ["Raging Exit From Post-Rune"]),
+
     ("Frozen Spire",                ["Frozen Exit", "Frozen Exit To Post-Rune"]),
     ("Frozen Spire Post-Rune",      ["Frozen Exit From Post-Rune", "Frozen Phoenix"]),
     ("Serpent Stacks",              ["Serpent Exit", "Serpent Exit To Post-Rune"]),
@@ -73,10 +76,14 @@ mandatory_connections = [
     ("Tidal Exit To Post-Rune",         "Tidal Reef Post-Rune"),
     ("Tidal Exit From Post-Rune",       "Tidal Reef"),
     ("Tidal Phoenix",                   "Phoenix Hub"),
+
     ("Raging Exit",                     "Ruby Sea"),
     ("Raging Exit To Post-Rune",        "Raging Volcano Post-Rune"),
     ("Raging Exit From Post-Rune",      "Raging Volcano"),
+    ("Raging NE Exit",                  "Raging Volcano"),
+    ("Raging Exit To NE",               "Raging Volcano NE"),
     ("Raging Phoenix",                  "Phoenix Hub"),
+
     ("Frozen Exit",                     "North Diamond Sea"),
     ("Frozen Exit To Post-Rune",        "Frozen Spire Post-Rune"),
     ("Frozen Exit From Post-Rune",      "Frozen Spire"),
@@ -113,7 +120,7 @@ mandatory_connections = [
     ("Lost Phoenix Entrance",           "Lost Landing"),
     ("Stony Phoenix Entrance",          "Stony Cliffs NW"),
     ("Tidal Phoenix Entrance",          "Tidal Reef"),
-    ("Raging Phoenix Entrance",         "Raging Volcano"),
+    ("Raging Phoenix Entrance",         "Raging Volcano NE"),
     ("Frozen Phoenix Entrance",         "Frozen Spire Post-Rune"),
     ("Beast Bridge Phoenix Entrance",   "Beast Bridge"),
 

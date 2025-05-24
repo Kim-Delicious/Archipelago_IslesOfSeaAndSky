@@ -28,7 +28,7 @@ advancement_table = {
 
     "Gopher Gloves":                                AdvData(35802211, "Stony Cliffs NW"),
     "Frog Flippers":                                AdvData(34603041, "Tidal Reef Post-Rune"),
-    "Salamander Shirt":                             AdvData(62304401, "Raging Volcano Post-Rune"),
+    "Salamander Shirt":                             AdvData(62304401, "Raging Volcano NE"),
     "Kite Cloak":                                   AdvData(39905001, "Frozen Spire Post-Rune"),
     "Serpent Circlet":                              AdvData(65406011, "Serpent Stacks Post-Rune"),
 
@@ -81,9 +81,9 @@ advancement_table = {
     "Ancient Key [StoneDungeon C1]":                AdvData(10902211, "Stony Cliffs NW"), #topaz rune, gopher gloves
     "Ancient Key [StoneDungeon D0]":                AdvData(10902301, "Stony Cliffs NW"), #gopher gloves
     "Ancient Key [StoneDungeon B1]":                AdvData(10902111, "Stony Cliffs NW"), #gopher gloves
-    "Ancient Key [Stone B0 - NW1]":                 AdvData(10901103, "Stony Cliffs Post-Rune"), # topaz quest
-    "Ancient Key [Stone B0 - NW2]":                 AdvData(10901102, "Stony Cliffs Post-Rune"), # topaz quest
-    "Ancient Key [Stone B0 - NW3]":                 AdvData(10901101, "Stony Cliffs Post-Rune"), # topaz quest
+    "Ancient Key [Stone B0 - NW1]":                 AdvData(10901103, "Stony Cliffs NW"), # topaz quest
+    "Ancient Key [Stone B0 - NW2]":                 AdvData(10901102, "Stony Cliffs NW"), # topaz quest
+    "Ancient Key [Stone B0 - NW3]":                 AdvData(10901101, "Stony Cliffs NW"), # topaz quest
     "Ancient Key [StoneDungeon E2]":                AdvData(10902421, "Stony Cliffs Post-Rune"),
 
     "Ancient Key [Water C2]":                       AdvData(10903221, "Tidal Reef"),
@@ -149,7 +149,7 @@ advancement_table = {
     "Topaz [Stone C3 - N]":                         AdvData(78401232, "Stony Cliffs"),
     "Topaz [Stone C3 - S]":                         AdvData(78401231, "Stony Cliffs"),
     "Topaz [Stone C2 - W]":                         AdvData(78401221, "Stony Cliffs Post-Rune"),
-    "Topaz [Stone B0]":                             AdvData(78401101, "Stony Cliffs Post-Rune"),
+    "Topaz [Stone B0]":                             AdvData(78401101, "Stony Cliffs NW"),
     "Topaz [Stone B1]":                             AdvData(78401111, "Stony Cliffs NW"),
     "Topaz [Stone B2]":                             AdvData(78401121, "Stony Cliffs Post-Rune"), #Rq: topaz quest
     "Topaz [StoneDungeon C1]":                      AdvData(78402211, "Stony Cliffs NW"), #Rq: gopher gloves
@@ -178,11 +178,11 @@ advancement_table = {
     "Ruby [Fire A3 - S]":                           AdvData(60604033, "Raging Volcano Post-Rune"), #r rune stone
     "Ruby [Fire A3 - N]":                           AdvData(60604032, "Raging Volcano Post-Rune"),
     "Ruby [Fire A3 - NW]":                          AdvData(60604031, "Raging Volcano Post-Rune"), # r rune stone
-    "Ruby [Fire D0]":                               AdvData(60604301, "Raging Volcano Post-Rune"), # salamander shirt
+    "Ruby [Fire D0]":                               AdvData(60604301, "Raging Volcano NE"), # salamander shirt
     "Ruby [Aggro B1]":                              AdvData(60610111, "Aggro Crag"), # ruby quest, 35 stars
     "Ruby [Tropic A1]":                             AdvData(60613011, "Star Tropic"), # ancient rune stone, all legendaries - serpent circlet
 
-    "Diamond [Wind C4]":                            AdvData(28205241, "Frozen Spire"),
+    "Diamond [Wind C4]":                            AdvData(28205242, "Frozen Spire"),
     "Diamond [Wind D4]":                            AdvData(28205341, "Frozen Spire Post-Rune"),
     "Diamond [Wind B2]":                            AdvData(28205121, "Frozen Spire"),
     "Diamond [Wind D2]":                            AdvData(28205321, "Frozen Spire"),
@@ -199,7 +199,7 @@ advancement_table = {
     "Obsidian [Stone D1]":                          AdvData(46701311, "Stony Cliffs"),
     "Obsidian [Stone A2]":                          AdvData(46701021, "Stony Cliffs Post-Rune"),  # DOUBLE CHECK ID # stone tablet blue, tablet golda
     "Obsidian [Water D0]":                          AdvData(46703301, "Tidal Reef Post-Rune"),  # frog flippers
-    "Obsidian [Fire E0]":                           AdvData(46704401, "Raging Volcano Post-Rune"),  # salamander shirt
+    "Obsidian [Fire E0]":                           AdvData(46704401, "Raging Volcano NE"),  # salamander shirt
     "Obsidian [Fire D4]":                           AdvData(46704341, "Raging Volcano Post-Rune"),  # DOUBLE CHECK ID #
     "Obsidian [Wind B0]":                           AdvData(46705101, "Frozen Spire"),
     "Obsidian [Aggro B0]":                          AdvData(46710101, "Aggro Crag"),  # salamander shirt
@@ -259,9 +259,9 @@ advancement_table = {
     "Star Piece [Fire D3 - W]":                    AdvData(72804331, "Raging Volcano Post-Rune"), # r quest | double
     "Star Piece [Fire D4]":                        AdvData(72804341, "Raging Volcano Post-Rune"), # f flippers # s shirt?
     "Star Piece [Fire E3]":                        AdvData(72804431, "Raging Volcano Post-Rune"),
-    "Star Piece [Fire E1 - E]":                    AdvData(72804412, "Raging Volcano Post-Rune"), # r quest shirt
+    "Star Piece [Fire E1 - E]":                    AdvData(72804412, "Raging Volcano NE"), # r quest shirt
     "Star Piece [Fire E1 - W]":                    AdvData(72804411, "Raging Volcano Post-Rune"), # s shirt
-    "Star Piece [Fire E0]":                        AdvData(72804401, "Raging Volcano Post-Rune"), # s shirt
+    "Star Piece [Fire E0]":                        AdvData(72804401, "Raging Volcano NE"), # s shirt
 
     #locations might be broken due to in-game randomness
     "Star Piece [Wind D4]":                        AdvData(72805341, "Frozen Spire"),
@@ -326,7 +326,7 @@ advancement_table = {
     "Stone Music Note [C1]":                       AdvData(45701211, "Stony Cliffs"), #
     "Stone Music Note [D4]":                       AdvData(45701341, "Stony Cliffs Post-Rune"), # topaz rune
     "Stone Music Note [B3]":                       AdvData(45701131, "Stony Cliffs Post-Rune"), # topaz rune
-    "Stone Music Note [B0]":                       AdvData(45701101, "Stony Cliffs Post-Rune"), # topaz rune
+    "Stone Music Note [B0]":                       AdvData(45701101, "Stony Cliffs NW"), # topaz rune
     "Stone Music Note [B2]":                       AdvData(45701121, "Stony Cliffs Post-Rune"), # topaz quest
     "Stone Music Note [D1]":                       AdvData(45701311, "Stony Cliffs"), # topaz quest
 
@@ -422,7 +422,7 @@ locksanity_table = {
     "3x Lock [Water C1]":                           AdvData(43503211, "Tidal Reef"),
     "Lock [Water D3]":                              AdvData(11103331, "Tidal Reef Post-Rune"), # s rune
 
-    "3x Lock (Fire) [Fire E0]":                     AdvData(78804401, "Raging Volcano"),
+    "3x Lock (Fire) [Fire E0]":                     AdvData(78804401, "Raging Volcano NE"),
     "Lock [Fire A3]":                               AdvData(11104031, "Raging Volcano Post-Rune"),
     "Lock [Fire D2]":                               AdvData(11104321, "Raging Volcano"),
     "3x Lock [Fire D2]":                            AdvData(43504321, "Raging Volcano"),
@@ -443,7 +443,7 @@ locksanity_table = {
 
     "3x Lock [Aggro A1]":                           AdvData(43510011, "Aggro Crag"),
 
-    "3x Lock [Nunatak B1]":                         AdvData(43511001, "Sea Nunatak"),
+    "3x Lock [Nunatak A0]":                         AdvData(43511001, "Sea Nunatak"),
 
     "6x Lock [Locked B1]":                          AdvData(43412011, "Locked"),
 
@@ -561,7 +561,7 @@ snakesanity_table = {
     "Snakeblock [Stone E1 - E]": AdvData(6830141176112, "Stony Cliffs Post-Rune"), # t quest
     "Snakeblock [Stone E0]": AdvData(681014064112, "Stony Cliffs Post-Rune"),
     "Snakeblock [Stone B1 - W]": AdvData(681011124064, "Stony Cliffs NW"),
-    "Snakeblock [Stone B0]": AdvData(6860110256112, "Stony Cliffs Post-Rune"),
+    "Snakeblock [Stone B0]": AdvData(6860110256112, "Stony Cliffs NW"),
     "Snakeblock [Stone A2 - N]": AdvData(683010235248, "Stony Cliffs NW"),
     "Snakeblock [Stone A2 - S]": AdvData(686010235264, "Stony Cliffs Post-Rune"),
     "Snakeblock [Stone A3]": AdvData(6830103320192, "Stony Cliffs Post-Rune"),
@@ -713,7 +713,7 @@ snakesanity_table = {
     "Snakeblock [Wind B3 - SW]": AdvData(680051396176, "Frozen Spire"),
     "Snakeblock [Wind B3 - CE]": AdvData(681051325696, "Frozen Spire"), # k cloak
     "Snakeblock [Wind B3 - NE]": AdvData(686051325680, "Frozen Spire"), # k cloak
-    "Snakeblock [Wind A3]": AdvData(6810503112176, "Frozen Spire Post-Rune"), # D quest
+    "Snakeblock [Wind A3]": AdvData(6810503112176, "Frozen Spire"), # D quest
     "Snakeblock [Wind A2 - SW]": AdvData(6810502208192, "Frozen Spire"),
     "Snakeblock [Wind A2 - SE]": AdvData(6810502256192, "Frozen Spire"), # D quest
     "Snakeblock [Wind B2 - E]": AdvData(6800512256128, "Frozen Spire"),
