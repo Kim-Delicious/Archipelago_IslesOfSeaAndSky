@@ -160,11 +160,18 @@ class IslesOfSeaAndSkyContext(CommonContext):
     def clear_isles_of_sea_and_sky_files(self):
         path = self.save_game_folder
         self.finished_game = False
-        for root, dirs, files in os.walk(path):
+        for root, dirs, files in os.walk(path + "/AP/IN"):
             for file in files:
                 if "check.spot" == file or "scout" == file:
                     os.remove(os.path.join(root, file))
-                elif file.endswith((".item", ".victory", ".route", ".playerspot", ".mad", 
+                elif file.endswith((".items", ".victory", ".route", ".playerspot", ".mad",
+                                            ".youDied", ".LV", ".mine", ".flag", ".hint")):
+                    os.remove(os.path.join(root, file))
+        for root, dirs, files in os.walk(path + "/AP/OUT"):
+            for file in files:
+                if "check.spot" == file or "scout" == file:
+                    os.remove(os.path.join(root, file))
+                elif file.endswith((".items", ".victory", ".route", ".playerspot", ".mad",
                                             ".youDied", ".LV", ".mine", ".flag", ".hint")):
                     os.remove(os.path.join(root, file))
 
@@ -223,7 +230,7 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
         ctx.enableLocksanity =  args["slot_data"]["enable_locksanity"]
         ctx.enableSnakesanity = args["slot_data"]["enable_snakesanity"]
         ctx.reqRoute =          args["slot_data"]["route_required"]
-        ctx.phoenixAnywhere=    args["slot_data"]["phoenix_anywhere"]
+        ctx.phoenixAnywhere =   args["slot_data"]["phoenix_anywhere"]
 
         with open(os.path.join(ctx.save_game_folder, "apOptions.options"), "w") as f:
             f.write("includeSeashells: " + str(ctx.includeSeashells)    + '\n')
@@ -234,38 +241,15 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
             f.write("phoenixAnywhere: "  + str(ctx.phoenixAnywhere)     + '\n')
             f.close()
 
-        msgs = []
-        if ctx.locations_checked:
-            msgs.append({"cmd": "LocationChecks",
-                         "locations": list(ctx.locations_checked)})
-        if ctx.locations_scouted:
-            msgs.append({"cmd": "LocationScouts",
-                         "locations": list(ctx.locations_scouted)})
-        if ctx.stored_data_notification_keys:
-            msgs.append({"cmd": "Get",
-                         "keys": list(ctx.stored_data_notification_keys)})
-            msgs.append({"cmd": "SetNotify",
-                         "keys": list(ctx.stored_data_notification_keys)})
-        if msgs:
-            await ctx.send_msgs(msgs)
-        if ctx.finished_game:
-            await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
-
-        # Get the server side view of missing as of time of connecting.
-        # This list is used to only send to the server what is reported as ACTUALLY Missing.
-        # This also serves to allow an easy visual of what locations were already checked previously
-        # when /missing is used for the client side view of what is missing.
-        ctx.missing_locations = set(args["missing_locations"])
-        ctx.checked_locations = set(args["checked_locations"])
-        ctx.server_locations = ctx.missing_locations | ctx.checked_locations
-
-        #server_url = urllib.parse.urlparse(ctx.server_address)
-        #Utils.persistent_store("client", "last_server_address", server_url.netloc)
+        filename = f"sent.items"
+        with open(os.path.join(ctx.save_game_folder + "/AP/OUT", filename), "a") as f:
+            for ss in set(args["checked_locations"]):
+                f.write(str(ss) + "\n")
+            f.close()
 
 
     elif cmd == 'ReceivedItems':
         start_index = args["index"]
-
         if start_index == 0:
             ctx.items_received = []
         elif start_index != len(ctx.items_received):
@@ -275,25 +259,14 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
                                  "locations": list(ctx.locations_checked)})
             await ctx.send_msgs(sync_msg)
 
-            filename = f"received.items"
-            with open(os.path.join(ctx.save_game_folder + "/AP/IN", filename), "w") as f:
-                for i in range(len(args['items'])):
-                    item = args['items'][i]
-                    f.write(str(NetworkItem(*item).item) + "\n")
-                f.close()
-
         if start_index == len(ctx.items_received):
+            filename = f"received.items"
             for item in args['items']:
-                ctx.items_received.append(NetworkItem(*item))
-
-            # Handle very firt item acquisition
-            if len(args['items']) == 1:
-                item = args['items'][0]
-                filename = f"received.items"
                 with open(os.path.join(ctx.save_game_folder + "/AP/IN", filename), "w") as f:
                     f.write(str(NetworkItem(*item).item) + "\n")
                     f.close()
 
+                ctx.items_received.append(NetworkItem(*item))
 
         ctx.watcher_event.set()
 
@@ -302,22 +275,14 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
             ctx.locations_info[item.location] = item
         ctx.watcher_event.set()
 
-    ### ? Keeps a log of checked locations.
+    ### Sent when there is a need to update information about the present game session.
     elif cmd == "RoomUpdate":
-        if "players" in args:
-            ctx.consume_players_package(args["players"])
-        if "hint_points" in args:
-            ctx.hint_points = args['hint_points']
+        # Keeps a record of checked locations
         if "checked_locations" in args:
-            checked = set(args["checked_locations"])
-            ctx.checked_locations |= checked
-            ctx.missing_locations -= checked
-        if "permissions" in args:
-            ctx.update_permissions(args["permissions"])
-
-
-
-
+            filename = f"sent.items"
+            with open(os.path.join(ctx.save_game_folder + "/AP/OUT", filename), "a") as f:
+                for ss in set(args["checked_locations"]):
+                    f.write(str(ss) + "\n")
 
 
 async def multi_watcher(ctx: IslesOfSeaAndSkyContext):
@@ -404,9 +369,9 @@ async def game_watcher(ctx: IslesOfSeaAndSkyContext):
                             sending = sending + [(int(l.rstrip('\n')))]
 
                     finally:
-                        print(sending)
+                        #print(sending)
                         await ctx.send_msgs([{"cmd": "LocationChecks", "locations": sending}])
-                        os.remove(os.path.join(root, file))
+                        #os.remove(os.path.join(root, file))
 
 
 
