@@ -120,11 +120,10 @@ class IslesOfSeaAndSkyWorld(World):
             key_items['Ancient Key'] -= 6
             key_items['Star Piece'] -= 1
 
-        self.multiworld.local_early_items[self.player]["Topaz Rune Stone"] = 1
+        self.multiworld.early_items[self.player]["Topaz Rune Stone"] = 1
 
         # Generate item pool
         itempool = []
-        junk_pool = junk_weights.copy()
         # Add all required progression items
         for name, num in progression_items.items():
             itempool += [name] * num
