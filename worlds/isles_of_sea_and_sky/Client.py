@@ -126,6 +126,8 @@ class IslesOfSeaAndSkyContext(CommonContext):
     phoenixAnywhere = None
     startingArea = None
 
+    #temp_currentLocation = None
+
     save_game_folder = os.path.expandvars(r"%localappdata%/IslesOfSeaAndSky")
 
     def __init__(self, server_address, password):
@@ -376,7 +378,10 @@ async def game_watcher(ctx: IslesOfSeaAndSkyContext):
                             sending = sending + [(int(l.rstrip('\n')))]
 
                     finally:
-                        #print(sending)
+                        '''if (len(sending) > 0):
+                            if (sending[len(sending)-1] != ctx.temp_currentLocation):
+                                print(sending[len(sending)-1])
+                            ctx.temp_currentLocation = sending[len(sending)-1]'''
                         await ctx.send_msgs([{"cmd": "LocationChecks", "locations": sending}])
                         #os.remove(os.path.join(root, file))
 
