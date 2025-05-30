@@ -11,7 +11,7 @@ def link_isles_of_sea_and_sky_areas(world: MultiWorld, player: int):
 isles_of_sea_and_sky_regions = [
     ("Menu",                        ["New Game"]),
 
-    ("Ancient Isle",                ["Ancient East Exit", "Ancient West Exit", "Ancient North Exit"]),
+    ("Ancient Isle",                ["Ancient East Exit", "Ancient West Exit", "Ancient North Exit", "Abstract Phoenix Exit"]),
 
     ("Stony Cliffs",                ["Stony Exit To Post-Rune", "Stony West Exit", "Stony East Exit"]),
     ("Stony Cliffs Post-Rune",      ["Stony Post-Rune Exit"]),
@@ -63,6 +63,7 @@ mandatory_connections = [
     ("Ancient East Exit",               "Topaz Sea"),
     ("Ancient West Exit",               "Obsidian Sea"),
     ("Ancient North Exit",              "Sanctum"),
+    ("Abstract Phoenix Exit",           "Phoenix Hub"), # Logic linchpin for accessing things early
 
     ("Stony East Exit",                 "Topaz Sea"),
     ("Stony West Exit",                 "Stony Cliffs NW"),
@@ -149,3 +150,4 @@ mandatory_connections = [
     ("Beast Exit",                      "Beast Sea"),
     ("Lost Exit",                       "Lost Sea"),
 ]
+

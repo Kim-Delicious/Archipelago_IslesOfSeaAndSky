@@ -28,7 +28,7 @@ class EnableSnakesanity(Toggle):
 class IncludeSeashells(Toggle):
     """Enable seashells on the Tidal Reef island for extra checks"""
     display_name = "Include Seashells"
-    default = 1
+    default = 0
 
 
 class IncludeJellyfish(Toggle):
@@ -40,14 +40,14 @@ class PhoenixAnywhere(Toggle):
     """The player can summon the Phoenix in any non-overworld location by pressing: 'E',
     as long as they have picked the Phoenix Flute up."""
     display_name = "Summon Phoenix Anywhere"
-    default = 0
+    default = 1
 
 class MercyFiller(Range):
-    """Allows Ancient Keys, and Star Pieces to be added in place of some filler items.
-    The higher this number is, the larger the ration of Ancient keys and Star Pieces: to Seashells.
-    If 0 is selected, then only Seashells will be filler."""
+    """Allows Ancient Keys, Gems, and Star Pieces to be added in place of some filler items.
+    The higher this number is, the larger the ratio these are to Seashells.
+    If 0 is selected, then only Seashells will be used as filler."""
     display_name = "Mercy Filler"
-    default = 1
+    default = 0
     range_start = 0
     range_end = 5
 

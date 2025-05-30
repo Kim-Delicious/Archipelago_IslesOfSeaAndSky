@@ -71,8 +71,8 @@ Isles Of Sea And Sky:
     # Turn all locks in the game into game checks.
     # This includes big 3x locks, all Rune Stone locks, and other specialty locks
 
-    'true': 50
-    'false': 0
+    'true': 0
+    'false': 50
 
   enable_snakesanity:
     # Turn all snake blocks  in the game into game checks.
@@ -98,10 +98,10 @@ Isles Of Sea And Sky:
     'false': 0
 
   mercy_filler:
-    # Allows Ancient Keys, and Star Pieces to be added in place of some filler items.
-    # The higher this number is, the larger the ration of Ancient keys and Star Pieces: to Seashells.
-    # If 0 is selected, then only Seashells will be filler.
-    1: 50
+    # Allows Ancient Keys, Gems and Star Pieces to be added in place of some filler items.
+    # The higher this number is, the larger the ratio these are to Seashells.
+    # If 0 is selected, then only Seashells will be used as filler.
+    0: 50
     random: 0
     random-low: 0
     random-high: 0

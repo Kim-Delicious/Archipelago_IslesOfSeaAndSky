@@ -78,13 +78,13 @@ advancement_table = {
     "Ancient Key [Stone B2]":                       AdvData(109011233648, "Stony Cliffs"),
     "Ancient Key [Stone E2]":                       AdvData(10901421648, "Stony Cliffs Post-Rune"),  # topaz rune
     "Ancient Key [Stone B4]":                       AdvData(1090114272112, "Stony Cliffs Post-Rune"), #topaz quest, topaz rune
-    "Ancient Key [Stone Dungeon C1]":                AdvData(109022164176, "Stony Cliffs NW"), #topaz rune, gopher gloves
-    "Ancient Key [Stone Dungeon D0]":                AdvData(1090230176144, "Stony Cliffs NW"), #gopher gloves
-    "Ancient Key [Stone Dungeon B1]":                AdvData(1090211272128, "Stony Cliffs NW"), #gopher gloves
+    "Ancient Key [Stone Dungeon C1]":               AdvData(109022164176, "Stony Cliffs NW"), #topaz rune, gopher gloves
+    "Ancient Key [Stone Dungeon D0]":               AdvData(1090230176144, "Stony Cliffs NW"), #gopher gloves
+    "Ancient Key [Stone Dungeon B1]":               AdvData(1090211272128, "Stony Cliffs NW"), #gopher gloves
     "Ancient Key [Stone B0 - NW1]":                 AdvData(10901103296, "Stony Cliffs NW"), # topaz quest
     "Ancient Key [Stone B0 - NW2]":                 AdvData(10901103280, "Stony Cliffs NW"), # topaz quest
     "Ancient Key [Stone B0 - NW3]":                 AdvData(10901103264, "Stony Cliffs NW"), # topaz quest
-    "Ancient Key [Stone Dungeon E2]":                AdvData(109024212848, "Stony Cliffs Post-Rune"),
+    "Ancient Key [Stone Dungeon E2]":               AdvData(109024212848, "Stony Cliffs Post-Rune"),
 
     "Ancient Key [Water C2]":                       AdvData(1090322336144, "Tidal Reef"),
     "Ancient Key [Water C3 - W]":                   AdvData(10903234896, "Tidal Reef Post-Rune"), # s rune
@@ -122,7 +122,7 @@ advancement_table = {
     "Ancient Key [Wind D4 - NW2]":                  AdvData(10905346464, "Frozen Spire"), # d quest
     "Ancient Key [Wind D4 - NW3]":                  AdvData(10905348064, "Frozen Spire"), # d quest
     "Ancient Key [Wind D3]":                        AdvData(1090533240112, "Frozen Spire Post-Rune"), # k cloak
-    "Ancient Key [Wind A3]":                       AdvData(1090503208112, "Frozen Spire Post-Rune"), # k cloak
+    "Ancient Key [Wind A3]":                        AdvData(1090503208112, "Frozen Spire Post-Rune"), # k cloak
     "Ancient Key [Wind C2]":                        AdvData(109052211280, "Frozen Spire"), # d quest
     "Ancient Key [Wind B1]":                        AdvData(109051125648, "Frozen Spire Post-Rune"), # double check req
     "Ancient Key [Wind E2 - NE]":                   AdvData(109054235248, "Frozen Spire Post-Rune"), # d quest
@@ -139,7 +139,7 @@ advancement_table = {
     "Ancient Key [Nunatak B1]":                     AdvData(109111112896, "Sea Nunatak"),
     "Ancient Key [Nunatak A1]":                     AdvData(109110130480, "Sea Nunatak"), # ancient rune
 
-    "Ancient Key [Stone Dungeon D2]":                AdvData(109023232176, "Stony Cliffs Post-Rune"), # t quest
+    "Ancient Key [Stone Dungeon D2]":               AdvData(109023232176, "Stony Cliffs Post-Rune"), # t quest
     "Ancient Key [Stone A2]":                       AdvData(1090102144144, "Stony Cliffs Post-Rune"), # blue & gold tablet
     #73 keys
 
@@ -152,7 +152,7 @@ advancement_table = {
     "Topaz [Stone B0]":                             AdvData(7840110240160, "Stony Cliffs NW"),
     "Topaz [Stone B1]":                             AdvData(784011116192, "Stony Cliffs NW"),
     "Topaz [Stone B2]":                             AdvData(7840112192192, "Stony Cliffs Post-Rune"), #Rq: topaz quest
-    "Topaz [Stone Dungeon C1]":                      AdvData(7840221240192, "Stony Cliffs NW"), #Rq: gopher gloves
+    "Topaz [Stone Dungeon C1]":                     AdvData(7840221240192, "Stony Cliffs NW"), #Rq: gopher gloves
     "Topaz [Rolling A0]":                           AdvData(784080035280, "Rolling Rocks"), #Rq: topaz quest, 7 stars
     "Topaz [Tropic A1]":                            AdvData(784130119280, "Star Tropic"), #Rq: ancient rune stone, all legenedaries - serpent circlet,
 
@@ -225,11 +225,11 @@ advancement_table = {
     "Star Piece [Stone C4]":                       AdvData(728012432128, "Stony Cliffs Post-Rune"), # g gloves t quest
     "Star Piece [Stone E4]":                       AdvData(72801443248, "Stony Cliffs Post-Rune"),
     "Star Piece [Stone C0]":                       AdvData(728012016192, "Stony Cliffs"), # t quest
-    "Star Piece [Stone Dungeon E1]":                AdvData(728024114480, "Stony Cliffs Post-Rune"), # t quest
-    "Star Piece [Stone Dungeon E2]":                AdvData(7280242192144, "Stony Cliffs Post-Rune"), # g gloves, f flippers
-    "Star Piece [Stone Dungeon C3]":                AdvData(728022312848, "Stony Cliffs Post-Rune"), # t quest
-    "Star Piece [Stone Dungeon C1]":                AdvData(72802218096, "Stony Cliffs NW"), # g gloves
-    "Star Piece [Stone Dungeon B1]":                AdvData(728021164192, "Stony Cliffs NW"), # g gloves
+    "Star Piece [Stone Dungeon E1]":               AdvData(728024114480, "Stony Cliffs Post-Rune"), # t quest
+    "Star Piece [Stone Dungeon E2]":               AdvData(7280242192144, "Stony Cliffs Post-Rune"), # g gloves, f flippers
+    "Star Piece [Stone Dungeon C3]":               AdvData(728022312848, "Stony Cliffs Post-Rune"), # t quest
+    "Star Piece [Stone Dungeon C1]":               AdvData(72802218096, "Stony Cliffs NW"), # g gloves
+    "Star Piece [Stone Dungeon B1]":               AdvData(728021164192, "Stony Cliffs NW"), # g gloves
     "Star Piece [Stone A1]":                       AdvData(728010180192, "Stony Cliffs NW"), # 5 stars
 
     "Star Piece [Water C1 - E]":                   AdvData(7280321192112, "Tidal Reef"),
@@ -300,10 +300,10 @@ advancement_table = {
     "Star Piece [Tropic A0]":                      AdvData(7281300304176, "Star Tropic"), #
     "Star Piece [Tropic B0 - S]":                  AdvData(728131080128, "Star Tropic"), # a rune
     "Star Piece [Tropic B0 - N]":                  AdvData(728131014464, "Star Tropic"), # o rune, s shirt
-    "Star Piece [Tropic A1 - 1]":                   AdvData(728130112848, "Star Tropic"), # g gloves
-    "Star Piece [Tropic A1 - 2]":                   AdvData(728130114480, "Star Tropic"), # g gloves, s shirt,
-    "Star Piece [Tropic A1 - 3]":                   AdvData(728130116048, "Star Tropic"), # g gloves, s shirt, f flippers
-    "Star Piece [Tropic A1 - 4]":                   AdvData(728130117680, "Star Tropic"), # g gloves, s shirt, f flippers, k cloak
+    "Star Piece [Tropic A1 - 1]":                  AdvData(728130112848, "Star Tropic"), # g gloves
+    "Star Piece [Tropic A1 - 2]":                  AdvData(728130114480, "Star Tropic"), # g gloves, s shirt,
+    "Star Piece [Tropic A1 - 3]":                  AdvData(728130116048, "Star Tropic"), # g gloves, s shirt, f flippers
+    "Star Piece [Tropic A1 - 4]":                  AdvData(728130117680, "Star Tropic"), # g gloves, s shirt, f flippers, k cloak
 
     "Star Piece [Serpent A3]":                     AdvData(728060327280, "Serpent Stacks"), # k cloak
     "Star Piece [Serpent A2]":                     AdvData(728060230464, "Serpent Stacks"), # k cloak, s circlet
@@ -402,7 +402,7 @@ jellyfish_table = {
     "Jellyfish 7":                                 AdvData(3952011848176, "Beast Sea"),
     "Jellyfish 8":                                 AdvData(39520111040192, "Beast Sea"),
     "Jellyfish 9":                                 AdvData(3952011528496, "Lost Sea"),
-    "Jellyfish 10":                                AdvData(3952011976112, "Northwest Sea"),
+    "Jellyfish 10":                                AdvData(3952011976112, "Northeast Sea"),
 
 }
 

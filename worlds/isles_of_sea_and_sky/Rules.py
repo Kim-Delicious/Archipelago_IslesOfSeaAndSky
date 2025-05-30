@@ -116,10 +116,11 @@ def set_rules(world: "IslesOfSeaAndSkyWorld"):
              lambda state: (state.has("Ancient Rune Stone", player)))  # Shoal
 
     set_rule(multiworld.get_entrance("Locked Entrance", player),
-             lambda state: (state.can_reach("Ruby Sea", "Region", player)))  # Shoal
+             lambda state: (state.can_reach("Ruby Sea", "Region", player)))  # Attempt to make ancient rune stone reachable
 
-
-    
+    set_rule(multiworld.get_entrance("Abstract Phoenix Exit", player),
+             lambda state: state.has("Phoenix Flute", player)
+                           and world.options.phoenix_anywhere.value)  # Phoenix Hub
     set_rule(multiworld.get_entrance("Beast Bridge Phoenix", player),
              lambda state: state.has("Phoenix Flute", player) )  # Phoenix Hub
     set_rule(multiworld.get_entrance("Stony Phoenix", player),
@@ -252,7 +253,8 @@ def set_ancient_isle(world):
              and state.has("Ancient Key", player, 17) ) # Makes this 'unreachable'
 
     set_rule(multiworld.get_location("Ancient Key [Ancient A2 - NW]", player),
-             lambda state: state.has("Topaz Quest Complete", player))
+             lambda state: state.has("Topaz Quest Complete", player)
+             )#and state.can_reach("Topaz Sea", "Region", player))
 
     set_rule(multiworld.get_location("Ancient Key [Ancient A1]", player),
              lambda state: state.has("Ancient Key", player))
@@ -988,7 +990,7 @@ def set_stony_cliffs(world):
         set_rule(multiworld.get_location("Star Lock 20 [Stone E3]", player),
                  lambda state: state.has("Star Piece", player, 20))
 
-        set_rule(multiworld.get_location("Star Lock 20 [Stone Dungeon A2]", player),
+        set_rule(multiworld.get_location("Star Lock 20 [Stone Dungeon A1]", player),
                  lambda state: state.has("Star Piece", player, 20)
                                and state.has("Gopher Gloves", player))
 
@@ -1090,8 +1092,7 @@ def set_tidal_reef(world):
              lambda state: state.has("Sapphire Quest Complete", player))
 
     set_rule(multiworld.get_location("Star Piece [Water C2]", player),
-             lambda state: state.has("Sapphire Quest Complete", player)
-             or (state.has("Frog Flippers", player) and state.has("Sapphire Quest Complete", player) ) )
+             lambda state: state.has("Frog Flippers", player) and state.has("Sapphire Quest Complete", player)  )
 
     set_rule(multiworld.get_location("Star Piece [Water D2]", player),
              lambda state: state.has("Frog Flippers", player)

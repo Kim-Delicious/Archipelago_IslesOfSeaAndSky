@@ -120,7 +120,7 @@ class IslesOfSeaAndSkyWorld(World):
             key_items['Ancient Key'] -= 6
             key_items['Star Piece'] -= 1
 
-        self.multiworld.early_items[self.player]["Topaz Rune Stone"] = 1
+        #self.multiworld.early_items[self.player]["Topaz Rune Stone"] = 1
 
         # Generate item pool
         itempool = []
@@ -149,21 +149,13 @@ class IslesOfSeaAndSkyWorld(World):
         # Convert itempool into real items
         itempool = [item for item in map(lambda name: self.create_item(name), itempool)]
 
-
-        # Fill remaining items with randomly generated junk
-        #while len(itempool) < len(self.multiworld.get_unfilled_locations(self.player)):
-            #itempool.append(self.create_filler())
-
-        #self.local_itempool.extend(
-         #   self.create_item(self.get_filler_item_name()) for _ in range(num_required_extra_items))
-
         self.multiworld.itempool += itempool
 
     def set_rules(self):
         set_rules(self)
         set_completion_rules(self)
 
-        '''# for creating visuals, should be disabled for unittests
+        ''''# for creating visuals, should be disabled for unittests
         from Utils import visualize_regions
         state = self.multiworld.get_all_state(False)
         state.update_reachable_regions(self.player)
@@ -203,10 +195,9 @@ class IslesOfSeaAndSkyWorld(World):
                                   if loc_data.region == region_name]
 
 
-
-
             for exit in exits:
                 ret.exits.append(Entrance(self.player, exit, ret))
+
             return ret
 
         self.multiworld.regions += [IslesOfSeaAndSkyRegion(*r) for r in isles_of_sea_and_sky_regions]
