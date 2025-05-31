@@ -53,7 +53,7 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
             f.write("enableLocksanity: 0" + "\n")
             f.write("enableSnakesanity: 0" + "\n")
             f.write("reqRoute: Normal Ending" + "\n")
-            f.write("phoenixAnywhwere: 0" + "\n")
+            f.write("phoenixAnywhere: 0" + "\n")
 
 
     @mark_raw
@@ -126,7 +126,7 @@ class IslesOfSeaAndSkyContext(CommonContext):
     phoenixAnywhere = None
     startingArea = None
 
-    #temp_currentLocation = None
+    temp_currentLocation = None
 
     save_game_folder = os.path.expandvars(r"%localappdata%/IslesOfSeaAndSky")
 
@@ -378,10 +378,10 @@ async def game_watcher(ctx: IslesOfSeaAndSkyContext):
                             sending = sending + [(int(l.rstrip('\n')))]
 
                     finally:
-                        '''if (len(sending) > 0):
+                        if (len(sending) > 0):
                             if (sending[len(sending)-1] != ctx.temp_currentLocation):
                                 print(sending[len(sending)-1])
-                            ctx.temp_currentLocation = sending[len(sending)-1]'''
+                            ctx.temp_currentLocation = sending[len(sending)-1]
                         await ctx.send_msgs([{"cmd": "LocationChecks", "locations": sending}])
                         #os.remove(os.path.join(root, file))
 

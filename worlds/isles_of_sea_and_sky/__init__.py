@@ -7,12 +7,10 @@ from .Locations import IslesOfSeaAndSkyAdvancement, advancement_table, exclusion
     jellyfish_table, seashell_table, locksanity_table, snakesanity_table
 from .Regions import isles_of_sea_and_sky_regions, link_isles_of_sea_and_sky_areas
 from .Rules import set_rules, set_completion_rules
-from worlds.generic.Rules import exclusion_rules
+#from worlds.generic.Rules import exclusion_rules
 from BaseClasses import Region, Entrance, Tutorial, Item
 from .Options import IslesOfSeaAndSkyOptions
 from worlds.AutoWorld import World, WebWorld
-from worlds.LauncherComponents import Component, components
-from multiprocessing import Process
 import worlds.LauncherComponents as LauncherComponents
 
 
@@ -54,7 +52,7 @@ class IslesOfSeaAndSkyWeb(WebWorld):
 
 class IslesOfSeaAndSkyWorld(World):
     """
-    Isles Of Sea And Sky is a sokobon-style puzzle game with metroidvania elements.
+    Isles Of Sea And Sky is a sokoban-style puzzle game with metroidvania elements.
     As the player collects items, and equipment they can explore islands to collect as many goodies as they can,
     until they reach the Sanctum, and learn just what all these Stars are for.
     """
@@ -93,7 +91,7 @@ class IslesOfSeaAndSkyWorld(World):
     def get_filler_item_name(self):
 
         junk_pool = junk_weights
-
+        return self.random.choices(list(junk_pool.keys()), weights=list(junk_pool.values()))[0]
 
     def create_items(self):
 
@@ -147,7 +145,7 @@ class IslesOfSeaAndSkyWorld(World):
             missing_items = len(self.multiworld.get_unfilled_locations(self.player)) - len(itempool)
 
         # Convert itempool into real items
-        itempool = [item for item in map(lambda name: self.create_item(name), itempool)]
+        itempool = [item for item in map(lambda item_name: self.create_item(item_name), itempool)]
 
         self.multiworld.itempool += itempool
 
@@ -164,7 +162,9 @@ class IslesOfSeaAndSkyWorld(World):
                           regions_to_highlight=state.reachable_regions[self.player])'''
 
     def create_regions(self):
-        def IslesOfSeaAndSkyRegion(region_name: str, exits=[]):
+        def IslesOfSeaAndSkyRegion(region_name: str, exits=None):
+            if exits is None:
+                exits = []
             ret = Region(region_name, self.player, self.multiworld)
 
             # Normal locations
@@ -195,8 +195,8 @@ class IslesOfSeaAndSkyWorld(World):
                                   if loc_data.region == region_name]
 
 
-            for exit in exits:
-                ret.exits.append(Entrance(self.player, exit, ret))
+            for region_exit in exits:
+                ret.exits.append(Entrance(self.player, region_exit, ret))
 
             return ret
 

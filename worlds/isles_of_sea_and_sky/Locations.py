@@ -44,10 +44,10 @@ advancement_table = {
     "Fire Key [Fire A0]":                                AdvData(332040024064, "Raging Volcano Post-Rune"),
     "Fire Key [Fire E4]":                                AdvData(332044424048, "Raging Volcano Post-Rune"),
 
-    #"Egg 1]":         AdvData(991024, "Frozen Spire"), #Broken due to in-game randomness
-    #"Egg 2]":         AdvData(991025, "Frozen Spire"), #Broken due to in-game randomness
-    #"Egg 3]":         AdvData(991026, "Frozen Spire"), #Broken due to in-game randomness
-   # "Wind Key]":      AdvData(83505440 || 83505040 || 83505400, "Frozen Spire"), #Broken due to in-game randomness
+    #"Egg [1]":         AdvData(991024, "Frozen Spire"), #Broken due to in-game randomness
+    #"Egg [2]":         AdvData(991025, "Frozen Spire"), #Broken due to in-game randomness
+    #"Egg [3]":         AdvData(991026, "Frozen Spire"), #Broken due to in-game randomness
+   # "Wind Key[]":      AdvData(83505440 || 83505040 || 83505400, "Frozen Spire"), #Broken due to in-game randomness
 
     "Rolling Bell Rung":                            AdvData(99908101, "Rolling Rocks"),
     "Sunken Bell Rung":                             AdvData(99909111, "Sunken Island"),
@@ -154,7 +154,7 @@ advancement_table = {
     "Topaz [Stone B2]":                             AdvData(7840112192192, "Stony Cliffs Post-Rune"), #Rq: topaz quest
     "Topaz [Stone Dungeon C1]":                     AdvData(7840221240192, "Stony Cliffs NW"), #Rq: gopher gloves
     "Topaz [Rolling A0]":                           AdvData(784080035280, "Rolling Rocks"), #Rq: topaz quest, 7 stars
-    "Topaz [Tropic A1]":                            AdvData(784130119280, "Star Tropic"), #Rq: ancient rune stone, all legenedaries - serpent circlet,
+    "Topaz [Tropic A1]":                            AdvData(784130119280, "Star Tropic"), #Rq: ancient rune stone, all legendaries - serpent circlet,
 
     "Sapphire [Water C2 - W]":                      AdvData(63503224896, "Tidal Reef"),
     "Sapphire [Water B2 - S]":                      AdvData(6350312144176, "Tidal Reef"),
@@ -165,9 +165,9 @@ advancement_table = {
     "Sapphire [Water D1]":                          AdvData(6350331288176, "Tidal Reef Post-Rune"), #s rune stone
     "Sapphire [Water D3]":                          AdvData(635033328848, "Tidal Reef Post-Rune"), #s rune stone
     "Sapphire [Water C2 - N]":                      AdvData(635032212848, "Tidal Reef"),  # sapphire quest
-    "Sapphire [Water A1]":                          AdvData(6350301304144, "Tidal Reef Post-Rune"), #frog flippers
+    "Sapphire [Water A1]":                          AdvData(6350301304144, "Tidal Reef"), #frog flippers
     "Sapphire [Sunken B0]":                         AdvData(635091027296, "Sunken Island"), #sapphire quest, 21 stars
-    "Sapphire [Tropic A1]":                         AdvData(635130120880, "Star Tropic"), # ancient rune stone, all legenedaries exept serpent circlet
+    "Sapphire [Tropic A1]":                         AdvData(635130120880, "Star Tropic"), # ancient rune stone, all legendaries except serpent circlet
 
     "Ruby [Fire B2]":                               AdvData(6060412336144, "Raging Volcano"),
     "Ruby [Fire C2]":                               AdvData(60604228064, "Raging Volcano"),
@@ -245,15 +245,15 @@ advancement_table = {
     "Star Piece [Water A0]":                       AdvData(728030032048, "Tidal Reef Post-Rune"), # s rune
     "Star Piece [Water A2 - N]":                   AdvData(728030212848, "Tidal Reef Post-Rune"), # f flippers s quest || k cloak
     "Star Piece [Water A2 - S]":                   AdvData(7280302208192, "Tidal Reef Post-Rune"), # f flippers
-    "Star Piece [Water A4]":                       AdvData(7280304336128, "Tidal Reef Post-Rune"), # f flippers
-    "Star Piece [Water B4]":                       AdvData(7280314352128, "Tidal Reef Post-Rune"),
+    "Star Piece [Water A4]":                       AdvData(7280304336128, "Tidal Reef"), # f flippers
+    "Star Piece [Water B4]":                       AdvData(7280314352128, "Tidal Reef"),
 
     "Star Piece [Fire B4]":                        AdvData(728041432080, "Raging Volcano Post-Rune"), # r quest
     "Star Piece [Fire B3]":                        AdvData(7280413352176, "Raging Volcano Post-Rune"),
     "Star Piece [Fire C3]":                        AdvData(7280423240112, "Raging Volcano Post-Rune"),
     "Star Piece [Fire C1]":                        AdvData(728042148160, "Raging Volcano"),
     "Star Piece [Fire C0]":                        AdvData(7280420336112, "Raging Volcano"),
-    "Star Piece [Fire D1 - S]":                    AdvData(728043116144, "Raging Volcano Post-Rune"), # r quest
+    "Star Piece [Fire D1 - S]":                    AdvData(728043116144, "Raging Volcano"), # r quest
     "Star Piece [Fire D1 - N]":                    AdvData(72804311680, "Raging Volcano Post-Rune"), # r rune
     "Star Piece [Fire D3 - S]":                    AdvData(7280433208192, "Raging Volcano Post-Rune"), # r quest | double check
     "Star Piece [Fire D3 - W]":                    AdvData(728043380112, "Raging Volcano Post-Rune"), # r quest | double
@@ -265,8 +265,8 @@ advancement_table = {
 
     #locations might be broken due to in-game randomness
     "Star Piece [Wind D4]":                        AdvData(728053430464, "Frozen Spire"),
-    "Star Piece [Wind C3 - W]":                    AdvData(728052332176, "Frozen Spire Post-Rune"), # d rune
-    "Star Piece [Wind C3 - NE]":                   AdvData(728052327248, "Frozen Spire Post-Rune"), # d rune
+    "Star Piece [Wind C3 - W]":                    AdvData(728052332176, "Frozen Spire"), # d rune
+    "Star Piece [Wind C3 - NE]":                   AdvData(728052327248, "Frozen Spire"), # d rune
     "Star Piece [Wind B3]":                        AdvData(7280513304112, "Frozen Spire Post-Rune"), # k cloak
     "Star Piece [Wind A3]":                        AdvData(7280503160192, "Frozen Spire Post-Rune"), # k cloak
     "Star Piece [Wind B2 - N]":                    AdvData(728051227248, "Frozen Spire Post-Rune"), # k cloak?
@@ -353,7 +353,7 @@ advancement_table = {
 
 
 
-    # In the future, could include milestones as locations. e.g. each of the steam achievments, plus extras.
+    # In the future, could include milestones as locations. e.g. each of the steam achievements, plus extras.
 }
 
 seashell_table = {
@@ -366,12 +366,12 @@ seashell_table = {
     "Shell [Water C1]":                            AdvData(6360321240176, "Tidal Reef"),
     "Shell [Water C2]":                            AdvData(636032224048, "Tidal Reef"),
     "Shell [Water D2]":                            AdvData(636033216048, "Tidal Reef Post-Rune"), # s rune
-    "Shell [Water A1]":                            AdvData(636030164192, "Tidal Reef Post-Rune"), # s rune
+    "Shell [Water A1]":                            AdvData(636030164192, "Tidal Reef"), # s rune
     "Shell [Water A0]":                            AdvData(6360300352112, "Tidal Reef Post-Rune"), # s rune
-    "Shell [Water A3]":                            AdvData(636030364112, "Tidal Reef Post-Rune"), # s rune
-    "Shell [Water B3]":                            AdvData(636031380192, "Tidal Reef Post-Rune"), # s rune
-    "Shell [Water B4]":                            AdvData(6360314192192, "Tidal Reef Post-Rune"), # s rune
-    "Shell [Water C4]":                            AdvData(636032464160, "Tidal Reef Post-Rune"), # s rune
+    "Shell [Water A3]":                            AdvData(636030364112, "Tidal Reef"), # s rune
+    "Shell [Water B3]":                            AdvData(636031380192, "Tidal Reef"), # s rune
+    "Shell [Water B4]":                            AdvData(6360314192192, "Tidal Reef"), # s rune
+    "Shell [Water C4]":                            AdvData(636032464160, "Tidal Reef"), # s rune
     "Shell [Water C3]":                            AdvData(6360323352144, "Tidal Reef Post-Rune"), # s rune
     "Shell [Water D4]":                            AdvData(6360334352176, "Tidal Reef Post-Rune"), # s rune
     "Shell [Water E4]":                            AdvData(636034412848, "Tidal Reef Post-Rune"), # s rune
@@ -379,8 +379,8 @@ seashell_table = {
     "Shell [Water E1]":                            AdvData(636034116192, "Tidal Reef Post-Rune"), # s rune
     "Shell [Water E0]":                            AdvData(6360340256112, "Tidal Reef Post-Rune"), # s rune
     "Shell [Water D3]":                            AdvData(6360333128112, "Tidal Reef Post-Rune"), # s rune
-    "Shell [Water A4]":                            AdvData(6360304240176, "Tidal Reef Post-Rune"),  # f flippers
-    "Shell [Water D1]":                            AdvData(636033111248, "Tidal Reef Post-Rune"),  # f flippers
+    "Shell [Water A4]":                            AdvData(6360304240176, "Tidal Reef"),  # f flippers
+    "Shell [Water D1]":                            AdvData(636033111248, "Tidal Reef"),  # f flippers
     "Shell [Water D0]":                            AdvData(6360330304112, "Tidal Reef Post-Rune"),  # f flippers
     "Shell [Water A2]":                            AdvData(636030264176, "Tidal Reef Post-Rune"),  # f flippers
 
@@ -654,7 +654,7 @@ snakesanity_table = {
     "Snakeblock [Water A0 - S]": AdvData(6860300256144, "Tidal Reef Post-Rune"), # f flippers
     "Snakeblock [Water A2]": AdvData(686030222496, "Tidal Reef Post-Rune"), # f flippers, s quest, 30 stars
     "Snakeblock [Water A3]": AdvData(683030316064, "Tidal Reef Post-Rune"), # f flippers, s quest, 30 stars
-    "Snakeblock [Water B4]": AdvData(681031430496, "Tidal Reef Post-Rune"),
+    "Snakeblock [Water B4]": AdvData(681031430496, "Tidal Reef"),
     "Snakeblock [Water B0]": AdvData(683031016112, "Tidal Reef Post-Rune"),
 
     "Snakeblock [Fire B2 - W]": AdvData(681041296128, "Raging Volcano"),

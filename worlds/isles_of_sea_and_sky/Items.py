@@ -10,7 +10,7 @@ class ItemData(typing.NamedTuple):
 class IslesOfSeaAndSkyItem(Item):
     game: str = "IslesOfSeaAndSky"
 
-# Item Id is set to in-game Object Index
+# Item ID is set to in-game Object Index
 item_table = {
     "Ancient Key":              ItemData(109,     IC.progression_skip_balancing),
     "Topaz":                    ItemData(784,     IC.progression_skip_balancing),
