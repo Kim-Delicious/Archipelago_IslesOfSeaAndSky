@@ -7,6 +7,7 @@ import bsdiff4
 import shutil
 
 import Utils
+from random import choice
 
 from NetUtils import NetworkItem, ClientStatus
 from worlds import isles_of_sea_and_sky
@@ -14,7 +15,6 @@ from MultiServer import mark_raw
 from CommonClient import CommonContext, server_loop, \
     gui_enabled, ClientCommandProcessor, logger, get_base_parser
 from Utils import async_start
-
 
 """
 
@@ -78,20 +78,53 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
                             " command. \"/auto_patch (Steam directory)\".")
             else:
                 for file_name in os.listdir(tempInstall):
-                    if file_name != "steam_api.dll":
+                    if file_name != "steam_api64.dll" and file_name != "Steamworks_x64.dll":
                         shutil.copy(os.path.join(tempInstall, file_name),
                                Utils.user_path("IslesOfSeaAndSky", file_name))
-                #self.ctx.patch_game()
-                #self.output("Patching successful!")
+                self.ctx.patch_game()
+                self.output("Patching successful!")
                 self.output("New IslesOfSeaAndSky install is now located in Archipelago Directory.")
-                self.output("NOTE: Patching must be done manually with DelaPatcher.")
-                self.output("NOTE: Options must be saved manually in %LocalAppData%/IslesOfSeaAndSky, in apoptions.apoptions.")
 
 
+    def _cmd_randomize_rooms(self):
+        """Picks an alternate version for a room, and patches the game to apply it. Repeat for all available patches. Expect the Client To Stall"""
+
+        if isinstance(self.ctx, IslesOfSeaAndSkyContext):
+            self.ctx.patch_alt_rooms(self)
+
+    @mark_raw
+    def _cmd_create_patch(self, patch_name: str = "new_patch", steaminstall: typing.Optional[str] = None):
+        """Should not EVER be used by normal players. Used by Creators to make Mods. Expect the Client to hang for several minutes before a patch is made."""
+        tempInstall = steaminstall
+        if tempInstall is not None and not os.path.isfile(os.path.join(tempInstall, "data.win")):
+            tempInstall = None
+        if tempInstall is None:
+            tempInstall = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\IslesOfSeaAndSky"
+            if not os.path.exists(tempInstall):
+                tempInstall = "C:\\Program Files\\Steam\\steamapps\\common\\IslesOfSeaAndSky"
+        elif not os.path.exists(tempInstall):
+            tempInstall = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\IslesOfSeaAndSky"
+            if not os.path.exists(tempInstall):
+                tempInstall = "C:\\Program Files\\Steam\\steamapps\\common\\IslesOfSeaAndSky"
+        if not os.path.exists(tempInstall) or not os.path.exists(tempInstall) or not os.path.isfile(
+                os.path.join(tempInstall, "data.win")):
+            self.output("ERROR: Cannot find IslesOfSeaAndSky. Please rerun the command with the correct folder."
+                        " command. \"/auto_patch (Steam directory)\".")
+        else:
+            world_path =  os.path.dirname(__file__)
+
+            try:
+                    bsdiff4.file_diff(os.path.join(tempInstall, "data.win"),
+                                      Utils.user_path("IslesOfSeaAndSky", "data.win"),
+                                      os.path.join(world_path + "/data", patch_name+".bsdiff"))
+                    self.output("Successfully Created A Patch!")
+
+            except Exception as e:
+                self.output("Failed to create patch")
+                self.output(str(e))
 
 
-
-    def _cmd_online(self):
+    '''def _cmd_online(self):
         """Toggles seeing other IslesOfSeaAndSky players."""
         if isinstance(self.ctx, IslesOfSeaAndSkyContext):
             self.ctx.update_online_mode(not ("Online" in self.ctx.tags))
@@ -107,7 +140,7 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
             if self.ctx.deathlink_status:
                 self.output(f"Deathlink enabled.")
             else:
-                self.output(f"Deathlink disabled.")
+                self.output(f"Deathlink disabled.")'''
 
 
 
@@ -124,9 +157,9 @@ class IslesOfSeaAndSkyContext(CommonContext):
     enableSnakesanity = None
     reqRoute = None
     phoenixAnywhere = None
-    startingArea = None
+    #startingArea = None
 
-    temp_currentLocation = None
+    #temp_currentLocation = None
 
     save_game_folder = os.path.expandvars(r"%localappdata%/IslesOfSeaAndSky")
 
@@ -143,15 +176,59 @@ class IslesOfSeaAndSkyContext(CommonContext):
 
     def patch_game(self):
         with open(Utils.user_path("IslesOfSeaAndSky", "data.win"), "rb") as f:
-            patchedFile = bsdiff4.patch(f.read(), isles_of_sea_and_sky.data_path("patch.bsdiff"))
+
+            patchedFile = bsdiff4.patch(f.read(), isles_of_sea_and_sky.data_path("patch.bsdiff") )
         with open(Utils.user_path("IslesOfSeaAndSky", "data.win"), "wb") as f:
             f.write(patchedFile)
-        os.makedirs(name=Utils.user_path("IslesOfSeaAndSky", "Custom Sprites"), exist_ok=True)
+        ### Future Feature
+        '''os.makedirs(name=Utils.user_path("IslesOfSeaAndSky", "Custom Sprites"), exist_ok=True)
         with open(os.path.expandvars(Utils.user_path("IslesOfSeaAndSky", "Custom Sprites",
                                      "Which Character.txt")), "w") as f:
             f.writelines(["// Put the folder name of the sprites you want to play as, make sure it is the only "
                           "line other than this one.\n", "original"])
-            f.close()
+            f.close()'''
+
+
+    def patch_alt_rooms(self, command_proccessor):
+
+        world_path = os.path.dirname(__file__)
+
+        all_alt_rooms = []
+
+        # Islands
+        for island in os.listdir(world_path + "/data/Alt Rooms"):
+            # Rooms
+            #print("Island - " +  str(island))
+            island_path = world_path + "/data/Alt Rooms/" + str(island)
+            for room in os.listdir(island_path ):
+                #print("____Room - " +  str(room))
+                # Variations to choose from
+                room_options = []
+                room_path = island_path + "/" + str(room)
+                for root, dirs, files in os.walk(str(room_path)):
+                    for file in files:
+                        if file.endswith(".bsdiff"):
+                            #print("_________Variation - " + str(file))
+                            room_options.append(str(room_path) + "/" + file)
+
+                if len(room_options) > 0:
+                    alt_choice = choice(room_options)
+                    all_alt_rooms.append(alt_choice)
+
+        for patch_path in all_alt_rooms:
+            try:
+                with open(Utils.user_path("IslesOfSeaAndSky", "data.win"), "rb") as f:
+                    patchedFile = bsdiff4.patch(f.read(), isles_of_sea_and_sky.read_data(patch_path))
+                with open(Utils.user_path("IslesOfSeaAndSky", "data.win"), "wb") as f:
+                    f.write(patchedFile)
+
+                command_proccessor.output(f"Applied Room Patch: {patch_path}")
+
+            except Exception as e:
+                command_proccessor.output(f"Exception: {e} in patch: {patch_path} \n")
+
+        all_alt_rooms.clear()
+
 
     async def server_auth(self, password_requested: bool = False):
         if password_requested and not self.password:
@@ -233,6 +310,8 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
         ctx.enableSnakesanity = args["slot_data"]["enable_snakesanity"]
         ctx.reqRoute =          args["slot_data"]["route_required"]
         ctx.phoenixAnywhere =   args["slot_data"]["phoenix_anywhere"]
+
+        ctx.randomizeAltRooms = args["slot_data"]["phoenix_anywhere"]
 
         with open(os.path.join(ctx.save_game_folder, "apOptions.options"), "w") as f:
             f.write("includeSeashells: " + str(ctx.includeSeashells)    + '\n')
@@ -378,10 +457,10 @@ async def game_watcher(ctx: IslesOfSeaAndSkyContext):
                             sending = sending + [(int(l.rstrip('\n')))]
 
                     finally:
-                        if (len(sending) > 0):
+                        '''if (len(sending) > 0):
                             if (sending[len(sending)-1] != ctx.temp_currentLocation):
                                 print(sending[len(sending)-1])
-                            ctx.temp_currentLocation = sending[len(sending)-1]
+                            ctx.temp_currentLocation = sending[len(sending)-1]'''
                         await ctx.send_msgs([{"cmd": "LocationChecks", "locations": sending}])
                         #os.remove(os.path.join(root, file))
 

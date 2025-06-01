@@ -1,3 +1,4 @@
+import os.path
 import warnings
 from random import choice
 
@@ -37,6 +38,9 @@ def data_path(file_name: str):
     import pkgutil
     return pkgutil.get_data(__name__, "data/" + file_name)
 
+def read_data(file_path: str):
+    import pkgutil
+    return pkgutil.get_data(__name__, file_path)
 
 class IslesOfSeaAndSkyWeb(WebWorld):
     tutorials = [Tutorial(
@@ -84,7 +88,7 @@ class IslesOfSeaAndSkyWorld(World):
             "include_seashells": bool(self.options.include_seashells.value),
             "include_jellyfish": bool(self.options.include_jellyfish.value),
             "phoenix_anywhere": bool(self.options.phoenix_anywhere.value),
-            "mercy_filler": bool(self.options.mercy_filler.value),
+            "mercy_filler": int(self.options.mercy_filler.value),
 
         }
 
