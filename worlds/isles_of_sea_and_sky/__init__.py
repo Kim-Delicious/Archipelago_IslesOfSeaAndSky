@@ -5,7 +5,7 @@ from random import choice
 from .Items import IslesOfSeaAndSkyItem, item_table, non_key_items, key_items, \
     junk_weights, progression_items
 from .Locations import IslesOfSeaAndSkyAdvancement, advancement_table, exclusion_table, \
-    jellyfish_table, seashell_table, locksanity_table, snakesanity_table
+    jellyfish_table, seashell_table, locksanity_table, snakesanity_table, secrets_table
 from .Regions import isles_of_sea_and_sky_regions, link_isles_of_sea_and_sky_areas
 from .Rules import set_rules, set_completion_rules
 #from worlds.generic.Rules import exclusion_rules
@@ -67,11 +67,14 @@ class IslesOfSeaAndSkyWorld(World):
 
     item_name_to_id = {name: data.code for name, data in item_table.items()}
 
-    location_name_to_id = ({name: data.id for name, data in advancement_table.items()} |
-                           {name: data.id for name, data in jellyfish_table.items()} |
-                           {name: data.id for name, data in seashell_table.items()} |
-                           {name: data.id for name, data in locksanity_table.items()} |
-                           {name: data.id for name, data in snakesanity_table.items()})
+    location_name_to_id = (
+            {name: data.id for name, data in advancement_table.items()} |
+            {name: data.id for name, data in jellyfish_table.items()} |
+            {name: data.id for name, data in seashell_table.items()} |
+            {name: data.id for name, data in locksanity_table.items()} |
+            {name: data.id for name, data in snakesanity_table.items()}|
+            {name: data.id for name, data in secrets_table.items()}
+    )
 
 
     def _get_isles_of_sea_and_sky_data(self):
@@ -88,7 +91,8 @@ class IslesOfSeaAndSkyWorld(World):
             "include_seashells": bool(self.options.include_seashells.value),
             "include_jellyfish": bool(self.options.include_jellyfish.value),
             "phoenix_anywhere": bool(self.options.phoenix_anywhere.value),
-            "mercy_filler": int(self.options.mercy_filler.value),
+            "filler_composition": self.options.filler_composition.current_key,
+            "secretsanity": bool(self.options.secretsanity.value),  # unimplemented
 
         }
 
@@ -135,12 +139,19 @@ class IslesOfSeaAndSkyWorld(World):
             itempool += [name] * num
 
         missing_items = len(self.multiworld.get_unfilled_locations(self.player)) - len(itempool)
-        print("Creating " + str(missing_items) + " Filler Items")
+        print("Creating " + str(missing_items) + " Filler Items for " +str(self.game) )
 
         weight_list = []
         for name, num in junk_weights.items():
-            if name != "Seashell":
-                num *= self.options.mercy_filler.value
+            match self.options.filler_composition.current_key:
+                case "extra_goodies":
+                    pass
+                case "only_goodies":
+                    if name == "Seashell":
+                        continue
+                case _: # default
+                    weight_list += ["Seashell"]
+                    break
             weight_list += [name] * num
 
         while missing_items > 0:
@@ -196,6 +207,12 @@ class IslesOfSeaAndSkyWorld(World):
             if self.options.include_jellyfish:
                 ret.locations += [IslesOfSeaAndSkyAdvancement(self.player, loc_name, loc_data.id, ret)
                                   for loc_name, loc_data in jellyfish_table.items()
+                                  if loc_data.region == region_name]
+
+            # Secretsanity Locations
+            if self.options.secretsanity:
+                ret.locations += [IslesOfSeaAndSkyAdvancement(self.player, loc_name, loc_data.id, ret)
+                                  for loc_name, loc_data in secrets_table.items()
                                   if loc_data.region == region_name]
 
 

@@ -57,6 +57,23 @@ advancement_table = {
     "Phoenix Flute":                                AdvData(5111611192112, "Beast Bridge"),
     "Star Viewing Orb":                             AdvData(7331400192144, "Shoal"),
 
+    # MISC
+    "Open Ancient Door [Ancient B2]":               AdvData(101288, "Sanctum"), # Placed in next region for logic
+    "Open Topaz Door [Stone Dungeon C2]":           AdvData(101864, "Stony Cliffs Post-Rune"),
+
+    "Blue Puzzle Clue 1":                           AdvData(107717, "Stony Cliffs Post-Rune"),
+    "Blue Puzzle Clue 2":                           AdvData(107386, "Stony Cliffs Post-Rune"),
+    "Blue Puzzle Clue 3":                           AdvData(107497, "Stony Cliffs NW"),
+
+    "Gold Puzzle Clue 1":                           AdvData(125017, "Stony Cliffs Post-Rune"),
+    "Gold Puzzle Clue 2":                           AdvData(102677, "Stony Cliffs Post-Rune"),
+    "Gold Puzzle Clue 3":                           AdvData(125406, "Stony Cliffs"),
+
+    "Beast Bell Stone": AdvData(123559, "Beast Bridge"),
+    "Sanctum Bell Stone": AdvData(123976, "Sanctum Peak"),
+
+    #
+
     "Ancient Key [Ancient B3]":                     AdvData(109001327296, "Ancient Isle"),
     "Ancient Key [Ancient A1]":                     AdvData(1090001272176, "Ancient Isle"),
     "Ancient Key [Ancient A2 - SE]":                AdvData(10900029696, "Ancient Isle"),
@@ -403,6 +420,45 @@ jellyfish_table = {
     "Jellyfish 8":                                 AdvData(39520111040192, "Beast Sea"),
     "Jellyfish 9":                                 AdvData(3952011528496, "Lost Sea"),
     "Jellyfish 10":                                AdvData(3952011976112, "Northeast Sea"),
+
+}
+
+secrets_table = {
+
+    "Discover Ancient Secret 1": AdvData(101044, "Ancient Isle"),
+
+    "Discover Stone Secret 1": AdvData(107724, "Stony Cliffs"),
+    "Discover Stone Secret 2": AdvData(106794, "Stony Cliffs Post-Rune"),
+
+    "Discover Rolling Secret 1": AdvData(103790, "Rolling Rocks"),
+
+    "Discover Nunatak Secret 1": AdvData(123457, "Sea Nunatak"),
+    "Discover Nunatak Secret 2": AdvData(123426, "Sea Nunatak"),
+    "Discover Nunatak Secret 3": AdvData(123461, "Sea Nunatak"),
+    "Discover Nunatak Secret 4": AdvData(123447, "Sea Nunatak"),
+
+    "Discover Shoal Secret 1": AdvData(104364, "Shoal"),
+    "Discover Shoal Secret 2": AdvData(104321, "Shoal"),
+    "Discover Shoal Secret 3": AdvData(104322, "Shoal"),
+
+    "Discover Aggro Secret 1": AdvData(122712, "Aggro Crag"),
+    "Discover Aggro Secret 2": AdvData(122517, "Aggro Crag"),
+    "Discover Aggro Secret 3": AdvData(122488, "Aggro Crag"),
+
+    "Discover Sunken Secret 1": AdvData(122982, "Sunken Island"),
+
+    "Discover Tropic Secret 1": AdvData(103122, "Star Tropic"),
+
+    "Discover Lost Secret 1": AdvData(128953, "Lost Landing"),
+    "Discover Lost Secret 2": AdvData(128951, "Lost Landing"),
+
+    "Discover Fire Secret 1": AdvData(118109, "Raging Volcano Post-Rune"),
+    "Discover Fire Secret 2": AdvData(115494, "Raging Volcano"),
+    "Discover Fire Secret 3": AdvData(118553, "Raging Volcano NE"),
+
+    "Discover Wind Secret 1": AdvData(121435, "Frozen Spire"),
+    "Discover Wind Secret 2": AdvData(120347, "Frozen Spire"),
+    "Discover Wind Secret 3": AdvData(121434, "Frozen Spire Post-Rune"),
 
 }
 

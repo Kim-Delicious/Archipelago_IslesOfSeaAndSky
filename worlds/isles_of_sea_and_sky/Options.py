@@ -17,11 +17,17 @@ class EnableLocksanity(Toggle):
     default = 0
 
 
-# NOT IMPLEMENTED YET
 class EnableSnakesanity(Toggle):
     """Turn all snake blocks  in the game into game checks.
      (Snake block = Green directional block with an arrowhead on top)"""
     display_name = "Enable Snakesanity"
+    default = 0
+
+class EnableSecretsanity(Toggle):
+    """Turns a number of in-game secrets in to location checks.
+    These include secret paths, and blocks that are disguised"""
+
+    display_name = "Enable Secretsanity"
     default = 0
 
 
@@ -42,14 +48,18 @@ class PhoenixAnywhere(Toggle):
     display_name = "Summon Phoenix Anywhere"
     default = 1
 
-class MercyFiller(Range):
-    """Allows Ancient Keys, Gems, and Star Pieces to be added in place of some filler items.
-    The higher this number is, the larger the ratio these are to Seashells.
-    If 0 is selected, then only Seashells will be used as filler."""
-    display_name = "Mercy Filler"
+class FillerComposition(Choice):
+    """Determines what items are sent as Filler, allowing the player to make faster progress
+    depending on the option selected.
+     Default: only allows Seashells as filler.
+     Extra Goodies: adds Ancient Keys, Star Pieces, and Gems to the filler pool.
+     Only Goodies: replaces the entire filler pool with Ancient Keys, Star Pieces and Gems."""
+    display_name = "Filler Composition"
+    option_default = 0
+    option_extra_goodies = 1
+    option_only_goodies = 2
     default = 0
-    range_start = 0
-    range_end = 5
+
 
 
 @dataclass
@@ -60,5 +70,6 @@ class IslesOfSeaAndSkyOptions(PerGameCommonOptions):
     include_seashells:                          IncludeSeashells
     include_jellyfish:                          IncludeJellyfish
     phoenix_anywhere:                           PhoenixAnywhere
-    mercy_filler:                               MercyFiller
+    filler_composition:                         FillerComposition
+    secretsanity:                               EnableSecretsanity
 

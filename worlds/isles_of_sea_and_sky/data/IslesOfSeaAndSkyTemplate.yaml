@@ -81,6 +81,12 @@ Isles Of Sea And Sky:
     'true': 0
     'false': 50
 
+  secret_sanity:
+    # Turns a number of in-game secrets in to location checks.
+    # These include secret paths, and blocks that are disguised
+    'true': 0
+    'false': 50
+
   include_seashells:
     # Enable secret seashells on the Tidal Reef island for extra checks
     'true': 0
@@ -97,14 +103,15 @@ Isles Of Sea And Sky:
     'true': 50
     'false': 0
 
-  mercy_filler:
-    # Allows Ancient Keys, Gems and Star Pieces to be added in place of some filler items.
-    # The higher this number is, the larger the ratio these are to Seashells.
-    # If 0 is selected, then only Seashells will be used as filler.
-    0: 50
-    random: 0
-    random-low: 0
-    random-high: 0
+  filler_composition:
+    # Determines what items are sent as Filler, allowing the player to make faster progress
+    # depending on the option selected.
+    # Default: only allows Seashells as filler.
+    # Extra Goodies: adds Ancient Keys, Star Pieces, and Gems to the filler pool.
+    # Only Goodies: replaces the entire filler pool with Ancient Keys, Star Pieces and Gems.
+    'default': 50
+    'extra_goodies': 0
+    'only_goodies': 0
 
   # Item & Location Options
   local_items:

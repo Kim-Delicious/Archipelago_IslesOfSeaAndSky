@@ -16,12 +16,6 @@ from CommonClient import CommonContext, server_loop, \
     gui_enabled, ClientCommandProcessor, logger, get_base_parser
 from Utils import async_start
 
-"""
-
-Code taken from the UndertaleClient.
-
-"""
-
 class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
     def __init__(self, ctx):
         super().__init__(ctx)
@@ -86,15 +80,9 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
                 self.output("New IslesOfSeaAndSky install is now located in Archipelago Directory.")
 
 
-    def _cmd_randomize_rooms(self):
-        """Picks an alternate version for a room, and patches the game to apply it. Repeat for all available patches. Expect the Client To Stall"""
-
-        if isinstance(self.ctx, IslesOfSeaAndSkyContext):
-            self.ctx.patch_alt_rooms(self)
-
     @mark_raw
     def _cmd_create_patch(self, patch_name: str = "new_patch", steaminstall: typing.Optional[str] = None):
-        """Should not EVER be used by normal players. Used by Creators to make Mods. Expect the Client to hang for several minutes before a patch is made."""
+        """Should not EVER be used by normal players. Used by Creators to make Mods.\n Expect the Client to hang for several minutes before a patch is made."""
         tempInstall = steaminstall
         if tempInstall is not None and not os.path.isfile(os.path.join(tempInstall, "data.win")):
             tempInstall = None
@@ -187,47 +175,6 @@ class IslesOfSeaAndSkyContext(CommonContext):
             f.writelines(["// Put the folder name of the sprites you want to play as, make sure it is the only "
                           "line other than this one.\n", "original"])
             f.close()'''
-
-
-    def patch_alt_rooms(self, command_proccessor):
-
-        world_path = os.path.dirname(__file__)
-
-        all_alt_rooms = []
-
-        # Islands
-        for island in os.listdir(world_path + "/data/Alt Rooms"):
-            # Rooms
-            #print("Island - " +  str(island))
-            island_path = world_path + "/data/Alt Rooms/" + str(island)
-            for room in os.listdir(island_path ):
-                #print("____Room - " +  str(room))
-                # Variations to choose from
-                room_options = []
-                room_path = island_path + "/" + str(room)
-                for root, dirs, files in os.walk(str(room_path)):
-                    for file in files:
-                        if file.endswith(".bsdiff"):
-                            #print("_________Variation - " + str(file))
-                            room_options.append(str(room_path) + "/" + file)
-
-                if len(room_options) > 0:
-                    alt_choice = choice(room_options)
-                    all_alt_rooms.append(alt_choice)
-
-        for patch_path in all_alt_rooms:
-            try:
-                with open(Utils.user_path("IslesOfSeaAndSky", "data.win"), "rb") as f:
-                    patchedFile = bsdiff4.patch(f.read(), isles_of_sea_and_sky.read_data(patch_path))
-                with open(Utils.user_path("IslesOfSeaAndSky", "data.win"), "wb") as f:
-                    f.write(patchedFile)
-
-                command_proccessor.output(f"Applied Room Patch: {patch_path}")
-
-            except Exception as e:
-                command_proccessor.output(f"Exception: {e} in patch: {patch_path} \n")
-
-        all_alt_rooms.clear()
 
 
     async def server_auth(self, password_requested: bool = False):
