@@ -81,7 +81,7 @@ Isles Of Sea And Sky:
     'true': 0
     'false': 50
 
-  secret_sanity:
+  secretsanity:
     # Turns a number of in-game secrets in to location checks.
     # These include secret paths, and blocks that are disguised
     'true': 0

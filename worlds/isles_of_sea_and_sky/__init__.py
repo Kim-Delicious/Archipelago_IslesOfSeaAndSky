@@ -32,7 +32,7 @@ LauncherComponents.components.append(
     )
 )
 
-LauncherComponents.icon_paths["isles_of_sea_and_sky"] = f"ap:{__name__}/data/isles_of_sea_and_sky.png"
+LauncherComponents.icon_paths["isles_of_sea_and_sky"] = f"ap:{__name__}/data/sprites/isles_of_sea_and_sky.png"
 
 def data_path(file_name: str):
     import pkgutil
@@ -64,6 +64,8 @@ class IslesOfSeaAndSkyWorld(World):
     options_dataclass = IslesOfSeaAndSkyOptions
     options: IslesOfSeaAndSkyOptions
     web = IslesOfSeaAndSkyWeb()
+
+    explicit_indirect_conditions = False
 
     item_name_to_id = {name: data.code for name, data in item_table.items()}
 

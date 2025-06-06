@@ -3,22 +3,23 @@
 ### Required Software
 
 - Isles Of Sea And Sky from the [Steam page](https://store.steampowered.com/app/1233070/Isles_of_Sea_and_Sky/)
+- Isles Of Sea And Sky [APWorld](https://github.com/Kim-Delicious/Archipelago_IslesOfSeaAndSky/releases)
 - Archipelago from the [Archipelago Releases Page](https://github.com/ArchipelagoMW/Archipelago/releases)
-- Delta Patcher from the [Delta Patcher Page](https://www.romhacking.net/utilities/704/)
 
 ### First time setup
 
 #### Patch the Game
 
-First, the game needs to be patched in order to be compatibale with Archipelago.
+First, the game needs to be patched in order to be compatible with Archipelago.
 
-Open up Delta Patcher, and there will be two folder icons. One with 'Original File', and the other with 'XDelta Patch'. Click on 'Original File' Icon, and use the prompt window to find the game directory. This is usually located `C:\Program Files\Steam\steamapps\IslesOfSeaAndSky`
-Inside the game directory select the **data.win** file.
+To do this, you need to have Archipelago installed as well as the `isles_of_sea_and_sky.apworld`. 
+Once both of these steps are done, run Archipelago, then find and open the Isles Of Sea And Sky Client. Once that pops
+up, type in the console: `/auto_patch`. This will freeze the program for a few moments while it's working,
+but when that's done you will receive a message:`"Patching successful!"`.
 
-Now, click on the second icon, 'XDelta Patch', and navigate to your download of the Isles Of Sea And Sky APWorld, and find the data folder.
-It will likely be here: `C:\..\Archipelago\worlds\isles_of_sea_and_sky\data` Inside you will find the **patch.xDelta** file. 
-Select it, then click **Apply Patch**
-
+If things have worked correctly, you should now be able to find a `IslesOfSeaAndSky` folder in
+the main Archipelago Directory. This is where you will find the copied, and modified version of the game,
+and where you will find the correct executable to launch the modded game.
 
 
 ### Connect to the MultiServer
@@ -41,4 +42,4 @@ multi-world game!
 
 ### Where do I get a YAML file?
 
-A Template file can be found in `..\Archipelago\worlds\isles_of_sea_and_sky\data`, or should be found on the release page.
+A Template file can be found inside `isles_of_sea_and_sky.apworld` in `/data`, or should be found on the release page.
