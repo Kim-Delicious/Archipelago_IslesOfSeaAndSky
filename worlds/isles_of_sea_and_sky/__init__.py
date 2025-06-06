@@ -105,28 +105,26 @@ class IslesOfSeaAndSkyWorld(World):
 
     def create_items(self):
 
-        # Plando Most of Ancient Isle to prevent soft lock
-        if True:
-            self.multiworld.get_location("Ancient Key [Ancient B3]", self.player).place_locked_item(
-                self.create_item("Ancient Key"))
-            self.multiworld.get_location("Ancient Key [Ancient A1]", self.player).place_locked_item(
-                self.create_item("Ancient Key"))
-            self.multiworld.get_location("Ancient Key [Ancient A2 - SE]", self.player).place_locked_item(
-                self.create_item("Ancient Key"))
-            self.multiworld.get_location("Ancient Key [Ancient A3 - N]", self.player).place_locked_item(
-                self.create_item("Ancient Key"))
-            self.multiworld.get_location("Ancient Key [Ancient A3 - S]", self.player).place_locked_item(
-                self.create_item("Ancient Key"))
-            self.multiworld.get_location("Ancient Key [Ancient C2]", self.player).place_locked_item(
-                self.create_item("Ancient Key"))
 
+        self.multiworld.get_location("Ancient Key [Ancient B3]", self.player).place_locked_item(
+            self.create_item("Ancient Key"))
+        self.multiworld.get_location("Ancient Key [Ancient A1]", self.player).place_locked_item(
+            self.create_item("Ancient Key"))
+        self.multiworld.get_location("Ancient Key [Ancient A2 - SE]", self.player).place_locked_item(
+            self.create_item("Ancient Key"))
+        self.multiworld.get_location("Ancient Key [Ancient A3 - N]", self.player).place_locked_item(
+            self.create_item("Ancient Key"))
+        self.multiworld.get_location("Ancient Key [Ancient A3 - S]", self.player).place_locked_item(
+            self.create_item("Ancient Key"))
+        self.multiworld.get_location("Ancient Key [Ancient C2]", self.player).place_locked_item(
+            self.create_item("Ancient Key"))
 
-            self.multiworld.get_location("Star Piece [Ancient C0]", self.player).place_locked_item(
-                self.create_item("Star Piece"))
+        self.multiworld.get_location("Star Piece [Ancient C0]", self.player).place_locked_item(
+            self.create_item("Star Piece"))
 
-            # remove plando number from item pool
-            key_items['Ancient Key'] -= 6
-            key_items['Star Piece'] -= 1
+        # Remove pre-placed items from item pool
+        #key_items['Ancient Key'] -= 6 # reason for unittest fail
+        #key_items['Star Piece'] -= 1
 
         #self.multiworld.early_items[self.player]["Topaz Rune Stone"] = 1
 
@@ -170,8 +168,8 @@ class IslesOfSeaAndSkyWorld(World):
         set_rules(self)
         set_completion_rules(self)
 
-        ''''# for creating visuals, should be disabled for unittests
-        from Utils import visualize_regions
+        # for creating visuals, should be disabled for unittests
+        '''from Utils import visualize_regions
         state = self.multiworld.get_all_state(False)
         state.update_reachable_regions(self.player)
         state.allow_partial_entrances = True

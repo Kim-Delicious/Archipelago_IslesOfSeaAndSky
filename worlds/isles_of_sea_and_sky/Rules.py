@@ -263,14 +263,14 @@ def set_ancient_isle(self):
     set_rule(multiworld.get_location("Ancient Key [Ancient A3 - N]", player),
              lambda state: state.has("Ancient Key", player, 2))
     set_rule(multiworld.get_location("Ancient Key [Ancient A3 - S]", player),
-             lambda state: state.has("Ancient Key", player, 2))
+             lambda state: state.has("Ancient Key", player))
     set_rule(multiworld.get_location("Ancient Key [Ancient A3 - E]", player),
              lambda state: state.has("Ancient Key", player, 2))
 
     set_rule(multiworld.get_location("Ancient Key [Ancient C2]", player),
-             lambda state: state.has("Ancient Key", player, 2))
+             lambda state: state.has("Ancient Key", player, 3))
     set_rule(multiworld.get_location("Ancient Key [Ancient C3]", player),
-             lambda state: state.has("Ancient Key", player, 2))
+             lambda state: state.has("Ancient Key", player, 3))
     set_rule(multiworld.get_location("Ancient Key [Ancient C1]", player),
              lambda state: state.has("Star Piece", player)
                                and state.has("Ancient Key", player, 6))

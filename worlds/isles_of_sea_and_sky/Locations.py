@@ -69,8 +69,8 @@ advancement_table = {
     "Gold Puzzle Clue 2":                           AdvData(102677, "Stony Cliffs Post-Rune"),
     "Gold Puzzle Clue 3":                           AdvData(125406, "Stony Cliffs"),
 
-    "Beast Bell Stone": AdvData(123559, "Beast Bridge"),
-    "Sanctum Bell Stone": AdvData(123976, "Sanctum Peak"),
+    "Beast Bell Stone":                             AdvData(123559, "Beast Bridge"),
+    "Sanctum Bell Stone":                           AdvData(123976, "Sanctum Peak"),
 
     #
 
