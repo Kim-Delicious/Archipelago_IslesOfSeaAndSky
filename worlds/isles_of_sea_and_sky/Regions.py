@@ -17,8 +17,9 @@ isles_of_sea_and_sky_regions = [
     ("Stony Cliffs Post-Rune",      ["Stony Post-Rune Exit"]),
     ("Stony Cliffs NW",             ["Stony NW East Exit", "Stony NW West Exit", "Stony Phoenix"]),
 
-    ("Tidal Reef",                  ["Tidal Exit", "Tidal Exit To Post-Rune"]),
-    ("Tidal Reef Post-Rune",        ["Tidal Exit From Post-Rune", "Tidal Phoenix"]),
+    ("Tidal Reef",                  ["Tidal Exit", "Tidal Exit To Post-Rune", "Tidal Exit To S",]),
+    ("Tidal Reef S",                ["Tidal S Exit", "Tidal S Exit To Post-Rune", "Tidal Phoenix"]),
+    ("Tidal Reef Post-Rune",        ["Tidal Exit From Post-Rune", "Tidal S Entrance From Post-Rune"]),
 
     ("Raging Volcano",              ["Raging Exit", "Raging Exit To Post-Rune", "Raging Exit To NE"]),
     ("Raging Volcano NE",           ["Raging NE Exit", "Raging Phoenix"]),
@@ -75,7 +76,12 @@ mandatory_connections = [
 
     ("Tidal Exit",                      "Sapphire Sea"),
     ("Tidal Exit To Post-Rune",         "Tidal Reef Post-Rune"),
+    ("Tidal S Exit To Post-Rune",       "Tidal Reef Post-Rune"),
+
     ("Tidal Exit From Post-Rune",       "Tidal Reef"),
+    ("Tidal S Exit",                    "Tidal Reef"),
+    ("Tidal S Entrance From Post-Rune", "Tidal Reef S"),
+    ("Tidal Exit To S",                 "Tidal Reef S"),
     ("Tidal Phoenix",                   "Phoenix Hub"),
 
     ("Raging Exit",                     "Ruby Sea"),
@@ -120,7 +126,7 @@ mandatory_connections = [
 
     ("Lost Phoenix Entrance",           "Lost Landing"),
     ("Stony Phoenix Entrance",          "Stony Cliffs NW"),
-    ("Tidal Phoenix Entrance",          "Tidal Reef"),
+    ("Tidal Phoenix Entrance",          "Tidal Reef S"),
     ("Raging Phoenix Entrance",         "Raging Volcano NE"),
     ("Frozen Phoenix Entrance",         "Frozen Spire Post-Rune"),
     ("Beast Bridge Phoenix Entrance",   "Beast Bridge"),
