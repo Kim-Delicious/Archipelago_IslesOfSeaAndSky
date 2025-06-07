@@ -49,7 +49,7 @@ advancement_table = {
     #"Egg [3]":         AdvData(991026, "Frozen Spire"), #Broken due to in-game randomness
    # "Wind Key[]":      AdvData(83505440 || 83505040 || 83505400, "Frozen Spire"), #Broken due to in-game randomness
 
-    "Rolling Bell Rung":                            AdvData(99908101, "Rolling Rocks"),
+    "Rolling Bell Rung":                            AdvData(99908101, "Rolling Rocks Post-Rune"),
     "Sunken Bell Rung":                             AdvData(99909111, "Sunken Island"),
     "Aggro Bell Rung":                              AdvData(99910011, "Aggro Crag"),
     "Nunatak Bell Rung":                            AdvData(99911011, "Sea Nunatak"),
@@ -298,8 +298,8 @@ advancement_table = {
     "Star Piece [Wind B2 - S]":                    AdvData(728051232192, "Frozen Spire Post-Rune"),
 
     "Star Piece [Rolling A0]":                     AdvData(72808009680, "Rolling Rocks"), # 7 stars, t quest
-    "Star Piece [Rolling B1]":                     AdvData(7280811176112, "Rolling Rocks"), #
-    "Star Piece [Rolling B0]":                     AdvData(7280810176112, "Rolling Rocks"), # g gloves
+    "Star Piece [Rolling B1]":                     AdvData(7280811176112, "Rolling Rocks Post-Rune"), #
+    "Star Piece [Rolling B0]":                     AdvData(7280810176112, "Rolling Rocks Post-Rune"), # g gloves
 
     "Star Piece [Sunken B0]":                      AdvData(728091027264, "Sunken Island"), # 21 stars, s quest
     "Star Piece [Sunken A1]":                      AdvData(728090120896, "Sunken Island"), # ancient rune
@@ -423,6 +423,7 @@ jellyfish_table = {
 
 }
 
+# 24 checks
 secrets_table = {
 
     "Discover Ancient Secret 1": AdvData(101044, "Ancient Isle"),
@@ -493,7 +494,7 @@ locksanity_table = {
     "3x Lock [Sanctum A1]":                         AdvData(43507011, "Sanctum"),
     "3x Lock [Sanctum C1]":                         AdvData(43507211, "Sanctum"),
 
-    "3x Lock [Rolling B1]":                         AdvData(43508111, "Rolling Rocks"),
+    "3x Lock [Rolling B1]":                         AdvData(43508111, "Rolling Rocks Post-Rune"),
 
     "3x Lock [Sunken A1]":                          AdvData(43509011, "Sunken Island"),
 
@@ -578,7 +579,7 @@ locksanity_table = {
     "Obsidian Rune Lock [Serpent A3]":              AdvData(61006031, "Serpent Stacks Post-Rune"),
 
     "Ancient Rune Lock [Rolling A1]":               AdvData(60708011, "Rolling Rocks"),
-    "Ancient Rune Lock [Rolling B0]":               AdvData(60708101, "Rolling Rocks"),
+    "Ancient Rune Lock [Rolling B0]":               AdvData(60708101, "Rolling Rocks Post-Rune"),
 
     "Ancient Rune Lock [Sunken A0]":                AdvData(60709001, "Sunken Island"),
     "Ancient Rune Lock [Sunken B1]":                AdvData(60709111, "Sunken Island"),
@@ -651,7 +652,7 @@ snakesanity_table = {
     "Snakeblock [Stone Dungeon E2]": AdvData(683024296112, "Stony Cliffs Post-Rune"), # t quest
     "Snakeblock [Stone Dungeon C1]": AdvData(6830221208112, "Stony Cliffs NW"), # t quest, #g gloves
 
-    "Snakeblock [Rolling B0]": AdvData(6830810256176, "Rolling Rocks"),
+    "Snakeblock [Rolling B0]": AdvData(6830810256176, "Rolling Rocks Post-Rune"),
 
     "Snakeblock [Aggro B1 - E]": AdvData(681101130496, "Aggro Crag"), # 35 stars
     "Snakeblock [Aggro B1 - W]": AdvData(686101116160, "Aggro Crag"), # 35 stars, R quest, A rune

@@ -78,12 +78,12 @@ progression_items = {
 }
 
 key_items = {
-    "Ancient Key":              73,
+    "Ancient Key":              67,
     "Topaz":                    12,
     "Sapphire":                 12,
     "Ruby":                     12,
     "Diamond":                  12,
-    "Star Piece":               91
+    "Star Piece":               90
 }
 
 non_key_items = {

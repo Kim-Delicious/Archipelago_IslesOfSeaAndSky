@@ -32,7 +32,9 @@ isles_of_sea_and_sky_regions = [
     ("Sanctum",                     ["Sanctum Exit", "Elemental Rock Path"]),
     ("Sanctum Peak",                []),
 
-    ("Rolling Rocks",               ["Rolling East Exit", "Rolling West Exit"]),
+    ("Rolling Rocks",               ["Rolling Exit", "Rolling Exit To Post-Rune"]),
+    ("Rolling Rocks Post-Rune",     ["Rolling Post-Rune Exit"]),
+
     ("Aggro Crag",                  ["Aggro Exit"]),
     ("Locked",                      ["Locked Exit"]),
     ("Lost Landing",                ["Lost Exit", "Lost Phoenix"]),
@@ -77,7 +79,6 @@ mandatory_connections = [
     ("Tidal Exit",                      "Sapphire Sea"),
     ("Tidal Exit To Post-Rune",         "Tidal Reef Post-Rune"),
     ("Tidal S Exit To Post-Rune",       "Tidal Reef Post-Rune"),
-
     ("Tidal Exit From Post-Rune",       "Tidal Reef"),
     ("Tidal S Exit",                    "Tidal Reef"),
     ("Tidal S Entrance From Post-Rune", "Tidal Reef S"),
@@ -113,6 +114,7 @@ mandatory_connections = [
 
     ("Rolling East Entrance",           "Rolling Rocks"),
     ("Rolling West Entrance",           "Rolling Rocks"),
+
     ("Aggro Entrance",                  "Aggro Crag"),
     ("Locked Entrance",                 "Locked"),
     ("Lost Entrance",                   "Lost Landing"),
@@ -144,8 +146,10 @@ mandatory_connections = [
     ("Lost Phoenix",                    "Phoenix Hub"),
     ("Lost Whirlpool",                  "Northeast Sea"),
 
-    ("Rolling East Exit",               "Topaz Sea"),
-    ("Rolling West Exit",               "Topaz Sea"),
+    ("Rolling Exit",                    "Topaz Sea"),
+    ("Rolling Exit To Post-Rune",       "Rolling Rocks Post-Rune"),
+    ("Rolling Post-Rune Exit",          "Rolling Rocks"),
+
     ("Aggro Exit",                      "Sapphire Sea"),
     ("Locked Exit",                     "Obsidian Sea"),
     ("Nunatak Exit",                    "Diamond Sea"),

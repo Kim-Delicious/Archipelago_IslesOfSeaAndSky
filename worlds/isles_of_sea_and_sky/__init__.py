@@ -125,7 +125,6 @@ class IslesOfSeaAndSkyWorld(World):
 
     def create_items(self):
 
-
         self.multiworld.get_location("Ancient Key [Ancient B3]", self.player).place_locked_item(
             self.create_item("Ancient Key"))
         self.multiworld.get_location("Ancient Key [Ancient A1]", self.player).place_locked_item(
@@ -141,14 +140,6 @@ class IslesOfSeaAndSkyWorld(World):
 
         self.multiworld.get_location("Star Piece [Ancient C0]", self.player).place_locked_item(
             self.create_item("Star Piece"))
-
-
-
-        # Remove pre-placed items from item pool
-        #key_items['Ancient Key'] -= 6 # reason for unittest fail
-        #key_items['Star Piece'] -= 1
-
-        #self.multiworld.early_items[self.player]["Topaz Rune Stone"] = 1
 
         # Generate item pool
         itempool = []
@@ -228,13 +219,13 @@ class IslesOfSeaAndSkyWorld(World):
 
         #self.pick_priorities()
 
-        # for creating visuals, should be disabled for unittests
+        '''# for creating visuals, should be disabled for unittests
         from Utils import visualize_regions
         state = self.multiworld.get_all_state(False)
         state.update_reachable_regions(self.player)
         state.allow_partial_entrances = True
         visualize_regions(self.get_region("Menu"), "my_world.puml", show_entrance_names=True,
-                          regions_to_highlight=state.reachable_regions[self.player])
+                          regions_to_highlight=state.reachable_regions[self.player])'''
 
     def create_regions(self):
         def IslesOfSeaAndSkyRegion(region_name: str, exits=None):
