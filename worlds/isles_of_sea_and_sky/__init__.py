@@ -13,7 +13,7 @@ from .Regions import isles_of_sea_and_sky_regions, link_isles_of_sea_and_sky_are
 from .Rules import set_rules, set_completion_rules
 #from worlds.generic.Rules import exclusion_rules
 from BaseClasses import Region, Entrance, Tutorial, Item
-from .Options import IslesOfSeaAndSkyOptions
+from .Options import IslesOfSeaAndSkyOptions, EnableSecretsanity, EnableSnakesanity, EnableLocksanity
 from worlds.AutoWorld import World, WebWorld
 import worlds.LauncherComponents as LauncherComponents
 
@@ -159,6 +159,8 @@ class IslesOfSeaAndSkyWorld(World):
         key_pool['Ancient Key'] -= 6
         key_pool['Star Piece'] -= 1
 
+        # Bias generation to reduce fill errors
+        self.multiworld.early_items[self.player]["Topaz Rune Stone"] = 1
 
         # Generate item pool
         itempool = []

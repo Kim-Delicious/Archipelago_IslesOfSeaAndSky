@@ -256,13 +256,15 @@ def set_ancient_isle(self):
 
     # Collectables
     set_rule(multiworld.get_location("Star Piece [Ancient A1]", player),
-             lambda state: state.can_reach("Obsidian Sea", "Region", player)
-             and state.has("Ancient Key", player, 17) )
+             lambda state: (state.can_reach("Ruby Sea", "Region", player)
+                            or state.can_reach("Sapphire Sea", "Region", player))
+                            and state.has("Ancient Key", player, 17) )
 
     set_rule(multiworld.get_location("Star Piece [Ancient B1]", player),
-             lambda state: state.can_reach("Obsidian Sea", "Region", player)
+             lambda state: (state.can_reach("Ruby Sea", "Region", player)
+                            or state.can_reach("Sapphire Sea", "Region", player))
                            and state.has("Ancient Rune Stone", player)
-             and state.has("Ancient Key", player, 17) )
+                           and state.has("Ancient Key", player, 17) )
 
     set_rule(multiworld.get_location("Ancient Key [Ancient A2 - NW]", player),
              lambda state: state.has("Topaz Quest Complete", player)
@@ -296,7 +298,8 @@ def set_ancient_isle(self):
     if self.options.enable_locksanity.value:
 
         set_rule(multiworld.get_location("3x Lock [Ancient A1]", player),
-             lambda state: state.can_reach("Obsidian Sea", "Region", player)
+             lambda state: (state.can_reach("Ruby Sea", "Region", player)
+                            or state.can_reach("Sapphire Sea", "Region", player))
                            and state.has("Ancient Key", player, 17))
 
         set_rule(multiworld.get_location("Lock [Ancient B3]", player),
@@ -345,8 +348,9 @@ def set_ancient_isle(self):
     # Secretsanity
     if self.options.secretsanity.value:
         set_rule(multiworld.get_location("Discover Ancient Secret 1", player),
-                 lambda state: state.can_reach("Obsidian Sea", "Region", player)
-                               and state.has("Ancient Key", player, 17))
+                 lambda state: (state.can_reach("Ruby Sea", "Region", player)
+                            or state.can_reach("Sapphire Sea", "Region", player))
+                           and state.has("Ancient Key", player, 17))
 
 
 def set_rolling_rocks(self):
@@ -590,7 +594,9 @@ def set_locked(self):
     player = self.player
     multiworld = self.multiworld
     set_rule(multiworld.get_location("Ancient Rune Stone", player),
-             lambda state: state.has("Ancient Key", player, 23))  # Makes this 'unreachable'
+             lambda state: (state.can_reach("Ruby Sea", "Region", player)
+                            or state.can_reach("Sapphire Sea", "Region", player))
+                           and state.has("Ancient Key", player, 23))  # Makes this 'unreachable'
 
     set_rule(multiworld.get_location("Star Piece [Locked A1]", player),
              lambda state: state.has("Ancient Rune Stone", player) )
@@ -599,7 +605,9 @@ def set_locked(self):
     if self.options.enable_locksanity.value:
 
         set_rule(multiworld.get_location("6x Lock [Locked B1]", player),
-                 lambda state: state.has("Ancient Key", player, 23))
+                 lambda state: (state.can_reach("Ruby Sea", "Region", player)
+                            or state.can_reach("Sapphire Sea", "Region", player))
+                               and state.has("Ancient Key", player, 23))
 
         set_rule(multiworld.get_location("Ancient Rune Lock [Locked A1]", player),
                  lambda state: state.has("Ancient Rune Stone", player))
@@ -607,11 +615,17 @@ def set_locked(self):
     # Snakesanity
     if self.options.enable_snakesanity.value:
         set_rule(multiworld.get_location("Snakeblock [Locked A1 - E]", player),
-                 lambda state: state.has("Ancient Key", player, 23))
+                 lambda state: (state.can_reach("Ruby Sea", "Region", player)
+                            or state.can_reach("Sapphire Sea", "Region", player))
+                               and state.has("Ancient Key", player, 23))
         set_rule(multiworld.get_location("Snakeblock [Locked A1 - C]", player),
-                 lambda state: state.has("Ancient Key", player, 23))
+                 lambda state: (state.can_reach("Ruby Sea", "Region", player)
+                            or state.can_reach("Sapphire Sea", "Region", player))
+                               and state.has("Ancient Key", player, 23))
         set_rule(multiworld.get_location("Snakeblock [Locked A1 - W]", player),
-                 lambda state: state.has("Ancient Key", player, 23))
+                 lambda state: (state.can_reach("Ruby Sea", "Region", player)
+                            or state.can_reach("Sapphire Sea", "Region", player))
+                               and state.has("Ancient Key", player, 23))
 
 def set_star_tropic(self):
     player = self.player
@@ -1680,10 +1694,17 @@ def set_rechecks(self):
     player = self.player
     multiworld = self.multiworld
 
+    multiworld.register_indirect_condition(multiworld.get_region("Ruby Sea", player),
+                                           multiworld.get_entrance("Ancient West Entrance", player))
+    multiworld.register_indirect_condition(multiworld.get_region("Sapphire Sea", player),
+                                           multiworld.get_entrance("Ancient West Entrance", player))
+
     multiworld.register_indirect_condition(multiworld.get_region("Obsidian Sea", player),
                                            multiworld.get_entrance("Ancient West Exit", player))
 
     multiworld.register_indirect_condition(multiworld.get_region("Ruby Sea", player),
+                                           multiworld.get_entrance("Locked Entrance", player))
+    multiworld.register_indirect_condition(multiworld.get_region("Sapphire Sea", player),
                                            multiworld.get_entrance("Locked Entrance", player))
 
     multiworld.register_indirect_condition(multiworld.get_region("Raging Volcano Post-Rune", player),
@@ -1728,18 +1749,7 @@ def set_completion_rules(self):
     # Secret Ending
     elif _isles_of_sea_and_sky_is_route(self, 1):
         multiworld.completion_condition[player] = lambda state: (state.can_reach("Sanctum Peak", "Region", player)
-                                                                 and state.has("Ancient Rune Stone", player)
-                                                                 and state.has("Topaz Rune Stone", player)
-                                                                 and state.has("Sapphire Rune Stone", player)
-                                                                 and state.has("Ruby Rune Stone", player)
-                                                                 and state.has("Diamond Rune Stone", player)
-                                                                 and state.has("Obsidian Rune Stone", player)
-                                                                 and state.has("Gopher Gloves", player)
-                                                                 and state.has("Frog Flippers", player)
-                                                                 and state.has("Salamander Shirt", player)
-                                                                 and state.has("Kite Cloak", player)
-                                                                 and state.has("Serpent Circlet", player)
-                                                                 and state.has("Phoenix Flute", player))
+                                                                 and state.has("Star Piece", player, 91))
     # All Gems
     elif _isles_of_sea_and_sky_is_route(self, 2):
         multiworld.completion_condition[player] = lambda state: (state.has("Topaz", player, 12)
