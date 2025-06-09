@@ -3,6 +3,8 @@ import random
 import warnings
 from random import choice
 
+from docutils.nodes import description
+
 from .Items import IslesOfSeaAndSkyItem, item_table, non_key_items, key_items, \
     junk_weights, progression_items
 from .Locations import IslesOfSeaAndSkyAdvancement, advancement_table, exclusion_table, \
@@ -29,10 +31,16 @@ LauncherComponents.components.append(
         "Isles Of Sea And Sky Client",
         func=launch_client,
         component_type=LauncherComponents.Type.CLIENT,
-        icon="isles_of_sea_and_sky",
-        description="That Sokoban Adventure Game by Cicada Games!"
+        icon="isles_of_sea_and_sky"
     )
 )
+
+
+isles_component = LauncherComponents.components[len(LauncherComponents.components) - 1]
+# Checks first component for a Class property that should be shared by all components
+# for backwards compatibility
+if hasattr(isles_component, "description"):
+    isles_component.description = "That Sokoban Adventure Game by Cicada Games!"
 
 LauncherComponents.icon_paths["isles_of_sea_and_sky"] = f"ap:{__name__}/data/sprites/isles_of_sea_and_sky.png"
 
@@ -141,21 +149,32 @@ class IslesOfSeaAndSkyWorld(World):
         self.multiworld.get_location("Star Piece [Ancient C0]", self.player).place_locked_item(
             self.create_item("Star Piece"))
 
+        # Create copies of pools so that data isn't changed when multiple worlds are used
+        progression_pool = progression_items.copy()
+        key_pool = key_items.copy()
+        non_key_pool = non_key_items.copy()
+        junk_pool = junk_weights.copy()
+
+        # Remove the pre-placed items from generation
+        key_pool['Ancient Key'] -= 6
+        key_pool['Star Piece'] -= 1
+
+
         # Generate item pool
         itempool = []
         # Add all required progression items
-        for name, num in progression_items.items():
+        for name, num in progression_pool.items():
             itempool += [name] * num
-        for name, num in key_items.items():
+        for name, num in key_pool.items():
             itempool += [name] * num
-        for name, num in non_key_items.items():
+        for name, num in non_key_pool.items():
             itempool += [name] * num
 
         missing_items = len(self.multiworld.get_unfilled_locations(self.player)) - len(itempool)
         print("Creating " + str(missing_items) + " Filler Items for " +str(self.game) )
 
         weight_list = []
-        for name, num in junk_weights.items():
+        for name, num in junk_pool.items():
             match self.options.filler_composition.current_key:
                 case "extra_goodies":
                     pass

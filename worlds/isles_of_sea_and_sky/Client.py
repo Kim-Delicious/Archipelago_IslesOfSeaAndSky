@@ -134,6 +134,7 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
 
 
 class IslesOfSeaAndSkyContext(CommonContext):
+    theme = "ocean"
     tags = {"AP", "Online"}
     game = "Isles Of Sea And Sky"
     command_processor = IslesOfSeaAndSkyCommandProcessor
