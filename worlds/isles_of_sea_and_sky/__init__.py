@@ -99,12 +99,14 @@ class IslesOfSeaAndSkyWorld(World):
             #"race": self.multiworld.is_race,
             "route_required": self.options.route_required.current_key,
             "enable_locksanity": bool(self.options.enable_locksanity.value),
-            "enable_snakesanity": bool(self.options.enable_snakesanity.value), # unimplemented
+            "enable_snakesanity": bool(self.options.enable_snakesanity.value),
             "include_seashells": bool(self.options.include_seashells.value),
             "include_jellyfish": bool(self.options.include_jellyfish.value),
             "phoenix_anywhere": bool(self.options.phoenix_anywhere.value),
             "filler_composition": self.options.filler_composition.current_key,
-            "secretsanity": bool(self.options.secretsanity.value),  # unimplemented
+            "secretsanity": bool(self.options.secretsanity.value),
+            "death_link": bool(self.options.death_link.value),
+            "death_amnesty_total": int(self.options.death_amnesty_total.value),
 
         }
 

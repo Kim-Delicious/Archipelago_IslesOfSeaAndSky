@@ -62,7 +62,6 @@ Isles Of Sea And Sky:
 
   route_required:
     # Main route of the game required to win.
-    # SECRET ENDING AND ALL GEMS ARE MORE LIKELY TO FAIL GEN
     normal_ending: 50
     secret_ending: 0
     all_gems: 0
@@ -70,14 +69,12 @@ Isles Of Sea And Sky:
   enable_locksanity:
     # Turn all locks in the game into game checks.
     # This includes big 3x locks, all Rune Stone locks, and other specialty locks
-
     'true': 0
     'false': 50
 
   enable_snakesanity:
     # Turn all snake blocks  in the game into game checks.
     # (Snake block = Green directional block with an arrowhead on top)
-
     'true': 0
     'false': 50
 
@@ -112,6 +109,19 @@ Isles Of Sea And Sky:
     'default': 50
     'extra_goodies': 0
     'only_goodies': 0
+
+  deathlink:
+    # Shares deaths with other players on Deathlink.
+    # When the player receives a deathlink, resets room
+    'true': 0
+    'false': 50
+
+  deathlink_amnesty:
+    # Determines the amount of deaths before a deathlink is sent.
+    1: 50
+    random: 0
+    random-low: 0
+    random-high: 0
 
   # Item & Location Options
   local_items:

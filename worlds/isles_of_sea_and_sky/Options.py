@@ -1,4 +1,4 @@
-from Options import Choice, Toggle, Range, PerGameCommonOptions
+from Options import Choice, Toggle, Range, PerGameCommonOptions, DeathLink
 from dataclasses import dataclass
 
 # NOT IMPLEMENTED YET
@@ -60,6 +60,11 @@ class FillerComposition(Choice):
     option_only_goodies = 2
     default = 0
 
+class DeathLinkAmnesty(Range):
+    """Determines the amount of deaths before a deathlink is sent."""
+    range_start = 1
+    range_end = 10
+    default = 3
 
 
 @dataclass
@@ -72,4 +77,6 @@ class IslesOfSeaAndSkyOptions(PerGameCommonOptions):
     phoenix_anywhere:                           PhoenixAnywhere
     filler_composition:                         FillerComposition
     secretsanity:                               EnableSecretsanity
+    death_link:                                 DeathLink
+    death_amnesty_total:                        DeathLinkAmnesty
 

@@ -1,8 +1,11 @@
 from __future__ import annotations
 import os
 import sys
+import time
 import asyncio
 import typing
+
+import aiohttp
 import bsdiff4
 import shutil
 
@@ -119,18 +122,22 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
             if "Online" in self.ctx.tags:
                 self.output(f"Now online.")
             else:
-                self.output(f"Now offline.")
+                self.output(f"Now offline.")'''
 
-    def _cmd_deathlink(self):
+    def _cmd_toggle_deathlink(self):
         """Toggles deathlink"""
         if isinstance(self.ctx, IslesOfSeaAndSkyContext):
-            self.ctx.deathlink_status = not self.ctx.deathlink_status
-            if self.ctx.deathlink_status:
+            self.ctx.death_allowed = not self.ctx.death_allowed
+            if self.ctx.death_allowed:
                 self.output(f"Deathlink enabled.")
             else:
-                self.output(f"Deathlink disabled.")'''
+                self.output(f"Deathlink disabled.")
 
-
+    def _cmd_set_amnesty(self, max_lives: int = 1):
+        """Set the Deathlink Amnesty value. Default: 1."""
+        self.ctx.death_amnesty_total = int(max_lives)
+        self.ctx.death_amnesty_count = 0
+        self.output(f"It will take you {self.ctx.death_amnesty_total} Deaths for 1 to be sent to others.")
 
 
 class IslesOfSeaAndSkyContext(CommonContext):
@@ -139,6 +146,13 @@ class IslesOfSeaAndSkyContext(CommonContext):
     game = "Isles Of Sea And Sky"
     command_processor = IslesOfSeaAndSkyCommandProcessor
     items_handling = 0b111
+    death_allowed = False
+    got_deathlink = False
+    last_sent_death: float = time.time()
+    death_amnesty_total: int
+    death_amnesty_count: int
+    slot_data: dict[str, any]
+
     route = None
     includeSeashells = None
     includeJellyfish = None
@@ -156,9 +170,9 @@ class IslesOfSeaAndSkyContext(CommonContext):
         super().__init__(server_address, password)
         self.finished_game = False
         self.game = "Isles Of Sea And Sky"
-        self.got_deathlink = False
         self.syncing = False
-        self.deathlink_status = False
+        self.death_amnesty_total = 1  # should be rewritten by slot data
+        self.death_amnesty_count = 0
         # self.save_game_folder: files go in this path to pass data between us and the actual game
         self.save_game_folder = os.path.expandvars(r"%localappdata%/IslesOfSeaAndSky")
 
@@ -244,7 +258,24 @@ class IslesOfSeaAndSkyContext(CommonContext):
         self.ui = IOSASManager(self)
         self.ui_task = asyncio.create_task(self.ui.async_run(), name="UI")
 
-    def on_deathlink(self, data: typing.Dict[str, typing.Any]):
+    async def send_death(self, death_text: str = ""):
+
+        # Make sure sent death isn't the being sent multiple times
+        '''cTime = 0
+        while (cTime < 20):
+            if self.last_death_link > self.last_sent_death:
+                self.death_amnesty_count += 1
+                break
+            cTime += 1'''
+
+        self.death_amnesty_count += 1
+
+        if self.death_amnesty_count >= self.death_amnesty_total:
+            await super().send_death(death_text)
+            self.last_sent_death = time.time()
+            self.death_amnesty_count = 0
+
+    async def on_deathlink(self, data: typing.Dict[str, typing.Any]):
         self.got_deathlink = True
         super().on_deathlink(data)
 
@@ -252,14 +283,15 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
 
     ### When the client first connects to the multiworld
     if cmd == 'Connected':
-        ctx.includeSeashells =  args["slot_data"]["include_seashells"]
-        ctx.includeJellyfish =  args["slot_data"]["include_jellyfish"]
-        ctx.enableLocksanity =  args["slot_data"]["enable_locksanity"]
-        ctx.enableSnakesanity = args["slot_data"]["enable_snakesanity"]
-        ctx.reqRoute =          args["slot_data"]["route_required"]
-        ctx.phoenixAnywhere =   args["slot_data"]["phoenix_anywhere"]
+        ctx.slot_data = args["slot_data"]
 
-        ctx.randomizeAltRooms = args["slot_data"]["phoenix_anywhere"]
+        ctx.includeSeashells =      args["slot_data"]["include_seashells"]
+        ctx.includeJellyfish =      args["slot_data"]["include_jellyfish"]
+        ctx.enableLocksanity =      args["slot_data"]["enable_locksanity"]
+        ctx.enableSnakesanity =     args["slot_data"]["enable_snakesanity"]
+        ctx.reqRoute =              args["slot_data"]["route_required"]
+        ctx.phoenixAnywhere =       args["slot_data"]["phoenix_anywhere"]
+        ctx.death_amnesty_total =   args["slot_data"]["death_amnesty_total"]
 
         with open(os.path.join(ctx.save_game_folder, "apOptions.options"), "w") as f:
             f.write("includeSeashells: " + str(ctx.includeSeashells)    + '\n')
@@ -275,6 +307,8 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
             for ss in set(args["checked_locations"]):
                 f.write(str(ss) + "\n")
             f.close()
+
+        Utils.async_start(ctx.update_death_link(args["slot_data"]["death_link"]))
 
 
     elif cmd == 'ReceivedItems':
@@ -346,7 +380,9 @@ async def multi_watcher(ctx: IslesOfSeaAndSkyContext):
 # Look in the AP/OUT folder for files, and send checks.
 async def game_watcher(ctx: IslesOfSeaAndSkyContext):
     while not ctx.exit_event.is_set():
-        #await ctx.update_death_link(ctx.deathlink_status)
+
+        await ctx.update_death_link(ctx.death_allowed)
+
         path = ctx.save_game_folder + "/AP/OUT"
         if ctx.syncing:
             for root, dirs, files in os.walk(path):
@@ -358,16 +394,19 @@ async def game_watcher(ctx: IslesOfSeaAndSkyContext):
                 sync_msg.append({"cmd": "LocationChecks", "locations": list(ctx.locations_checked)})
             await ctx.send_msgs(sync_msg)
             ctx.syncing = False
+
         if ctx.got_deathlink:
             ctx.got_deathlink = False
-            with open(os.path.join(ctx.save_game_folder, "WelcomeToTheDead.youDied"), "w") as f:
+            with open(os.path.join(path, "PlayerDeath.youDied"), "w") as f:
                 f.close()
+
         sending = []
         victory = False
         #found_routes = 0
         for root, dirs, files in os.walk(path):
             for file in files:
-                if "DontBeMad.mad" in file:
+
+                if "SendDeath.mad" in file:
                     os.remove(os.path.join(root, file))
                     if "DeathLink" in ctx.tags:
                         await ctx.send_death()
@@ -393,6 +432,7 @@ async def game_watcher(ctx: IslesOfSeaAndSkyContext):
 
                 if ".playerspot" in file and "Online" not in ctx.tags:
                     os.remove(os.path.join(root, file))
+
                 ''''&&"check.spot" in file'''
                 if ".items" in file:
                     sending = []
@@ -411,10 +451,8 @@ async def game_watcher(ctx: IslesOfSeaAndSkyContext):
                             ctx.temp_currentLocation = sending[len(sending)-1]'''
                         await ctx.send_msgs([{"cmd": "LocationChecks", "locations": sending}])
                         #os.remove(os.path.join(root, file))
-
-
-
         ctx.locations_checked = sending
+
         if (not ctx.finished_game) and victory:
             await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
             ctx.finished_game = True
