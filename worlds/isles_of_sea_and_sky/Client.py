@@ -34,7 +34,6 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
         if isinstance(self.ctx, IslesOfSeaAndSkyContext):
             os.makedirs(name=Utils.user_path("IslesOfSeaAndSky"), exist_ok=True)
             self.ctx.patch_game()
-            self.output("Patched.")
 
     def _cmd_savepath(self, directory: str):
         """Redirect to proper save data folder. This is necessary for Linux users to use before connecting."""
@@ -79,7 +78,6 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
                         shutil.copy(os.path.join(tempInstall, file_name),
                                Utils.user_path("IslesOfSeaAndSky", file_name))
                 self.ctx.patch_game()
-                self.output("Patching successful!")
                 self.output("New IslesOfSeaAndSky install is now located in Archipelago Directory.")
 
 
@@ -178,11 +176,29 @@ class IslesOfSeaAndSkyContext(CommonContext):
 
 
     def patch_game(self):
+
+        from . import IslesOfSeaAndSkyWorld
+        try:
+            data_file = IslesOfSeaAndSkyWorld.settings.data_file
+            data_file.validate(data_file)
+        except FileNotFoundError:
+            logger.info("Patch cancelled")
+            # TODO: consider clearing the path since the one we were given is invalid
+            return
+        except ValueError:
+            logger.info("Selected game is not vanilla, please reset the game and repatch")
+            # TODO: consider clearing the path since the one we were given is invalid
+            return
+
+
+
         with open(Utils.user_path("IslesOfSeaAndSky", "data.win"), "rb") as f:
 
             patchedFile = bsdiff4.patch(f.read(), isles_of_sea_and_sky.data_path("patch.bsdiff") )
         with open(Utils.user_path("IslesOfSeaAndSky", "data.win"), "wb") as f:
             f.write(patchedFile)
+
+        logger.info("Game Successfully Patched!")
         ### Future Feature
         '''os.makedirs(name=Utils.user_path("IslesOfSeaAndSky", "Custom Sprites"), exist_ok=True)
         with open(os.path.expandvars(Utils.user_path("IslesOfSeaAndSky", "Custom Sprites",

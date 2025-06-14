@@ -17,6 +17,11 @@ from .Options import IslesOfSeaAndSkyOptions, EnableSecretsanity, EnableSnakesan
 from worlds.AutoWorld import World, WebWorld
 import worlds.LauncherComponents as LauncherComponents
 
+from settings import (
+    Group,
+    FilePath,
+)
+
 
 
 
@@ -52,6 +57,21 @@ def read_data(file_path: str):
     import pkgutil
     return pkgutil.get_data(__name__, file_path)
 
+
+class IslesOfSeaAndSkySettings(Group):
+    class GMDataFile(FilePath):
+        """Path to IslesOfSeaAndSky Vanilla data file"""
+        description = "Isles Of Sea And Sky Vanilla File"
+        md5s = [
+            "F24EFE2F28A3DB2B5E4EAA5294DCE25D",  # steam
+            #"",  # epic
+            # "",  # itch.io, does not work
+            ]
+        # the hashes for vanilla to be verified by the /patch command
+        required = True
+
+    data_file: GMDataFile = GMDataFile("")
+
 class IslesOfSeaAndSkyWeb(WebWorld):
     tutorials = [Tutorial(
         "Multiworld Setup Guide",
@@ -72,6 +92,7 @@ class IslesOfSeaAndSkyWorld(World):
     """
     game = "Isles Of Sea And Sky"
     options_dataclass = IslesOfSeaAndSkyOptions
+    settings: IslesOfSeaAndSkySettings
     options: IslesOfSeaAndSkyOptions
     web = IslesOfSeaAndSkyWeb()
 
