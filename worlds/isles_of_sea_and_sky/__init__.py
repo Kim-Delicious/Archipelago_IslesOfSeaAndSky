@@ -69,8 +69,8 @@ class IslesOfSeaAndSkySettings(Group):
             ]
         # the hashes for vanilla to be verified by the /patch command
         required = True
-
-    data_file: GMDataFile = GMDataFile("")
+    steam_install = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\IslesOfSeaAndSky"
+    data_file: GMDataFile = GMDataFile(os.path.join(steam_install, "data.win"))
 
 class IslesOfSeaAndSkyWeb(WebWorld):
     tutorials = [Tutorial(

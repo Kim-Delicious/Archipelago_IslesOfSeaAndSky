@@ -15,11 +15,13 @@ First, the game needs to be patched in order to be compatible with Archipelago.
 To do this, you need to have Archipelago installed as well as the `isles_of_sea_and_sky.apworld`. 
 Once both of these steps are done, run Archipelago, then find and open the Isles Of Sea And Sky Client. Once that pops
 up, type in the console: `/auto_patch`. This will freeze the program for a few moments while it's working,
-but when that's done you will receive a message:`"Patching successful!"`.
+but when that's done you will receive a message:`"Game patched successfully!"`.
 
-If things have worked correctly, you should now be able to find a `IslesOfSeaAndSky` folder in
+If things have worked correctly, the game should launch automatically.
+
+You should now be able to find a `IslesOfSeaAndSky` folder in
 the main Archipelago Directory. This is where you will find the copied, and modified version of the game,
-and where you will find the correct executable to launch the modded game.
+and where you will find the correct executable to launch the modded game in the future.
 
 
 ### Connect to the MultiServer

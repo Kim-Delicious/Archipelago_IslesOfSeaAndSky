@@ -1,5 +1,6 @@
 from __future__ import annotations
 import os
+import subprocess
 import sys
 import time
 import asyncio
@@ -51,7 +52,6 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
             f.write("reqRoute: Normal Ending" + "\n")
             f.write("phoenixAnywhere: 0" + "\n")
 
-
     @mark_raw
     def _cmd_auto_patch(self, steaminstall: typing.Optional[str] = None):
         """Patch the game automatically."""
@@ -79,6 +79,12 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
                                Utils.user_path("IslesOfSeaAndSky", file_name))
                 self.ctx.patch_game()
                 self.output("New IslesOfSeaAndSky install is now located in Archipelago Directory.")
+                self.output("Opening game...")
+
+                exe_path = os.path.join(Utils.user_path("IslesOfSeaAndSky"), "IslesOfSeaAndSky.exe")
+                patched_path = os.path.join(Utils.user_path("IslesOfSeaAndSky"), "data.win")
+
+                subprocess.Popen([exe_path, "-game", patched_path])
 
 
     @mark_raw
@@ -111,7 +117,6 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
             except Exception as e:
                 self.output("Failed to create patch")
                 self.output(str(e))
-
 
     '''def _cmd_online(self):
         """Toggles seeing other IslesOfSeaAndSky players."""
