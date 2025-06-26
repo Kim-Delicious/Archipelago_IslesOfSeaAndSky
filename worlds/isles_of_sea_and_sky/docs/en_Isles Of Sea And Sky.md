@@ -32,9 +32,6 @@ Nearly every item and cutscene has been decoupled from acquisition, meaning a pl
 
 All items have their sprites replaced with a generic AP sprite.
 
-<img src="../data/sprites/spr_ap_item_0.png" alt="Shell" width="32"/>
-
-
 A toggleable in-game console is displayed that shows the most recent item acquisitions,
 as well as the current room.
 
@@ -53,40 +50,18 @@ be picked up from, say, the Serpent Stacks, or the Sunken Island, and be dropped
 
 ### New Content
 
-#### **Include Jellyfish** enables hidden jellyfish in the Overworld for extra location checks.
-<img src="../data/sprites/spr_jellyfish_3.png" alt="Shell" width="32"/>
+**Include Jellyfish** enables hidden jellyfish in the Overworld for extra location checks.
 
-
-#### **Include Seashells** enables disguised seashells on the Tidal Reef for extra checks.
-<img src="../data/sprites/spr_ap_item_secret_0.png" alt="Shell" width="32"/>
+**Include Seashells** enables disguised seashells on the Tidal Reef for extra checks.
 
 ### Sanity Options
 
  **Locksanity** sends Checks for unlocking all sorts of things in-game. Including Rune Locks
 
-<img src="../data/sprites/spr_lock_ancient_0.png" alt="Shell" width="32"/>
-<img src="../data/sprites/spr_wind_lock_0.png" alt="Shell" width="32"/>
-<img src="../data/sprites/spr_rune_lock_ancient_0.png" alt="Shell" width="32"/>
-<img src="../data/sprites/spr_rune_lock_topaz_0.png" alt="Shell" width="32"/>
-<img src="../data/sprites/spr_rune_lock_sapphire_0.png" alt="Shell" width="32"/>
-<img src="../data/sprites/spr_rune_lock_ruby_0.png" alt="Shell" width="32"/>
-<img src="../data/sprites/spr_rune_lock_diamond_0.png" alt="Shell" width="32"/>
-<img src="../data/sprites/spr_rune_lock_obsidian_0.png" alt="Shell" width="32"/>
-<img src="../data/sprites/spr_triple_lock_fire_0.png" alt="Shell" width="64"/>
-<img src="../data/sprites/spr_triple_lock_ancient_0.png" alt="Shell" width="64"/>
-<img src="../data/sprites/spr_sextuple_lock_ancient_0.png" alt="Shell" width="64"/>
-<img src="../data/sprites/spr_multi_element_rune_lock_0.png" alt="Shell" width="64"/>
-
  **Snakesanity** sends Checks for activating snake-blocks, and Overworld Dams
 
-<img src="../data/sprites/spr_snake_block_270_0.png" alt="Shell" width="32"/>
-<img src="../data/sprites/spr_dam_horizontal_1.png" alt="Shell" width="96"/>
 
  **Secretsanity** sends Checks for discovering secret paths, and hidden objects
-
-<img src="../data/sprites/spr_eye_reveal_4.png" alt="Shell" width="32"/>
-
-
 
 ### Everything Else
 

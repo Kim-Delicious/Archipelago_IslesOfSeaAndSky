@@ -13,7 +13,7 @@ from .Regions import isles_of_sea_and_sky_regions, link_isles_of_sea_and_sky_are
 from .Rules import set_rules, set_completion_rules
 #from worlds.generic.Rules import exclusion_rules
 from BaseClasses import Region, Entrance, Tutorial, Item
-from .Options import IslesOfSeaAndSkyOptions, EnableSecretsanity, EnableSnakesanity, EnableLocksanity
+from .Options import IslesOfSeaAndSkyOptions, EnableSecretsanity, EnableSnakesanity, EnableLocksanity, isles_of_sea_and_sky_option_groups
 from worlds.AutoWorld import World, WebWorld
 import worlds.LauncherComponents as LauncherComponents
 
@@ -73,6 +73,7 @@ class IslesOfSeaAndSkySettings(Group):
     data_file: GMDataFile = GMDataFile(os.path.join(steam_install, "data.win"))
 
 class IslesOfSeaAndSkyWeb(WebWorld):
+    theme = "ocean"
     tutorials = [Tutorial(
         "Multiworld Setup Guide",
         "A guide to setting up the Archipelago Isles Of Sea And Sky software on your computer. This guide covers "
@@ -82,6 +83,8 @@ class IslesOfSeaAndSkyWeb(WebWorld):
         "setup/en",
         ["Kim-Delicious"]
     )]
+
+    option_groups = isles_of_sea_and_sky_option_groups
 
 
 class IslesOfSeaAndSkyWorld(World):
