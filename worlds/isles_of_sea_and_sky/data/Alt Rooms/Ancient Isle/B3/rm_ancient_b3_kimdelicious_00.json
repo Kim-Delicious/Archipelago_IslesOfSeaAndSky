@@ -640,12 +640,12 @@
       "image_index": 0
     },
     {
-      "x": 272,
+      "x": 64,
       "y": 192,
       "object_definition": "obj_solid",
       "instance_id": 130624,
       "creation_code": null,
-      "scale_x": -13,
+      "scale_x": 13,
       "scale_y": 2,
       "color": 4294967295,
       "rotation": 0,
@@ -661,6 +661,20 @@
       "creation_code": null,
       "scale_x": 1,
       "scale_y": 1,
+      "color": 4294967295,
+      "rotation": 0,
+      "pre_create_code": null,
+      "image_speed": 1,
+      "image_index": 0
+    },
+    {
+      "x": 64,
+      "y": 192,
+      "object_definition": "obj_solid",
+      "instance_id": 130626,
+      "creation_code": null,
+      "scale_x": 13,
+      "scale_y": 2,
       "color": 4294967295,
       "rotation": 0,
       "pre_create_code": null,
@@ -805,6 +819,90 @@
       "rotation": 0,
       "pre_create_code": null,
       "image_speed": 1,
+      "image_index": 0
+    },
+    {
+      "x": 128,
+      "y": 128,
+      "object_definition": "obj_solid",
+      "instance_id": 130623,
+      "creation_code": null,
+      "scale_x": 1,
+      "scale_y": 1,
+      "color": 4294967295,
+      "rotation": 0,
+      "pre_create_code": null,
+      "image_speed": 0,
+      "image_index": 0
+    },
+    {
+      "x": 64,
+      "y": 192,
+      "object_definition": "obj_solid",
+      "instance_id": 130624,
+      "creation_code": null,
+      "scale_x": 13,
+      "scale_y": 1,
+      "color": 4294967295,
+      "rotation": 0,
+      "pre_create_code": null,
+      "image_speed": 0,
+      "image_index": 0
+    },
+    {
+      "x": 64,
+      "y": 192,
+      "object_definition": "obj_solid",
+      "instance_id": 130623,
+      "creation_code": null,
+      "scale_x": 13,
+      "scale_y": 1,
+      "color": 4294967295,
+      "rotation": 0,
+      "pre_create_code": null,
+      "image_speed": 0,
+      "image_index": 0
+    },
+    {
+      "x": 64,
+      "y": 192,
+      "object_definition": "obj_solid",
+      "instance_id": 130624,
+      "creation_code": null,
+      "scale_x": 13,
+      "scale_y": 1,
+      "color": 4294967295,
+      "rotation": 0,
+      "pre_create_code": null,
+      "image_speed": 0,
+      "image_index": 0
+    },
+    {
+      "x": 64,
+      "y": 192,
+      "object_definition": "obj_solid",
+      "instance_id": 130625,
+      "creation_code": null,
+      "scale_x": 13,
+      "scale_y": 1,
+      "color": 4294967295,
+      "rotation": 0,
+      "pre_create_code": null,
+      "image_speed": 0,
+      "image_index": 0
+    },
+    {
+      "x": 64,
+      "y": 192,
+      "object_definition": "obj_solid",
+      "instance_id": 130626,
+      "creation_code": null,
+      "scale_x": 1,
+      "scale_y": 1,
+      "color": 4294967295,
+      "rotation": 0,
+      "pre_create_code": null,
+      "image_speed": 0,
       "image_index": 0
     }
   ],
@@ -1396,6 +1494,90 @@
             "pre_create_code": null,
             "image_speed": 1,
             "image_index": 0
+          },
+          {
+            "x": 128,
+            "y": 128,
+            "object_definition": "obj_solid",
+            "instance_id": 130623,
+            "creation_code": null,
+            "scale_x": 1,
+            "scale_y": 1,
+            "color": 4294967295,
+            "rotation": 0,
+            "pre_create_code": null,
+            "image_speed": 0,
+            "image_index": 0
+          },
+          {
+            "x": 64,
+            "y": 192,
+            "object_definition": "obj_solid",
+            "instance_id": 130624,
+            "creation_code": null,
+            "scale_x": 13,
+            "scale_y": 1,
+            "color": 4294967295,
+            "rotation": 0,
+            "pre_create_code": null,
+            "image_speed": 0,
+            "image_index": 0
+          },
+          {
+            "x": 64,
+            "y": 192,
+            "object_definition": "obj_solid",
+            "instance_id": 130623,
+            "creation_code": null,
+            "scale_x": 13,
+            "scale_y": 1,
+            "color": 4294967295,
+            "rotation": 0,
+            "pre_create_code": null,
+            "image_speed": 0,
+            "image_index": 0
+          },
+          {
+            "x": 64,
+            "y": 192,
+            "object_definition": "obj_solid",
+            "instance_id": 130624,
+            "creation_code": null,
+            "scale_x": 13,
+            "scale_y": 1,
+            "color": 4294967295,
+            "rotation": 0,
+            "pre_create_code": null,
+            "image_speed": 0,
+            "image_index": 0
+          },
+          {
+            "x": 64,
+            "y": 192,
+            "object_definition": "obj_solid",
+            "instance_id": 130625,
+            "creation_code": null,
+            "scale_x": 13,
+            "scale_y": 1,
+            "color": 4294967295,
+            "rotation": 0,
+            "pre_create_code": null,
+            "image_speed": 0,
+            "image_index": 0
+          },
+          {
+            "x": 64,
+            "y": 192,
+            "object_definition": "obj_solid",
+            "instance_id": 130626,
+            "creation_code": null,
+            "scale_x": 1,
+            "scale_y": 1,
+            "color": 4294967295,
+            "rotation": 0,
+            "pre_create_code": null,
+            "image_speed": 0,
+            "image_index": 0
           }
         ]
       }
@@ -1647,7 +1829,7 @@
             "scale_x": 1,
             "scale_y": 1,
             "color": 4294967295,
-            "rotation": 0,
+            "rotation": 180,
             "pre_create_code": null,
             "image_speed": 1,
             "image_index": 0
@@ -2279,7 +2461,7 @@
               "id": 170
             },
             {
-              "id": 44
+              "id": 28
             },
             {
               "id": 144
@@ -2394,7 +2576,7 @@
               "id": 130
             },
             {
-              "id": 60
+              "id": 47
             },
             {
               "id": 29
@@ -2575,7 +2757,7 @@
               "id": 45
             },
             {
-              "id": 28
+              "id": 31
             },
             {
               "id": 61
