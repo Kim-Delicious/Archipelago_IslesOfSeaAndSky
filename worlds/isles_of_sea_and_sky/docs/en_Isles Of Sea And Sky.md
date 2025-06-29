@@ -1,4 +1,4 @@
-# <img src="../data/sprites/isles_of_sea_and_sky.png" alt="" width="64"/>Isles Of Sea And Sky<img src="../data/sprites/isles_of_sea_and_sky_obsidian.png" alt="" width="64"/>
+# <img src="../data/sprites/isles_of_sea_and_sky.png" alt="" width="64"/>Isles Of Sea And Sky<img src="../data/sprites/isles_of_sea_and_sky.png" alt="" width="64"/>
 
 ## What is considered a location check in Isles Of Sea And Sky?
 
