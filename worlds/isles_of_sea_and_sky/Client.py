@@ -77,6 +77,7 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
                     if file_name != "steam_api64.dll" and file_name != "Steamworks_x64.dll":
                         shutil.copy(os.path.join(tempInstall, file_name),
                                Utils.user_path("IslesOfSeaAndSky", file_name))
+
                 self.ctx.patch_game()
                 self.output("New IslesOfSeaAndSky install is now located in Archipelago Directory.")
                 self.output("Opening game...")
@@ -176,6 +177,7 @@ class IslesOfSeaAndSkyContext(CommonContext):
         self.syncing = False
         self.death_amnesty_total = 1  # should be rewritten by slot data
         self.death_amnesty_count = 0
+        self.game_seed = 0
         # self.save_game_folder: files go in this path to pass data between us and the actual game
         self.save_game_folder = os.path.expandvars(r"%localappdata%/IslesOfSeaAndSky")
 
@@ -313,14 +315,21 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
         ctx.reqRoute =              args["slot_data"]["route_required"]
         ctx.phoenixAnywhere =       args["slot_data"]["phoenix_anywhere"]
         ctx.death_amnesty_total =   args["slot_data"]["death_amnesty_total"]
+        ctx.game_seed =             args["slot_data"]["world_seed"]
+        ctx.allowTraps =            args["slot_data"]["traps"] != "no_traps" or args["slot_data"]["trap_link"]
+        ctx.altRooms =              args["slot_data"]["alt_rooms"]
+
 
         with open(os.path.join(ctx.save_game_folder, "apOptions.options"), "w") as f:
-            f.write("includeSeashells: " + str(ctx.includeSeashells)    + '\n')
-            f.write("includeJellyfish: " + str(ctx.includeJellyfish)    + '\n')
-            f.write("enableLocksanity: " + str(ctx.enableLocksanity)    + '\n')
-            f.write("enableSnakesanity: "+ str(ctx.enableSnakesanity)   + '\n')
-            f.write("reqRoute: "         + str(ctx.reqRoute)            + '\n')
-            f.write("phoenixAnywhere: "  + str(ctx.phoenixAnywhere)     + '\n')
+            f.write("includeSeashells: "    + str(ctx.includeSeashells)    + '\n')
+            f.write("includeJellyfish: "    + str(ctx.includeJellyfish)    + '\n')
+            f.write("enableLocksanity: "    + str(ctx.enableLocksanity)    + '\n')
+            f.write("enableSnakesanity: "   + str(ctx.enableSnakesanity)   + '\n')
+            f.write("reqRoute: "            + str(ctx.reqRoute)            + '\n')
+            f.write("phoenixAnywhere: "     + str(ctx.phoenixAnywhere)     + '\n')
+            f.write("seed: "                + str(ctx.game_seed)           + '\n')
+            f.write("allowTraps: "          + str(ctx.allowTraps)          + '\n')
+            f.write("altRooms: "            + str(ctx.altRooms)            + '\n')
             f.close()
 
         filename = f"sent.items"

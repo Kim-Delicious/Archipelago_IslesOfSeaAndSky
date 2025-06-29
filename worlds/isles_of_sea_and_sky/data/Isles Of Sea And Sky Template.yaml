@@ -32,13 +32,13 @@ description: Default Isles Of Sea And Sky Template
 
 game: Isles Of Sea And Sky
 requires:
-  version: 0.6.1 # Version of Archipelago required for this yaml to work as expected.
+  version: 0.6.2 # Version of Archipelago required for this yaml to work as expected.
 
 Isles Of Sea And Sky:
   # Game Options
   progression_balancing:
     # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
-    #
+    # 
     # A lower setting means more getting stuck. A higher setting means less getting stuck.
     #
     # You can define additional values between the minimum and maximum values.
@@ -53,75 +53,103 @@ Isles Of Sea And Sky:
 
   accessibility:
     # Set rules for reachability of your items/locations.
-    #
+    # 
     # **Full:** ensure everything can be reached and acquired.
-    #
+    # 
     # **Minimal:** ensure what is needed to reach your goal can be acquired.
     full: 50
     minimal: 0
 
+  plando_items:
+    # Generic items plando.
+    []
+
+  alt_rooms:
+    # When enabled, the game chooses random alternate rooms from the selection in 'Alt Rooms'
+    # This folder is copied from the apworld into the modded program folder (Should be different than the steam install)
+    #
+    # EARLY DEVELOPMENT! lOTS OF BUGS
+    'false': 50
+    'true': 0
+
+  # Goal
   route_required:
     # Main route of the game required to win.
     normal_ending: 50
     secret_ending: 0
     all_gems: 0
 
-  enable_locksanity:
-    # Turn all locks in the game into game checks.
-    # This includes big 3x locks, all Rune Stone locks, and other specialty locks
-    'true': 0
-    'false': 50
-
-  enable_snakesanity:
-    # Turn all snake blocks  in the game into game checks.
-    # (Snake block = Green directional block with an arrowhead on top)
-    'true': 0
-    'false': 50
-
-  secretsanity:
-    # Turns a number of in-game secrets in to location checks.
-    # These include secret paths, and blocks that are disguised
-    'true': 0
-    'false': 50
-
-  include_seashells:
-    # Enable secret seashells on the Tidal Reef island for extra checks
-    'true': 0
-    'false': 50
-
-  include_jellyfish:
-    # Enable secret jellyfish in the Overworld for extra checks
-    'true': 0
-    'false': 50
-
+  # QOL
   phoenix_anywhere:
-    # The player can summon the Phoenix in any non-Overworld location by pressing: 'E',
-    # as long as they have picked the Phoenix Flute up.
-    'true': 50
-    'false': 0
+    # You can summon the Phoenix in any non-overworld location by pressing: 'E', if you have the Phoenix Flute.
+    'false': 50
+    'true': 0
 
   filler_composition:
-    # Determines what items are sent as Filler, allowing the player to make faster progress
-    # depending on the option selected.
+    # Determines what items are sent as Filler, allowing you to make faster progress depending on the option selected.
     # Default: only allows Seashells as filler.
     # Extra Goodies: adds Ancient Keys, Star Pieces, and Gems to the filler pool.
     # Only Goodies: replaces the entire filler pool with Ancient Keys, Star Pieces and Gems.
-    'default': 50
-    'extra_goodies': 0
-    'only_goodies': 0
+    default: 50
+    extra_goodies: 0
+    only_goodies: 0
 
-  deathlink:
-    # Shares deaths with other players on Deathlink.
-    # When the player receives a deathlink, resets room
-    'true': 0
+  # Extra Checks
+  enable_locksanity:
+    # Turn all locks in the game into location checks. This includes big 3x locks, all Rune Stone locks, and other specialty locks
     'false': 50
+    'true': 0
 
-  deathlink_amnesty:
-    # Determines the amount of deaths before a deathlink is sent.
-    1: 50
+  enable_snakesanity:
+    # Turn all snake blocks in the game into location checks. (Snake block = Green directional block with an arrowhead on top)
+    'false': 50
+    'true': 0
+
+  secretsanity:
+    # Turns a number of in-game secrets in to location checks. These include secret paths, and disguised blocks.
+    'false': 50
+    'true': 0
+
+  include_seashells:
+    # Enable seashells on Tidal Reef for extra checks
+    'false': 50
+    'true': 0
+
+  include_jellyfish:
+    # Enable jellyfish in the Overworld for extra checks
+    'false': 50
+    'true': 0
+
+  # Death Link
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    'false': 50
+    'true': 0
+
+  death_amnesty_total:
+    # Determines the amount of deaths you must have before a deathlink is sent to the server.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 10
+    3: 50
     random: 0
     random-low: 0
     random-high: 0
+
+  # Traps
+  traps:
+    # When enabled, transforms filler items into traps instead.
+    no_traps: 50
+    some_traps: 0
+    plenty_traps: 0
+
+  trap_link:
+    # When enabled, your received traps are linked to other players
+    #
+    # CURRENTLY UNIMPLEMENTED!!!
+    'false': 50
+    'true': 0
 
   # Item & Location Options
   local_items:

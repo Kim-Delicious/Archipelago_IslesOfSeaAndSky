@@ -84,15 +84,28 @@ class Traps(Choice):
     """
     display_name = "Traps"
     option_no_traps = 0
-    option_some = 1
-    option_plenty = 2
+    option_some_traps = 1
+    option_plenty_traps = 2
     default = 0
 
 class TrapLink(Toggle):
     """
     When enabled, your received traps are linked to other players
+
+    CURRENTLY UNIMPLEMENTED!!!
     """
     display_name = "Trap Link"
+    default = 0
+
+
+class AltRoomRandomizer(Toggle):
+    """
+    When enabled, the game chooses random alternate rooms from the selection in 'Alt Rooms'
+    This folder is copied from the apworld into the modded program folder (Should be different than the steam install)
+    though you copy the 'Alt Rooms' folder and place it there yourself.
+    EARLY DEVELOPMENT! lOTS OF BUGS
+    """
+    display_name = "Alt Room Randomizer"
     default = 0
 
 
@@ -110,6 +123,7 @@ class IslesOfSeaAndSkyOptions(PerGameCommonOptions):
     death_amnesty_total:                        DeathLinkAmnesty
     traps:                                      Traps
     trap_link:                                  TrapLink
+    alt_rooms:                                  AltRoomRandomizer
 
 isles_of_sea_and_sky_option_groups = [
     OptionGroup("Goal", [
@@ -127,6 +141,10 @@ isles_of_sea_and_sky_option_groups = [
         EnableSecretsanity,
         IncludeSeashells,
         IncludeJellyfish
+    ]),
+
+OptionGroup("Randomizer", [
+        AltRoomRandomizer
     ]),
 
     OptionGroup("Death Link", [

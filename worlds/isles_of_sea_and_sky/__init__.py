@@ -6,7 +6,7 @@ from random import choice
 from docutils.nodes import description
 
 from .Items import IslesOfSeaAndSkyItem, item_table, non_key_items, key_items, \
-    junk_weights, progression_items
+    junk_weights, progression_items, trap_weights
 from .Locations import IslesOfSeaAndSkyAdvancement, advancement_table, exclusion_table, \
     jellyfish_table, seashell_table, locksanity_table, snakesanity_table, secrets_table
 from .Regions import isles_of_sea_and_sky_regions, link_isles_of_sea_and_sky_areas
@@ -115,22 +115,25 @@ class IslesOfSeaAndSkyWorld(World):
 
     def _get_isles_of_sea_and_sky_data(self):
         return {
-            "world_seed": self.random.getrandbits(32),
-            "seed_name": self.multiworld.seed_name,
-            "player_name": self.multiworld.get_player_name(self.player),
-            "player_id": self.player,
-            "client_version": self.required_client_version,
-            #"race": self.multiworld.is_race,
-            "route_required": self.options.route_required.current_key,
-            "enable_locksanity": bool(self.options.enable_locksanity.value),
-            "enable_snakesanity": bool(self.options.enable_snakesanity.value),
-            "include_seashells": bool(self.options.include_seashells.value),
-            "include_jellyfish": bool(self.options.include_jellyfish.value),
-            "phoenix_anywhere": bool(self.options.phoenix_anywhere.value),
-            "filler_composition": self.options.filler_composition.current_key,
-            "secretsanity": bool(self.options.secretsanity.value),
-            "death_link": bool(self.options.death_link.value),
-            "death_amnesty_total": int(self.options.death_amnesty_total.value),
+            "world_seed":           self.random.getrandbits(32),
+            "seed_name":            self.multiworld.seed_name,
+            "player_name":          self.multiworld.get_player_name(self.player),
+            "player_id":            self.player,
+            "client_version":       self.required_client_version,
+            "race":                 self.multiworld.is_race,
+            "route_required":       self.options.route_required.current_key,
+            "enable_locksanity":    bool(self.options.enable_locksanity.value),
+            "enable_snakesanity":   bool(self.options.enable_snakesanity.value),
+            "include_seashells":    bool(self.options.include_seashells.value),
+            "include_jellyfish":    bool(self.options.include_jellyfish.value),
+            "phoenix_anywhere":     bool(self.options.phoenix_anywhere.value),
+            "traps":                self.options.traps.current_key,
+            "trap_link":            bool(self.options.trap_link.value),
+            "filler_composition":   self.options.filler_composition.current_key,
+            "secretsanity":         bool(self.options.secretsanity.value),
+            "death_link":           bool(self.options.death_link.value),
+            "death_amnesty_total":  int(self.options.death_amnesty_total.value),
+            "alt_rooms":            bool(self.options.alt_rooms.value),
 
         }
 
@@ -180,6 +183,8 @@ class IslesOfSeaAndSkyWorld(World):
         key_pool = key_items.copy()
         non_key_pool = non_key_items.copy()
         junk_pool = junk_weights.copy()
+        trap_pool = trap_weights.copy()
+
 
         # Remove the pre-placed items from generation
         key_pool['Ancient Key'] -= 6
@@ -202,6 +207,19 @@ class IslesOfSeaAndSkyWorld(World):
         print("Creating " + str(missing_items) + " Filler Items for " +str(self.game) )
 
         weight_list = []
+        # Add Traps weights to potential filler pool
+        for name, num in trap_pool.items():
+            match self.options.traps.current_key:
+                case "some_traps":
+                    pass
+                case "plenty_traps":
+                    weight_list += [name] * (num * 3)
+                    continue
+                case _: # default
+                    break
+            weight_list += [name] * num
+
+        # Add other filler weights to potential filler pool
         for name, num in junk_pool.items():
             match self.options.filler_composition.current_key:
                 case "extra_goodies":
@@ -210,10 +228,11 @@ class IslesOfSeaAndSkyWorld(World):
                     if name == "Seashell":
                         continue
                 case _: # default
-                    weight_list += ["Seashell"]
+                    weight_list += ["Seashell"] * num
                     break
             weight_list += [name] * num
 
+        # For each free filler spot, choose an item from weight_list at random, then add it to the item pool
         while missing_items > 0:
             rand_item = choice(weight_list)
             itempool += [rand_item]

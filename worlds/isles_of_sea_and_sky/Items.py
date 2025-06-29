@@ -59,10 +59,8 @@ item_table = {
     "Magma Spirit Trap":        ItemData(7005,      IC.trap),
     "Metal Spirit Trap":        ItemData(7006,      IC.trap),
     "Lava Spirit Trap":         ItemData(7007,      IC.trap),
-    "Reversed Controls Trap":   ItemData(7008,      IC.trap)
-
-
-
+    "Reversed Controls Trap":   ItemData(7008,      IC.trap),
+    "Hotfoot Trap":             ItemData(7008,      IC.trap)
 
 }
 
@@ -115,14 +113,30 @@ non_key_items = {
 
 }
 
+# 52 total
 junk_weights = {
-    "Seashell":                     8,
-    "Ancient Key":                  5,
-    "Star Piece":                   4,
-    "Obsidian":                     1,
-    "Topaz":                        2,
-    "Sapphire":                     2,
-    "Ruby":                         2,
-    "Diamond":                      2,
+    "Seashell":                     16,
+    "Ancient Key":                  10,
+    "Star Piece":                   8,
+    "Obsidian":                     2,
+    "Topaz":                        4,
+    "Sapphire":                     4,
+    "Ruby":                         4,
+    "Diamond":                      4,
+}
+
+# 20 total
+trap_weights = {
+    "Slow Trap":                    1,
+    "Fast Trap":                    1,
+    "Tiny Trap":                    1,
+    "Fat Trap":                     1,
+    "Ice Trap":                     2,
+    "Magma Spirit Trap":            3,
+    "Lava Spirit Trap":             3,
+    "Metal Spirit Trap":            3,
+    "Reversed Controls Trap":       2,
+    "Hotfoot Trap":                 3,
+
 }
 
