@@ -46,7 +46,7 @@ and some of them will break things. So here's your official forewarning.
 #### Why an 'Alt Room' Randomizer instead of an Entrance Rando?
 
 In games like Elden Ring, and other open world games, a limitation on where the player can go
-provides a lot of fun challenges, such as fighting bosses that might be overlooked using different equipment, 
+provides a lot of fun challenges, such as fighting bosses that might be overlooked using equipment, 
 and items at times they normally wouldn't touch.
 
 In Isles of Sea And Sky, most of the challenge is baked into the puzzles themselves rather than 
@@ -56,7 +56,7 @@ numerous, and interesting challenges to the player!
 
 Additionally, I just think it's fun to build puzzles, and that's especially true in a community. I 
 like the idea of people sharing their work with each other, and that becomes even more exciting with a mix-n-match that 
-provides novel combinations each time!
+provides novel combinations on every new playthrough!
 
 ### Development Qs
 

@@ -60,7 +60,7 @@ item_table = {
     "Metal Spirit Trap":        ItemData(7006,      IC.trap),
     "Lava Spirit Trap":         ItemData(7007,      IC.trap),
     "Reversed Controls Trap":   ItemData(7008,      IC.trap),
-    "Hotfoot Trap":             ItemData(7008,      IC.trap)
+    "Hotfoot Trap":             ItemData(7009,      IC.trap)
 
 }
 
