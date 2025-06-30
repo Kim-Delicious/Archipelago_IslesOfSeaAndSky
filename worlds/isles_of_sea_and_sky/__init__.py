@@ -1,7 +1,7 @@
 import os.path
 import random
 import warnings
-from random import choice
+from random import choice, randrange
 
 from docutils.nodes import description
 
@@ -203,23 +203,37 @@ class IslesOfSeaAndSkyWorld(World):
         for name, num in non_key_pool.items():
             itempool += [name] * num
 
-        missing_items = len(self.multiworld.get_unfilled_locations(self.player)) - len(itempool)
-        print("Creating " + str(missing_items) + " Filler Items for " +str(self.game) )
+        missing_items = len(self.multiworld.get_unfilled_locations(self.player) ) - len(itempool)
+        print("Creating " + str(missing_items) + " Filler Items for " + str(self.game) )
+
+        # Create a limited number of traps based on a weighted list of items.
+        trap_number = 0
+        match self.options.traps.current_key:
+            case "some_traps":
+                trap_number = randrange(4, 10)
+            case "plenty_traps":
+                trap_number = randrange(10, 20)
+            case _:  # default
+                pass
+
+        if trap_number > missing_items:
+            trap_number = missing_items
+
+        if trap_number > 0:
+            print("Converting " + str(trap_number) + " Filler Items into Traps")
+            trap_item_weights = []
+
+            for name, num in trap_pool.items():
+                trap_item_weights += [name] * num
+
+            while trap_number > 0:
+                rand_item = choice(trap_item_weights)
+                itempool += [rand_item]
+                trap_number -= 1
+                missing_items -= 1
 
         weight_list = []
-        # Add Traps weights to potential filler pool
-        for name, num in trap_pool.items():
-            match self.options.traps.current_key:
-                case "some_traps":
-                    pass
-                case "plenty_traps":
-                    weight_list += [name] * (num * 3)
-                    continue
-                case _: # default
-                    break
-            weight_list += [name] * num
-
-        # Add other filler weights to potential filler pool
+        # Add filler weights to potential filler pool
         for name, num in junk_pool.items():
             match self.options.filler_composition.current_key:
                 case "extra_goodies":
