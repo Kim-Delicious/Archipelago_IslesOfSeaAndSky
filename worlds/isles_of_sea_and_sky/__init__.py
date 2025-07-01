@@ -210,7 +210,7 @@ class IslesOfSeaAndSkyWorld(World):
         trap_number = 0
         match self.options.traps.current_key:
             case "some_traps":
-                trap_number = randrange(4, 10)
+                trap_number = randrange(4, 9)
             case "plenty_traps":
                 trap_number = randrange(10, 20)
             case _:  # default
