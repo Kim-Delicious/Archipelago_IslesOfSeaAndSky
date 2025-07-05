@@ -99,7 +99,7 @@ class IslesOfSeaAndSkyWorld(World):
     options: IslesOfSeaAndSkyOptions
     web = IslesOfSeaAndSkyWeb()
 
-    explicit_indirect_conditions = False
+    #explicit_indirect_conditions = False
 
     item_name_to_id = {name: data.code for name, data in item_table.items()}
 

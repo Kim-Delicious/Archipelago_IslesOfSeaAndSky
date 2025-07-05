@@ -5,6 +5,7 @@ import sys
 import time
 import asyncio
 import typing
+import copy
 
 import aiohttp
 import bsdiff4
@@ -13,7 +14,7 @@ import shutil
 import Utils
 from random import choice
 
-from NetUtils import NetworkItem, ClientStatus
+from NetUtils import NetworkItem, ClientStatus, JSONtoTextParser, JSONMessagePart
 from worlds import isles_of_sea_and_sky
 from MultiServer import mark_raw
 from CommonClient import CommonContext, server_loop, \
@@ -180,7 +181,7 @@ class IslesOfSeaAndSkyContext(CommonContext):
         self.game_seed = 0
         # self.save_game_folder: files go in this path to pass data between us and the actual game
         self.save_game_folder = os.path.expandvars(r"%localappdata%/IslesOfSeaAndSky")
-
+        self.iosas_json_text_parser = IslesOfSeaAndSkyJSONtoTextParser(self)
 
     def patch_game(self):
 
@@ -280,6 +281,25 @@ class IslesOfSeaAndSkyContext(CommonContext):
 
         self.ui = IOSASManager(self)
         self.ui_task = asyncio.create_task(self.ui.async_run(), name="UI")
+
+    def on_print_json(self, args: dict):
+        # Repurposed from Factorio's Client.py
+        #if self.rcon_client:
+        if (not self.is_uninteresting_item_send(args)) \
+                and not self.is_echoed_chat(args):
+            text = self.iosas_json_text_parser(copy.deepcopy(args["data"]))
+            if not text.startswith(
+                    self.player_names[self.slot] + ":"):  # TODO: Remove string heuristic in the future.
+                self.print_to_game(text)
+        super(IslesOfSeaAndSkyContext, self).on_print_json(args)
+
+    def print_to_game(self, text):
+
+        filename = str(time.time()) + ".apTxt"
+        with open(os.path.join(self.save_game_folder + "/AP/IN", filename), "a") as f:
+            f.write(f"{text}" + "\n")
+            f.close()
+        #self.rcon_client.send_command(f"/ap-print [font=default-large-bold]Archipelago:[/font] ")
 
     async def send_death(self, death_text: str = ""):
 
@@ -515,6 +535,15 @@ def main():
 
     asyncio.run(_main())
     colorama.deinit()
+
+class IslesOfSeaAndSkyJSONtoTextParser(JSONtoTextParser):
+    def _handle_color(self, node: JSONMessagePart):
+        colors = node["color"].split(";")
+        for color in colors:
+            if color in self.color_codes:
+                node["text"] = f"[color=#{self.color_codes[color]}]{node['text']}[/color]"
+            return self._handle_text(node)
+        return self._handle_text(node)
 
 
 if __name__ == "__main__":
