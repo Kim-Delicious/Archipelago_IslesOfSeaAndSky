@@ -12,7 +12,6 @@ import bsdiff4
 import shutil
 
 import Utils
-from random import choice
 
 from NetUtils import NetworkItem, ClientStatus, JSONtoTextParser, JSONMessagePart
 from worlds import isles_of_sea_and_sky
@@ -230,14 +229,14 @@ class IslesOfSeaAndSkyContext(CommonContext):
                 if "check.spot" == file or "scout" == file:
                     os.remove(os.path.join(root, file))
                 elif file.endswith((".items", ".item", ".route", ".playerspot", ".mad",
-                                            ".youDied", ".LV", ".mine", ".flag", ".hint")):
+                                            ".youDied", ".LV", ".mine", ".flag", ".hint", ".apTxt")):
                     os.remove(os.path.join(root, file))
         for root, dirs, files in os.walk(path + "/AP/OUT"):
             for file in files:
                 if "check.spot" == file or "scout" == file:
                     os.remove(os.path.join(root, file))
                 elif file.endswith((".items", ".victory", ".route", ".playerspot", ".mad",
-                                            ".youDied", ".LV", ".mine", ".flag", ".hint")):
+                                            ".youDied", ".LV", ".mine", ".flag", ".hint", ".apTxt")):
                     os.remove(os.path.join(root, file))
 
     async def connect(self, address: typing.Optional[str] = None):
@@ -284,7 +283,6 @@ class IslesOfSeaAndSkyContext(CommonContext):
 
     def on_print_json(self, args: dict):
         # Repurposed from Factorio's Client.py
-        #if self.rcon_client:
         if (not self.is_uninteresting_item_send(args)) \
                 and not self.is_echoed_chat(args):
             text = self.iosas_json_text_parser(copy.deepcopy(args["data"]))
@@ -299,7 +297,6 @@ class IslesOfSeaAndSkyContext(CommonContext):
         with open(os.path.join(self.save_game_folder + "/AP/IN", filename), "a") as f:
             f.write(f"{text}" + "\n")
             f.close()
-        #self.rcon_client.send_command(f"/ap-print [font=default-large-bold]Archipelago:[/font] ")
 
     async def send_death(self, death_text: str = ""):
 

@@ -1,9 +1,6 @@
 import os.path
 import random
 import warnings
-from random import choice, randrange
-
-from docutils.nodes import description
 
 from .Items import IslesOfSeaAndSkyItem, item_table, non_key_items, key_items, \
     junk_weights, progression_items, trap_weights
@@ -210,9 +207,9 @@ class IslesOfSeaAndSkyWorld(World):
         trap_number = 0
         match self.options.traps.current_key:
             case "some_traps":
-                trap_number = randrange(4, 9)
+                trap_number = self.random.randrange(4, 9)
             case "plenty_traps":
-                trap_number = randrange(10, 20)
+                trap_number = self.random.randrange(10, 20)
             case _:  # default
                 pass
 
@@ -227,7 +224,7 @@ class IslesOfSeaAndSkyWorld(World):
                 trap_item_weights += [name] * num
 
             while trap_number > 0:
-                rand_item = choice(trap_item_weights)
+                rand_item = self.random.choice(trap_item_weights)
                 itempool += [rand_item]
                 trap_number -= 1
                 missing_items -= 1
@@ -248,7 +245,7 @@ class IslesOfSeaAndSkyWorld(World):
 
         # For each free filler spot, choose an item from weight_list at random, then add it to the item pool
         while missing_items > 0:
-            rand_item = choice(weight_list)
+            rand_item = self.random.choice(weight_list)
             itempool += [rand_item]
             missing_items = len(self.multiworld.get_unfilled_locations(self.player)) - len(itempool)
 
@@ -263,31 +260,31 @@ class IslesOfSeaAndSkyWorld(World):
         rand_ints = [1, 2, 3 ,4 ,5]
 
 
-        if choice(rand_ints) == 1:  # 20%
+        if self.random.choice(rand_ints) == 1:  # 20%
             self.options.priority_locations.value.add("Topaz Quest Complete")
-        if choice(rand_ints) == 1:  # 20%
+        if self.random.choice(rand_ints) == 1:  # 20%
             self.options.priority_locations.value.add("Sapphire Quest Complete")
-        if choice(rand_ints) == 1:  # 20%
+        if self.random.choice(rand_ints) == 1:  # 20%
             self.options.priority_locations.value.add("Ruby Quest Complete")
-        if choice(rand_ints) == 1:  # 20%
+        if self.random.choice(rand_ints) == 1:  # 20%
             self.options.priority_locations.value.add("Diamond Quest Complete")
-        if choice(rand_ints) == 1:  # 20%
+        if self.random.choice(rand_ints) == 1:  # 20%
             self.options.priority_locations.value.add("Serpent Circlet")
-        if choice(rand_ints) == 1:  # 20%
+        if self.random.choice(rand_ints) == 1:  # 20%
             self.options.priority_locations.value.add("Serpent Circlet")
 
         rand_ints.pop(len(rand_ints)-1)
-        if choice(rand_ints) == 1:  # 25%
+        if self.random.choice(rand_ints) == 1:  # 25%
             self.options.priority_locations.value.add("Gopher Gloves")
-        if choice(rand_ints) == 1:  # 25%
+        if self.random.choice(rand_ints) == 1:  # 25%
             self.options.priority_locations.value.add("Frog Flippers")
-        if choice(rand_ints) == 1:  # 25%
+        if self.random.choice(rand_ints) == 1:  # 25%
             self.options.priority_locations.value.add("Salamander Shirt")
-        if choice(rand_ints) == 1:  # 25%
+        if self.random.choice(rand_ints) == 1:  # 25%
             self.options.priority_locations.value.add("Kite Cloak")
 
         rand_ints.pop(len(rand_ints)-1)
-        if choice(rand_ints) == 1:  # 33%
+        if self.random.choice(rand_ints) == 1:  # 33%
             self.options.priority_locations.value.add("Phoenix Flute")
 
         print("Prioritizing Locations...")
