@@ -315,6 +315,10 @@ class IslesOfSeaAndSkyContext(CommonContext):
             self.last_sent_death = time.time()
             self.death_amnesty_count = 0
 
+    async def update_death_link(self, death_link: bool):
+        """Helper function to set Death Link connection tag on/off and update the connection if already connected."""
+        await super().update_death_link(self.death_allowed)
+
     async def on_deathlink(self, data: typing.Dict[str, typing.Any]):
         self.got_deathlink = True
         super().on_deathlink(data)
@@ -331,6 +335,7 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
         ctx.enableSnakesanity =     args["slot_data"]["enable_snakesanity"]
         ctx.reqRoute =              args["slot_data"]["route_required"]
         ctx.phoenixAnywhere =       args["slot_data"]["phoenix_anywhere"]
+        ctx.death_allowed =         args["slot_data"]["death_link"]
         ctx.death_amnesty_total =   args["slot_data"]["death_amnesty_total"]
         ctx.game_seed =             args["slot_data"]["world_seed"]
         ctx.allowTraps =            args["slot_data"]["traps"] != "no_traps" or args["slot_data"]["trap_link"]
