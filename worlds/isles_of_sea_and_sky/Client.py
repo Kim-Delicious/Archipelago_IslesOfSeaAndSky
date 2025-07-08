@@ -42,16 +42,6 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
             self.ctx.save_game_folder = directory
             self.output("Changed to the following directory: " + self.ctx.save_game_folder)
 
-    def _cmd_set_options(self, directory: str):
-        """Creates the option file that the game will use."""
-        with open(Utils.user_path(self.ctx.save_game_folder, "apOptions.options"), "w") as f:
-            f.write("includeSeashells: 0" + "\n")
-            f.write("includeJellyfish: 0" + "\n")
-            f.write("enableLocksanity: 0" + "\n")
-            f.write("enableSnakesanity: 0" + "\n")
-            f.write("reqRoute: Normal Ending" + "\n")
-            f.write("phoenixAnywhere: 0" + "\n")
-
     @mark_raw
     def _cmd_auto_patch(self, steaminstall: typing.Optional[str] = None):
         """Patch the game automatically."""

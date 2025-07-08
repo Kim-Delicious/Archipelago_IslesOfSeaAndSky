@@ -54,13 +54,13 @@ item_table = {
     "Slow Trap":                ItemData(7000,      IC.trap),
     "Fast Trap":                ItemData(7001,      IC.trap),
     "Tiny Trap":                ItemData(7002,      IC.trap),
-    "Fat Trap":                 ItemData(7003,      IC.trap),
+    "Thicc Trap":               ItemData(7003,      IC.trap),
     "Ice Trap":                 ItemData(7004,      IC.trap),
     "Magma Spirit Trap":        ItemData(7005,      IC.trap),
     "Metal Spirit Trap":        ItemData(7006,      IC.trap),
     "Lava Spirit Trap":         ItemData(7007,      IC.trap),
     "Reversed Controls Trap":   ItemData(7008,      IC.trap),
-    "Hotfoot Trap":             ItemData(7009,      IC.trap)
+    "Floor Is Lava Trap":       ItemData(7009,      IC.trap)
 
 }
 
