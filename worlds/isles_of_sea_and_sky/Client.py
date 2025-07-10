@@ -503,42 +503,49 @@ async def game_watcher(ctx: IslesOfSeaAndSkyContext):
                         #os.remove(os.path.join(root, file))
         ctx.locations_checked = sending
 
-        prescout = False
-        path = ctx.save_game_folder + "/AP/IN"
-        # Search for rescout file
-        for root, dirs, files in os.walk(path):
-            for file in files:
-                if "prescout.scout" in file:
-                    prescout = True
-        # Create a file that stores missing locations, and the items tied to them
-        # allowing for custom item sprites in-game.
-        if not prescout:
-            if ctx.did_scout_locations:
-                with open(os.path.join(path, "prescout.scout"), "w") as f:
-                    for item in ctx.locations_info.items():
-                        netItem = item[1]
-                        gameItem = netItem.item
-                        gameLocation = netItem.location
-                        gamePlayer = netItem.player
-                        itemFlag = netItem.flags
-                        otherGame = ctx.slot_info[gamePlayer].game
-                        isSelf = ctx.player_names[gamePlayer] == ctx.slot_info[ctx.slot].name
-                        line = str(gameLocation) + "\\" + str(otherGame).replace(" ", "") + "\\" + str(isSelf) + "\\" + str(gameItem) + "\\" + str(itemFlag) + "\n"
-                        #print(line)
-                        f.write(line)
-                f.close()
-
-            else:
-                await ctx.send_msgs([{"cmd": "LocationScouts", "locations": ctx.missing_locations,
-                                      "create_as_hint": int(0)}])  # Don't create hints
-
-
+        await scout_for_custom_icons(ctx)
 
         if (not ctx.finished_game) and victory:
             await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
             ctx.finished_game = True
 
         await asyncio.sleep(0.1)
+
+async def scout_for_custom_icons(ctx: IslesOfSeaAndSkyContext):
+    prescout = False
+    path = ctx.save_game_folder + "/AP/IN"
+    # Search for rescout file
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            if "prescout.scout" in file:
+                prescout = True
+    # Create a file that stores missing locations, and the items tied to them
+    # allowing for custom item sprites in-game.
+    if not prescout:
+        if ctx.did_scout_locations:
+            with open(os.path.join(path, "prescout.scout"), "w") as f:
+                for item in ctx.locations_info.items():
+                    netItem = item[1]
+                    gameItem = netItem.item
+                    gameLocation = netItem.location
+                    gamePlayer = netItem.player
+                    itemFlag = netItem.flags
+                    otherGame = ctx.slot_info[gamePlayer].game
+                    gameItemName = ctx.item_names.lookup_in_game(gameItem, otherGame)
+                    isSelf = ctx.player_names[gamePlayer] == ctx.slot_info[ctx.slot].name
+                    line = str(gameLocation) +\
+                                            "\\" + str(otherGame) +\
+                                            "\\" + str(isSelf) +\
+                                            "\\" + str(gameItemName) +\
+                                            "\\" + str(gameItem) +\
+                                            "\\" + str(itemFlag) + "\n"
+                    # print(line)
+                    f.write(line)
+            f.close()
+
+        else:
+            await ctx.send_msgs([{"cmd": "LocationScouts", "locations": ctx.missing_locations,
+                                  "create_as_hint": int(0)}])  # Don't create hints
 
 
 def main():
