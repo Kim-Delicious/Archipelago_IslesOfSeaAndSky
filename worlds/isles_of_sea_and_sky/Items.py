@@ -130,14 +130,13 @@ trap_weights = {
     "Slow Trap":                    1,
     "Fast Trap":                    1,
     "Tiny Trap":                    1,
-    "Fat Trap":                     1,
+    "Thicc Trap":                     1,
     "Ice Trap":                     2,
     "Magma Spirit Trap":            3,
     "Lava Spirit Trap":             3,
     "Metal Spirit Trap":            3,
     "Reversed Controls Trap":       2,
-    "Hotfoot Trap":                 3,
-
+    "Floor Is Lava Trap":           3,
 }
 
 

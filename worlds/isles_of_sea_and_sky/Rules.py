@@ -598,31 +598,31 @@ def set_locked(self):
                             or state.can_reach("Sapphire Sea", "Region", player))
                            and state.has("Ancient Key", player, 23))  # Makes this 'unreachable'
 
-    set_rule(multiworld.get_location("Star Piece [Locked A1]", player),
+    set_rule(multiworld.get_location("Star Piece [Locked A0]", player),
              lambda state: state.has("Ancient Rune Stone", player) )
 
     # Locksanity
     if self.options.enable_locksanity.value:
 
-        set_rule(multiworld.get_location("6x Lock [Locked B1]", player),
+        set_rule(multiworld.get_location("6x Lock [Locked A0]", player),
                  lambda state: (state.can_reach("Ruby Sea", "Region", player)
                             or state.can_reach("Sapphire Sea", "Region", player))
                                and state.has("Ancient Key", player, 23))
 
-        set_rule(multiworld.get_location("Ancient Rune Lock [Locked A1]", player),
+        set_rule(multiworld.get_location("Ancient Rune Lock [Locked A0]", player),
                  lambda state: state.has("Ancient Rune Stone", player))
 
     # Snakesanity
     if self.options.enable_snakesanity.value:
-        set_rule(multiworld.get_location("Snakeblock [Locked A1 - E]", player),
+        set_rule(multiworld.get_location("Snakeblock [Locked A0 - E]", player),
                  lambda state: (state.can_reach("Ruby Sea", "Region", player)
                             or state.can_reach("Sapphire Sea", "Region", player))
                                and state.has("Ancient Key", player, 23))
-        set_rule(multiworld.get_location("Snakeblock [Locked A1 - C]", player),
+        set_rule(multiworld.get_location("Snakeblock [Locked A0 - C]", player),
                  lambda state: (state.can_reach("Ruby Sea", "Region", player)
                             or state.can_reach("Sapphire Sea", "Region", player))
                                and state.has("Ancient Key", player, 23))
-        set_rule(multiworld.get_location("Snakeblock [Locked A1 - W]", player),
+        set_rule(multiworld.get_location("Snakeblock [Locked A0 - W]", player),
                  lambda state: (state.can_reach("Ruby Sea", "Region", player)
                             or state.can_reach("Sapphire Sea", "Region", player))
                                and state.has("Ancient Key", player, 23))
@@ -773,12 +773,12 @@ def set_lost_landing(self):
     # Locksanity
     if self.options.enable_locksanity.value:
 
-        set_rule(multiworld.get_location("Lock [Lost B1]", player),
+        set_rule(multiworld.get_location("Lock [Lost A1]", player),
                  lambda state: state.can_reach("Lost Sea", "Region", player)
                                and state.has("Frog Flippers", player)
                                 and state.has("Ancient Key", player, 48))
 
-        set_rule(multiworld.get_location("Star Lock 30 [Lost A0]", player),
+        set_rule(multiworld.get_location("Star Lock 30 [Lost B0]", player),
                  lambda state: state.has("Star Piece", player, 30))
 
     # Snakesanity
