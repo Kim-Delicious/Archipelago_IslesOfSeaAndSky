@@ -11,9 +11,14 @@ import aiohttp
 import bsdiff4
 import shutil
 
+from Cython.Shadow import sizeof
+
+import MultiServer
 import Utils
 
 from NetUtils import NetworkItem, ClientStatus, JSONtoTextParser, JSONMessagePart
+from WebHostLib.api.room import room_info
+from WebHostLib.misc import games
 from worlds import isles_of_sea_and_sky
 from MultiServer import mark_raw
 from CommonClient import CommonContext, server_loop, \
@@ -171,6 +176,7 @@ class IslesOfSeaAndSkyContext(CommonContext):
         # self.save_game_folder: files go in this path to pass data between us and the actual game
         self.save_game_folder = os.path.expandvars(r"%localappdata%/IslesOfSeaAndSky")
         self.iosas_json_text_parser = IslesOfSeaAndSkyJSONtoTextParser(self)
+        self.did_scout_locations = False
 
     def patch_game(self):
 
@@ -331,7 +337,6 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
         ctx.allowTraps =            args["slot_data"]["traps"] != "no_traps" or args["slot_data"]["trap_link"]
         ctx.altRooms =              args["slot_data"]["alt_rooms"]
 
-
         with open(os.path.join(ctx.save_game_folder, "apOptions.options"), "w") as f:
             f.write("includeSeashells: "    + str(ctx.includeSeashells)    + '\n')
             f.write("includeJellyfish: "    + str(ctx.includeJellyfish)    + '\n')
@@ -350,8 +355,9 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
                 f.write(str(ss) + "\n")
             f.close()
 
-        Utils.async_start(ctx.update_death_link(args["slot_data"]["death_link"]))
+        # Create file to allow custom icons
 
+        Utils.async_start(ctx.update_death_link(args["slot_data"]["death_link"]))
 
     elif cmd == 'ReceivedItems':
         start_index = args["index"]
@@ -385,7 +391,9 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
     elif cmd == 'LocationInfo':
         for item in [NetworkItem(*item) for item in args['locations']]:
             ctx.locations_info[item.location] = item
+        ctx.did_scout_locations = True
         ctx.watcher_event.set()
+
 
     ### Sent when there is a need to update information about the present game session.
     elif cmd == "RoomUpdate":
@@ -495,11 +503,49 @@ async def game_watcher(ctx: IslesOfSeaAndSkyContext):
                         #os.remove(os.path.join(root, file))
         ctx.locations_checked = sending
 
+        await scout_for_custom_icons(ctx)
+
         if (not ctx.finished_game) and victory:
             await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
             ctx.finished_game = True
 
         await asyncio.sleep(0.1)
+
+async def scout_for_custom_icons(ctx: IslesOfSeaAndSkyContext):
+    prescout = False
+    path = ctx.save_game_folder + "/AP/IN"
+    # Search for rescout file
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            if "prescout.scout" in file:
+                prescout = True
+    # Create a file that stores missing locations, and the items tied to them
+    # allowing for custom item sprites in-game.
+    if not prescout:
+        if ctx.did_scout_locations:
+            with open(os.path.join(path, "prescout.scout"), "w") as f:
+                for item in ctx.locations_info.items():
+                    netItem = item[1]
+                    gameItem = netItem.item
+                    gameLocation = netItem.location
+                    gamePlayer = netItem.player
+                    itemFlag = netItem.flags
+                    otherGame = ctx.slot_info[gamePlayer].game
+                    gameItemName = ctx.item_names.lookup_in_game(gameItem, otherGame)
+                    isSelf = ctx.player_names[gamePlayer] == ctx.slot_info[ctx.slot].name
+                    line = str(gameLocation) +\
+                                            "\\" + str(otherGame) +\
+                                            "\\" + str(isSelf) +\
+                                            "\\" + str(gameItemName) +\
+                                            "\\" + str(gameItem) +\
+                                            "\\" + str(itemFlag) + "\n"
+                    # print(line)
+                    f.write(line)
+            f.close()
+
+        else:
+            await ctx.send_msgs([{"cmd": "LocationScouts", "locations": ctx.missing_locations,
+                                  "create_as_hint": int(0)}])  # Don't create hints
 
 
 def main():

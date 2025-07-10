@@ -6,10 +6,6 @@ class AdvData(typing.NamedTuple):
     id: typing.Optional[int]
     region: str
 
-#object ref id, region id, location id, location total
-#ancient13 key = 109, 00, 13, 0
-#10900130
-
 class IslesOfSeaAndSkyAdvancement(Location):
     game: str = "IslesOfSeaAndSky"
 
@@ -578,7 +574,7 @@ locksanity_table = {
     "Obsidian Rune Lock [Serpent A1 - E]":          AdvData(125689, "Serpent Stacks Post-Rune"),
     "Obsidian Rune Lock [Serpent A3]":              AdvData(103366, "Serpent Stacks Post-Rune"),
 
-    "Ancient Rune Lock [Rolling A1]":               AdvData(104495, "Rolling Rocks"),
+    "Ancient Rune Lock [Rolling A1]":               AdvData(104495, "Rolling Rocks Post-Rune"), # double check later
     "Ancient Rune Lock [Rolling B0]":               AdvData(104912, "Rolling Rocks Post-Rune"),
 
     "Ancient Rune Lock [Sunken A0]":                AdvData(123006, "Sunken Island"),
