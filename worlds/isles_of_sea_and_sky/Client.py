@@ -222,14 +222,14 @@ class IslesOfSeaAndSkyContext(CommonContext):
         self.finished_game = False
         for root, dirs, files in os.walk(path + "/AP/IN"):
             for file in files:
-                if "check.spot" == file or "scout" == file:
+                if "check.spot" == file or "prescout" == file:
                     os.remove(os.path.join(root, file))
                 elif file.endswith((".items", ".item", ".route", ".playerspot", ".mad",
                                             ".youDied", ".LV", ".mine", ".flag", ".hint", ".apTxt")):
                     os.remove(os.path.join(root, file))
         for root, dirs, files in os.walk(path + "/AP/OUT"):
             for file in files:
-                if "check.spot" == file or "scout" == file:
+                if "check.spot" == file or "prescout" == file:
                     os.remove(os.path.join(root, file))
                 elif file.endswith((".items", ".victory", ".route", ".playerspot", ".mad",
                                             ".youDied", ".LV", ".mine", ".flag", ".hint", ".apTxt")):
