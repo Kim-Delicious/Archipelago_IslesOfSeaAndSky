@@ -1288,9 +1288,9 @@ def set_tidal_reef(self):
                  lambda state: state.has("Sapphire Quest Complete", player))
         set_rule(multiworld.get_location("Snakeblock [Water B0 - C]", player),
                  lambda state: state.has("Sapphire Quest Complete", player))
-        set_rule(multiworld.get_location("Snakeblock [Water B1 - E]", player),
+        set_rule(multiworld.get_location("Snakeblock [Water B2 - E]", player),
                  lambda state: state.has("Sapphire Quest Complete", player))
-        set_rule(multiworld.get_location("Snakeblock [Water B1 - C]", player),
+        set_rule(multiworld.get_location("Snakeblock [Water B2 - C]", player),
                  lambda state: state.has("Sapphire Quest Complete", player))
 
 

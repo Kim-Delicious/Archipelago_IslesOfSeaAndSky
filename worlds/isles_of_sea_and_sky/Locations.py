@@ -779,8 +779,8 @@ snakesanity_table = {
 
     "Snakeblock [Serpent A1 - W]":                  AdvData(125712, "Serpent Stacks Post-Rune"),
     "Snakeblock [Serpent A1 - C]":                  AdvData(125704, "Serpent Stacks Post-Rune"), #s circlet
-    "Snakeblock [SerpentA1 - CE]":                  AdvData(125690, "Serpent Stacks Post-Rune"), #s circlet
-    "Snakeblock [SerpentA1 - E]":                   AdvData(125711, "Serpent Stacks Post-Rune"), #s circlet
+    "Snakeblock [Serpent A1 - CE]":                 AdvData(125690, "Serpent Stacks Post-Rune"), #s circlet
+    "Snakeblock [Serpent A1 - E]":                  AdvData(125711, "Serpent Stacks Post-Rune"), #s circlet
     "Snakeblock [Serpent A6 - SW]":                 AdvData(126815, "Serpent Stacks Post-Rune"), #s circlet, S quest, T quest
     "Snakeblock [Serpent A6 - NW]":                 AdvData(126807, "Serpent Stacks Post-Rune"), #s circlet, S quest, T quest
     "Snakeblock [Serpent A6 - C]":                  AdvData(126804, "Serpent Stacks Post-Rune"), #s circlet, S quest, T quest
