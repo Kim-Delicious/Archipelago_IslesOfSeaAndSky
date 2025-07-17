@@ -203,12 +203,11 @@ class IslesOfSeaAndSkyContext(CommonContext):
 
         logger.info("Game Successfully Patched!")
         ### Future Feature
-        '''os.makedirs(name=Utils.user_path("IslesOfSeaAndSky", "Custom Sprites"), exist_ok=True)
+        os.makedirs(name=Utils.user_path("IslesOfSeaAndSky", "Custom Sprites"), exist_ok=True)
         with open(os.path.expandvars(Utils.user_path("IslesOfSeaAndSky", "Custom Sprites",
                                      "Which Character.txt")), "w") as f:
-            f.writelines(["// Put the folder name of the sprites you want to play as, make sure it is the only "
-                          "line other than this one.\n", "original"])
-            f.close()'''
+            f.writelines(["// CHANGING CHARACTER SPRITES IS CURRENTLY UNIMPLEMENTED.\n", "original"])
+            f.close()
 
 
     async def server_auth(self, password_requested: bool = False):

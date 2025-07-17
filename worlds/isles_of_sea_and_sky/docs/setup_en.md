@@ -41,6 +41,17 @@ bottom of the client.
 When the console tells you that you have joined the room, you're all set. Congratulations on successfully joining a
 multi-world game!
 
+### Setup Custom AP Sprites
+
+*(This can only be setup after `/auto_patch` has been run at least once)*
+
+It's possible to display some of the items that will be sent to other players. To make this work you will need. KaitoKids' [Archipelago Utilities](https://github.com/agilbert1412/ArchipelagoUtilities)
+
+In the modded directory for Isles Of Sea And Sky, there should be a folder called `Custom Sprites`. If there is not, create one.
+
+Once you've downloaded the zip folder of Archipelago Utilities, extract it, and copy the folder called `Custom Assets` Into the `Custom Sprites` folder.
+
+And you should be done! Items should now display if you've connected to the multiserver.
 
 ### Where do I get a YAML file?
 
