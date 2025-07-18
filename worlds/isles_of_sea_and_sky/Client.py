@@ -11,8 +11,6 @@ import aiohttp
 import bsdiff4
 import shutil
 
-from Cython.Shadow import sizeof
-
 import MultiServer
 import Utils
 
