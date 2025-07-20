@@ -389,6 +389,7 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
         for item in [NetworkItem(*item) for item in args['locations']]:
             ctx.locations_info[item.location] = item
         ctx.did_scout_locations = True
+        print("check")
         ctx.watcher_event.set()
 
 
@@ -538,6 +539,7 @@ async def scout_for_custom_icons(ctx: IslesOfSeaAndSkyContext):
                                             "\\" + str(itemFlag) + "\n"
                     # print(line)
                     f.write(line)
+                    ctx.did_scout_locations = False
             f.close()
 
         else:
