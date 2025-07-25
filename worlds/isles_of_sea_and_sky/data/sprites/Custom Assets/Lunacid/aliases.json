@@ -1,0 +1,153 @@
+{
+    "Aliases": [
+      {
+        "AliasName": "Material",
+        "ItemNames": [
+          "Ashes",
+          "Bloodweed",
+          "Bones",
+          "Broken Sword",
+          "Coal",
+          "Destroying Angel Mushroom",
+          "Ectoplasm",
+          "Fiddlehead",
+          "Fire Coral",
+          "Fire Opal",
+          "Fractured Death",
+          "Fractured Life",
+          "Ikurr'ilb Root",
+          "Lotus Seed Pod",
+          "Moon Petal",
+          "Obsidian",
+          "Ocean Bone Shard",
+          "Ocean Bone Shell",
+          "Onyx",
+          "Opal",
+          "Swordflake Obsidian",
+          "Vampiric Ashes",
+          "Yellow Morel"
+        ]      
+      },
+      {
+        "AliasName": "Fire Spell",
+        "ItemNames": [
+          "Blue Flame Arc",
+          "Fire Worm",
+          "Flame Flare",
+          "Flame Spear",
+          "Ignis Calor",
+          "Lava Chasm",
+        ]      
+      },
+      {
+        "AliasName": "Normal Spell",
+        "ItemNames": [
+          "Barrier",
+          "Earth Strike",
+          "Earth Thorn",
+          "Icarian Flight",
+          "Rock Bridge",
+          "Summon Snail",
+          "Tornado",
+          "Wind Dash",
+          "Wind Slicer",
+        ]      
+      },
+      {
+        "AliasName": "Dark Spell",
+        "ItemNames": [
+          "Bestial Communion",
+          "Corpse Transformation",
+          "Dark Skull",
+        ]      
+      },
+      {
+        "AliasName": "Blood Spell",
+        "ItemNames": [
+          "Blood Drain",
+          "Blood Strike",
+        ]      
+      },
+      {
+        "AliasName": "Light Spell",
+        "ItemNames": [
+          "Ghost Light",
+          "Holy Warmth",
+          "Light Reveal",
+          "Lightning",
+          "Moon Beam",
+          "Spirit Warp",
+          "Summon Fairy",
+          "Summon Kodama",
+        ]      
+      },
+      {
+        "AliasName": "Ice Spell",
+        "ItemNames": [
+          "Ice Spear",
+          "Ice Tear",
+          "Summon Ice Sword",
+        ]      
+      },
+      {
+        "AliasName": "Poison Spell",
+        "ItemNames": [
+          "Poison Mist",
+          "Slime Orb",
+        ]      
+      },
+      {
+        "AliasName": "Patchouli",
+        "ItemNames": [
+          "Bleed Trap",
+          "Poison Trap",
+          "Blindness Trap",
+          "Slowness Trap",
+          "Mana Drain Trap",
+          "XP Drain Trap",
+          "Curse Trap",
+        ]      
+      },
+      {
+        "AliasName": "Key",
+        "ItemNames": [
+          "Hollow Basin Switch Key",
+          "Temple of Silence Switch Key",
+          "Fetid Mire Switch Key",
+          "Accursed Tomb Switch Keyring",
+          "Prometheus Fire Switch Keyring",
+          "Forbidden Archives Shortcut Switch Key",
+          "Forbidden Archives Elevator Switch Keyring",
+          "Sealed Ballroom Switch Key",
+          "Grotto Fire Switch Keyring",
+          "Sand Temple Switches Keyring",
+          "Terminus Prison Back Alley Switch Key",
+          "Forlorn Arena Gate Switch Key",
+          "Temple of Water Switch Key",
+          "Temple of Earth Switch Key",
+          "Labyrinth of Ash Switch Key",
+          "Broken Steps Door Key",
+          "Lower Rickety Bridge Door Key",
+          "Sewers Door Key",
+          "Treetop Door Key",
+          "Tomb Secret Door Key",
+          "Sewers Sea Door Key",
+          "Accursed Door Key",
+          "Castle Doors Key",
+          "Library Exit Door Key",
+          "Surface Door Key",
+          "Light Accursed Door Key",
+          "Queen's Throne Door Key",
+          "Prison Main Door Key",
+          "Secondary Lock Key",
+          "Burning Hot Key",
+          "Forbidden Door Key",
+          "Sucsarian Key",
+          "Dreamer Key",
+          "Ballroom Side Rooms Keyring",
+          "Tower of Abyss Keyring",
+          "Ashen Doors Keyring"
+        ]      
+      },
+  ]
+}

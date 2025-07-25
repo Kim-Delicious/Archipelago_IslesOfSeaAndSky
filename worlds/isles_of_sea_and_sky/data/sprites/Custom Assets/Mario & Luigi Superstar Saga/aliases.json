@@ -1,0 +1,146 @@
+{
+    "Aliases": [{
+            "AliasName": "Beanstar Piece",
+            "ItemNames": [
+                "Beanstar Piece 1",
+                "Beanstar Piece 2",
+                "Beanstar Piece 3",
+                "Beanstar Piece 4"
+            ]
+        }, {
+            "AliasName": "Beanfruit",
+            "ItemNames": [
+                "Bean Fruit 1",
+                "Bean Fruit 2",
+                "Bean Fruit 3",
+                "Bean Fruit 4",
+                "Bean Fruit 5",
+                "Bean Fruit 6",
+                "Bean Fruit 7"
+            ]
+        }, {
+            "AliasName": "Pants",
+            "ItemNames": [
+                "#1 Trousers",
+                "Ancient Pants",
+                "Bean Trousers",
+                "Beanstar Pants",
+                "Bubble's Gear",
+                "Casual Coral",
+                "Casual Slacks",
+                "Mushwin Pants",
+                "Oho Gear",
+                "Oho Jee Wear",
+                "Peasley Slacks",
+                "Piranha Suit",
+                "Plaid Trousers",
+                "Queen B. Jeans",
+                "Random Slacks",
+                "Safety Slacks",
+                "Shroom Bells",
+                "Shroom Slacks",
+                "Tropic Slacks",
+                "Wool Trousers"
+            ]
+        }, {
+            "AliasName": "Pants L",
+            "ItemNames": [
+                "Anuboo Jeans",
+                "B. Brand Jeans",
+                "Blue Jeans",
+                "Heart Jeans",
+                "Peachy Jeans",
+                "Scandal Jeans",
+                "School Slacks",
+                "Street Jeans",
+                "Work Jeans"
+            ]
+        }, {
+            "AliasName": "Pants M",
+            "ItemNames": [
+                "Bean Pants",
+                "Hard Pants",
+                "Harhall's Pants",
+                "Heart Slacks",
+                "Hermetic Pants",
+                "Iron Pants",
+                "Mushluck Pants",
+                "Parasol Pants",
+                "Shroom Pants",
+                "Smart Pants",
+                "Work Pants"
+            ]
+        }, {
+            "AliasName": "Badge",
+            "ItemNames": [
+                "Bean Badge",
+                "Bean B. Badge",
+                "Beauty Badge",
+                "Bowser Fang",
+                "Bowser Fist",
+                "Brilliant Badge",
+                "Bros. Badge",
+                "Bros. Rock",
+                "Castle Badge",
+                "Charity Badge",
+                "Chuckola Badge",
+                "Counter Badge",
+                "General Badge",
+                "Grab Badge",
+                "Hand Aura",
+                "High-End Badge",
+                "Lucky Bros.",
+                "Lucky Ribbon",
+                "Mari-Lui Badge",
+                "Miracle Badge",
+                "Muscle Badge",
+                "Mush Badge",
+                "Mush Badge A",
+                "Mush Badge AA",
+                "Oh-Pah Badge",
+                "Oho Jee Symbol",
+                "Ohoracle Badge",
+                "Pea Badge",
+                "Piranha Swing",
+                "Power Badge",
+                "Salvage Badge",
+                "Sarge Badge",
+                "School Emblem",
+                "Sledge Heart",
+                "Soulful Bros.",
+                "Spike Badge",
+                "Spiny Badge A",
+                "Spiny Badge AA",
+                "Steady Badge",
+                "Tank Badge",
+                "Wonder Badge"
+            ]
+        }, {
+            "AliasName": "Nuts",
+            "ItemNames": [
+                "Max Nuts",
+                "Ultra Nuts",
+                "Super Nuts"
+            ]
+        }, {
+            "AliasName": "Mushroom",
+            "ItemNames": [
+                "Max Mushroom",
+                "Ultra Mushroom",
+                "Super Mushroom"
+            ]
+        }, {
+            "AliasName": "Syrup",
+            "ItemNames": [
+                "Max Syrup",
+                "Ultra Syrup",
+                "Super Syrup"
+            ]
+        }, {
+            "AliasName": "1-UP Mushroom",
+            "ItemNames": [
+                "1-UP Super"
+            ]
+        }
+    ]
+}

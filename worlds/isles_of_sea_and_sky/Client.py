@@ -6,6 +6,7 @@ import time
 import asyncio
 import typing
 import copy
+from shutil import copy2
 
 import aiohttp
 import bsdiff4
@@ -13,6 +14,7 @@ import shutil
 
 import MultiServer
 import Utils
+import worlds.isles_of_sea_and_sky
 
 from NetUtils import NetworkItem, ClientStatus, JSONtoTextParser, JSONMessagePart
 from WebHostLib.api.room import room_info
@@ -37,7 +39,8 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
         """Patch the game. Only use this command if /auto_patch fails."""
         if isinstance(self.ctx, IslesOfSeaAndSkyContext):
             os.makedirs(name=Utils.user_path("IslesOfSeaAndSky"), exist_ok=True)
-            self.ctx.patch_game()
+            world_path = os.path.dirname(__file__)
+            self.ctx.patch_game(world_path)
 
     def _cmd_savepath(self, directory: str):
         """Redirect to proper save data folder. This is necessary for Linux users to use before connecting."""
@@ -70,8 +73,8 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
                     if file_name != "steam_api64.dll" and file_name != "Steamworks_x64.dll":
                         shutil.copy(os.path.join(tempInstall, file_name),
                                Utils.user_path("IslesOfSeaAndSky", file_name))
-
-                self.ctx.patch_game()
+                world_path = os.path.dirname(__file__)
+                self.ctx.patch_game(world_path)
                 self.output("New IslesOfSeaAndSky install is now located in Archipelago Directory.")
                 self.output("Opening game...")
 
@@ -176,9 +179,10 @@ class IslesOfSeaAndSkyContext(CommonContext):
         self.iosas_json_text_parser = IslesOfSeaAndSkyJSONtoTextParser(self)
         self.did_scout_locations = False
 
-    def patch_game(self):
+    def patch_game(self, world_path):
 
         from . import IslesOfSeaAndSkyWorld
+
         try:
             data_file = IslesOfSeaAndSkyWorld.settings.data_file
             data_file.validate(data_file)
@@ -190,8 +194,6 @@ class IslesOfSeaAndSkyContext(CommonContext):
             logger.info("Selected game is not vanilla, please reset the game and repatch")
             # TODO: consider clearing the path since the one we were given is invalid
             return
-
-
 
         with open(Utils.user_path("IslesOfSeaAndSky", "data.win"), "rb") as f:
 
@@ -206,6 +208,19 @@ class IslesOfSeaAndSkyContext(CommonContext):
                                      "Which Character.txt")), "w") as f:
             f.writelines(["// CHANGING CHARACTER SPRITES IS CURRENTLY UNIMPLEMENTED.\n", "original"])
             f.close()
+
+        # Copy Custom Assets Folder
+        assetsPath = world_path + "\\data\\sprites\\Custom Assets"
+        shutil.copytree(assetsPath, Utils.user_path("IslesOfSeaAndSky", "Custom Sprites\\Custom Assets"),
+                        False, None, copy2, False, True, )
+        logger.info("Custom Assets Updated")
+        
+        # Copy Alt Rooms Folder
+        roomPath = world_path + "\\data\\Alt Rooms"
+        shutil.copytree(roomPath, Utils.user_path("IslesOfSeaAndSky", "Alt Rooms"),
+                        False, None, copy2, False, True,)
+        logger.info("Alt Rooms Updated")
+
 
 
     async def server_auth(self, password_requested: bool = False):
@@ -352,8 +367,6 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
                 f.write(str(ss) + "\n")
             f.close()
 
-        # Create file to allow custom icons
-
         Utils.async_start(ctx.update_death_link(args["slot_data"]["death_link"]))
 
     elif cmd == 'ReceivedItems':
@@ -389,7 +402,7 @@ async def process_isles_of_sea_and_sky_cmd(ctx: IslesOfSeaAndSkyContext, cmd: st
         for item in [NetworkItem(*item) for item in args['locations']]:
             ctx.locations_info[item.location] = item
         ctx.did_scout_locations = True
-        print("check")
+        #print("check")
         ctx.watcher_event.set()
 
 

@@ -1,0 +1,65 @@
+{
+  "Aliases": [
+    {
+      "AliasName": "Doors",
+      "ItemNames": [
+        "PlaceholderItem1",
+        "PlaceholderItem2"
+      ]
+    },
+    {
+      "AliasName": "Lasers",
+      "ItemNames": [
+        "Bunker Laser",
+        "Desert Laser",
+        "Jungle Laser",
+        "Keep Laser",
+        "Monastery Laser",
+        "Quarry Laser",
+        "Shadows Laser",
+        "Swamp Laser",
+        "Symmetry Laser",
+        "Town Laser",
+        "Treehouse Laser"
+      ]
+    },
+    {
+      "AliasName": "Obelisk Keys",
+      "ItemNames": [
+        "PlaceholderItem1",
+        "PlaceholderItem2"
+      ]
+    },
+    {
+      "AliasName": "Panel Keys",
+      "ItemNames": [
+        "PlaceholderItem1",
+        "PlaceholderItem2"
+      ]
+    },
+    {
+      "AliasName": "Symbols",
+      "ItemNames": [
+        "Arrows",
+        "Black/White Squares",
+        "Colored Dots",
+        "Colored Squares",
+        "Dots",
+        "Eraser",
+        "Full Dots",
+        "Invisible Dots",
+        "Negative Shapers",
+        "Progressive Dots",
+        "Progressive Stars",
+        "Progressive Symmetry",
+        "Rotated Shapers",
+        "Shapers",
+        "Sound Dots",
+        "Stars",
+        "Stars + Same Colored Symbol",
+        "Symmetry",
+        "Triangles"
+      ]
+    }
+  ]
+}

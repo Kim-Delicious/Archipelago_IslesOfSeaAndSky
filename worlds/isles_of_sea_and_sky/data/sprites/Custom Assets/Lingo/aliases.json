@@ -1,0 +1,76 @@
+{
+  "Aliases": [
+    {
+      "AliasName": "Color Hunt",
+      "ItemNames": [
+        "Color Hunt Barriers",
+        "Color Hunt Panels",
+        "Color Hunt - Purple Barrier",
+        "Color Hunt - Green Barrier",
+        "Color Hunt - Orange Barrier"
+      ]
+    },
+    {
+      "AliasName": "Colorful",
+      "ItemNames": [
+        "Progressive Colorful",
+        "Colorful Panels",
+        "The Colorful - Gray Door",
+        "The Colorful - Brown Door",
+        "The Colorful - Green Door",
+        "The Colorful - Orange Door",
+        "The Colorful - Purple Door",
+        "The Colorful - Blue Door",
+        "The Colorful - Yellow Door",
+        "The Colorful - Red Door",
+        "The Colorful - Black Door",
+        "The Colorful - White Door"
+      ]
+    },
+    {
+      "AliasName": "Number Hunt",
+      "ItemNames": [
+        "Progressive Number Hunt",
+        "Outside The Undeterred - Number Hunt",
+        "Number Hunt - Door to Directional Gallery",
+        "Number Hunt - Challenge Entrance",
+        "Outside The Undeterred - Zero Door",
+        "Outside The Undeterred - Twos",
+        "Outside The Undeterred - Threes",
+        "Outside The Undeterred - Fours",
+        "Number Hunt - Fives",
+        "Number Hunt - Sixes",
+        "Number Hunt - Sevens",
+        "Number Hunt - Eights",
+        "Number Hunt - Nines"
+      ]
+    },
+    {
+      "AliasName": "Orange Tower",
+      "ItemNames": [
+        "Progressive Orange Tower",
+        "Orange Tower - Second Floor",
+        "Orange Tower - Third Floor",
+        "Orange Tower - Fourth Floor",
+        "Orange Tower - Fifth Floor",
+        "Orange Tower - Sixth Floor",
+        "Orange Tower - Seventh Floor"
+      ]
+    },
+    {
+      "AliasName": "Pilgrimage",
+      "ItemNames": [
+        "Sunwarps",
+        "Progressive Pilgrimage",
+        "Pilgrim Room - Sun Painting",
+        "Pilgrim Room - Shortcut to The Seeker",
+        "1 Sunwarp",
+        "2 Sunwarp",
+        "3 Sunwarp",
+        "4 Sunwarp",
+        "5 Sunwarp",
+        "6 Sunwarp"
+      ]
+    }
+  ]
+}

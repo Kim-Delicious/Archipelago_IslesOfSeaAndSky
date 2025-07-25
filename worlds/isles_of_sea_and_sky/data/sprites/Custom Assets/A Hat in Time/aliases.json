@@ -1,0 +1,19 @@
+{
+  "Aliases": [
+    {
+      "AliasName": "Pons",
+      "ItemNames": [
+        "25 Pons",
+        "50 Pons",
+        "100 Pons",
+      ]
+    },
+    {
+      "AliasName": "Relic Necklace",
+      "ItemNames": [
+        "Relic (Necklace Bust)",
+        "Relic (Necklace)",
+      ]
+    }
+  ]
+}

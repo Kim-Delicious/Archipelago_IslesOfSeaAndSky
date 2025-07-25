@@ -1,0 +1,18 @@
+{
+  "Aliases": [
+    {
+      "AliasName": "PlaceholderAliasA",
+      "ItemNames": [
+        "PlaceholderItem1",
+        "PlaceholderItem2"
+      ]
+    },
+    {
+      "AliasName": "PlaceholderAliasB",
+      "ItemNames": [
+        "PlaceholderItem3",
+        "PlaceholderItem4"
+      ]
+    }
+  ]
+}
