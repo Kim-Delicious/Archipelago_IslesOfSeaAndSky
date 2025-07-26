@@ -39,8 +39,7 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
         """Patch the game. Only use this command if /auto_patch fails."""
         if isinstance(self.ctx, IslesOfSeaAndSkyContext):
             os.makedirs(name=Utils.user_path("IslesOfSeaAndSky"), exist_ok=True)
-            world_path = os.path.dirname(__file__)
-            self.ctx.patch_game(world_path)
+            self.ctx.patch_game()
 
     def _cmd_savepath(self, directory: str):
         """Redirect to proper save data folder. This is necessary for Linux users to use before connecting."""
@@ -73,8 +72,7 @@ class IslesOfSeaAndSkyCommandProcessor(ClientCommandProcessor):
                     if file_name != "steam_api64.dll" and file_name != "Steamworks_x64.dll":
                         shutil.copy(os.path.join(tempInstall, file_name),
                                Utils.user_path("IslesOfSeaAndSky", file_name))
-                world_path = os.path.dirname(__file__)
-                self.ctx.patch_game(world_path)
+                self.ctx.patch_game()
                 self.output("New IslesOfSeaAndSky install is now located in Archipelago Directory.")
                 self.output("Opening game...")
 
@@ -179,7 +177,7 @@ class IslesOfSeaAndSkyContext(CommonContext):
         self.iosas_json_text_parser = IslesOfSeaAndSkyJSONtoTextParser(self)
         self.did_scout_locations = False
 
-    def patch_game(self, world_path):
+    def patch_game(self):
 
         from . import IslesOfSeaAndSkyWorld
 
@@ -208,20 +206,6 @@ class IslesOfSeaAndSkyContext(CommonContext):
                                      "Which Character.txt")), "w") as f:
             f.writelines(["// CHANGING CHARACTER SPRITES IS CURRENTLY UNIMPLEMENTED.\n", "original"])
             f.close()
-
-        # Copy Custom Assets Folder
-        assetsPath = world_path + "\\data\\sprites\\Custom Assets"
-        shutil.copytree(assetsPath, Utils.user_path("IslesOfSeaAndSky", "Custom Sprites\\Custom Assets"),
-                        False, None, copy2, False, True, )
-        logger.info("Custom Assets Updated")
-        
-        # Copy Alt Rooms Folder
-        roomPath = world_path + "\\data\\Alt Rooms"
-        shutil.copytree(roomPath, Utils.user_path("IslesOfSeaAndSky", "Alt Rooms"),
-                        False, None, copy2, False, True,)
-        logger.info("Alt Rooms Updated")
-
-
 
     async def server_auth(self, password_requested: bool = False):
         if password_requested and not self.password:
