@@ -60,13 +60,16 @@ provides novel combinations on every new playthrough!
 
 ### Development Qs
 
-#### Objects are not spawning with their Pre_Create_Code
+#### Objects will not load different creation code, or pre-creation code
 
 This may be due to how UndertaleModTool work, or just a quirk of CicadaGames coding. 
-Most objects in the game, when placed by the randomizer don't spawn with some code working.
+Most objects in the game, when placed by the randomizer don't spawn with some code working. 
 
 One example is `snake_block_180`, which does not spawn with the correct rotation, and needs to be
 changed in the .json file manually.
+
+Or perhaps the problem is with the export script itself, as pre_create_code always reads as `undefined`, in the .json
+so if, for instance, you wanted to remove pre_create_code from an object, that would fail.
 
 
 #### Some objects aren't spawning at all!
