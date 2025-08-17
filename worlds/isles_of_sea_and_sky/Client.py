@@ -6,19 +6,13 @@ import time
 import asyncio
 import typing
 import copy
-from shutil import copy2
 
-import aiohttp
 import bsdiff4
 import shutil
 
-import MultiServer
 import Utils
-import worlds.isles_of_sea_and_sky
 
 from NetUtils import NetworkItem, ClientStatus, JSONtoTextParser, JSONMessagePart
-from WebHostLib.api.room import room_info
-from WebHostLib.misc import games
 from worlds import isles_of_sea_and_sky
 from MultiServer import mark_raw
 from CommonClient import CommonContext, server_loop, \
