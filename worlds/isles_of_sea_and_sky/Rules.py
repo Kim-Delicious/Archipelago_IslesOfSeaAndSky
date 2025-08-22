@@ -363,7 +363,8 @@ def set_rolling_rocks(self):
 
     set_rule(multiworld.get_location("Obsidian [Rolling A1]", player),
              lambda state: state.has("Star Piece", player, 7)
-                           and state.has("Gopher Gloves", player))
+                           and state.has("Gopher Gloves", player)
+                           and state.has("Topaz Quest complete", player))
 
     set_rule(multiworld.get_location("Star Piece [Rolling A0]", player),
              lambda state: state.has("Star Piece", player, 7)
