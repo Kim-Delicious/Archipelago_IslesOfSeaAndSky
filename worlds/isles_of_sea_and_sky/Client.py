@@ -455,6 +455,10 @@ async def multi_watcher(ctx: IslesOfSeaAndSkyContext):
 async def game_watcher(ctx: IslesOfSeaAndSkyContext):
     while not ctx.exit_event.is_set():
 
+        if ctx.slot is None
+            await asyncio.sleep(0.1)
+            continue
+        
         await ctx.update_death_link(ctx.death_allowed)
 
         path = ctx.save_game_folder + "/AP/OUT"
